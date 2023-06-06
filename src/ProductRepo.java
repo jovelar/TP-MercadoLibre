@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 
-public class ProductRepo {
+public class ProductRepo implements IRepository{
     private ArrayList<Product>productList;
 
+    //no estoy segura si estan bien estos metodos, dejo el coment para revisarlo despues
     public ProductRepo(){
 
     }
@@ -22,4 +23,18 @@ public class ProductRepo {
 
     }
 
+    @Override
+    public void add() {
+
+    }
+
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void delete() {
+
+    }
 }

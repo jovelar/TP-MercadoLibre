@@ -1,5 +1,7 @@
 public class Credit extends PayMethod{
-    private float amount;
+    private float amount;//no iria para mi porq ya tenemos un atributo amount en la clase padre
+
+   //region constructors
     public Credit(){
 
     }
@@ -8,6 +10,9 @@ public class Credit extends PayMethod{
         super(idPayMethod, tyype, amount, dni);
         this.amount = amount1;
     }
+
+    //endregion
+
     public void addMoney(){
 
     }

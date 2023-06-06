@@ -6,8 +6,25 @@ public class Product {
     private float price;
     private int quantity;
 
-    private String type;
+    private Category category;
     private String description;
+
+    //region constructors
+
+    public Product(){}
+    public Product(int iDEnterprise, String productName, String vendorName, float price, int quantity, Category category,
+                   String description){
+        this.iDEnterprise = iDEnterprise;
+        this.productName = productName;
+        this.vendorName = vendorName;
+        this.price = price;
+        this.quantity = quantity;
+        this.category = category;
+        this.description = description;
+    }
+    //endregion
+
+    //region getters and setters
 
     public int getIdProduct() {
         return idProduct;
@@ -57,12 +74,12 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public String getType() {
-        return type;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getDescription() {
@@ -72,4 +89,5 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
+    //endregion
 }

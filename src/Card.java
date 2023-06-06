@@ -1,19 +1,19 @@
 public class Card extends PayMethod{
-    private float amount;
+    private float amount; //no iria para mi porq ya tenemos un atributo amount en la clase padre
     private long creditCardNumber;
     private String expDate;
-    private int cVCCode;
+    private int cvcCode;
 
     public Card(){
 
     }
 
-    public Card(int idPayMethod, String tyype, float amount, long dni, double amount1, long creditCardNumber, String expDate, int cVCCode) {
+    public Card(int idPayMethod, String tyype, float amount, long dni, double amount1, long creditCardNumber, String expDate, int cvcCode) {
         super(idPayMethod, tyype, amount, dni);
         this.amount = (float) amount1;
         this.creditCardNumber = creditCardNumber;
         this.expDate = expDate;
-        this.cVCCode = cVCCode;
+        this.cvcCode = cvcCode;
     }
 
     @Override
@@ -41,11 +41,11 @@ public class Card extends PayMethod{
         this.expDate = expDate;
     }
 
-    public int getcVCCode() {
-        return cVCCode;
+    public int getCvcCode() {
+        return cvcCode;
     }
 
-    public void setcVCCode(int cVCCode) {
-        this.cVCCode = cVCCode;
+    public void setCvcCode(int cvcCode) {
+        this.cvcCode = cvcCode;
     }
 }

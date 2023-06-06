@@ -1,18 +1,25 @@
-public class PayMethod {
+public abstract class PayMethod {
     private int idPayMethod;
-    private String tyype;
+    //deberiamos o no agregar un idUser?
+    private String type; //para que necesitamos este atributo "tipo"?
     private float amount;
     private long dni;
+
+    //region constructors
 
     public PayMethod() {
     }
 
-    public PayMethod(int idPayMethod, String tyype, float amount, long dni) {
+    public PayMethod(int idPayMethod, String type, float amount, long dni) {
         this.idPayMethod = idPayMethod;
-        this.tyype = tyype;
+        this.type = type;
         this.amount = amount;
         this.dni = dni;
     }
+
+    //endregion
+
+    //region getters and setters
 
     public int getIdPayMethod() {
         return idPayMethod;
@@ -22,12 +29,12 @@ public class PayMethod {
         this.idPayMethod = idPayMethod;
     }
 
-    public String getTyype() {
-        return tyype;
+    public String getType() {
+        return type;
     }
 
-    public void setTyype(String tyype) {
-        this.tyype = tyype;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public float getAmount() {
@@ -45,4 +52,6 @@ public class PayMethod {
     public void setDni(long dni) {
         this.dni = dni;
     }
+
+    //endregion
 }

@@ -1,20 +1,26 @@
+import java.time.LocalDateTime;
+
 public abstract class User {
-    private int iDPerson;
-    private int dni;
-    private String surname;
-    private String firstName;
+    private int idUser;
     private String username;
     private String email;
     private String password;
-    private boolean active;
-    private long phoneNumber;
 
+    //personal information
+    private String firstName;
+    private String surname;
+    private int dni;
+    private LocalDateTime birthDate; //agregado
+    private long phoneNumber;
+    private boolean active;
+
+    //region constructors
     public User(){
 
     }
 
-    public User(int iDPerson, int dni, String surname, String firstName, String username, String email, String password, boolean active, long phoneNumber) {
-        this.iDPerson = iDPerson;
+    public User(int idUser, int dni, String surname, String firstName, String username, String email, String password, boolean active, LocalDateTime birthDate, long phoneNumber) {
+        this.idUser = idUser;
         this.dni = dni;
         this.surname = surname;
         this.firstName = firstName;
@@ -23,14 +29,18 @@ public abstract class User {
         this.password = password;
         this.active = active;
         this.phoneNumber = phoneNumber;
+        this.birthDate = birthDate;
+    }
+    //endregion
+
+    //region getters and setters
+
+    public int getIdUser() {
+        return idUser;
     }
 
-    public int getiDPerson() {
-        return iDPerson;
-    }
-
-    public void setiDPerson(int iDPerson) {
-        this.iDPerson = iDPerson;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     public int getDni() {
@@ -96,6 +106,15 @@ public abstract class User {
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    public LocalDateTime getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDateTime birthDate) {
+        this.birthDate = birthDate;
+    }
+    //endregion
 }
 
 

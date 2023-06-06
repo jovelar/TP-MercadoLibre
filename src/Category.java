@@ -1,0 +1,4 @@
+public enum Category {
+    TECHNOLOGY, FASHION, VEHICLES, SUPERMARKET
+
+}

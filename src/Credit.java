@@ -6,8 +6,8 @@ public class Credit extends PayMethod{
 
     }
 
-    public Credit(int idPayMethod, String tyype, float amount, long dni, float amount1) {
-        super(idPayMethod, tyype, amount, dni);
+    public Credit(int idPayMethod, String type, float amount, long dni, float amount1) {
+        super(idPayMethod, type, amount, dni);
         this.amount = amount1;
     }
 

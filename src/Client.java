@@ -5,7 +5,7 @@ public abstract class Client extends User {
     private String city;
     private String address;
     private int postalCode;
-    private String type;
+    private String type; //eliminar
 
     //region constructors
     public Client(){

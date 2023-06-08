@@ -1,8 +1,9 @@
 public abstract class PayMethod {
     private int idPayMethod;
-    //deberiamos o no agregar un idUser?
+    private int idUser;
+
     private String type; //para que necesitamos este atributo "tipo"?
-    private float amount;
+    private float amount;//cuanta plata paga el cliente o cuanto saldo tiene?
     private long dni;
 
     //region constructors

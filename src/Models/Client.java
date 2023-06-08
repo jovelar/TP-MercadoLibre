@@ -1,3 +1,7 @@
+package Models;
+
+import Models.User;
+
 import java.time.LocalDateTime;
 
 public abstract class Client extends User {

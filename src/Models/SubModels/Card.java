@@ -1,4 +1,6 @@
-public class Card extends PayMethod{
+package Models.SubModels;
+
+public class Card extends PayMethod {
     private float amount; //no iria para mi porq ya tenemos un atributo amount en la clase padre
     private long creditCardNumber;
     private String expDate;

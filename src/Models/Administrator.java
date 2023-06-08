@@ -1,6 +1,10 @@
+package Models;
+
+import Models.Client;
+
 import java.time.LocalDateTime;
 
-public class Administrator extends Client{
+public class Administrator extends Client {
     public Administrator(){}
 
     public Administrator(int iDPerson, int dni, String surname, String firstName, String username, String email, String password, boolean active, long phoneNumber, LocalDateTime birthDate, Province province, String city, String adress, int postalCode, String type) {

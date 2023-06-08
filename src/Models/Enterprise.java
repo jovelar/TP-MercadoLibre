@@ -1,4 +1,7 @@
-import java.time.LocalDate;
+package Models;
+
+import Models.Client;
+
 import java.time.LocalDateTime;
 
 public class Enterprise extends Client {

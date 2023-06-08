@@ -1,7 +1,11 @@
-import java.util.ArrayList;
-import java.util.List;
+package ModelsRepo;
 
-public class ProductRepo implements IRepository{
+import Enums.Category;
+import Models.Product;
+
+import java.util.ArrayList;
+
+public class ProductRepo implements IRepository {
     private ArrayList<Product>productList;
 
 
@@ -19,7 +23,7 @@ public class ProductRepo implements IRepository{
     public void listaProductosHardcodeado(){
         ArrayList<Product> productList = new ArrayList<>();
 
-        //Category: Technology
+        //Enums.Category: Technology
         //celulares
         productList.add(new Product(1, "Motorola", "Celular Moto G52", "Tienda Motorola", 134000, 110, Category.TECHNOLOGY, "Celular Moto G52, 6GB RAM, liberado, memoria interna de 128GB"));
         productList.add(new Product(1, "Motorola", "Celular Motorola G32", "Tienda Motorola", 77999, 50, Category.TECHNOLOGY, "Celular Moto G32, 4GB RAM, liberado, memoria interna de 128GB"));

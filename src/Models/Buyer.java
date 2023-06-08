@@ -1,8 +1,12 @@
+package Models;
+
+import Models.Client;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Buyer extends Client{
+public class Buyer extends Client {
     private ArrayList<Order>orders;
     private ArrayList<Product>cart;
     private List<Product>favorites;
@@ -13,7 +17,7 @@ public class Buyer extends Client{
 
     }
     public Buyer(int iDPerson, int dni, String surname, String firstName, String username, String email,
-                 String password, boolean active, long phoneNumber,LocalDateTime birthDate, Province province,
+                 String password, boolean active, long phoneNumber, LocalDateTime birthDate, Province province,
                  String city, String address, int postalCode, String type, ArrayList<Order> orders,
                  ArrayList<Product> cart, List<Product> favorites, List<PayMethod> paymethod) {
 

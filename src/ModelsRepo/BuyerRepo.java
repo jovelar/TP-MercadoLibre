@@ -1,6 +1,10 @@
+package ModelsRepo;
+
+import Models.User;
+
 import java.util.ArrayList;
 
-public class BuyerRepo implements IRepository{
+public class BuyerRepo implements IRepository {
 
     private ArrayList<User>buyerList;
     @Override

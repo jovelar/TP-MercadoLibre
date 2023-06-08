@@ -1,3 +1,5 @@
+package ModelsRepo;
+
 public interface IRepository {
     public void add();
     public void update();

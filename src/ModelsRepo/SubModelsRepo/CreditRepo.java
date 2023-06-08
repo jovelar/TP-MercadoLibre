@@ -1,12 +1,8 @@
-import java.util.ArrayList;
+package ModelsRepo.SubModelsRepo;
 
-public class OrderRepo implements IRepository{
+import ModelsRepo.IRepository;
 
-    public OrderRepo(){
-
-    }
-
-    private ArrayList<Order>orderRepo;
+public class CreditRepo implements IRepository {
 
     @Override
     public void add() {

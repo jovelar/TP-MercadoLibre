@@ -6,10 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="abf68f4f-9e34-46bd-ada5-9c79b8799621" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Credit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Credit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProductRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Administrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Administrator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdministratorRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ModelsRepo/AdministratorRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Buyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Buyer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BuyerRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ModelsRepo/BuyerRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SubModels/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CardRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SubModelsRepo/CardRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enums/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Credit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SubModels/Credit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CreditRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SubModelsRepo/CreditRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Enterprise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Enterprise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EnterpriseRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ModelsRepo/EnterpriseRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ModelsRepo/IRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SubModels/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OrderRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SubModelsRepo/OrderRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PayMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SubModels/PayMethod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ProductRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ModelsRepo/ProductRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Province.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enums/Province.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

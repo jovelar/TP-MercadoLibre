@@ -1,7 +1,15 @@
+package ModelsRepo;
+
+import Models.User;
+
 import java.util.ArrayList;
 
-public class CreditRepo implements IRepository{
+public class AdministratorRepo implements IRepository {
 
+    private ArrayList<User>adminList;
+    public AdministratorRepo(){
+
+    }
     @Override
     public void add() {
 

@@ -1,3 +1,5 @@
+package Models.SubModels;
+
 public abstract class PayMethod {
     private int idPayMethod;
     private int idUser;

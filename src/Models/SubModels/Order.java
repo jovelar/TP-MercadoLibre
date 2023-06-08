@@ -1,3 +1,7 @@
+package Models.SubModels;
+
+import Models.Product;
+
 import java.util.ArrayList;
 
 public class Order {

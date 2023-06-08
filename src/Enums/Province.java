@@ -1,3 +1,5 @@
+package Enums;
+
 public enum Province {
     BSAS("Buenos Aires"), CABA("CABA"), CATAMARCA("Catamarca"), CHACO("Chaco"),
     CHUBUT("Chubut"), CORDOBA("Córdoba"), CORRIENTES("Corrientes"),

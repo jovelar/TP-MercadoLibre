@@ -1,3 +1,5 @@
+package Models;
+
 import java.time.LocalDateTime;
 
 public abstract class User {

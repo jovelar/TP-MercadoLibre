@@ -1,6 +1,11 @@
+package ModelsRepo.SubModelsRepo;
+
+import ModelsRepo.IRepository;
+import Models.SubModels.Card;
+
 import java.util.ArrayList;
 
-public class CardRepo implements  IRepository{
+public class CardRepo implements IRepository {
 
     private ArrayList<Card> cardList;
 

@@ -1,3 +1,7 @@
+package Models;
+
+import Enums.Category;
+
 public class Product {
     private int idProduct;
     private int iDEnterprise;

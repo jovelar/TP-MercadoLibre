@@ -20,7 +20,7 @@ public abstract class User {
     public User(){
 
     }
-
+    //prueba de git
     public User(int idUser, int dni, String surname, String firstName, String username, String email, String password, boolean active, LocalDateTime birthDate, long phoneNumber) {
         this.idUser = idUser;
         this.dni = dni;

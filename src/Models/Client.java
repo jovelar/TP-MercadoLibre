@@ -1,5 +1,6 @@
 package Models;
 
+import Enums.Province;
 import Models.User;
 
 import java.time.LocalDateTime;

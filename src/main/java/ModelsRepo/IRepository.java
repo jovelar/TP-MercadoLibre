@@ -1,7 +1,13 @@
 package ModelsRepo;
 
-public interface IRepository {
-    public void add();
-    public void update();
-    public void delete();
+import java.util.List;
+
+public interface IRepository<T>{
+    void load();
+    void save();
+    List<T> toList();
+    void add(T ...objeto);
+    void delete(int id);
+
+    void modify(T nuevoObjeto);
 }

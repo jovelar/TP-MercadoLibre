@@ -9,8 +9,5 @@
         <module name="TP-MercadoLibre" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="TP-MercadoLibre" target="19" />
-    </bytecodeTargetLevel>
   </component>
 </project>

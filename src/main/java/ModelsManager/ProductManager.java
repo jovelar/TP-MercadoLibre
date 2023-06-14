@@ -46,18 +46,20 @@ public class ProductManager {
 
              Menu.categoriesMenu(product);
 
+            productRepo.add(product);
+            System.out.println("Producto agregado exitosamente!");
 
             resp = Consola.readString("Desea seguir agregando productos? si/no");
-            productRepo.add(product);
 
         }
     }
 
     public void removeProduct(){
         int id = Consola.readInt("Ingrese el id del producto a eliminar:");
+        Consola.readString("");
         if(searchProductById(id)){
             System.out.println("Producto encontrado!");
-            String resp = Consola.readString("Esta seguro de continuar?");
+            String resp = Consola.readString("Esta seguro de continuar? si/no");
             if(resp.equals("si")){
                 productRepo.delete(id);
                 System.out.println("El producto se ha eliminado exitosamente!");
@@ -85,6 +87,29 @@ public class ProductManager {
         return resp;
 
     }
+
+    public void modifyProduct(){
+
+        int idProducto = Consola.readInt("Ingrese el id del producto que desea modificar:");
+        Consola.readString("");
+        //que puede modificar una empresa de sus propios productos?
+        //la Marca, nombre del producto, precio, stock y descripcion
+        String brand = Consola.readString("Ingrese la nueva marca del producto: ");
+        String productName = Consola.readString("Ingrese el nuevo nombre del producto:");
+        float price = Consola.readFloat("Ingrese el nuevo precio del producto:");
+        int quantity = Consola.readInt("Ingrese el numero actual de stock:");
+        Consola.readString("");
+        String description = Consola.readString("Ingrese una nueva descripción:");
+
+
+        Product product = new Product(idProducto, brand, productName, price, quantity, description);
+
+        productRepo.modify(product);
+
+        System.out.println("Producto modificado con exito!");
+
+    }
+
 
     public void listaProductosHardcodeado(){
         List<Product> productList = productRepo.toList();

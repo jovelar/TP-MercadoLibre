@@ -2,6 +2,7 @@ package Tools;
 
 import Enums.Category;
 import Models.Product;
+import ModelsManager.ProductManager;
 
 import java.util.Scanner;
 
@@ -154,32 +155,33 @@ public class Menu {
     }
 
     public static void menuAdmProductosOpciones(int opcion){
-//        GestionProductos gestionProductos = new GestionProductos();
+        ProductManager productManager = new ProductManager();
         switch (opcion) {
             case 1:
                 System.out.println("");
                 System.out.println("Agregar Productos");
-//                gestionProductos.agregarProducto();
+                productManager.addProduct();
                 break;
             case 2:
                 System.out.println("");
                 System.out.println("Eliminar Productos");
-//                gestionProductos.eliminarProducto();
+                productManager.removeProduct();
                 break;
             case 3:
                 System.out.println("");
                 System.out.println("Modificar Productos");
+                productManager.modifyProduct();
 
                 break;
             case 4:
                 System.out.println("");
                 System.out.println("Ver Productos");
-//                gestionProductos.mostrarListaProductos();
+                productManager.showProductList();
 
                 break;
 
             case 5:
-                System.out.println("¡Gracias por utilizar este programa!");
+                System.out.println("Volviendo al menu principal...");
 
                 break;
             default:
@@ -210,9 +212,9 @@ public class Menu {
 
     public static void mostrarMenuVentas(){
         System.out.println("Sistema de ventas");
-        System.out.println("1. Vender Producto");
-        System.out.println("2. ..");
-        System.out.println("3. ..");
+        System.out.println("1. Comprar producto");
+        System.out.println("2. buscar producto");
+        System.out.println("3. ver productos");
         System.out.println("4. ..");
         System.out.println("5. Salir");
         System.out.print("Selecciona una opción: ");
@@ -230,7 +232,7 @@ vendida (se tiene que actualizar el json en cada venta).
         switch (opcion) {
             case 1:
                 System.out.println("");
-                System.out.println("Vender producto");
+                System.out.println("Comprar producto");
 //                Cliente cliente1 = gestionClientes.ObtenerClientePorDni("41386329");
 //                gestionProductos.venderFrutas("1", 5, cliente1);
 

@@ -36,6 +36,19 @@ public class Product {
         this.description = description;
     }
 
+    ///el constructor siguiente lo utilizo para crear un producto sin asignar los valores que no voy a modificar en el
+    //metodo modifyProduct de productManager
+
+
+    public Product(int idProduct, String brand, String productName, float price, int quantity, String description) {
+        this.idProduct = idProduct;
+        this.brand = brand;
+        this.productName = productName;
+        this.price = price;
+        this.quantity = quantity;
+        this.description = description;
+    }
+
     public Product(int idProduct, int iDEnterprise, String brand, String productName, String vendorName,
                    float price, int quantity, Category category, String description) {
         this.idProduct = idProduct;
@@ -127,4 +140,15 @@ public class Product {
     //endregion
 
 
+    @Override
+    public String toString() {
+        return "\n ID del vendedor(empresa): " + iDEnterprise +
+                "\n Marca: " + brand +
+                "\n Nombre del producto: " + productName +
+                "\n Nombre del vendedor:" + vendorName +
+                "\n Precio:" + price +
+                "\n Stock: " + quantity +
+                "\n Categoria: " + category +
+                "\n Descripción: " + description;
+    }
 }

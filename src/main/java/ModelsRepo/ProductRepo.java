@@ -82,9 +82,9 @@ public class ProductRepo implements IRepository<Product> {
             if(product.getIdProduct() == nuevoObjeto.getIdProduct()){
                 product.setBrand(nuevoObjeto.getBrand());
                 product.setProductName(nuevoObjeto.getProductName());
-                product.setVendorName(nuevoObjeto.getVendorName());
                 product.setPrice(nuevoObjeto.getPrice());
                 product.setQuantity(nuevoObjeto.getQuantity());
+                product.setDescription(nuevoObjeto.getDescription());
                 break;
             }
         }

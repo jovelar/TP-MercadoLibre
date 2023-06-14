@@ -238,4 +238,14 @@
   "quantity" : 100,
   "category" : "FASHION",
   "description" : "Probando agregar un producto al .json by flor"
+}, {
+  "idProduct" : 2,
+  "iDEnterprise" : 3,
+  "brand" : "puma",
+  "productName" : "zapatillas puma",
+  "vendorName" : "NIKE",
+  "price" : 123.0,
+  "quantity" : 100,
+  "category" : "FASHION",
+  "description" : "Zapatillas nike urbanas"
 } ]

@@ -1,27 +1,39 @@
 package ModelsRepo;
 
+import Models.Enterprise;
 import Models.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class EnterpriseRepo implements IRepository {
-    private ArrayList<User>enterpriseList;
-
-    public EnterpriseRepo(){
-
-    }
+public class EnterpriseRepo implements IRepository<Enterprise> {
     @Override
-    public void add() {
+    public void load() {
 
     }
 
     @Override
-    public void update() {
+    public void save() {
 
     }
 
     @Override
-    public void delete() {
+    public List<Enterprise> toList() {
+        return null;
+    }
+
+    @Override
+    public void add(Enterprise... objeto) {
+
+    }
+
+    @Override
+    public void delete(int id) {
+
+    }
+
+    @Override
+    public void modify(Enterprise nuevoObjeto) {
 
     }
 }

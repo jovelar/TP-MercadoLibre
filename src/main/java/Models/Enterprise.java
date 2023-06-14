@@ -1,5 +1,6 @@
 package Models;
 
+import Enums.Province;
 import Models.Client;
 
 import java.time.LocalDateTime;
@@ -17,8 +18,10 @@ public class Enterprise extends Client {
 
     }
 
-    public Enterprise(int iDPerson, int dni, String surname, String firstName, String username, String email, String password, boolean active, long phoneNumber, LocalDateTime birthDate, Province province, String city, String adress, int postalCode, String type, String fantasyName, float salesRevenue) {
-        super(iDPerson, dni, surname, firstName, username, email, password, active, phoneNumber, birthDate, province, city, adress, postalCode, type);
+
+
+    public Enterprise(int iDPerson, int dni, String surname, String firstName, String username, String email, String password, boolean active, long phoneNumber, LocalDateTime birthDate, Province province, String city, String address, int postalCode, String type, String fantasyName, float salesRevenue) {
+        super(iDPerson, dni, surname, firstName, username, email, password, active, phoneNumber, birthDate, province, city, address, postalCode, type);
         this.fantasyName = fantasyName;
         this.salesRevenue = salesRevenue;
     }

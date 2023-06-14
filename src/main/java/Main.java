@@ -1,7 +1,16 @@
+import ModelsManager.ProductManager;
+
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //carga de datos del sistema
-        //
+        ProductManager productManager = new ProductManager();
+        productManager.addProduct();
 
     }
+
+
+
+
+
 }

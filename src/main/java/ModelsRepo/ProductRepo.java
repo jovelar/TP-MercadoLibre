@@ -1,9 +1,14 @@
 package ModelsRepo;
 
 import Models.Product;
+import Models.SubModels.Order;
+import Models.SubModels.PayMethod;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,12 +52,14 @@ public class ProductRepo implements IRepository<Product> {
     public List<Product> toList() {
         load();
         return this.productList;
+
     }
 
     @Override
     public void add(Product... objeto) {
         load();
         this.productList.addAll(List.of(objeto));
+        save();
     }
 
     @Override
@@ -84,6 +91,17 @@ public class ProductRepo implements IRepository<Product> {
 
     }
     //endregion
+
+    private int idPayMethod;
+    private int idUser;
+
+    private String type; //para que necesitamos este atributo "tipo"?
+    private float amount;//cuanta plata paga el cliente o cuanto saldo tiene?
+    private long dni;
+    private float amount; //no iria para mi porq ya tenemos un atributo amount en la clase padre
+    private long creditCardNumber;
+    private String expDate;
+    private int cvcCode;
 
 
 }

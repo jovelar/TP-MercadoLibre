@@ -21,18 +21,22 @@ public abstract class User {
 
     }
     //prueba de git
-    public User(int idUser, int dni, String surname, String firstName, String username, String email, String password, boolean active, LocalDateTime birthDate, long phoneNumber) {
+
+    public User(int idUser, String username, String email, String password, String firstName, String surname,
+                int dni, LocalDateTime birthDate, long phoneNumber, boolean active) {
         this.idUser = idUser;
-        this.dni = dni;
-        this.surname = surname;
-        this.firstName = firstName;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.active = active;
-        this.phoneNumber = phoneNumber;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.dni = dni;
         this.birthDate = birthDate;
+        this.phoneNumber = phoneNumber;
+        this.active = active;
     }
+
+
     //endregion
 
     //region getters and setters

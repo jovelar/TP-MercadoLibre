@@ -4,27 +4,38 @@ import ModelsRepo.IRepository;
 import Models.SubModels.Order;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class OrderRepo implements IRepository {
+public class OrderRepo implements IRepository<Order> {
 
-    public OrderRepo(){
-
-    }
-
-    private ArrayList<Order>orderRepo;
 
     @Override
-    public void add() {
+    public void load() {
 
     }
 
     @Override
-    public void update() {
+    public void save() {
 
     }
 
     @Override
-    public void delete() {
+    public List<Order> toList() {
+        return null;
+    }
+
+    @Override
+    public void add(Order... objeto) {
+
+    }
+
+    @Override
+    public void delete(int id) {
+
+    }
+
+    @Override
+    public void modify(Order nuevoObjeto) {
 
     }
 }

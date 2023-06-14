@@ -26,21 +26,58 @@ public class ProductManager {
             int idProduct = Consola.readInt("Ingrese el id del producto:");
             int idEnterprise = Consola.readInt("Ingrese el id de la empresa");
             String brand = Consola.readString("Ingrese la marca del producto: ");
+            String productName = Consola.readString("Ingrese el nombre del producto:");
             String vendorName = Consola.readString("Ingrese el nombre del vendedor:");
             float price = Consola.readFloat("Ingrese el precio del producto:");
             int quantity = Consola.readInt("Ingrese el numero de stock:");
+            Category category = Category.TECHNOLOGY;
+            String description = Consola.readString("Ingrese una descripción:");
 
-//            private String brand;
-//            private String productName;
-//            private String vendorName;
-//            private float price;
-//            private int quantity;
-//
-//
-//            private Category category;
-//            private String description;
+            Product product = new Product(idProduct, idEnterprise, brand, productName, vendorName, price,
+                    quantity, category, description);
+
+            resp = Consola.readString("Desea seguir agregando productos? si/no");
+            productRepo.add(product);
+
         }
     }
+
+    public void removeProduct(){
+        int id = Consola.readInt("Ingrese el id del producto a eliminar:");
+        if(searchProductById(id)){
+            System.out.println("Producto encontrado!");
+            String resp = Consola.readString("Esta seguro de continuar?");
+            if(resp.equals("si")){
+                productRepo.delete(id);
+                System.out.println("El producto se ha eliminado exitosamente!");
+            }
+
+        }else{
+            System.out.println("El producto no se encuentra registrado en el sistema!");
+        }
+
+
+    }
+
+
+
+    public Boolean searchProductById(int id){
+        boolean resp = false;
+        List<Product> productList = productRepo.toList();
+
+        for(Product product : productList){
+            if(id == product.getIdProduct()){
+                resp = true;
+                break;
+            }
+        }
+        return resp;
+
+    }
+
+
+
+
 
 
 }

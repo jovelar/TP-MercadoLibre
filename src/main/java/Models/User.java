@@ -3,6 +3,8 @@ package Models;
 import java.time.LocalDateTime;
 
 public abstract class User {
+
+    //region ATTRIBUTES
     private int idUser;
     private String username;
     private String email;
@@ -15,19 +17,19 @@ public abstract class User {
     private LocalDateTime birthDate; //agregado
     private long phoneNumber;
     private boolean active;
+    //endregion
 
-    //region constructors
-    public User(){
+    //region CONSTRUCTORS
+    public User(){}
 
-    }
-    //prueba de git
+    public User(int idUser, String username, String email, String password, String firstName, String surname, int dni, LocalDateTime birthDate, long phoneNumber, boolean active) {
 
-    public User(int idUser, String username, String email, String password, String firstName, String surname,
-                int dni, LocalDateTime birthDate, long phoneNumber, boolean active) {
         this.idUser = idUser;
+
         this.username = username;
         this.email = email;
         this.password = password;
+
         this.firstName = firstName;
         this.surname = surname;
         this.dni = dni;
@@ -39,12 +41,10 @@ public abstract class User {
 
     //endregion
 
-    //region getters and setters
-
+    //region GETTERS AND SETTERS
     public int getIdUser() {
         return idUser;
     }
-
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
@@ -52,7 +52,6 @@ public abstract class User {
     public int getDni() {
         return dni;
     }
-
     public void setDni(int dni) {
         this.dni = dni;
     }
@@ -60,7 +59,6 @@ public abstract class User {
     public String getSurname() {
         return surname;
     }
-
     public void setSurname(String surname) {
         this.surname = surname;
     }
@@ -68,7 +66,6 @@ public abstract class User {
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -76,7 +73,6 @@ public abstract class User {
     public String getUsername() {
         return username;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }
@@ -84,7 +80,6 @@ public abstract class User {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -92,7 +87,6 @@ public abstract class User {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -100,7 +94,6 @@ public abstract class User {
     public boolean isActive() {
         return active;
     }
-
     public void setActive(boolean active) {
         this.active = active;
     }
@@ -108,7 +101,6 @@ public abstract class User {
     public long getPhoneNumber() {
         return phoneNumber;
     }
-
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
@@ -116,11 +108,28 @@ public abstract class User {
     public LocalDateTime getBirthDate() {
         return birthDate;
     }
-
     public void setBirthDate(LocalDateTime birthDate) {
         this.birthDate = birthDate;
     }
     //endregion
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "idUser=" + idUser +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", dni=" + dni +
+                ", birthDate=" + birthDate +
+                ", phoneNumber=" + phoneNumber +
+                ", active=" + active +
+                '}';
+    }
+
+
 }
 
 

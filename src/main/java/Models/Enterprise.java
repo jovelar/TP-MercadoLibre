@@ -1,11 +1,11 @@
 package Models;
 
 import Enums.Province;
-import Models.Client;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Enterprise extends Client {
+public class Enterprise extends Client implements Serializable {
     private String fantasyName;
 
     private float salesRevenue;

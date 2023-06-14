@@ -1,33 +1,34 @@
 package Models;
 
 import Enums.Province;
-import Models.User;
 
 import java.time.LocalDateTime;
 
 public abstract class Client extends User {
+
+    //region ATRIBUTES
     private Province province;
     private String city;
     private String address;
     private int postalCode;
-    private String type; //eliminar
 
-    //region constructors
+    //region CONSTRUCTORS
     public Client(){
 
     }
-    public Client(int iDPerson, int dni, String surname, String firstName, String username, String email, String password, boolean active, long phoneNumber, LocalDateTime birthDate, Province province, String city, String address, int postalCode, String type) {
-        super(iDPerson, dni, surname, firstName, username, email, password, active, birthDate,phoneNumber);
+
+
+    public Client(int idUser, String username, String email, String password, String firstName, String surname, int dni, LocalDateTime birthDate, long phoneNumber, boolean active, Province province, String city, String address, int postalCode) {
+
+        super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber, active);
         this.province = province;
         this.city = city;
         this.address = address;
         this.postalCode = postalCode;
-        this.type = type;
     }
     //endregion
 
-    //region getters and setters
-
+    //region GETTERS AND SETTERS
     public Province getProvince() {
         return province;
     }
@@ -59,13 +60,8 @@ public abstract class Client extends User {
     public void setPostalCode(int postalCode) {
         this.postalCode = postalCode;
     }
+    //endregion
 
-    public String getType() {
-        return type;
-    }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-//endregion
+
 }

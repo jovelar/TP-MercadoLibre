@@ -129,6 +129,14 @@ public abstract class User {
                 '}';
     }
 
+    //region ATTRIBUTES
+    //endregion
+
+    //region CONSTRUCTORS
+    //endregion
+
+    //region GETTERS AND SETTERS
+    //endregion
 
 }
 

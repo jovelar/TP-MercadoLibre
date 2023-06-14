@@ -6,28 +6,45 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Enterprise extends Client implements Serializable {
+
+    //region ATTRIBUTES
     private String fantasyName;
-
     private float salesRevenue;
+    //endregion
 
-    //no deberiamos tener como atributo una lista de productos aca?
 
-
-    //region constructors
+    //region CONSTRUCTORS
     public Enterprise(){
 
     }
 
+    public Enterprise(int idUser, String username, String email, String password, String firstName, String surname, int dni, LocalDateTime birthDate,
+          long phoneNumber, boolean active, Province province, String city, String address, int postalCode, String fantasyName, float salesRevenue) {
 
+        super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber, active, province, city, address, postalCode);
 
-    public Enterprise(int iDPerson, int dni, String surname, String firstName, String username, String email, String password, boolean active, long phoneNumber, LocalDateTime birthDate, Province province, String city, String address, int postalCode, String type, String fantasyName, float salesRevenue) {
-        super(iDPerson, dni, surname, firstName, username, email, password, active, phoneNumber, birthDate, province, city, address, postalCode, type);
         this.fantasyName = fantasyName;
         this.salesRevenue = salesRevenue;
     }
-
     //endregion
 
+    //region GETTERS AND SETTERS
+    public String getFantasyName() {
+        return fantasyName;
+    }
+
+    public void setFantasyName(String fantasyName) {
+        this.fantasyName = fantasyName;
+    }
+
+    public float getSalesRevenue() {
+        return salesRevenue;
+    }
+
+    public void setSalesRevenue(float salesRevenue) {
+        this.salesRevenue = salesRevenue;
+    }
+    //endregion
 
     public void addProduct(){
 

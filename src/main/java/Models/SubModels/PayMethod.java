@@ -1,12 +1,21 @@
 package Models.SubModels;
 
 public abstract class PayMethod {
+
+     //region ATTRIBUTES
     private int idPayMethod;
     private int idUser;
 
     private String type; //para que necesitamos este atributo "tipo"?
     private float amount;//cuanta plata paga el cliente o cuanto saldo tiene?
     private long dni;
+    //endregion
+
+
+
+    //region CONSTRUCTORS
+    //endregion
+
 
     //region constructors
 
@@ -22,6 +31,8 @@ public abstract class PayMethod {
 
     //endregion
 
+    //region GETTERS AND SETTERS
+    //endregion
     //region getters and setters
 
     public int getIdPayMethod() {

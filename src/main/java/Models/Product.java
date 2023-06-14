@@ -3,6 +3,8 @@ package Models;
 import Enums.Category;
 
 public class Product {
+
+    //region ATTRIBUTES
     private int idProduct;
     private int iDEnterprise;
     private String brand;
@@ -14,9 +16,9 @@ public class Product {
 
     private Category category;
     private String description;
+    //endregion
 
-    //region constructors
-
+    //region CONTRUCTORS
     public Product(){}
 
     public Product(int idProduct, int iDEnterprise, String brand, String productName, String vendorName,
@@ -31,10 +33,9 @@ public class Product {
         this.category = category;
         this.description = description;
     }
-//endregion
+    //endregion
 
-    //region getters and setters
-
+    //region GETTERS AND SETTERS
     public int getIdProduct() {
         return idProduct;
     }
@@ -106,8 +107,6 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
-
-
     //endregion
 
 

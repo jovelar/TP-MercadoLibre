@@ -12,30 +12,67 @@ import Models.SubModels.PayMethod;
 
 
 public class Buyer extends Client {
+
+    //region ATTRIBUTES
     private ArrayList<Order>orders;
     private ArrayList<Product>cart;
     private List<Product>favorites;
     private List<PayMethod>paymethod;
+    //endregion
 
-    //region constructors
-    public Buyer(){
+    //region CONTRUCTORS
+    public Buyer(){}
 
-    }
-    public Buyer(int iDPerson, int dni, String surname, String firstName, String username, String email,
-                 String password, boolean active, long phoneNumber, LocalDateTime birthDate, Province province,
-                 String city, String address, int postalCode, String type, ArrayList<Order> orders,
-                 ArrayList<Product> cart, List<Product> favorites, List<PayMethod> paymethod) {
+    public Buyer(int idUser, String username, String email, String password, String firstName, String surname, int dni,
+                 LocalDateTime birthDate, long phoneNumber, boolean active, Province province, String city, String address,
+                 int postalCode, ArrayList<Order> orders, ArrayList<Product> cart, List<Product> favorites,
+                 List<PayMethod> paymethod) {
 
-        super(iDPerson, dni, surname, firstName, username, email, password, active, phoneNumber, birthDate, province, city, address, postalCode, type);
+        super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber, active, province,
+                city, address, postalCode);
+
         this.orders = orders;
         this.cart = cart;
         this.favorites = favorites;
         this.paymethod = paymethod;
     }
-
     //endregion
 
-    //region getters and setters
+    //region GETTERS AND SETTERS
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(ArrayList<Order> orders) {
+        this.orders = orders;
+    }
+
+    public ArrayList<Product> getCart() {
+        return cart;
+    }
+
+    public void setCart(ArrayList<Product> cart) {
+        this.cart = cart;
+    }
+
+    public List<Product> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<Product> favorites) {
+        this.favorites = favorites;
+    }
+
+    public List<PayMethod> getPaymethod() {
+        return paymethod;
+    }
+
+    public void setPaymethod(List<PayMethod> paymethod) {
+        this.paymethod = paymethod;
+    }
+    //endregion
+
+    //region METHODS
     public void pay(){
 
     }

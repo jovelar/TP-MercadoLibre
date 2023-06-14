@@ -5,12 +5,15 @@ import Enums.Province;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Administrator extends Client implements Serializable {
+public class Administrator extends User implements Serializable {
+
+    //region CONSTRUCTORS
     public Administrator(){}
 
-    public Administrator(int iDPerson, int dni, String surname, String firstName, String username, String email, String password, boolean active, long phoneNumber, LocalDateTime birthDate, Province province, String city, String adress, int postalCode, String type) {
-        super(iDPerson, dni, surname, firstName, username, email, password, active, phoneNumber, birthDate, province, city, adress, postalCode, type);
+    public Administrator(int idUser, String username, String email, String password, String firstName, String surname, int dni, LocalDateTime birthDate, long phoneNumber, boolean active) {
+        super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber, active);
     }
+    //endregion
 
     public void logicUserDelete(){
 

@@ -21,6 +21,21 @@ public class Product {
     //region CONTRUCTORS
     public Product(){}
 
+    //este constructor lo utilizo para hardcodear los productos, sin colocar
+    //un id del producto, porque el id deber ser autoincremental y asignado
+    //automaticamente
+
+    public Product(int iDEnterprise, String brand, String productName, String vendorName, float price, int quantity, Category category, String description) {
+        this.iDEnterprise = iDEnterprise;
+        this.brand = brand;
+        this.productName = productName;
+        this.vendorName = vendorName;
+        this.price = price;
+        this.quantity = quantity;
+        this.category = category;
+        this.description = description;
+    }
+
     public Product(int idProduct, int iDEnterprise, String brand, String productName, String vendorName,
                    float price, int quantity, Category category, String description) {
         this.idProduct = idProduct;
@@ -33,6 +48,8 @@ public class Product {
         this.category = category;
         this.description = description;
     }
+
+
     //endregion
 
     //region GETTERS AND SETTERS

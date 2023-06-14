@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ProductRepo implements IRepository<Product> {
 
-    private final File file = new File("src/main/java/org/example/Archivos/productos.json");
+    private final File file = new File("src/main/java/Files/products.json");
     private ObjectMapper mapper = new ObjectMapper();
     private ArrayList<Product> productList;
 

@@ -21,4 +21,12 @@ public class EnterpriseManager {
         }
     }
 
+    public void terminateCompany(){
+        //baja logica
+    }
+
+    public void deleteEnterprise(){
+
+    }
+
 }

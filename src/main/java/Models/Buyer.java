@@ -94,6 +94,13 @@ public class Buyer extends Client {
     public void deleteFavorite(){
 
     }
+    public boolean validateAvailableProducts(){
+        boolean state = true;
+
+
+
+        return state;
+    }
 
     //endregion
 }

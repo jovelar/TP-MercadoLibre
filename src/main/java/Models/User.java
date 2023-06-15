@@ -17,6 +17,8 @@ public abstract class User {
     private LocalDateTime birthDate; //agregado
     private long phoneNumber;
     private boolean active;
+
+    private float availableMoney; //nuevo, reemplazamos la clase Credit
     //endregion
 
     //region CONSTRUCTORS
@@ -129,6 +131,14 @@ public abstract class User {
                 '}';
     }
 
+    //nuevos metodos
+    public void addMoney(){
+
+    }
+    public void removeMoney(){
+
+    }
+
     //region ATTRIBUTES
     //endregion
 
@@ -137,6 +147,8 @@ public abstract class User {
 
     //region GETTERS AND SETTERS
     //endregion
+
+
 
 }
 

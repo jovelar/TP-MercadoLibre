@@ -1,6 +1,6 @@
 package Models.SubModels;
 
-public class Credit extends PayMethod {
+public class Credit extends PayMethod { //lo agregamos como atributo en user, por ser solo un dato para persistir
     private float amount;//no iria para mi porq ya tenemos un atributo amount en la clase padre
 
    //region constructors
@@ -15,10 +15,5 @@ public class Credit extends PayMethod {
 
     //endregion
 
-    public void addMoney(){
 
-    }
-    public void removeMoney(){
-
-    }
 }

@@ -1,29 +1,27 @@
 package Tools;
-
+import javax.swing.JOptionPane;
 import java.util.Scanner;
 
 public class Consola {
     private static Scanner scan = new Scanner(System.in);
 
     public static void write(Object x){
-        System.out.println(x);
+        JOptionPane.showMessageDialog(null, x);
     }
     public static String readString(String message){
-        Consola.write(message);
-        return scan.nextLine();
+        return JOptionPane.showInputDialog(message);
     }
 
     public static int readInt(String message){
-        Consola.write(message);
-        return scan.nextInt();
+        return Integer.parseInt(JOptionPane.showInputDialog(message));
     }
 
     public static float readFloat(String message){
-        Consola.write(message);
-        return scan.nextFloat();
+        return Float.parseFloat(JOptionPane.showInputDialog(message));
+
     }
     public static long readLong(String message){
-        Consola.write(message);
-        return scan.nextLong();
+        return Long.parseLong(JOptionPane.showInputDialog(message));
+
     }
 }

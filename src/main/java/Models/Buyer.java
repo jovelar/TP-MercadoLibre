@@ -6,10 +6,11 @@ import Models.Client;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import Models.SubModels.Order;
+
 
 import Models.SubModels.Order;
 import Models.SubModels.PayMethod;
-
 
 public class Buyer extends Client {
 
@@ -22,6 +23,10 @@ public class Buyer extends Client {
 
     //region CONTRUCTORS
     public Buyer(){}
+
+    public Buyer(int idUser, String username, String email, String password, String firstName, String surname, int dni, LocalDateTime birthDate, long phoneNumber, boolean active, Province province, String city, String address, int postalCode) {
+        super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber, active, province, city, address, postalCode);
+    }
 
     public Buyer(int idUser, String username, String email, String password, String firstName, String surname, int dni,
                  LocalDateTime birthDate, long phoneNumber, boolean active, Province province, String city, String address,
@@ -82,8 +87,11 @@ public class Buyer extends Client {
     public void buyCart(){
 
     }
-    public void instantBuy(){ //buy a product instantly
+    public Order instantBuy(){ //buy a product instantly
+        Order newOrder=new Order();
 
+
+        return newOrder;
     }
     public void addFavorite(){
 
@@ -101,6 +109,7 @@ public class Buyer extends Client {
 
         return state;
     }
+
 
     //endregion
 }

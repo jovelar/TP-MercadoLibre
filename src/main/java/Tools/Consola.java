@@ -1,8 +1,11 @@
 package Tools;
+
 import javax.swing.JOptionPane;
+
 import java.util.Scanner;
 
 public class Consola {
+
     private static Scanner scan = new Scanner(System.in);
 
     public static void write(Object x){
@@ -24,4 +27,5 @@ public class Consola {
         return Long.parseLong(JOptionPane.showInputDialog(message));
 
     }
+
 }

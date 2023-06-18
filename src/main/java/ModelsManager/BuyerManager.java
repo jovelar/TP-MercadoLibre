@@ -10,10 +10,20 @@ import ModelsRepo.BuyerRepo;
 import Tools.Consola;
 import Tools.Menu;
 
+import java.text.DateFormat;
 import java.time.chrono.ChronoLocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class BuyerManager {
+
+    class Validation{
+        public boolean validateDate(String date){
+            boolean status=false;
+
+            return status;
+        }
+    }
 
     BuyerRepo buyerRepo = new BuyerRepo();
 
@@ -132,11 +142,13 @@ public class BuyerManager {
             modifierUser.setSurname(surname);
             modifierUser.setBirthDate(birthDate);
             modifierUser.setPhoneNumber(phoneNumber);
-            modifierUser.set
+            modifierUser.setProvince(province);
+            modifierUser.setCity(city);
+            modifierUser.setAddress(adress);
 
-            productRepo.modify(product);
+            buyerRepo.modify(modifierUser);
 
-            System.out.println("Producto modificado con exito!");
+            System.out.println("Usuario modificado con exito!");
 
 
 

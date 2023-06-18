@@ -5,13 +5,12 @@ import Enums.Province;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Enterprise extends Client implements Serializable {
+public final class Enterprise extends Client implements Serializable {
 
     //region ATTRIBUTES
     private String fantasyName;
     private float salesRevenue;
     //endregion
-
 
     //region CONSTRUCTORS
     public Enterprise(){
@@ -32,7 +31,6 @@ public class Enterprise extends Client implements Serializable {
     public String getFantasyName() {
         return fantasyName;
     }
-
     public void setFantasyName(String fantasyName) {
         this.fantasyName = fantasyName;
     }
@@ -40,7 +38,6 @@ public class Enterprise extends Client implements Serializable {
     public float getSalesRevenue() {
         return salesRevenue;
     }
-
     public void setSalesRevenue(float salesRevenue) {
         this.salesRevenue = salesRevenue;
     }
@@ -57,5 +54,12 @@ public class Enterprise extends Client implements Serializable {
     }
     public void deleteProduct(){
 
+    }
+
+    @Override
+    public String toString() {
+        return  super.toString() +
+                "\n NOMBRE FANTASIA.....:   " + this.fantasyName +
+                "\n INGRESOS POR VTAS...:   " + this.salesRevenue;
     }
 }

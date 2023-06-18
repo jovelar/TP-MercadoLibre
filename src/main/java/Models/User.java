@@ -5,20 +5,18 @@ import java.time.LocalDateTime;
 public abstract class User {
 
     //region ATTRIBUTES
-    private int idUser;
-    private String username;
-    private String email;
-    private String password;
+    protected int idUser;
+    protected String username;
+    protected String email;
+    protected String password;
 
     //personal information
-    private String firstName;
-    private String surname;
-    private int dni;
-    private LocalDateTime birthDate; //agregado
-    private long phoneNumber;
-    private boolean active;
-
-    private float availableMoney; //nuevo, reemplazamos la clase Credit
+    protected String firstName;
+    protected String surname;
+    protected int dni;
+    protected LocalDateTime birthDate; //agregado
+    protected long phoneNumber;
+    protected boolean active;
     //endregion
 
     //region CONSTRUCTORS
@@ -115,22 +113,6 @@ public abstract class User {
     }
     //endregion
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "idUser=" + idUser +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", surname='" + surname + '\'' +
-                ", dni=" + dni +
-                ", birthDate=" + birthDate +
-                ", phoneNumber=" + phoneNumber +
-                ", active=" + active +
-                '}';
-    }
-
     //nuevos metodos
     public void addMoney(){
 
@@ -139,16 +121,19 @@ public abstract class User {
 
     }
 
-    //region ATTRIBUTES
-    //endregion
-
-    //region CONSTRUCTORS
-    //endregion
-
-    //region GETTERS AND SETTERS
-    //endregion
-
-
+    @Override
+    public String toString() {
+        return  "\n ID..................:   " + this.idUser +
+                "\n NOMBRE DE USUARIO...:   " + this.username +
+                "\n CORREO ELECTRONICO..:   " + this.email +
+                "\n CONTRASEÑA..........:   " + this.password +
+                "\n NOMBRE..............:   " + this.firstName +
+                "\n APELLIDO............:   " + this.surname +
+                "\n DNI.................:   " + this.dni +
+                "\n FECHA DE NAC........:   " + this.birthDate +
+                "\n NRO. DE CELULAR.....:   " + this.phoneNumber +
+                "\n USUARIO ELIMINADO...:   " + this.active;
+    }
 
 }
 

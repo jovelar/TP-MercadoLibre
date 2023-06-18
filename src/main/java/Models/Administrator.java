@@ -5,7 +5,7 @@ import Enums.Province;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Administrator extends User implements Serializable {
+public final class Administrator extends User implements Serializable {
 
     //region CONSTRUCTORS
     public Administrator(){}
@@ -23,5 +23,10 @@ public class Administrator extends User implements Serializable {
     }
     public void userEdit(){
 
+    }
+
+    @Override
+    public String toString() {
+        return  super.toString();
     }
 }

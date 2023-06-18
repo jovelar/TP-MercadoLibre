@@ -11,7 +11,7 @@ import Models.SubModels.Order;
 import Models.SubModels.PayMethod;
 
 
-public class Buyer extends Client {
+public final class Buyer extends Client {
 
     //region ATTRIBUTES
     private ArrayList<Order>orders;

@@ -1,8 +1,6 @@
 package ModelsRepo;
 
-import Models.Buyer;
 import Models.Enterprise;
-import Models.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 
@@ -14,7 +12,7 @@ import java.util.List;
 public class EnterpriseRepo implements IRepository<Enterprise> {
 
     //region ATTRIBUTES
-    private final File file = new File("src/main/java/org/example/Files/enterprises.json");
+    private final File file = new File("src/main/java/org/example/Files/usersEnterprise.json");
     private ObjectMapper mapper = new ObjectMapper();
     private ArrayList<Enterprise> enterprisesList;
     //endregion
@@ -69,16 +67,27 @@ public class EnterpriseRepo implements IRepository<Enterprise> {
     @Override
     public void modify(Enterprise nuevoObjeto) {
         load();
+
         for(Enterprise enterprise: this.enterprisesList){
+
             if(enterprise.getIdUser() == nuevoObjeto.getIdUser()){
+
                 enterprise.setUsername(nuevoObjeto.getUsername());
                 enterprise.setEmail(nuevoObjeto.getEmail());
                 enterprise.setPassword(nuevoObjeto.getPassword());
+
                 enterprise.setFirstName(nuevoObjeto.getFirstName());
                 enterprise.setSurname(nuevoObjeto.getSurname());
+                enterprise.setDni(nuevoObjeto.getDni());
                 enterprise.setBirthDate(nuevoObjeto.getBirthDate());
                 enterprise.setPhoneNumber(nuevoObjeto.getPhoneNumber());
 
+                enterprise.setProvince(nuevoObjeto.getProvince());
+                enterprise.setCity(nuevoObjeto.getCity());
+                enterprise.setAddress(nuevoObjeto.getAddress());
+                enterprise.setPostalCode(nuevoObjeto.getPostalCode());
+
+                enterprise.setFantasyName(nuevoObjeto.getFantasyName());
                 break;
             }
         }

@@ -9,7 +9,7 @@ import ModelsManager.ProductManager;
 
 import java.util.Scanner;
 
-public class Menu {
+public final class Menu {
 
     //region MENU PRINCIPAL
     public static void menuPrincipal(){

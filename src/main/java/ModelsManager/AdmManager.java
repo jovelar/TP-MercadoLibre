@@ -5,7 +5,7 @@ import ModelsRepo.AdministratorRepo;
 
 import java.util.List;
 
-public class AdmManager {
+public final class AdmManager {
 
     AdministratorRepo administratorRepo = new AdministratorRepo();
 

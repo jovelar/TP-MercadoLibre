@@ -9,11 +9,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdministratorRepo implements IRepository<Administrator> {
+public final class AdministratorRepo implements IRepository<Administrator> {
 
     //region ATTRIBUTES
     private final File file = new File("src/main/java/org/example/Files/administrators.json");
-    private ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper();
     private ArrayList<Administrator> admsList;
     //endregion
 

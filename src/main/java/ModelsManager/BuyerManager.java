@@ -7,7 +7,7 @@ import ModelsRepo.BuyerRepo;
 
 import java.util.List;
 
-public class BuyerManager {
+public final class BuyerManager {
 
     BuyerRepo buyerRepo = new BuyerRepo();
 

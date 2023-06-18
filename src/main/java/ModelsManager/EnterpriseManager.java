@@ -25,8 +25,6 @@ public final class EnterpriseManager {
 
     public void addEnterprise(){
 
-        Enterprise enterprise = null;
-
         //int idEnterprise = Console.readInt("Ingrese el id del usuario empresa:"); //se supone que tiene q ser asignado automaticamente
         String username = Console.readString("Ingresar nombre de usuario:");
         String email = Console.readString("Ingresar correo electronico: ");
@@ -40,7 +38,7 @@ public final class EnterpriseManager {
         long phoneNumber = Console.readLong("Ingresar numero de celular (sin espacios):");
         String fantasyName = Console.readString("Ingresar el nombre de la empresa:");
 
-        enterprise = new Enterprise(username, email, password, firstName, surname, dni, birthDate, phoneNumber, fantasyName);
+        Enterprise enterprise = new Enterprise(username, email, password, firstName, surname, dni, birthDate, phoneNumber, fantasyName);
 
         Menu.provinceMenu(enterprise);
 
@@ -52,9 +50,8 @@ public final class EnterpriseManager {
         System.out.println("¡Cuenta usuario-empresa creada con exito!");
     }
 
-
     //baja logica a alguno de los enterprise de la lista -> metodo para Administrator
-    public void deleteLogically(){
+    public void deleteLogicallyEnterprise(){
         int id = Console.readInt("Ingrese el id del usuario-empresa a dar de baja:");
 
         this.showEnterprisesList();
@@ -127,6 +124,37 @@ public final class EnterpriseManager {
         }
         return enterpriseFound;
 
+    }
+
+    public void totalModifyEnterprise(){
+
+        showEnterprisesList();
+
+        int idProducto = Console.readInt("Ingrese el id del usuario-empresa que desea modificar:");
+
+        String username = Console.readString("Ingresar nuevo nombre de usuario: ");
+        String email = Console.readString("Ingresar nuevo email:");
+        String password = Console.readString("Ingresar nueva contraseña:");
+
+        String firstName = Console.readString("Ingresar nuevo nombre:");
+        String surname = Console.readString("Ingresar nuevo apellido:");
+        int dni = Console.readInt("Ingresar nuevo DNI:");
+
+        //TODO: Repasar lo siguiente e implementarlo correctamente
+        LocalDateTime birthDate = null; //Console.readString("Ingrese su fecha de nacimiento:");
+        long phoneNumber = Console.readLong("Ingresar nuevo numero de celular (sin espacios):");
+        String fantasyName = Console.readString("Ingresar el nuevo nombre de la empresa:");
+
+        Enterprise enterprise = new Enterprise(username, email, password, firstName, surname, dni, birthDate, phoneNumber, fantasyName);
+
+        Menu.provinceMenu(enterprise);
+
+        enterprise.setCity(Console.readString("Ingresar nueva ciudad:"));
+        enterprise.setAddress(Console.readString("Ingresar nueva direccion:"));
+        enterprise.setPostalCode(Console.readInt("Ingresar nuevo codigo postal:"));
+
+        enterpriseRepo.modify(enterprise);
+        Console.showMessage("¡Cuenta usuario-empresa modificada con exito!");
     }
 
 }

@@ -3,7 +3,7 @@ import javax.swing.JOptionPane;
 import java.util.Scanner;
 
 
-public class Console {
+public final class Console {
     private static Scanner scan = new Scanner(System.in);
 
     public static void showMessage(String message){

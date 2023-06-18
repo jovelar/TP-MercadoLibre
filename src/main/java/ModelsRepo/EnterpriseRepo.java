@@ -9,11 +9,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnterpriseRepo implements IRepository<Enterprise> {
+public final class EnterpriseRepo implements IRepository<Enterprise> {
 
     //region ATTRIBUTES
     private final File file = new File("src/main/java/org/example/Files/usersEnterprise.json");
-    private ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper();
     private ArrayList<Enterprise> enterprisesList;
     //endregion
 

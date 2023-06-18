@@ -7,7 +7,7 @@ import ModelsRepo.SubModelsRepo.CardRepo;
 
 import java.util.List;
 
-public class CardManager {
+public final class CardManager {
 
     CardRepo cardRepo = new CardRepo();
 

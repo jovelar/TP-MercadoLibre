@@ -7,7 +7,7 @@ import ModelsRepo.SubModelsRepo.OrderRepo;
 
 import java.util.List;
 
-public class OrderManager {
+public final class OrderManager {
 
     OrderRepo orderRepo = new OrderRepo();
 

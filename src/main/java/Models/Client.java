@@ -7,10 +7,13 @@ import java.time.LocalDateTime;
 public abstract class Client extends User {
 
     //region ATRIBUTES
-    private Province province;
-    private String city;
-    private String address;
-    private int postalCode;
+    protected Province province;
+    protected String city;
+    protected String address;
+    protected int postalCode;
+
+    protected double availableMoney; //nuevo, reemplazamos la clase Credit
+    //endregion
 
     //region CONSTRUCTORS
     public Client(){
@@ -62,6 +65,15 @@ public abstract class Client extends User {
     }
     //endregion
 
+    @Override
+    public String toString() {
+        return  super.toString() +
+                "\n PROVINCIA...........:   " + this.province +
+                "\n CIUDAD..............:   " + this.city +
+                "\n DIRECCION...........:   " + this.address +
+                "\n CODIGO POSTAL.......:   " + this.postalCode +
+                "\n DINERO DISPONIBLE...:   " + this.availableMoney;
+    }
 
 
 }

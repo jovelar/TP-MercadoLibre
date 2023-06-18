@@ -7,11 +7,17 @@ public class Main {
     public static void main(String[] args) {
 
 //        productManager.listaProductosHardcodeado(); //cargue el archivo productos.json con los productos hardcodeados
-        Menu.menuAdmProductos();
+        //Menu.menuAdmProductos();
 
+        mainEzequiel();
     }
 
+    public static void mainEzequiel() {
 
+
+
+
+    }
 
 
 

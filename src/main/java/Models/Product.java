@@ -2,7 +2,7 @@ package Models;
 
 import Enums.Category;
 
-public class Product {
+public final class Product {
 
     //region ATTRIBUTES
     private int idProduct;

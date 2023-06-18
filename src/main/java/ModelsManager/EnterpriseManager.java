@@ -1,8 +1,6 @@
 package ModelsManager;
 
-import Models.Buyer;
 import Models.Enterprise;
-import ModelsRepo.BuyerRepo;
 import ModelsRepo.EnterpriseRepo;
 
 import java.util.List;

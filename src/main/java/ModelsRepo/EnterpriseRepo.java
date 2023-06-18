@@ -17,7 +17,7 @@ public class EnterpriseRepo implements IRepository<Enterprise> {
     private ArrayList<Enterprise> enterprisesList;
     //endregion
 
-
+    //region IMPLEMENTATION OF REPOSITORY INTERFACE METHODS
     @Override
     public void load() {
         try {
@@ -67,9 +67,7 @@ public class EnterpriseRepo implements IRepository<Enterprise> {
     @Override
     public void modify(Enterprise nuevoObjeto) {
         load();
-
         for(Enterprise enterprise: this.enterprisesList){
-
             if(enterprise.getIdUser() == nuevoObjeto.getIdUser()){
 
                 enterprise.setUsername(nuevoObjeto.getUsername());
@@ -93,6 +91,6 @@ public class EnterpriseRepo implements IRepository<Enterprise> {
         }
         save();
     }
-
+    //endregion
 
 }

@@ -1,10 +1,8 @@
 package ModelsManager;
 
 import Models.Administrator;
-import Models.Product;
 import ModelsRepo.AdministratorRepo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdmManager {

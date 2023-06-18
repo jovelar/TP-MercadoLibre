@@ -73,37 +73,21 @@ public class BuyerManager {
         }
     }
 
-    public void removeProduct(){
-        int id = Consola.readInt("Ingrese el id del producto a eliminar:");
+    public void removeBuyer(){
+        int id = Consola.readInt("Ingrese el id del compador a eliminar:");
         Consola.readString("");
-        if(searchProductById(id)){
-            System.out.println("Producto encontrado!");
+        if(searchUserById(id)){
+            System.out.println("Comprador encontrado!");
             String resp = Consola.readString("Esta seguro de continuar? si/no");
             if(resp.equals("si")){
-                productRepo.delete(id);
-                System.out.println("El producto se ha eliminado exitosamente!");
+                buyerRepo.delete(id);
+                System.out.println("El comprador se ha eliminado exitosamente!");
             }
 
         }else{
-            System.out.println("El producto no se encuentra registrado en el sistema!");
+            System.out.println("El comprador no se encuentra registrado en el sistema!");
         }
 
-
-    }
-
-
-
-    public Boolean searchProductById(int id){
-        boolean resp = false;
-        List<Product> productList = productRepo.toList();
-
-        for(Product product : productList){
-            if(id == product.getIdProduct()){
-                resp = true;
-                break;
-            }
-        }
-        return resp;
 
     }
 
@@ -122,25 +106,43 @@ public class BuyerManager {
     }
 
 
-    public void modifyProduct(){
+    public void modifyUser(){
 
-        int idProducto = Consola.readInt("Ingrese el id del producto que desea modificar:");
-        Consola.readString("");
-        //que puede modificar una empresa de sus propios productos?
-        //la Marca, nombre del producto, precio, stock y descripcion
-        String brand = Consola.readString("Ingrese la nueva marca del producto: ");
-        String productName = Consola.readString("Ingrese el nuevo nombre del producto:");
-        float price = Consola.readFloat("Ingrese el nuevo precio del producto:");
-        int quantity = Consola.readInt("Ingrese el numero actual de stock:");
-        Consola.readString("");
-        String description = Consola.readString("Ingrese una nueva descripción:");
+        int idBuyer= Consola.readInt("Ingrese el id del usuario que desea modificar:");
+
+        if(searchUserById(idBuyer){
+            String userName=Consola.readString("Ingrese el nuevo nombre de usuario");
+            String email=Consola.readString("Ingrese el nuevo email");
+            String password=Consola.readString("Ingrese la nueva contrasena");
+            String firstName=Consola.readString("Ingrese el nuevo nombre");
+            String surname=Consola.readString("Ingrese el nuevo apellido");
+            String birthDate=Consola.readString("Ingrese la nueva fecha de nacimiento");
+            int phoneNumber=Consola.readInt("Ingrese el nuevo numero de telefono");
+            boolean active=true;
+            String province=Consola.readString("Ingrese la nueva provincia");
+            String city=Consola.readString("Ingrese la nueva ciudad");
+            String adress=Consola.readString("Ingrese la nueva direccion");
+
+            Buyer modifierUser=buyerRepo.toList().get(idBuyer);
+
+            modifierUser.setUsername(userName);
+            modifierUser.setEmail(email);
+            modifierUser.setPassword(password);
+            modifierUser.setFirstName(firstName);
+            modifierUser.setSurname(surname);
+            modifierUser.setBirthDate(birthDate);
+            modifierUser.setPhoneNumber(phoneNumber);
+            modifierUser.set
+
+            productRepo.modify(product);
+
+            System.out.println("Producto modificado con exito!");
 
 
-        Product product = new Product(idProducto, brand, productName, price, quantity, description);
 
-        productRepo.modify(product);
 
-        System.out.println("Producto modificado con exito!");
+
+        }
 
     }
 

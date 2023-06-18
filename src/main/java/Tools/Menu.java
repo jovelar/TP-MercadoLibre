@@ -278,18 +278,17 @@ vendida (se tiene que actualizar el json en cada venta).
             scan.reset();
             optionsCategoryMenu(product, opcion);
 
-
-        }while(opcion < 1 && opcion > 5);
-
-
+        }while(opcion < 1 || opcion > 5);
     }
 
     public static void showCategoriesMenu(){
         System.out.println("Elija una categoria");
+
         System.out.println("1. Tecnologia");
         System.out.println("2. Ropa");
         System.out.println("3. Vehiculos");
         System.out.println("4. Supermercado");
+
         System.out.print("Selecciona una opción: ");
     }
 
@@ -301,25 +300,23 @@ vendida (se tiene que actualizar el json en cada venta).
             case 3->product.setCategory(Category.VEHICLES);
             case 4->product.setCategory(Category.SUPERMARKET);
             default->System.out.println("Opción inválida. Por favor, selecciona una opción válida.");
-
         }
-
     }
     //endregion
 
-    //region PROVINCES CATEGORIES MENU
-    public static <T extends Client> void provinceCategoriesMenu(T cliente){
+    //region PROVINCES MENU -> Aqui hay 2 metodos genericos, para las clases BUYER y ENTERPRISE
+    public static <T extends Client> void provinceMenu(T cliente){
         int opcion = 0;
 
         do {
-            showProvinceCategoryOptionsMenu();
+            showProvinceOptionsMenu();
             opcion = Console.readInt("Seleccione una opción [1 - 24]");
-            assignProvinceCategory(cliente, opcion);
+            assignProvince(cliente, opcion);
 
-        }while(opcion < 1 && opcion > 24);
+        }while(opcion < 1 || opcion > 24);
     }
 
-    public static void showProvinceCategoryOptionsMenu(){
+    public static void showProvinceOptionsMenu(){
         System.out.println("Elija una categoria\n");
 
         System.out.println("[1]  Buenos Aires");
@@ -348,7 +345,7 @@ vendida (se tiene que actualizar el json en cada venta).
         System.out.println("[24] Tucumán");
     }
 
-    public static <T extends Client> void assignProvinceCategory(T cliente, int opcion){
+    public static <T extends Client> void assignProvince(T cliente, int opcion){
 
         switch (opcion) {
             case 1 -> cliente.setProvince(Province.BSAS);
@@ -376,7 +373,6 @@ vendida (se tiene que actualizar el json en cada venta).
             case 23 -> cliente.setProvince(Province.TIERRADELFUEGO);
             case 24 -> cliente.setProvince(Province.TUCUMAN);
             default->Console.showMessage("¡OPCION INVALIDA! Por favor, selecciona una opción disponible...");
-
         }
     }
     //endregion

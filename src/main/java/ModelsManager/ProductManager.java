@@ -21,6 +21,8 @@ public class ProductManager {
         }
     }
 
+    //TODO: faltaria crear el metodo showProductList() pero segun el ID de la empresa
+
     public void addProduct(){
         Product product = null;
 
@@ -73,7 +75,7 @@ public class ProductManager {
 
 
 
-    public Boolean searchProductById(int id){
+    public boolean searchProductById(int id){
         boolean resp = false;
         List<Product> productList = productRepo.toList();
 

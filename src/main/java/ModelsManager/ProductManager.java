@@ -3,10 +3,9 @@ package ModelsManager;
 import Enums.Category;
 import Models.Product;
 import ModelsRepo.ProductRepo;
-import Tools.Consola;
+import Tools.Console;
 import Tools.Menu;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductManager {
@@ -28,17 +27,17 @@ public class ProductManager {
         String resp = "si";
         while(resp.equals("si")){
 
-            int idProduct = Consola.readInt("Ingrese el id del producto:"); //se supone que tiene q ser asignado automaticamente
-            Consola.readString("");
-            int idEnterprise = Consola.readInt("Ingrese el id de la empresa");
-            Consola.readString("");
-            String brand = Consola.readString("Ingrese la marca del producto: ");
-            String productName = Consola.readString("Ingrese el nombre del producto:");
-            String vendorName = Consola.readString("Ingrese el nombre del vendedor:");
-            float price = Consola.readFloat("Ingrese el precio del producto:");
-            int quantity = Consola.readInt("Ingrese el numero de stock:");
-            Consola.readString("");
-            String description = Consola.readString("Ingrese una descripción:");
+            int idProduct = Console.readInt("Ingrese el id del producto:"); //se supone que tiene q ser asignado automaticamente
+            Console.readString("");
+            int idEnterprise = Console.readInt("Ingrese el id de la empresa");
+            Console.readString("");
+            String brand = Console.readString("Ingrese la marca del producto: ");
+            String productName = Console.readString("Ingrese el nombre del producto:");
+            String vendorName = Console.readString("Ingrese el nombre del vendedor:");
+            float price = Console.readFloat("Ingrese el precio del producto:");
+            int quantity = Console.readInt("Ingrese el numero de stock:");
+            Console.readString("");
+            String description = Console.readString("Ingrese una descripción:");
 
 
             product = new Product(idProduct, idEnterprise, brand, productName, vendorName, price,
@@ -49,17 +48,17 @@ public class ProductManager {
             productRepo.add(product);
             System.out.println("Producto agregado exitosamente!");
 
-            resp = Consola.readString("Desea seguir agregando productos? si/no");
+            resp = Console.readString("Desea seguir agregando productos? si/no");
 
         }
     }
 
     public void removeProduct(){
-        int id = Consola.readInt("Ingrese el id del producto a eliminar:");
-        Consola.readString("");
+        int id = Console.readInt("Ingrese el id del producto a eliminar:");
+        Console.readString("");
         if(searchProductById(id)){
             System.out.println("Producto encontrado!");
-            String resp = Consola.readString("Esta seguro de continuar? si/no");
+            String resp = Console.readString("Esta seguro de continuar? si/no");
             if(resp.equals("si")){
                 productRepo.delete(id);
                 System.out.println("El producto se ha eliminado exitosamente!");
@@ -90,16 +89,16 @@ public class ProductManager {
 
     public void modifyProduct(){
 
-        int idProducto = Consola.readInt("Ingrese el id del producto que desea modificar:");
-        Consola.readString("");
+        int idProducto = Console.readInt("Ingrese el id del producto que desea modificar:");
+        Console.readString("");
         //que puede modificar una empresa de sus propios productos?
         //la Marca, nombre del producto, precio, stock y descripcion
-        String brand = Consola.readString("Ingrese la nueva marca del producto: ");
-        String productName = Consola.readString("Ingrese el nuevo nombre del producto:");
-        float price = Consola.readFloat("Ingrese el nuevo precio del producto:");
-        int quantity = Consola.readInt("Ingrese el numero actual de stock:");
-        Consola.readString("");
-        String description = Consola.readString("Ingrese una nueva descripción:");
+        String brand = Console.readString("Ingrese la nueva marca del producto: ");
+        String productName = Console.readString("Ingrese el nuevo nombre del producto:");
+        float price = Console.readFloat("Ingrese el nuevo precio del producto:");
+        int quantity = Console.readInt("Ingrese el numero actual de stock:");
+        Console.readString("");
+        String description = Console.readString("Ingrese una nueva descripción:");
 
 
         Product product = new Product(idProducto, brand, productName, price, quantity, description);
@@ -114,7 +113,7 @@ public class ProductManager {
     public void listaProductosHardcodeado(){
         List<Product> productList = productRepo.toList();
 
-        //Enums.Category: Technology
+        //Enums.Category.java: Technology
         //celulares
         productList.add(new Product(1, "Motorola", "Celular Moto G52", "Tienda Motorola", 134000, 110, Category.TECHNOLOGY, "Celular Moto G52, 6GB RAM, liberado, memoria interna de 128GB"));
         productList.add(new Product(1, "Motorola", "Celular Motorola G32", "Tienda Motorola", 77999, 50, Category.TECHNOLOGY, "Celular Moto G32, 4GB RAM, liberado, memoria interna de 128GB"));

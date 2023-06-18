@@ -22,7 +22,8 @@ public abstract class User {
     //region CONSTRUCTORS
     public User(){}
 
-    public User(int idUser, String username, String email, String password, String firstName, String surname, int dni, LocalDateTime birthDate, long phoneNumber, boolean active) {
+    public User(int idUser, String username, String email, String password, String firstName, String surname, int dni,
+                LocalDateTime birthDate, long phoneNumber, boolean active) {
 
         this.idUser = idUser;
 
@@ -36,9 +37,21 @@ public abstract class User {
         this.birthDate = birthDate;
         this.phoneNumber = phoneNumber;
         this.active = active;
+        this.active = true;
     }
 
-
+    //Creado para metodo addEnterprose() en clase EnterpriseManager
+    public User(String username, String email, String password, String firstName, String surname, int dni, LocalDateTime birthDate, long phoneNumber) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.dni = dni;
+        this.birthDate = birthDate;
+        this.phoneNumber = phoneNumber;
+        this.active = true;
+    }
     //endregion
 
     //region GETTERS AND SETTERS
@@ -123,7 +136,7 @@ public abstract class User {
 
     @Override
     public String toString() {
-        return  "\n ID..................:   " + this.idUser +
+        return  //"\n ID..................:   " + this.idUser +
                 "\n NOMBRE DE USUARIO...:   " + this.username +
                 "\n CORREO ELECTRONICO..:   " + this.email +
                 "\n CONTRASEÑA..........:   " + this.password +

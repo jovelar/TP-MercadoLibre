@@ -21,13 +21,22 @@ public abstract class Client extends User {
     }
 
 
-    public Client(int idUser, String username, String email, String password, String firstName, String surname, int dni, LocalDateTime birthDate, long phoneNumber, boolean active, Province province, String city, String address, int postalCode) {
+    public Client(int idUser, String username, String email, String password, String firstName, String surname,
+                  int dni, LocalDateTime birthDate, long phoneNumber, boolean active, Province province, String city,
+                  String address, int postalCode) {
 
         super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber, active);
         this.province = province;
         this.city = city;
         this.address = address;
         this.postalCode = postalCode;
+    }
+
+    //Creado para metodo addEnterprose() en clase EnterpriseManager
+    public Client(String username, String email, String password, String firstName, String surname, int dni,
+                  LocalDateTime birthDate, long phoneNumber) {
+
+        super(username, email, password, firstName, surname, dni, birthDate, phoneNumber);
     }
     //endregion
 

@@ -1,6 +1,9 @@
 package Tools;
 
 import Enums.Category;
+import Enums.Province;
+
+import Models.Client;
 import Models.Product;
 import ModelsManager.ProductManager;
 
@@ -303,4 +306,80 @@ vendida (se tiene que actualizar el json en cada venta).
 
     }
     //endregion
+
+    //region PROVINCES CATEGORIES MENU
+    public static <T extends Client> void provinceCategoriesMenu(T cliente){
+        int opcion = 0;
+
+        do {
+            showProvinceCategoryOptionsMenu();
+            opcion = Console.readInt("Seleccione una opción [1 - 24]");
+            assignProvinceCategory(cliente, opcion);
+
+        }while(opcion < 1 && opcion > 24);
+    }
+
+    public static void showProvinceCategoryOptionsMenu(){
+        System.out.println("Elija una categoria\n");
+
+        System.out.println("[1]  Buenos Aires");
+        System.out.println("[2]  Ciudad Autonoma de Bs As");
+        System.out.println("[3]  Catamarca");
+        System.out.println("[4]  Chaco");
+        System.out.println("[5]  Chubut");
+        System.out.println("[6]  Córdoba");
+        System.out.println("[7]  Corrientes");
+        System.out.println("[8]  Entre Ríos");
+        System.out.println("[9]  Formosa");
+        System.out.println("[10] Jujuy");
+        System.out.println("[11] La Pampa");
+        System.out.println("[12] La Rioja");
+        System.out.println("[13] Mendoza");
+        System.out.println("[14] Misiones");
+        System.out.println("[15] Neuquén");
+        System.out.println("[16] Río Negro");
+        System.out.println("[17] Salta");
+        System.out.println("[18] San Juan");
+        System.out.println("[19] San Luis");
+        System.out.println("[20] Santa Cruz");
+        System.out.println("[21] Santa Fe");
+        System.out.println("[22] Santiago del Estero");
+        System.out.println("[23] Tierra del Fuego");
+        System.out.println("[24] Tucumán");
+    }
+
+    public static <T extends Client> void assignProvinceCategory(T cliente, int opcion){
+
+        switch (opcion) {
+            case 1 -> cliente.setProvince(Province.BSAS);
+            case 2 -> cliente.setProvince(Province.CABA);
+            case 3 -> cliente.setProvince(Province.CATAMARCA);
+            case 4 -> cliente.setProvince(Province.CHACO);
+            case 5 -> cliente.setProvince(Province.CHUBUT);
+            case 6 -> cliente.setProvince(Province.CORDOBA);
+            case 7 -> cliente.setProvince(Province.CORRIENTES);
+            case 8 -> cliente.setProvince(Province.ENTRERIOS);
+            case 9 -> cliente.setProvince(Province.FORMOSA);
+            case 10 -> cliente.setProvince(Province.JUJUY);
+            case 11 -> cliente.setProvince(Province.LAPAMPA);
+            case 12 -> cliente.setProvince(Province.LARIOJA);
+            case 13 -> cliente.setProvince(Province.MENDOZA);
+            case 14 -> cliente.setProvince(Province.MISIONES);
+            case 15 -> cliente.setProvince(Province.NEUQUEN);
+            case 16 -> cliente.setProvince(Province.RIONEGRO);
+            case 17 -> cliente.setProvince(Province.SALTA);
+            case 18 -> cliente.setProvince(Province.SANJUAN);
+            case 19 -> cliente.setProvince(Province.SANLUIS);
+            case 20 -> cliente.setProvince(Province.SANTACRUZ);
+            case 21 -> cliente.setProvince(Province.SANTAFE);
+            case 22 -> cliente.setProvince(Province.SANTIAGODELESTERO);
+            case 23 -> cliente.setProvince(Province.TIERRADELFUEGO);
+            case 24 -> cliente.setProvince(Province.TUCUMAN);
+            default->Console.showMessage("¡OPCION INVALIDA! Por favor, selecciona una opción disponible...");
+
+        }
+    }
+    //endregion
+
+
 }

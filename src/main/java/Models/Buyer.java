@@ -1,12 +1,10 @@
 package Models;
 
-import Enums.Province;
-import Models.Client;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import Enums.Province;
 import Models.SubModels.Order;
 import Models.SubModels.PayMethod;
 

@@ -1,7 +1,5 @@
 package Models;
 
-import Enums.Province;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 

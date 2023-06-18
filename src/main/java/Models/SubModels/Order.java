@@ -4,7 +4,8 @@ import Models.Product;
 
 import java.util.ArrayList;
 
-public class Order {
+public final class Order {
+
     private int idOrder;
     private int idUser; //o seria mejor idBuyer?
     private ArrayList<Product>solicitedProducts;

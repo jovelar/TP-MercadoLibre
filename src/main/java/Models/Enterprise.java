@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 public final class Enterprise extends Client implements Serializable {
 
     //region ATTRIBUTES
+    //TODO agregar ID auto-incremental (atributo static) en las clases concretas
     private String fantasyName;
     private float salesRevenue;
     //endregion
@@ -17,13 +18,23 @@ public final class Enterprise extends Client implements Serializable {
 
     }
 
-    public Enterprise(int idUser, String username, String email, String password, String firstName, String surname, int dni, LocalDateTime birthDate,
-          long phoneNumber, boolean active, Province province, String city, String address, int postalCode, String fantasyName, float salesRevenue) {
+    public Enterprise(int idUser, String username, String email, String password, String firstName, String surname,
+                      int dni, LocalDateTime birthDate, long phoneNumber, boolean active, Province province,
+                      String city, String address, int postalCode, String fantasyName, float salesRevenue) {
 
-        super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber, active, province, city, address, postalCode);
+        super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber, active,
+                province, city, address, postalCode);
 
         this.fantasyName = fantasyName;
         this.salesRevenue = salesRevenue;
+    }
+
+    //Creado para metodo addEnterprose() en clase EnterpriseManager
+    public Enterprise(String username, String email, String password, String firstName, String surname, int dni, LocalDateTime birthDate, long phoneNumber, String fantasyName) {
+
+        super(username, email, password, firstName, surname, dni, birthDate, phoneNumber);
+
+        this.fantasyName = fantasyName;
     }
     //endregion
 

@@ -120,7 +120,7 @@ public class BuyerManager {
 
         int idBuyer= Consola.readInt("Ingrese el id del usuario que desea modificar:");
 
-        if(searchUserById(idBuyer){
+        if(searchUserById(idBuyer)){
             String userName=Consola.readString("Ingrese el nuevo nombre de usuario");
             String email=Consola.readString("Ingrese el nuevo email");
             String password=Consola.readString("Ingrese la nueva contrasena");
@@ -140,9 +140,9 @@ public class BuyerManager {
             modifierUser.setPassword(password);
             modifierUser.setFirstName(firstName);
             modifierUser.setSurname(surname);
-            modifierUser.setBirthDate(birthDate);
+            //modifierUser.setBirthDate(birthDate);
             modifierUser.setPhoneNumber(phoneNumber);
-            modifierUser.setProvince(province);
+            //modifierUser.setProvince(province);
             modifierUser.setCity(city);
             modifierUser.setAddress(adress);
 

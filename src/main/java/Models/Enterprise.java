@@ -3,6 +3,7 @@ package Models;
 import Enums.Province;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public final class Enterprise extends Client implements Serializable {
@@ -18,11 +19,11 @@ public final class Enterprise extends Client implements Serializable {
 
     }
 
-    public Enterprise(int idUser, String username, String email, String password, String firstName, String surname,
-                      int dni, LocalDateTime birthDate, long phoneNumber, boolean active, Province province,
+    public Enterprise(int idEnterprise, String username, String email, String password, String firstName, String surname,
+                      int dni, String birthDate, long phoneNumber, boolean active, Province province,
                       String city, String address, int postalCode, String fantasyName, float salesRevenue) {
 
-        super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber, active,
+        super(idEnterprise, username, email, password, firstName, surname, dni, birthDate, phoneNumber, active,
                 province, city, address, postalCode);
 
         this.fantasyName = fantasyName;
@@ -30,9 +31,10 @@ public final class Enterprise extends Client implements Serializable {
     }
 
     //Creado para metodo addEnterprose() en clase EnterpriseManager
-    public Enterprise(String username, String email, String password, String firstName, String surname, int dni, LocalDateTime birthDate, long phoneNumber, String fantasyName) {
+    public Enterprise(int idEnterprise, String username, String email, String password, String firstName, String surname, int dni,
+                      String birthDate, long phoneNumber, String fantasyName) {
 
-        super(username, email, password, firstName, surname, dni, birthDate, phoneNumber);
+        super(idEnterprise, username, email, password, firstName, surname, dni, birthDate, phoneNumber);
 
         this.fantasyName = fantasyName;
     }

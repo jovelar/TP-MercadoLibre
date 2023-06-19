@@ -317,7 +317,7 @@ vendida (se tiene que actualizar el json en cada venta).
     }
 
     public static void showProvinceOptionsMenu(){
-        System.out.println("Elija una categoria\n");
+        System.out.println("Elija una provincia\n");
 
         System.out.println("[1]  Buenos Aires");
         System.out.println("[2]  Ciudad Autonoma de Bs As");

@@ -12,7 +12,7 @@ import java.util.List;
 public final class EnterpriseRepo implements IRepository<Enterprise> {
 
     //region ATTRIBUTES
-    private final File file = new File("src/main/java/org/example/Files/usersEnterprise.json");
+    private final File file = new File("src/main/java/Files/usersEnterprise.json");
     private final ObjectMapper mapper = new ObjectMapper();
     private ArrayList<Enterprise> enterprisesList;
     //endregion
@@ -23,7 +23,7 @@ public final class EnterpriseRepo implements IRepository<Enterprise> {
         try {
             //desearializar, levantar un archivo .json y cargarlo a mi programa
             CollectionType collectionType = mapper.getTypeFactory().constructCollectionType(List.class, Enterprise.class);
-            this.enterprisesList = mapper.readValue(file, collectionType);
+            this.enterprisesList = mapper.readValue(this.file, collectionType);
 
         } catch (IOException e) {
             this.enterprisesList = new ArrayList<>();
@@ -79,6 +79,7 @@ public final class EnterpriseRepo implements IRepository<Enterprise> {
                 enterprise.setDni(nuevoObjeto.getDni());
                 enterprise.setBirthDate(nuevoObjeto.getBirthDate());
                 enterprise.setPhoneNumber(nuevoObjeto.getPhoneNumber());
+                enterprise.setActive(nuevoObjeto.getActive());
 
                 enterprise.setProvince(nuevoObjeto.getProvince());
                 enterprise.setCity(nuevoObjeto.getCity());

@@ -1,6 +1,6 @@
 package Models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public abstract class User {
 
@@ -14,7 +14,7 @@ public abstract class User {
     protected String firstName;
     protected String surname;
     protected int dni;
-    protected LocalDateTime birthDate; //agregado
+    protected String birthDate;
     protected long phoneNumber;
     protected boolean active;
     //endregion
@@ -23,7 +23,7 @@ public abstract class User {
     public User(){}
 
     public User(int idUser, String username, String email, String password, String firstName, String surname, int dni,
-                LocalDateTime birthDate, long phoneNumber, boolean active) {
+                String birthDate, long phoneNumber, boolean active) {
 
         this.idUser = idUser;
 
@@ -40,8 +40,11 @@ public abstract class User {
         this.active = true;
     }
 
-    //Creado para metodo addEnterprose() en clase EnterpriseManager
-    public User(String username, String email, String password, String firstName, String surname, int dni, LocalDateTime birthDate, long phoneNumber) {
+    //Creado para metodo addEnterprise() en clase EnterpriseManager
+    public User(int idUser, String username, String email, String password, String firstName, String surname, int dni, String
+            birthDate, long phoneNumber) {
+
+        this.idUser = idUser;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -104,7 +107,7 @@ public abstract class User {
         this.password = password;
     }
 
-    public boolean isActive() {
+    public boolean getActive() {
         return active;
     }
     public void setActive(boolean active) {
@@ -118,10 +121,10 @@ public abstract class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public LocalDateTime getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
-    public void setBirthDate(LocalDateTime birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
     //endregion

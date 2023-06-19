@@ -1,3 +1,5 @@
+import ModelsManager.AdmManager;
+import ModelsManager.EnterpriseManager;
 import ModelsManager.ProductManager;
 import Tools.Menu;
 
@@ -14,9 +16,9 @@ public class Main {
 
     public static void mainEzequiel() {
 
+        EnterpriseManager enterpriseManager = new EnterpriseManager();
 
-
-
+        enterpriseManager.totalModifyEnterprise();
     }
 
 

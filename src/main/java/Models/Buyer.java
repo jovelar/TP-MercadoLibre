@@ -1,5 +1,6 @@
 package Models;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +25,12 @@ public final class Buyer extends Client {
     //region CONTRUCTORS
     public Buyer(){}
 
-    public Buyer(int idUser, String username, String email, String password, String firstName, String surname, int dni, LocalDateTime birthDate, long phoneNumber, boolean active, Province province, String city, String address, int postalCode) {
+    public Buyer(int idUser, String username, String email, String password, String firstName, String surname, int dni, String birthDate, long phoneNumber, boolean active, Province province, String city, String address, int postalCode) {
         super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber, active, province, city, address, postalCode);
     }
 
     public Buyer(int idUser, String username, String email, String password, String firstName, String surname, int dni,
-                 LocalDateTime birthDate, long phoneNumber, boolean active, Province province, String city, String address,
+                 String birthDate, long phoneNumber, boolean active, Province province, String city, String address,
                  int postalCode, ArrayList<Order> orders, ArrayList<Product> cart, List<Product> favorites,
                  List<PayMethod> paymethod) {
 

@@ -3,7 +3,7 @@ package Models.SubModels;
 
 public final class Card extends PayMethod {
     private long creditCardNumber;
-    private String expDate;
+    private String expiryDate; //TODO: cambiar a LocalDate luego de solucionar lo de des/serializacion
     private int cvcCode;
     //region CONSTRUCTORES
 
@@ -11,10 +11,10 @@ public final class Card extends PayMethod {
 
     }
 
-    public Card(int idPayMethod, int idUser, double availableMoney, long creditCardNumber, String expDate, int cvcCode) {
-        super(idPayMethod, idUser, availableMoney);
+    public Card(int idPayMethod, int idBuyer, double availableMoney, long creditCardNumber, String expiryDate, int cvcCode) {
+        super(idPayMethod, idBuyer, availableMoney);
         this.creditCardNumber = creditCardNumber;
-        this.expDate = expDate;
+        this.expiryDate = expiryDate;
         this.cvcCode = cvcCode;
     }
 
@@ -30,12 +30,12 @@ public final class Card extends PayMethod {
         this.creditCardNumber = creditCardNumber;
     }
 
-    public String getExpDate() {
-        return expDate;
+    public String getExpiryDate() {
+        return expiryDate;
     }
 
-    public void setExpDate(String expDate) {
-        this.expDate = expDate;
+    public void setExpiryDate(String expiryDate) {
+        this.expiryDate = expiryDate;
     }
 
     public int getCvcCode() {

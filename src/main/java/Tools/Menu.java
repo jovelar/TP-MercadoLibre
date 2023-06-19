@@ -262,13 +262,11 @@ vendida (se tiene que actualizar el json en cada venta).
 
     //region CategoriesMenu
     public static void categoriesMenu(Product product){
-        Scanner scan = new Scanner(System.in);
         int opcion;
 
         do {
             showCategoriesMenu();
-            opcion = scan.nextInt();
-            scan.reset();
+            opcion = Console.readInt("Seleccione una opcion:");
             optionsCategoryMenu(product, opcion);
         }while(opcion < 1 || opcion > 5);
     }
@@ -281,7 +279,6 @@ vendida (se tiene que actualizar el json en cada venta).
         System.out.println("3. Vehiculos");
         System.out.println("4. Supermercado");
 
-        System.out.print("Selecciona una opción: ");
     }
 
     public static void optionsCategoryMenu(Product product, int opcion){

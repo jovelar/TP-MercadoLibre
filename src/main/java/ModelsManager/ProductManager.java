@@ -12,6 +12,19 @@ public class ProductManager {
 
     private ProductRepo productRepo = new ProductRepo();
 
+
+    public void showSaleProducts(){
+        List<Product> productList = productRepo.toList();
+
+        for(Product product : productList){
+            if(product.getPrice() < 30000){
+                System.out.println("ID:" + product.getIdProduct() + " ." + product);
+                System.out.println("---------------------------------------------------------");
+
+            }
+        }
+    }
+
     public void showProductList(){
         List<Product> productList = productRepo.toList();
 
@@ -20,8 +33,19 @@ public class ProductManager {
             System.out.println("---------------------------------------------------------");
         }
     }
-
     //TODO: faltaria crear el metodo showProductList() pero segun el ID de la empresa
+
+    public void showProductListbyIDEnterprise(int idEnterprise){
+        List<Product> productList = productRepo.toList();
+        for(Product product : productList){
+            if(product.getiDEnterprise() == idEnterprise){
+                System.out.println("ID:" + product.getIdProduct() + " ." + product);
+                System.out.println("---------------------------------------------------------");
+
+            }
+        }
+    }
+
 
     public void addProduct(){
         Product product = null;

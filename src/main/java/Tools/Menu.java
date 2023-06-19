@@ -140,7 +140,7 @@ public final class Menu {
             menuAdmProductosOpciones(opcion);
 
 
-        }while(opcion != 5);
+        }while(opcion != 7);
 
 
     }
@@ -151,7 +151,9 @@ public final class Menu {
         System.out.println("2. Eliminar Productos");
         System.out.println("3. Modificar Productos");
         System.out.println("4. Mostrar Productos");
-        System.out.println("5. Salir");
+        System.out.println("5. Mostrar Productos por empresa");
+        System.out.println("6. Mostrar Productos en oferta");
+        System.out.println("7. Salir");
     }
 
     public static void menuAdmProductosOpciones(int opcion){
@@ -172,11 +174,25 @@ public final class Menu {
                 break;
             case 4:
                 System.out.println("Ver Productos");
+                System.out.println("---------------------------------------------------------");
                 productManager.showProductList();
 
                 break;
 
             case 5:
+                System.out.println("Ver Productos por id Empresa");
+                System.out.println("---------------------------------------------------------");
+                int id = Console.readInt("Ingrese el id de la empresa que desea ver los productos:");
+                productManager.showProductListbyIDEnterprise(id);
+
+                break;
+            case 6:
+                System.out.println("Ver Productos en oferta!");
+                System.out.println("---------------------------------------------------------");
+                productManager.showSaleProducts();
+
+                break;
+            case 7:
                 System.out.println("Volviendo al menu principal...");
 
                 break;

@@ -29,6 +29,10 @@ public final class Console {
             return Long.parseLong(JOptionPane.showInputDialog(message));
 
         }
+        public static double readDouble(String message) {
+            return Double.parseDouble(JOptionPane.showInputDialog(message));
+
+        }
     }
 
 

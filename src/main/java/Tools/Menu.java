@@ -132,17 +132,15 @@ public final class Menu {
 
     //region MENU PRODUCTOS
     public static void menuAdmProductos(){
-        Scanner scan = new Scanner(System.in);
         int opcion;
 
         do {
             mostrarMenuAdmProductos();
-            opcion = scan.nextInt();
-            scan.reset();
+            opcion = Console.readInt("Selecciona una opción: ");
             menuAdmProductosOpciones(opcion);
 
 
-        }while(opcion != 5);
+        }while(opcion != 7);
 
 
     }
@@ -153,37 +151,48 @@ public final class Menu {
         System.out.println("2. Eliminar Productos");
         System.out.println("3. Modificar Productos");
         System.out.println("4. Mostrar Productos");
-        System.out.println("5. Salir");
-        System.out.print("Selecciona una opción: ");
+        System.out.println("5. Mostrar Productos por empresa");
+        System.out.println("6. Mostrar Productos en oferta");
+        System.out.println("7. Salir");
     }
 
     public static void menuAdmProductosOpciones(int opcion){
         ProductManager productManager = new ProductManager();
         switch (opcion) {
             case 1:
-                System.out.println("");
                 System.out.println("Agregar Productos");
                 productManager.addProduct();
                 break;
             case 2:
-                System.out.println("");
                 System.out.println("Eliminar Productos");
                 productManager.removeProduct();
                 break;
             case 3:
-                System.out.println("");
                 System.out.println("Modificar Productos");
                 productManager.modifyProduct();
 
                 break;
             case 4:
-                System.out.println("");
                 System.out.println("Ver Productos");
+                System.out.println("---------------------------------------------------------");
                 productManager.showProductList();
 
                 break;
 
             case 5:
+                System.out.println("Ver Productos por id Empresa");
+                System.out.println("---------------------------------------------------------");
+                int id = Console.readInt("Ingrese el id de la empresa que desea ver los productos:");
+                productManager.showProductListbyIDEnterprise(id);
+
+                break;
+            case 6:
+                System.out.println("Ver Productos en oferta!");
+                System.out.println("---------------------------------------------------------");
+                productManager.showSaleProducts();
+
+                break;
+            case 7:
                 System.out.println("Volviendo al menu principal...");
 
                 break;
@@ -269,15 +278,12 @@ vendida (se tiene que actualizar el json en cada venta).
 
     //region CategoriesMenu
     public static void categoriesMenu(Product product){
-        Scanner scan = new Scanner(System.in);
         int opcion;
 
         do {
             showCategoriesMenu();
-            opcion = scan.nextInt();
-            scan.reset();
+            opcion = Console.readInt("Seleccione una opcion:");
             optionsCategoryMenu(product, opcion);
-
         }while(opcion < 1 || opcion > 5);
     }
 
@@ -289,7 +295,6 @@ vendida (se tiene que actualizar el json en cada venta).
         System.out.println("3. Vehiculos");
         System.out.println("4. Supermercado");
 
-        System.out.print("Selecciona una opción: ");
     }
 
     public static void optionsCategoryMenu(Product product, int opcion){

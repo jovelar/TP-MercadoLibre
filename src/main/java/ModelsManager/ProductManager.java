@@ -12,6 +12,19 @@ public class ProductManager {
 
     private ProductRepo productRepo = new ProductRepo();
 
+
+    public void showSaleProducts(){
+        List<Product> productList = productRepo.toList();
+
+        for(Product product : productList){
+            if(product.getPrice() < 30000){
+                System.out.println("ID:" + product.getIdProduct() + " ." + product);
+                System.out.println("---------------------------------------------------------");
+
+            }
+        }
+    }
+
     public void showProductList(){
         List<Product> productList = productRepo.toList();
 
@@ -20,8 +33,19 @@ public class ProductManager {
             System.out.println("---------------------------------------------------------");
         }
     }
-
     //TODO: faltaria crear el metodo showProductList() pero segun el ID de la empresa
+
+    public void showProductListbyIDEnterprise(int idEnterprise){
+        List<Product> productList = productRepo.toList();
+        for(Product product : productList){
+            if(product.getiDEnterprise() == idEnterprise){
+                System.out.println("ID:" + product.getIdProduct() + " ." + product);
+                System.out.println("---------------------------------------------------------");
+
+            }
+        }
+    }
+
 
     public void addProduct(){
         Product product = null;
@@ -29,16 +53,13 @@ public class ProductManager {
         String resp = "si";
         while(resp.equals("si")){
 
-            int idProduct = Console.readInt("Ingrese el id del producto:"); //se supone que tiene q ser asignado automaticamente
-            Console.readString("");
+            int idProduct = productRepo.toList().size()+1;
             int idEnterprise = Console.readInt("Ingrese el id de la empresa");
-            Console.readString("");
             String brand = Console.readString("Ingrese la marca del producto: ");
             String productName = Console.readString("Ingrese el nombre del producto:");
             String vendorName = Console.readString("Ingrese el nombre del vendedor:");
             float price = Console.readFloat("Ingrese el precio del producto:");
             int quantity = Console.readInt("Ingrese el numero de stock:");
-            Console.readString("");
             String description = Console.readString("Ingrese una descripción:");
 
 
@@ -57,17 +78,16 @@ public class ProductManager {
 
     public void removeProduct(){
         int id = Console.readInt("Ingrese el id del producto a eliminar:");
-        Console.readString("");
         if(searchProductById(id)){
-            System.out.println("Producto encontrado!");
+            Console.showMessage("Producto encontrado!");
             String resp = Console.readString("Esta seguro de continuar? si/no");
             if(resp.equals("si")){
                 productRepo.delete(id);
-                System.out.println("El producto se ha eliminado exitosamente!");
+                Console.showMessage("El producto se ha eliminado exitosamente!");
             }
 
         }else{
-            System.out.println("El producto no se encuentra registrado en el sistema!");
+            Console.showMessage("El producto no se encuentra registrado en el sistema!");
         }
 
 
@@ -92,14 +112,12 @@ public class ProductManager {
     public void modifyProduct(){
 
         int idProducto = Console.readInt("Ingrese el id del producto que desea modificar:");
-        Console.readString("");
         //que puede modificar una empresa de sus propios productos?
         //la Marca, nombre del producto, precio, stock y descripcion
         String brand = Console.readString("Ingrese la nueva marca del producto: ");
         String productName = Console.readString("Ingrese el nuevo nombre del producto:");
         float price = Console.readFloat("Ingrese el nuevo precio del producto:");
         int quantity = Console.readInt("Ingrese el numero actual de stock:");
-        Console.readString("");
         String description = Console.readString("Ingrese una nueva descripción:");
 
 
@@ -107,7 +125,7 @@ public class ProductManager {
 
         productRepo.modify(product);
 
-        System.out.println("Producto modificado con exito!");
+        Console.showMessage("Producto modificado con exito!");
 
     }
 

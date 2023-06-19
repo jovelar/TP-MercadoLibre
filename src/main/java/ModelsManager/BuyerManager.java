@@ -42,19 +42,17 @@ public final class BuyerManager {
         while(resp.equals("si")){
 
             int idUser = Console.readInt("Ingrese el id del Nuevo usuario:"); //se supone que tiene q ser asignado automaticamente
-            Console.readString("");
             String userName = Console.readString("Ingrese el nombre de usuario: ");
-            Console.readString("");
             String email = Console.readString("Ingrese la direccion de email : ");
             String password = Console.readString("Ingrese su contrasena:");
             String firstName = Console.readString("Ingrese su nombre:");
-            String surname=Console.readString("Ingrese el apellido");
-            int dni=Console.readInt("Ingrese su dni");
-            String birthDate=Console.readString("Ingrese su fecha de nacimiento"); // REVISAR CON DATEBUILDER
-            int phoneNumber=Console.readInt("Ingrese su numero de telfono");
-            String city=Console.readString("ingrese su ciudad");
+            String surname = Console.readString("Ingrese el apellido");
+            int dni = Console.readInt("Ingrese su dni");
+            String birthDate = Console.readString("Ingrese su fecha de nacimiento"); // REVISAR CON DATEBUILDER
+            int phoneNumber = Console.readInt("Ingrese su numero de telfono");
+            String city = Console.readString("ingrese su ciudad");
             //Enum province=Console.readString("Ingrese la provincia");
-            String adress=Console.readString("ingrese su domicilio");
+            String adress = Console.readString("ingrese su domicilio");
             int postalCode=Console.readInt("ingrese su codigo postal");
 
             newBuyer=new Buyer(idUser,
@@ -76,16 +74,15 @@ public final class BuyerManager {
             //Menu.categoriesMenu();
 
             buyerRepo.add(newBuyer);
-            System.out.println("Producto agregado exitosamente!");
+            System.out.println("Usuario agregado exitosamente!");
 
-            resp = Console.readString("Desea seguir agregando productos? si/no");
+            resp = Console.readString("Desea seguir agregando usuarios? si/no");
 
         }
     }
 
     public void removeBuyer(){
         int id = Console.readInt("Ingrese el id del compador a eliminar:");
-        Console.readString("");
         if(searchUserById(id)){
             System.out.println("Comprador encontrado!");
             String resp = Console.readString("Esta seguro de continuar? si/no");

@@ -248,4 +248,34 @@
   "quantity" : 100,
   "category" : "FASHION",
   "description" : "Zapatillas nike urbanas"
+}, {
+  "idProduct" : 7,
+  "iDEnterprise" : 4,
+  "brand" : "nike",
+  "productName" : "zapatillas",
+  "vendorName" : "zapatillas nike",
+  "price" : 123000.0,
+  "quantity" : 100,
+  "category" : "FASHION",
+  "description" : "zapatillas nike"
+}, {
+  "idProduct" : 27,
+  "iDEnterprise" : 10,
+  "brand" : "toyota",
+  "productName" : "camioneta toyota hilux",
+  "vendorName" : "toyora",
+  "price" : 5.0E8,
+  "quantity" : 5,
+  "category" : "VEHICLES",
+  "description" : "toyota hiluxx"
+}, {
+  "idProduct" : 28,
+  "iDEnterprise" : 5,
+  "brand" : "nike",
+  "productName" : "remera nike",
+  "vendorName" : "nike",
+  "price" : 5000000.0,
+  "quantity" : 120,
+  "category" : "FASHION",
+  "description" : "zapas"
 } ]

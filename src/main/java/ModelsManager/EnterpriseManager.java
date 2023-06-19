@@ -5,7 +5,6 @@ import ModelsRepo.EnterpriseRepo;
 import Tools.Console;
 import Tools.Menu;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public final class EnterpriseManager {
@@ -49,11 +48,11 @@ public final class EnterpriseManager {
         Console.showMessage("¡Cuenta usuario-empresa creada con exito!");
     }
 
-    //baja logica a alguno de los enterprise de la lista -> metodo para Administrator
+    //baja logica a alguno de los enterprise de la lista -> method for Administrator
     public void deleteLogicallyEnterprise(){
-        int id = Console.readInt("Ingrese el id del usuario-empresa a dar de baja:");
 
         this.showEnterprisesList();
+        int id = Console.readInt("Ingrese el id del usuario-empresa a dar de baja:");
 
         if(searchEnterpriseById(id)){
 
@@ -75,11 +74,11 @@ public final class EnterpriseManager {
         }
     }
 
-    //baja fisica, para ELIMINAR a alguno de los enterprise de la lista -> metodo para Administrator
+    //baja fisica, para ELIMINAR a alguno de los enterprise de la lista -> method for Administrator
     public void deleteEnterprise(){
 
-        int id = Console.readInt("Ingrese el id del usuario-empresa a eliminar");
         this.showEnterprisesList();
+        int id = Console.readInt("Ingrese el id del usuario-empresa a eliminar");
 
         if(searchEnterpriseById(id)){
 
@@ -133,34 +132,46 @@ public final class EnterpriseManager {
         //TODO: crear metodos showList en general, segun lo que ese quiera mostrar
         // si mostrar los activos, los inactivos, etc, mostrar en formato reducido, osea, menos datos
         showEnterprisesList();
+        int idEnterpriseSearched = Console.readInt("INGRESAR ID DEL USUARIO-EMPRESA A MODIFICAR:");
 
-        int idEnterpriseSearched = Console.readInt("Ingrese el id del usuario-empresa que desea modificar:");
+        if(searchEnterpriseById(idEnterpriseSearched)) {
+            //TODO: falta en esta parte, un metodo que le muestre TODOS los datos del usuario a modificar,
+            // si es que el usuario fue encontrado
+            Console.showMessage("¡USUARIO-EMPRESA ENCONTRADO!");
+            String resp = Console.readString("¿ESTA SEGURO DE CONTINUAR? [SI/NO]");
 
-        //TODO: falta agregar una validacion de que el ID ingresado
-        // sea el correcto segun la lista que se le mostro
+            if(resp.equalsIgnoreCase("SI")) {
 
-        String username = Console.readString("Ingresar nuevo nombre de usuario: ");
-        String email = Console.readString("Ingresar nuevo email:");
-        String password = Console.readString("Ingresar nueva contraseña:");
+                String username = Console.readString("Ingresar nuevo nombre de usuario: ");
+                String email = Console.readString("Ingresar nuevo email:");
+                String password = Console.readString("Ingresar nueva contraseña:");
 
-        String firstName = Console.readString("Ingresar nuevo nombre:");
-        String surname = Console.readString("Ingresar nuevo apellido:");
-        int dni = Console.readInt("Ingresar nuevo DNI:");
+                String firstName = Console.readString("Ingresar nuevo nombre:");
+                String surname = Console.readString("Ingresar nuevo apellido:");
+                int dni = Console.readInt("Ingresar nuevo DNI:");
+                String birthDate = Console.readString("Ingrese nueva fecha de nacimiento:");
+                long phoneNumber = Console.readLong("Ingresar nuevo numero de celular (sin espacios):");
 
-        String birthDate = Console.readString("Ingrese su fecha de nacimiento:");
-        long phoneNumber = Console.readLong("Ingresar nuevo numero de celular (sin espacios):");
-        String fantasyName = Console.readString("Ingresar el nuevo nombre de la empresa:");
+                String fantasyName = Console.readString("Ingresar el nuevo nombre de la empresa:");
 
-        Enterprise enterprise = new Enterprise(idEnterpriseSearched, username, email, password, firstName, surname, dni, birthDate, phoneNumber, fantasyName);
+                Enterprise enterprise = new Enterprise(idEnterpriseSearched, username, email, password, firstName, surname,
+                        dni, birthDate, phoneNumber, fantasyName);
 
-        Menu.provinceMenu(enterprise);
+                Menu.provinceMenu(enterprise);
 
-        enterprise.setCity(Console.readString("Ingresar nueva ciudad:"));
-        enterprise.setAddress(Console.readString("Ingresar nueva direccion:"));
-        enterprise.setPostalCode(Console.readInt("Ingresar nuevo codigo postal:"));
+                enterprise.setCity(Console.readString("Ingresar nueva ciudad:"));
+                enterprise.setAddress(Console.readString("Ingresar nueva direccion:"));
+                enterprise.setPostalCode(Console.readInt("Ingresar nuevo codigo postal:"));
 
-        enterpriseRepo.modify(enterprise);
-        Console.showMessage("¡Cuenta usuario-empresa modificada con exito!");
+                enterpriseRepo.modify(enterprise);
+                Console.showMessage("¡CUENTA USUARIO-EMPRESA MODIFICADA CON EXITO!");
+
+            } else
+                Console.showMessage("¡MODIFICACION CANCELADA!");
+        }else{
+            Console.showMessage("¡NO EXISTE NINGUN USUARIO-EMPRESA CON ESE ID!");
+        }
     }
+
 
 }

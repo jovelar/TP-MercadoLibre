@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 public final class Enterprise extends Client implements Serializable {
 
     //region ATTRIBUTES
-    //TODO agregar ID auto-incremental (atributo static) en las clases concretas
     private String fantasyName;
     private float salesRevenue;
     //endregion

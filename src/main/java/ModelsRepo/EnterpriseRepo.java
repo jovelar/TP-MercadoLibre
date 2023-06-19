@@ -67,7 +67,7 @@ public final class EnterpriseRepo implements IRepository<Enterprise> {
     @Override
     public void modify(Enterprise nuevoObjeto) {
         load();
-        for(Enterprise enterprise: this.enterprisesList){
+        for(Enterprise enterprise : this.enterprisesList){
             if(enterprise.getIdUser() == nuevoObjeto.getIdUser()){
 
                 enterprise.setUsername(nuevoObjeto.getUsername());

@@ -34,8 +34,8 @@ public abstract class Client extends User {
     }
 
     //Creado para metodo addEnterprose() en clase EnterpriseManager
-    public Client(int idUser, String username, String email, String password, String firstName, String surname, int dni,
-                  String birthDate, long phoneNumber) {
+    public Client(int idUser, String username, String email, String password, String firstName, String surname,
+                  int dni, String birthDate, long phoneNumber) {
 
         super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber);
     }

@@ -12,6 +12,11 @@ public final class Administrator extends User implements Serializable {
 
         super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber, active);
     }
+    public Administrator(int idUser, String username, String email, String password, String firstName, String surname,
+                         int dni, String birthDate, long phoneNumber) {
+
+        super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber);
+    }
     //endregion
 
     public void logicUserDelete(){

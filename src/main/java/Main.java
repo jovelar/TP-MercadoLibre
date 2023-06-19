@@ -1,9 +1,6 @@
-import ModelsManager.AdmManager;
+import Models.Administrator;
+import ModelsManager.AdministratorManager;
 import ModelsManager.EnterpriseManager;
-import ModelsManager.ProductManager;
-import Tools.Menu;
-
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,10 +13,14 @@ public class Main {
 
     public static void mainEzequiel() {
 
-        EnterpriseManager enterpriseManager = new EnterpriseManager();
+        /*EnterpriseManager enterpriseManager = new EnterpriseManager();
+        enterpriseManager.totalModifyEnterprise();*/
 
-        enterpriseManager.totalModifyEnterprise();
-        
+        AdministratorManager administratorManager = new AdministratorManager();
+        //administratorManager.addAministrator();
+        //administratorManager.deleteLogicallyAdminsitrator();
+        //administratorManager.deleteAdministrator();
+        administratorManager.totalModifyAdministrator();
     }
 
 

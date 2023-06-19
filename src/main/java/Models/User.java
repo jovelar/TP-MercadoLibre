@@ -37,12 +37,11 @@ public abstract class User {
         this.birthDate = birthDate;
         this.phoneNumber = phoneNumber;
         this.active = active;
-        this.active = true;
     }
 
-    //Creado para metodo addEnterprise() en clase EnterpriseManager
-    public User(int idUser, String username, String email, String password, String firstName, String surname, int dni, String
-            birthDate, long phoneNumber) {
+    //Creado para metodo addEnterprise() en clase EnterpriseManager y addAdministrator en AdministratorManager
+    public User(int idUser, String username, String email, String password, String firstName, String surname,
+                int dni, String birthDate, long phoneNumber) {
 
         this.idUser = idUser;
         this.username = username;
@@ -53,6 +52,7 @@ public abstract class User {
         this.dni = dni;
         this.birthDate = birthDate;
         this.phoneNumber = phoneNumber;
+
         this.active = true;
     }
     //endregion
@@ -148,7 +148,7 @@ public abstract class User {
                 "\n DNI.................:   " + this.dni +
                 "\n FECHA DE NAC........:   " + this.birthDate +
                 "\n NRO. DE CELULAR.....:   " + this.phoneNumber +
-                "\n USUARIO ELIMINADO...:   " + this.active;
+                "\n USUARIO ACTIVO...:   " + this.active;
     }
 
 }

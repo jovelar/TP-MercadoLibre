@@ -19,6 +19,7 @@ public class Main {
         EnterpriseManager enterpriseManager = new EnterpriseManager();
 
         enterpriseManager.totalModifyEnterprise();
+        
     }
 
 

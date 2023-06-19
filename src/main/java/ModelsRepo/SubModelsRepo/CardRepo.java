@@ -13,7 +13,7 @@ import java.util.List;
 
 public class CardRepo implements IRepository<Card> {
 
-    private final File file = new File("src/main/java/org/example/Archivos/productos.json");
+    private final File file = new File("src/main/java/org/example/Archivos/cardRepo.json");
     private ObjectMapper mapper = new ObjectMapper();
 
     private ArrayList<Card> cardList;

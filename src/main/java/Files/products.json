@@ -248,4 +248,14 @@
   "quantity" : 100,
   "category" : "FASHION",
   "description" : "Zapatillas nike urbanas"
+}, {
+  "idProduct" : 7,
+  "iDEnterprise" : 4,
+  "brand" : "nike",
+  "productName" : "zapatillas",
+  "vendorName" : "zapatillas nike",
+  "price" : 123000.0,
+  "quantity" : 100,
+  "category" : "FASHION",
+  "description" : "zapatillas nike"
 } ]

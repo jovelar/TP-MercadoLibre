@@ -1,31 +1,26 @@
 package Models.SubModels;
 
+
 public final class Card extends PayMethod {
-    private float amount; //no iria para mi porq ya tenemos un atributo amount en la clase padre
     private long creditCardNumber;
     private String expDate;
     private int cvcCode;
+    //region CONSTRUCTORES
 
     public Card(){
 
     }
 
-    public Card(int idPayMethod, String tyype, float amount, long dni, double amount1, long creditCardNumber, String expDate, int cvcCode) {
-        super(idPayMethod, tyype, amount, dni);
-        this.amount = (float) amount1;
+    public Card(int idPayMethod, int idUser, double availableMoney, long creditCardNumber, String expDate, int cvcCode) {
+        super(idPayMethod, idUser, availableMoney);
         this.creditCardNumber = creditCardNumber;
         this.expDate = expDate;
         this.cvcCode = cvcCode;
     }
 
-    @Override
-    public float getAmount() {
-        return amount;
-    }
+    //endregion
 
-    public void setAmount(double amount) {
-        this.amount = (float) amount;
-    }
+    //region GETTERS AND SETTERS
 
     public long getCreditCardNumber() {
         return creditCardNumber;
@@ -50,4 +45,6 @@ public final class Card extends PayMethod {
     public void setCvcCode(int cvcCode) {
         this.cvcCode = cvcCode;
     }
+
+    //endregion
 }

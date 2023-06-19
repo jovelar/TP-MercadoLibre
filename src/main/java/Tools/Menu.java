@@ -132,13 +132,11 @@ public final class Menu {
 
     //region MENU PRODUCTOS
     public static void menuAdmProductos(){
-        Scanner scan = new Scanner(System.in);
         int opcion;
 
         do {
             mostrarMenuAdmProductos();
-            opcion = scan.nextInt();
-            scan.reset();
+            opcion = Console.readInt("Selecciona una opción: ");
             menuAdmProductosOpciones(opcion);
 
 
@@ -154,30 +152,25 @@ public final class Menu {
         System.out.println("3. Modificar Productos");
         System.out.println("4. Mostrar Productos");
         System.out.println("5. Salir");
-        System.out.print("Selecciona una opción: ");
     }
 
     public static void menuAdmProductosOpciones(int opcion){
         ProductManager productManager = new ProductManager();
         switch (opcion) {
             case 1:
-                System.out.println("");
                 System.out.println("Agregar Productos");
                 productManager.addProduct();
                 break;
             case 2:
-                System.out.println("");
                 System.out.println("Eliminar Productos");
                 productManager.removeProduct();
                 break;
             case 3:
-                System.out.println("");
                 System.out.println("Modificar Productos");
                 productManager.modifyProduct();
 
                 break;
             case 4:
-                System.out.println("");
                 System.out.println("Ver Productos");
                 productManager.showProductList();
 
@@ -277,7 +270,6 @@ vendida (se tiene que actualizar el json en cada venta).
             opcion = scan.nextInt();
             scan.reset();
             optionsCategoryMenu(product, opcion);
-
         }while(opcion < 1 || opcion > 5);
     }
 

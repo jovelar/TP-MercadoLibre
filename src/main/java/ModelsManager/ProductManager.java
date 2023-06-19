@@ -28,7 +28,6 @@ public class ProductManager {
 
         String resp = "si";
         while(resp.equals("si")){
-
             int idProduct = Console.readInt("Ingrese el id del producto:"); //se supone que tiene q ser asignado automaticamente
             Console.readString("");
             int idEnterprise = Console.readInt("Ingrese el id de la empresa");

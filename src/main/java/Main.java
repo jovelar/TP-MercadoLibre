@@ -11,7 +11,7 @@ import Tools.Console;
 
 public class Main {
     public static void main(String[] args) {
-
+/*
         SalesSystem salesSystem = new SalesSystem();
 
         salesSystem.getProductManager().showSaleProducts();
@@ -60,7 +60,7 @@ public class Main {
             }
 
         } while(!opcion.equals("SALIR"));
-
+*/
         //mainEzequiel();
         mainJOvelar();
     }
@@ -87,7 +87,13 @@ public class Main {
         /*String manzana="25/02/2014";
         System.out.println(validation.validateBirthDate(manzana));
          */
+        String nombre1="jose maria listorti";
+        String nombre2="Abaco 123 ";
+        String nombre3=".*.------=";
 
-        String email= validation.doUntilValidEmail(Console.readString("Ingrese un email"));
+        //System.out.println(validation.validateName(nombre1));
+        //System.out.println(validation.validateName(nombre2));
+        //System.out.println(validation.validateName(nombre3));
+        String kopona=validation.doUntilValidName(Console.readString("Ingrese su nombre"));
     }
 }

@@ -3,11 +3,14 @@ package Tools;
 
 import jakarta.mail.internet.AddressException;
 import jakarta.mail.internet.InternetAddress;
+import org.w3c.dom.Text;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Validations {
     public Validations(){}
@@ -24,12 +27,15 @@ public class Validations {
      */
     public boolean validateEmail(String email) {
         boolean isValid=true;
-        try {
-            InternetAddress emailAddr = new InternetAddress(email);
-            emailAddr.validate();
-        } catch (AddressException ex) {
-            isValid = false;
-
+        if(!email.isBlank()){
+            try {
+                InternetAddress emailAddr = new InternetAddress(email);
+                emailAddr.validate();
+            } catch (AddressException ex) {
+                isValid = false;
+            }
+        }else{
+            isValid=false;
         }
         return isValid;
     }
@@ -77,11 +83,15 @@ public class Validations {
 
     public String doUntilValidBirthDate(String birthDate){
         boolean valid=false;
-        do{
-            valid=validateBirthDate(birthDate);
-
-
-        }while(!valid);
+        if(!birthDate.isBlank()){
+            do{
+                valid=validateBirthDate(birthDate);
+                if(!valid){
+                    System.out.println("Valor invalido!");
+                    birthDate=Console.readString("Ingrese una fecha con el formato dd/mm/aaaa");
+                }
+            }while(!valid);
+        }
         return birthDate;
     }
     public boolean isProductAvailable(String idProduct){
@@ -100,6 +110,59 @@ public class Validations {
             status=true;
         }
         return status;
+    }
+    public int doUntilValidDNI(int dni){
+        boolean valid=false;
+        do{
+            valid=validateDNI(dni);
+            if(!valid){
+                System.out.println("Valor invalido");
+                dni=Console.readInt("Ingrese su dni");
+            }
+        }while(!valid);
+
+        return dni;
+    }
+
+    /**
+     * Valida nombres y apellidos, no permite numeros ni caracteres especiales mas alla de guion
+     * @param name String
+     * @return True o False
+     */
+    public boolean validateName(String name){
+        boolean valid=false;
+        if(!name.isBlank()){
+            String regex="^[\\p{L} .'-]+$";
+            Pattern pattern=Pattern.compile(regex);
+            Matcher matcher=pattern.matcher(name);
+            valid=matcher.matches();
+        }
+        return valid;
+    }
+
+    /**
+     * Fuerza a que el usuario ingrese un nombre/apellido valido, devuelve un String una vez que sea valido
+     * @param name String
+     * @return String
+     */
+    public String doUntilValidName(String name){
+        boolean valid=false;
+        do{
+            valid=validateName(name);
+            if(!valid){
+                System.out.println("Nombre invalido");
+                name=Console.readString("Ingrese un indentificado valido");
+            }
+
+        }while(!valid);
+        return name;
+    }
+    public boolean validatePhoneNumber(long phonNumber){
+        boolean valid=false;
+        if(!String.valueOf(phonNumber).isBlank()){
+            
+        }
+        return valid;
     }
 
 }

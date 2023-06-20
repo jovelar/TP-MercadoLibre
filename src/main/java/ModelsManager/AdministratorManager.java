@@ -57,7 +57,7 @@ public final class AdministratorManager {
 
             if(resp.equalsIgnoreCase("si")){
 
-                Administrator adm = returnEnterpriseById(id);
+                Administrator adm = returnAdministratorById(id);
                 adm.setActive(false);
                 this.administratorRepo.modify(adm);
                 Console.showMessage("¡El ADMINISTRADOR se dio de baja exitosamente!");
@@ -95,30 +95,47 @@ public final class AdministratorManager {
     }
 
     public boolean searchAdministratorById(int id){
+        for(Administrator adm : this.administratorRepo.toList()){
+            if(id == adm.getIdUser()){
+                return true;
+            }
+        }
+        return false;
+    }
 
-        boolean resp = false;
+    public boolean searchAdministratorByUsername(String username){
+        for(Administrator adm : this.administratorRepo.toList()){
+            if(adm.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Administrator returnAdministratorById(int id){
+
+        Administrator admWanted = null;
 
         for(Administrator adm : administratorRepo.toList()){
             if(id == adm.getIdUser()){
-                resp = true;
+                admWanted = adm;
                 break;
             }
         }
 
-        return resp;
+        return admWanted;
     }
 
-    public Administrator returnEnterpriseById(int id){
+    public Administrator returnAdministratorByUsername(String username){
+        Administrator admWanted = null;
 
-        Administrator admFound = null;
-
-        for(Administrator adm : administratorRepo.toList()){
-            if(id == adm.getIdUser()){
-                admFound = adm;
+        for(Administrator adm : this.administratorRepo.toList()){
+            if(adm.getUsername().equals(username)){
+                admWanted = adm;
+                break;
             }
         }
-
-        return admFound;
+        return admWanted;
     }
 
     public void totalModifyAdministrator(){

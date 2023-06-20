@@ -1,4 +1,5 @@
 import ModelsManager.*;
+import Tools.Console;
 
 public final class SalesSystem {
 
@@ -60,5 +61,81 @@ public final class SalesSystem {
         this.productManager = productManager;
     }
     //endregion
+
+    public void logIn() {
+
+        boolean loginSuccessful = false;
+
+        String username = Console.readString("Ingrese su nombre de usuario");
+        String password = Console.readString("Ingrese su contraseña");
+
+        //Tengo que buscar en todas las bases de datos que tipo de usuario es
+
+    }
+
+   /* public boolean validateLogin(String username, String password) {
+
+        boolean loginSuccessful = false;
+        boolean correctPassword = false;
+
+        boolean userFound = searchUsername(username);
+
+        if(userFound) {
+            correctPassword = validatePassword(username, password);
+        }
+
+        return
+    }*/
+    public boolean searchUsername(String username) {
+
+        boolean userFound = false;
+
+        userFound = this.administratorManager.searchAdministratorByUsername(username);
+
+        if(!userFound){
+
+            userFound = this.enterpriseManager.searchEnterpriseByUsername(username);
+
+            if(!userFound) {
+                userFound = this.buyerManager.searchBuyerByUsername(username);
+            }
+        }
+
+        return userFound;
+    }
+
+    public boolean validatePassword(String username, String password) {
+
+        String passwordUserFound = "";
+        boolean validKey = false;
+
+        boolean userFound = this.administratorManager.searchAdministratorByUsername(username);
+
+        if(!userFound){
+
+            userFound = this.enterpriseManager.searchEnterpriseByUsername(username);
+
+            if(!userFound) {
+                userFound = this.buyerManager.searchBuyerByUsername(username);
+
+                if(userFound) {
+                    passwordUserFound = this.buyerManager.returnBuyerByUsername(username).getPassword();
+                }
+
+            } else {
+                 passwordUserFound = this.enterpriseManager.returnEnterpriseByUsername(username).getPassword();
+            }
+
+        } else {
+             passwordUserFound = this.administratorManager.returnAdministratorByUsername(username).getPassword();
+        }
+
+        if(userFound) {
+            validKey = passwordUserFound.equals(password);
+        }
+
+        return validKey;
+    }
+
 
 }

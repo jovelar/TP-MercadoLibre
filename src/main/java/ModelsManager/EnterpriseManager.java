@@ -102,29 +102,45 @@ public final class EnterpriseManager {
     }
 
     public boolean searchEnterpriseById(int id){
-        boolean resp = false;
-
-        for(Enterprise enterprise : enterpriseRepo.toList()){
+        for(Enterprise enterprise :  this.enterpriseRepo.toList()){
             if(id == enterprise.getIdUser()){
-                resp = true;
-                break;
+                return true;
             }
         }
-        return resp;
+        return false;
+    }
 
+    public boolean searchEnterpriseByUsername(String username){
+        for(Enterprise enterprise : this.enterpriseRepo.toList()){
+            if(enterprise.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public Enterprise returnEnterpriseById(int id){
+        Enterprise enterpriseWanted = null;
 
-        Enterprise enterpriseFound = null;
-
-        for(Enterprise enterprise : enterpriseRepo.toList()){
+        for(Enterprise enterprise : this.enterpriseRepo.toList()){
             if(id == enterprise.getIdUser()){
-                enterpriseFound = enterprise;
+                enterpriseWanted = enterprise;
+                break;
             }
         }
-        return enterpriseFound;
+        return enterpriseWanted;
+    }
 
+    public Enterprise returnEnterpriseByUsername(String username){
+        Enterprise enterpriseWanted = null;
+
+        for(Enterprise enterprise : this.enterpriseRepo.toList()){
+            if(enterprise.getUsername().equals(username)){
+                enterpriseWanted = enterprise;
+                break;
+            }
+        }
+        return enterpriseWanted;
     }
 
     public void totalModifyEnterprise(){

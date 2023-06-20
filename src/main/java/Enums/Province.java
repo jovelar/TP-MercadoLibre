@@ -1,7 +1,32 @@
 package Enums;
 
 public enum Province {
-    BSAS("Buenos Aires"), 
+
+   /* BSAS,
+    CABA,
+    CATAMARCA,
+    CHACO,
+    CHUBUT,
+    CORDOBA,
+    CORRIENTES,
+    ENTRERIOS,
+    FORMOSA,
+    JUJUY,
+    LAPAMPA,
+    LARIOJA,
+    MENDOZA,
+    MISIONES,
+    NEUQUEN,
+    RIONEGRO,
+    SALTA,
+    SANJUAN,
+    SANLUIS,
+    SANTACRUZ,
+    SANTAFE,
+    SANTIAGODELESTERO,
+    TIERRADELFUEGO,
+    TUCUMAN*/
+    BSAS("Buenos Aires"),
     CABA("CABA"),
     CATAMARCA("Catamarca"),
     CHACO("Chaco"),

@@ -7,22 +7,37 @@ import java.util.ArrayList;
 public final class Order {
 
     private int idOrder;
-    private int idUser; //o seria mejor idBuyer?
+    private int idBuyer;
     private ArrayList<Product>solicitedProducts;
     private PayMethod payMethod;
     private String deliveryAddress;
 
-    public Order(){
+    private OrderStatus state;
+
+    public enum OrderStatus {
+        IN_PREPARATION, ON_THE_WAY, CANCELLED, DELIVERED
 
     }
 
-    public Order(ArrayList<Product> solicitedProducts, PayMethod payMethod, String deliveryAddress) {
+
+    //region constructors
+
+    public Order(){}
+
+
+    public Order(int idOrder, int idBuyer, ArrayList<Product> solicitedProducts, PayMethod payMethod, String deliveryAddress) {
+        this.idOrder = idOrder;
+        this.idBuyer = idBuyer;
         this.solicitedProducts = solicitedProducts;
         this.payMethod = payMethod;
         this.deliveryAddress = deliveryAddress;
+        this.state = OrderStatus.IN_PREPARATION;
     }
 
-    //region constructors
+    //endregion
+
+    //region GETTERS AND SETTERS
+
     public ArrayList<Product> getSolicitedProducts() {
         return solicitedProducts;
     }
@@ -30,10 +45,6 @@ public final class Order {
     public void setSolicitedProducts(ArrayList<Product> solicitedProducts) {
         this.solicitedProducts = solicitedProducts;
     }
-
-    //endregion
-
-    //region getters and setters
 
 
     public int getIdOrder() {
@@ -44,12 +55,12 @@ public final class Order {
         this.idOrder = idOrder;
     }
 
-    public int getIdUser() {
-        return idUser;
+    public int getIdBuyer() {
+        return idBuyer;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setIdBuyer(int idBuyer) {
+        this.idBuyer = idBuyer;
     }
 
     public PayMethod getPayMethod() {
@@ -66,6 +77,14 @@ public final class Order {
 
     public void setDeliveryAddress(String deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
+    }
+
+    public OrderStatus getState() {
+        return state;
+    }
+
+    public void setState(OrderStatus state) {
+        this.state = state;
     }
 
     //endregion

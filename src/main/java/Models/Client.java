@@ -2,6 +2,7 @@ package Models;
 
 import Enums.Province;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public abstract class Client extends User {
@@ -22,7 +23,7 @@ public abstract class Client extends User {
 
 
     public Client(int idUser, String username, String email, String password, String firstName, String surname,
-                  int dni, LocalDateTime birthDate, long phoneNumber, boolean active, Province province, String city,
+                  int dni, String birthDate, long phoneNumber, boolean active, Province province, String city,
                   String address, int postalCode) {
 
         super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber, active);
@@ -33,10 +34,10 @@ public abstract class Client extends User {
     }
 
     //Creado para metodo addEnterprose() en clase EnterpriseManager
-    public Client(String username, String email, String password, String firstName, String surname, int dni,
-                  LocalDateTime birthDate, long phoneNumber) {
+    public Client(int idUser, String username, String email, String password, String firstName, String surname,
+                  int dni, String birthDate, long phoneNumber) {
 
-        super(username, email, password, firstName, surname, dni, birthDate, phoneNumber);
+        super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber);
     }
     //endregion
 
@@ -72,12 +73,21 @@ public abstract class Client extends User {
     public void setPostalCode(int postalCode) {
         this.postalCode = postalCode;
     }
+
+    public double getAvailableMoney() {
+        return availableMoney;
+    }
+
+    public void setAvailableMoney(double availableMoney) {
+        this.availableMoney = availableMoney;
+    }
+
     //endregion
 
     @Override
     public String toString() {
         return  super.toString() +
-                "\n PROVINCIA...........:   " + this.province +
+                "\n PROVINCIA...........:   " + this.province.getNombre() +
                 "\n CIUDAD..............:   " + this.city +
                 "\n DIRECCION...........:   " + this.address +
                 "\n CODIGO POSTAL.......:   " + this.postalCode +

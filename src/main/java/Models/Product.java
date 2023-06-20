@@ -16,6 +16,7 @@ public final class Product {
 
     private Category category;
     private String description;
+    //TODO: falta agregar un atributo que indique el estado del
     //endregion
 
     //region CONTRUCTORS

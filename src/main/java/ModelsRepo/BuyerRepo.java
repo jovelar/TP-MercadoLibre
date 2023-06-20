@@ -82,7 +82,7 @@ public class BuyerRepo implements IRepository<Buyer>{
                 buyer.setSurname(nuevoObjeto.getSurname());
                 buyer.setBirthDate(nuevoObjeto.getBirthDate());
                 buyer.setPhoneNumber(nuevoObjeto.getPhoneNumber());
-                buyer.setActive(nuevoObjeto.isActive());
+                buyer.setActive(nuevoObjeto.getActive());
                 buyer.setProvince(nuevoObjeto.getProvince());
                 buyer.setCity(nuevoObjeto.getCity());
                 buyer.setAddress(nuevoObjeto.getAddress());

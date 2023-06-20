@@ -1,12 +1,10 @@
 package ModelsManager;
 
 import Models.Enterprise;
-import Models.Product;
 import ModelsRepo.EnterpriseRepo;
 import Tools.Console;
 import Tools.Menu;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public final class EnterpriseManager {
@@ -15,17 +13,18 @@ public final class EnterpriseManager {
 
     public void showEnterprisesList(){
 
-        List<Enterprise> enterprisesList = enterpriseRepo.toList();
+        List<Enterprise> enterprisesList = this.enterpriseRepo.toList();
 
-        for(int i = 0; i < enterprisesList.size(); i++){
-            System.out.println( "ID:" + enterprisesList.get(i).getIdUser() + ". " + enterprisesList.get(i));
-            System.out.println("---------------------------------------------------------");
+        for(int i = 0; i < enterprisesList.size(); i++) {
+            System.out.println("\nID:    " + enterprisesList.get(i).getIdUser() + ". " + enterprisesList.get(i));
+            System.out.println("\n ---------------------------------------------------------");
         }
     }
 
     public void addEnterprise(){
 
-        //int idEnterprise = Console.readInt("Ingrese el id del usuario empresa:"); //se supone que tiene q ser asignado automaticamente
+        int idEnterprise = enterpriseRepo.toList().size() + 1;
+
         String username = Console.readString("Ingresar nombre de usuario:");
         String email = Console.readString("Ingresar correo electronico: ");
         String password = Console.readString("Ingresar contraseña:");
@@ -33,12 +32,11 @@ public final class EnterpriseManager {
         String surname = Console.readString("Ingresar apellido:");
         int dni = Console.readInt("Ingresar DNI:");
 
-        //TODO: Repasar lo siguiente e implementarlo correctamente
-        LocalDateTime birthDate = null; //Console.readString("Ingrese su fecha de nacimiento:");
+        String birthDate = Console.readString("Ingrese su fecha de nacimiento:");
         long phoneNumber = Console.readLong("Ingresar numero de celular (sin espacios):");
         String fantasyName = Console.readString("Ingresar el nombre de la empresa:");
 
-        Enterprise enterprise = new Enterprise(username, email, password, firstName, surname, dni, birthDate, phoneNumber, fantasyName);
+        Enterprise enterprise = new Enterprise(idEnterprise, username, email, password, firstName, surname, dni, birthDate, phoneNumber, fantasyName);
 
         Menu.provinceMenu(enterprise);
 
@@ -47,14 +45,14 @@ public final class EnterpriseManager {
         enterprise.setPostalCode(Console.readInt("Ingresar codigo postal:"));
 
         enterpriseRepo.add(enterprise);
-        System.out.println("¡Cuenta usuario-empresa creada con exito!");
+        Console.showMessage("¡Cuenta usuario-empresa creada con exito!");
     }
 
-    //baja logica a alguno de los enterprise de la lista -> metodo para Administrator
+    //baja logica a alguno de los enterprise de la lista -> method for Administrator
     public void deleteLogicallyEnterprise(){
-        int id = Console.readInt("Ingrese el id del usuario-empresa a dar de baja:");
 
         this.showEnterprisesList();
+        int id = Console.readInt("Ingrese el id del usuario-empresa a dar de baja:");
 
         if(searchEnterpriseById(id)){
 
@@ -76,11 +74,11 @@ public final class EnterpriseManager {
         }
     }
 
-    //baja fisica, para ELIMINAR a alguno de los enterprise de la lista -> metodo para Administrator
+    //baja fisica, para ELIMINAR a alguno de los enterprise de la lista -> method for Administrator
     public void deleteEnterprise(){
 
-        int id = Console.readInt("Ingrese el id del usuario-empresa a eliminar");
         this.showEnterprisesList();
+        int id = Console.readInt("Ingrese el id del usuario-empresa a eliminar");
 
         if(searchEnterpriseById(id)){
 
@@ -93,6 +91,9 @@ public final class EnterpriseManager {
 
                 this.enterpriseRepo.delete(id);
                 Console.showMessage("¡El usuario-empresa ha sido eliminado exitosamente!");
+
+                //TODO: al borrar un usuario del medio de la lista, queda un hueco en el nro de ID's
+                // -> crear metodo que asigne los id's, seria una reasignacion de ID's
             }
 
         }else{
@@ -128,33 +129,49 @@ public final class EnterpriseManager {
 
     public void totalModifyEnterprise(){
 
+        //TODO: crear metodos showList en general, segun lo que ese quiera mostrar
+        // si mostrar los activos, los inactivos, etc, mostrar en formato reducido, osea, menos datos
         showEnterprisesList();
+        int idEnterpriseSearched = Console.readInt("INGRESAR ID DEL USUARIO-EMPRESA A MODIFICAR:");
 
-        int idProducto = Console.readInt("Ingrese el id del usuario-empresa que desea modificar:");
+        if(searchEnterpriseById(idEnterpriseSearched)) {
+            //TODO: falta en esta parte, un metodo que le muestre TODOS los datos del usuario a modificar,
+            // si es que el usuario fue encontrado
+            Console.showMessage("¡USUARIO-EMPRESA ENCONTRADO!");
+            String resp = Console.readString("¿ESTA SEGURO DE CONTINUAR? [SI/NO]");
 
-        String username = Console.readString("Ingresar nuevo nombre de usuario: ");
-        String email = Console.readString("Ingresar nuevo email:");
-        String password = Console.readString("Ingresar nueva contraseña:");
+            if(resp.equalsIgnoreCase("SI")) {
 
-        String firstName = Console.readString("Ingresar nuevo nombre:");
-        String surname = Console.readString("Ingresar nuevo apellido:");
-        int dni = Console.readInt("Ingresar nuevo DNI:");
+                String username = Console.readString("Ingresar nuevo nombre de usuario: ");
+                String email = Console.readString("Ingresar nuevo email:");
+                String password = Console.readString("Ingresar nueva contraseña:");
 
-        //TODO: Repasar lo siguiente e implementarlo correctamente
-        LocalDateTime birthDate = null; //Console.readString("Ingrese su fecha de nacimiento:");
-        long phoneNumber = Console.readLong("Ingresar nuevo numero de celular (sin espacios):");
-        String fantasyName = Console.readString("Ingresar el nuevo nombre de la empresa:");
+                String firstName = Console.readString("Ingresar nuevo nombre:");
+                String surname = Console.readString("Ingresar nuevo apellido:");
+                int dni = Console.readInt("Ingresar nuevo DNI:");
+                String birthDate = Console.readString("Ingrese nueva fecha de nacimiento:");
+                long phoneNumber = Console.readLong("Ingresar nuevo numero de celular (sin espacios):");
 
-        Enterprise enterprise = new Enterprise(username, email, password, firstName, surname, dni, birthDate, phoneNumber, fantasyName);
+                String fantasyName = Console.readString("Ingresar el nuevo nombre de la empresa:");
 
-        Menu.provinceMenu(enterprise);
+                Enterprise enterprise = new Enterprise(idEnterpriseSearched, username, email, password, firstName, surname,
+                        dni, birthDate, phoneNumber, fantasyName);
 
-        enterprise.setCity(Console.readString("Ingresar nueva ciudad:"));
-        enterprise.setAddress(Console.readString("Ingresar nueva direccion:"));
-        enterprise.setPostalCode(Console.readInt("Ingresar nuevo codigo postal:"));
+                Menu.provinceMenu(enterprise);
 
-        enterpriseRepo.modify(enterprise);
-        Console.showMessage("¡Cuenta usuario-empresa modificada con exito!");
+                enterprise.setCity(Console.readString("Ingresar nueva ciudad:"));
+                enterprise.setAddress(Console.readString("Ingresar nueva direccion:"));
+                enterprise.setPostalCode(Console.readInt("Ingresar nuevo codigo postal:"));
+
+                enterpriseRepo.modify(enterprise);
+                Console.showMessage("¡CUENTA USUARIO-EMPRESA MODIFICADA CON EXITO!");
+
+            } else
+                Console.showMessage("¡MODIFICACION CANCELADA!");
+        }else{
+            Console.showMessage("¡NO EXISTE NINGUN USUARIO-EMPRESA CON ESE ID!");
+        }
     }
+
 
 }

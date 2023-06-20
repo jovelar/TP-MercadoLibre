@@ -4,7 +4,7 @@ public abstract class PayMethod {
 
      //region ATTRIBUTES
     private int idPayMethod;
-    private int idUser;
+    private int idBuyer;
 
     private double availableMoney;//saldo disponible del cliente
     //endregion
@@ -17,9 +17,9 @@ public abstract class PayMethod {
     public PayMethod() {
     }
 
-    public PayMethod(int idPayMethod, int idUser, double availableMoney) {
+    public PayMethod(int idPayMethod, int idBuyer, double availableMoney) {
         this.idPayMethod = idPayMethod;
-        this.idUser = idUser;
+        this.idBuyer = idBuyer;
         this.availableMoney = availableMoney;
     }
 
@@ -28,12 +28,12 @@ public abstract class PayMethod {
     //region GETTERS AND SETTERS
 
 
-    public int getIdUser() {
-        return idUser;
+    public int getIdBuyer() {
+        return idBuyer;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setIdBuyer(int idBuyer) {
+        this.idBuyer = idBuyer;
     }
 
     public double getAvailableMoney() {

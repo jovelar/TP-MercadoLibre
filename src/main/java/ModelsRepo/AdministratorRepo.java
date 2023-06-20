@@ -12,9 +12,9 @@ import java.util.List;
 public final class AdministratorRepo implements IRepository<Administrator> {
 
     //region ATTRIBUTES
-    private final File file = new File("src/main/java/org/example/Files/administrators.json");
+    private final File file = new File("src/main/java/Files/usersAdministrators.json");
     private final ObjectMapper mapper = new ObjectMapper();
-    private ArrayList<Administrator> admsList;
+    private ArrayList<Administrator> administratorsList;
     //endregion
 
     //region IMPLEMENTATION OF REPOSITORY INTERFACE METHODS
@@ -23,10 +23,10 @@ public final class AdministratorRepo implements IRepository<Administrator> {
         try {
             //desearializar, levantar un archivo .json y cargarlo a mi programa
             CollectionType collectionType = mapper.getTypeFactory().constructCollectionType(List.class, Administrator.class);
-            this.admsList = mapper.readValue(file, collectionType);
+            this.administratorsList = mapper.readValue(file, collectionType);
 
         } catch (IOException e) {
-            this.admsList = new ArrayList<>();
+            this.administratorsList = new ArrayList<>();
         }
     }
 
@@ -34,7 +34,7 @@ public final class AdministratorRepo implements IRepository<Administrator> {
     public void save() {
         //serializar, escribir en el archivo .json
         try{
-            mapper.writerWithDefaultPrettyPrinter().writeValue(file, this.admsList); //para guardarlo "lindo" en el archivo json
+            mapper.writerWithDefaultPrettyPrinter().writeValue(file, this.administratorsList); //para guardarlo "lindo" en el archivo json
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -43,22 +43,22 @@ public final class AdministratorRepo implements IRepository<Administrator> {
     @Override
     public List<Administrator> toList() {
         load();
-        return this.admsList;
+        return this.administratorsList;
     }
 
     @Override
     public void add(Administrator... objeto) {
         load();
-        this.admsList.addAll(List.of(objeto));
+        this.administratorsList.addAll(List.of(objeto));
         save();
     }
 
     @Override
     public void delete(int id) {
         load();
-        for(Administrator adm : this.admsList){
+        for(Administrator adm : this.administratorsList){
             if(adm.getIdUser() == id){
-                this.admsList.remove(adm);
+                this.administratorsList.remove(adm);
                 break;
             }
         }
@@ -67,17 +67,23 @@ public final class AdministratorRepo implements IRepository<Administrator> {
 
     @Override
     public void modify(Administrator nuevoObjeto) {
+
         load();
-        for(Administrator adm : this.admsList){
+
+        for(Administrator adm : this.administratorsList){
+
             if(adm.getIdUser() == nuevoObjeto.getIdUser()){
 
                 adm.setUsername(nuevoObjeto.getUsername());
                 adm.setEmail(nuevoObjeto.getEmail());
                 adm.setPassword(nuevoObjeto.getPassword());
+
                 adm.setFirstName(nuevoObjeto.getFirstName());
                 adm.setSurname(nuevoObjeto.getSurname());
+                adm.setDni(nuevoObjeto.getDni());
                 adm.setBirthDate(nuevoObjeto.getBirthDate());
                 adm.setPhoneNumber(nuevoObjeto.getPhoneNumber());
+                adm.setActive(nuevoObjeto.getActive());
                 break;
             }
         }

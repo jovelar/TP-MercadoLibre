@@ -1,0 +1,23 @@
+[ {
+  "idUser" : 1,
+  "username" : "adm1",
+  "email" : "adm1@gmail.com",
+  "password" : "1234",
+  "firstName" : "Eze",
+  "surname" : "Mamani",
+  "dni" : 41068807,
+  "birthDate" : "20/03/1998",
+  "phoneNumber" : 2254411162,
+  "active" : true
+}, {
+  "idUser" : 3,
+  "username" : "adm3",
+  "email" : "adm3@gmail.com",
+  "password" : "123",
+  "firstName" : "Ezequiel",
+  "surname" : "null",
+  "dni" : 0,
+  "birthDate" : "null",
+  "phoneNumber" : 0,
+  "active" : false
+} ]

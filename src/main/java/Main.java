@@ -94,6 +94,7 @@ public class Main {
         //System.out.println(validation.validateName(nombre1));
         //System.out.println(validation.validateName(nombre2));
         //System.out.println(validation.validateName(nombre3));
-        String kopona=validation.doUntilValidName(Console.readString("Ingrese su nombre"));
+        //String kopona=validation.doUntilValidName(Console.readString("Ingrese su nombre"));
+        long telefono=Console.readLong("Ingrese su numero de telefono, sin espacios ni giones");
     }
 }

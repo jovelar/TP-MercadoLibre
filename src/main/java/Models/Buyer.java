@@ -96,10 +96,41 @@ public final class Buyer extends Client {
     public void addFavorite(){
 
     }
-    public void showFavoriteList(){
-
+    public void showFavoriteList(List<Product> importedFavoriteList) {
+        if(!favorites.isEmpty()){
+            int position = 0;
+            boolean found = false;
+            for (int x = 0; x < importedFavoriteList.size(); x++) {
+                while (found == false && position < importedFavoriteList.size()) {
+                    if (favorites.get(x).getIdProduct() == importedFavoriteList.get(position).getIdProduct()) {
+                        System.out.println("ID: " + importedFavoriteList.get(x).getIdProduct() + ",MARCA: " + importedFavoriteList.get(x).getBrand() + ", PRODUCTO: " + importedFavoriteList.get(x).getProductName() + ", PRECIO: " + importedFavoriteList.get(x).getPrice() + ", DESCRIPCION: " + importedFavoriteList.get(x).getDescription());
+                        found=true;
+                    }
+                    position++;
+                }
+                found=false;
+            }
+        }else{
+            System.out.println("La lista esta vacia");
+        }
     }
+
+
     public void deleteFavorite(){
+        if(!favorites.isEmpty()){
+            int id=Console.readInt("Ingrese el ID del producto a eliminar");
+            boolean found=false;
+            int counter=0;
+            while(counter<favorites.size() && found==false){
+                if(favorites.get(counter).getIdProduct()==id){
+                    found=true;
+                }
+                counter++;
+            }
+
+        }else{
+            System.out.println("La lista esta vacia");
+        }
 
     }
     public boolean validateAvailableProducts(){

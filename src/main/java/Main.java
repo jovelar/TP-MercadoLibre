@@ -1,4 +1,5 @@
 import ModelsManager.ProductManager;
+import Tools.Console;
 import Tools.Menu;
 import Tools.Validations;
 
@@ -26,10 +27,6 @@ public class Main {
         System.out.println(validation.validateBirthDate(manzana));
          */
 
-        String mail="isjo@hotmail.com";
-        String mail2="limon@limon";
-
-        System.out.println(validation.validateEmail(mail));
-        System.out.println(validation.validateEmail(mail2));
+        String email= validation.doUntilValidEmail(Console.readString("Ingrese un email"));
     }
 }

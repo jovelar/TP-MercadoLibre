@@ -17,6 +17,11 @@ public class Validations {
         return true;
     }
 
+    /**
+     * Valida un email, desde una cadena de texto. Hace uso de la depdendecia Jakarta Mail
+     * @param email String
+     * @return True o False
+     */
     public boolean validateEmail(String email) {
         boolean isValid=true;
         try {
@@ -29,6 +34,22 @@ public class Validations {
         return isValid;
     }
 
+    /**
+     * Fuerza a mantenerse dentro de un bucle hasta que el usuario ingrese un e-mail valido.
+     * @param email String
+     * @return String
+     */
+    public String doUntilValidEmail(String email){
+        boolean valid=false;
+        do{
+            valid=validateEmail(email);
+            if(!valid){
+                System.out.println("Valor invalido!");
+                email=Console.readString("Ingrese la direccion de email");
+            }
+        }while(!valid);
+        return email;
+    }
     /**
      * Valida el formato de la fecha y si es mayor de 13 anos
      * @param birthDate String
@@ -52,6 +73,16 @@ public class Validations {
             }
         }
         return isValid;
+    }
+
+    public String doUntilValidBirthDate(String birthDate){
+        boolean valid=false;
+        do{
+            valid=validateBirthDate(birthDate);
+
+
+        }while(!valid);
+        return birthDate;
     }
     public boolean isProductAvailable(String idProduct){
         return true;

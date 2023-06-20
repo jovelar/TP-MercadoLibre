@@ -13,6 +13,10 @@ public final class Console {
             JOptionPane.showMessageDialog(null, message);
         }
 
+        public static void showMessageError(String message) {
+            JOptionPane.showMessageDialog(null, message, "Mensaje de error", JOptionPane.ERROR_MESSAGE);
+        }
+
         public static String readString(String message) {
             return JOptionPane.showInputDialog(message);
         }
@@ -53,6 +57,7 @@ public final class Console {
 
             return chosenOption;
         }
+
         public static int systemOptionsCreateAccount(){
             return JOptionPane.showOptionDialog(
                     null,
@@ -67,7 +72,13 @@ public final class Console {
 
         }
 
-    }
+        public static void cleanConsole() {
+            for(int i=0; i<20; i++) {
+                System.out.println("\n");
+            }
+        }
+
+}
 
 
 

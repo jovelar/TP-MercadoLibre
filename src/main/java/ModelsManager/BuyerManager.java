@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 import Enums.Province;
 import Models.Administrator;
 import Models.Buyer;
+import Models.Enterprise;
 import Models.Product;
 import ModelsRepo.AdministratorRepo;
 import ModelsRepo.BuyerRepo;
@@ -112,6 +113,41 @@ public final class BuyerManager {
 
     }
 
+    //Metodo nuevo -> By Ezequiel
+    public boolean searchBuyerByUsername(String username){
+        for(Buyer buyer : this.buyerRepo.toList()){
+            if(buyer.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //Metodo nuevo -> By Ezequiel
+    public Buyer returnBuyerById(int id){
+        Buyer buyerWanted = null;
+
+        for(Buyer buyer : this.buyerRepo.toList()){
+            if(buyer.getIdUser() == id){
+                buyerWanted = buyer;
+                break;
+            }
+        }
+        return buyerWanted;
+    }
+
+    //Metodo nuevo -> By Ezequiel
+    public Buyer returnBuyerByUsername(String username){
+        Buyer buyerWanted = null;
+
+        for(Buyer buyer : this.buyerRepo.toList()){
+            if(buyer.getUsername().equals(username)){
+                buyerWanted = buyer;
+                break;
+            }
+        }
+        return buyerWanted;
+    }
 
     public void modifyUser(){
 

@@ -6,6 +6,7 @@ import Tools.Validations;
 
 import java.util.Scanner;
 import ModelsManager.AdministratorManager;
+import ModelsManager.EnterpriseManager;
 import Tools.Console;
 
 
@@ -13,7 +14,6 @@ public class Main {
     public static void main(String[] args) {
 
         SalesSystem salesSystem = new SalesSystem();
-
         salesSystem.getProductManager().showSaleProducts();
 
         //menu principal
@@ -26,10 +26,14 @@ public class Main {
                 case "CREAR CUENTA":
                     salesSystem.createAccount();
                     break;
+
+//-----------------------------------------------------------------
                 case "INGRESAR":
-                    // Acciones para la opción 2
-                    System.out.println("Ha seleccionado la opción 2.");
+                    salesSystem.logIn();
+
                     break;
+//-----------------------------------------------------------------
+
                 case "MIS COMPRAS":
                     // Acciones para la opción 3
                     System.out.println("Ha seleccionado la opción 3.");

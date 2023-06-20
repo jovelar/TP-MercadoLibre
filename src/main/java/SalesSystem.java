@@ -1,4 +1,5 @@
 import ModelsManager.*;
+import Tools.Console;
 
 public final class SalesSystem {
 
@@ -61,4 +62,14 @@ public final class SalesSystem {
     }
     //endregion
 
+    public void createAccount(){
+        int resp = Console.systemOptionsCreateAccount()+1;
+        if(resp == 1){
+            //verificar si ya tiene cuenta
+            //cuando agrega su mail
+            //
+        }else if(resp == 2){
+
+        }
+    }
 }

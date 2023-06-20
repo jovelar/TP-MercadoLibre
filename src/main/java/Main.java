@@ -16,8 +16,7 @@ public class Main {
 
             switch (opcion) {
                 case "CREAR CUENTA":
-                    // Acciones para la opción 1
-                    System.out.println("Ha seleccionado la opción 1.");
+                    salesSystem.createAccount();
                     break;
                 case "INGRESAR":
                     // Acciones para la opción 2

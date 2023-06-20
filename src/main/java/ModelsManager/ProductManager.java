@@ -12,12 +12,12 @@ public class ProductManager {
 
     private ProductRepo productRepo = new ProductRepo();
 
-
+    //TODO: crear un showProducts simplificado, con menos datos, 3-4 atributos
     public void showSaleProducts(){
         List<Product> productList = productRepo.toList();
 
         for(Product product : productList){
-            if(product.getPrice() < 30000){
+            if(product.getPrice() < 30_000){
                 System.out.println("ID:" + product.getIdProduct() + " ." + product);
                 System.out.println("---------------------------------------------------------");
 

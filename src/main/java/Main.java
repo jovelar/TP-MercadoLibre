@@ -3,59 +3,55 @@ import Tools.Console;
 
 public class Main {
     public static void main(String[] args) {
+
+        SalesSystem salesSystem = new SalesSystem();
+
+        salesSystem.getProductManager().showSaleProducts();
+
         //menu principal
-        int opcion;
+        String opcion;
 
         do {
-            System.out.println("Inicio");
-            System.out.println("1. Crear cuenta");
-            System.out.println("2. Ingresar");
-            System.out.println("3. Mis compras");
-            System.out.println("4. Carrito");
-            System.out.println("5. Ver producto");
-            System.out.println("6. Ver todos los productos");
-            System.out.println("7. Ver por categoría");
-            System.out.println("0. Salir");
-            opcion = Console.readInt("Ingrese una opción: ");
+            opcion = Console.systemOptions();
 
             switch (opcion) {
-                case 1:
+                case "CREAR CUENTA":
                     // Acciones para la opción 1
                     System.out.println("Ha seleccionado la opción 1.");
                     break;
-                case 2:
+                case "INGRESAR":
                     // Acciones para la opción 2
                     System.out.println("Ha seleccionado la opción 2.");
                     break;
-                case 3:
+                case "MIS COMPRAS":
                     // Acciones para la opción 3
                     System.out.println("Ha seleccionado la opción 3.");
                     break;
-                case 4:
+                case "CARRITO":
                     // Acciones para la opción 3
-                    System.out.println("Ha seleccionado la opción 3.");
+                    System.out.println("Ha seleccionado la opción 4.");
                     break;
-                case 5:
+                case "VER PRODUCTO":
                     // Acciones para la opción 3
-                    System.out.println("Ha seleccionado la opción 3.");
+                    System.out.println("Ha seleccionado la opción 5.");
                     break;
-                case 6:
+                case "VER TODOS LOS PRODUCTOS":
                     // Acciones para la opción 3
-                    System.out.println("Ha seleccionado la opción 3.");
+                    System.out.println("Ha seleccionado la opción 6.");
                     break;
-                case 7:
+                case "VER CATEGORIAS":
                     // Acciones para la opción 3
-                    System.out.println("Ha seleccionado la opción 3.");
+                    System.out.println("Ha seleccionado la opción 7.");
                     break;
-                case 0:
+                case "SALIR":
                     System.out.println("Saliendo del programa...");
                     break;
                 default:
-                    System.out.println("Opción inválida. Por favor, ingrese una opción válida.");
+                        System.out.println("Opción inválida. Por favor, ingrese una opción válida.");
                     break;
             }
 
-        } while (opcion != 0);
+        } while(!opcion.equals("SALIR"));
 
     }
 

@@ -13,6 +13,7 @@ public final class Order {
     private String deliveryAddress;
 
     private OrderStatus state;
+    private String deliveryDate;
 
     public enum OrderStatus {
         IN_PREPARATION, ON_THE_WAY, CANCELLED, DELIVERED
@@ -25,13 +26,14 @@ public final class Order {
     public Order(){}
 
 
-    public Order(int idOrder, int idBuyer, ArrayList<Product> solicitedProducts, PayMethod payMethod, String deliveryAddress) {
+    public Order(int idOrder, int idBuyer, ArrayList<Product> solicitedProducts, PayMethod payMethod, String deliveryAddress, String deliveryDate) {
         this.idOrder = idOrder;
         this.idBuyer = idBuyer;
         this.solicitedProducts = solicitedProducts;
         this.payMethod = payMethod;
         this.deliveryAddress = deliveryAddress;
         this.state = OrderStatus.IN_PREPARATION;
+        this.deliveryDate = deliveryDate;
     }
 
     //endregion
@@ -85,6 +87,14 @@ public final class Order {
 
     public void setState(OrderStatus state) {
         this.state = state;
+    }
+
+    public String getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(String deliveryDate) {
+        this.deliveryDate = deliveryDate;
     }
 
     //endregion

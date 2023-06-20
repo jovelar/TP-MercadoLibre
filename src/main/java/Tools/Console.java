@@ -53,6 +53,20 @@ public final class Console {
 
             return chosenOption;
         }
+        public static int systemOptionsCreateAccount(){
+            return JOptionPane.showOptionDialog(
+                    null,
+                    "Elija una opcion:",
+                    "Crear cuenta",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,    // null para icono por defecto.
+                    new Object[] { "CUENTA PERSONAL", "CUENTA EMPRESA" },   // null para YES, NO y CANCEL
+                    "null");
+
+
+        }
+
     }
 
 

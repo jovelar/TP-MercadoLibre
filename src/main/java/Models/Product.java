@@ -149,7 +149,7 @@ public final class Product {
                 "\n Nombre del vendedor:" + vendorName +
                 "\n Precio:" + price +
                 "\n Stock: " + quantity +
-                "\n Categoria: " + category +
+                "\n Categoria: " + category.getNombre() +
                 "\n Descripción: " + description;
     }
 }

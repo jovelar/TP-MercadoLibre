@@ -11,7 +11,7 @@ import Tools.Console;
 
 public class Main {
     public static void main(String[] args) {
-/*
+
         SalesSystem salesSystem = new SalesSystem();
 
         salesSystem.getProductManager().showSaleProducts();
@@ -24,8 +24,7 @@ public class Main {
 
             switch (opcion) {
                 case "CREAR CUENTA":
-                    // Acciones para la opción 1
-                    System.out.println("Ha seleccionado la opción 1.");
+                    salesSystem.createAccount();
                     break;
                 case "INGRESAR":
                     // Acciones para la opción 2
@@ -60,9 +59,9 @@ public class Main {
             }
 
         } while(!opcion.equals("SALIR"));
-*/
+
         //mainEzequiel();
-        mainJOvelar();
+//        mainJOvelar();
     }
 
 //        productManager.listaProductosHardcodeado(); //cargue el archivo productos.json con los productos hardcodeados
@@ -82,19 +81,19 @@ public class Main {
         //administratorManager.deleteAdministrator();
         administratorManager.totalModifyAdministrator();
     }
-    public static void mainJOvelar(){
-        Validations validation=new Validations();
-        /*String manzana="25/02/2014";
-        System.out.println(validation.validateBirthDate(manzana));
-         */
-        String nombre1="jose maria listorti";
-        String nombre2="Abaco 123 ";
-        String nombre3=".*.------=";
-
-        //System.out.println(validation.validateName(nombre1));
-        //System.out.println(validation.validateName(nombre2));
-        //System.out.println(validation.validateName(nombre3));
-        //String kopona=validation.doUntilValidName(Console.readString("Ingrese su nombre"));
-        long telefono=Console.readLong("Ingrese su numero de telefono, sin espacios ni giones");
-    }
+//    public static void mainJOvelar(){
+//        Validations validation=new Validations();
+//        /*String manzana="25/02/2014";
+//        System.out.println(validation.validateBirthDate(manzana));
+//         */
+//        String nombre1="jose maria listorti";
+//        String nombre2="Abaco 123 ";
+//        String nombre3=".*.------=";
+//
+//        //System.out.println(validation.validateName(nombre1));
+//        //System.out.println(validation.validateName(nombre2));
+//        //System.out.println(validation.validateName(nombre3));
+//        //String kopona=validation.doUntilValidName(Console.readString("Ingrese su nombre"));
+//        long telefono=Console.readLong("Ingrese su numero de telefono, sin espacios ni giones");
+//    }
 }

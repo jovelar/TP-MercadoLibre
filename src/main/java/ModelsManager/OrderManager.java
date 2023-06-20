@@ -6,9 +6,14 @@ import Models.SubModels.Order;
 import Models.SubModels.PayMethod;
 import ModelsRepo.SubModelsRepo.OrderRepo;
 import Tools.Console;
+import Tools.dateHandling;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public final class OrderManager {
 
@@ -23,6 +28,13 @@ public final class OrderManager {
         }
     }
 
+    public void showDeliveryDate(int idOrder){
+        Order order = returnOrderById(idOrder);
+        LocalDate deliveryDateLocalDate = dateHandling.convertStringToLocalDate(order.getDeliveryDate());
+        System.out.print("El pedido se entregara el " + deliveryDateLocalDate.getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("es", "ES"))+ " " + deliveryDateLocalDate.getDayOfMonth());
+        System.out.print(" de " + deliveryDateLocalDate.getMonth().getDisplayName(TextStyle.FULL, new Locale("es", "ES")));
+    }
+
     public void addOrder(Buyer buyer, List<Product> productList){
         Order order = null;
 
@@ -35,7 +47,11 @@ public final class OrderManager {
         PayMethod chosenPaymentMethod = payMethods.get(2);//el metodo de pago de elegido se guarda en esta variable
         String deliveryAddress = buyer.getAddress();
 
-        order = new Order(idOrder, idBuyer, solicitedProducts, chosenPaymentMethod, deliveryAddress);
+
+        LocalDate deliveryDateLocalDate = dateHandling.calculateDeliveryDate();
+        String deliveryDate = dateHandling.convertLocalDateToString(deliveryDateLocalDate);
+
+        order = new Order(idOrder, idBuyer, solicitedProducts, chosenPaymentMethod, deliveryAddress, deliveryDate);
 
         orderRepo.add(order);
         System.out.println("Pedido agregado exitosamente!");

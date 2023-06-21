@@ -18,7 +18,12 @@ public final class Console {
         }
 
         public static String readString(String message) {
-            return JOptionPane.showInputDialog(message);
+            String optionEntered = JOptionPane.showInputDialog(message);
+
+            if(optionEntered == null)
+                optionEntered = "SALIR";
+
+            return optionEntered;
         }
 
         public static int readInt(String message) {
@@ -56,8 +61,8 @@ public final class Console {
             if(userConected){
                 chosenOption = (String) JOptionPane.showInputDialog(
                         null,
-                        "Seleccione opcion",
-                        "Selector de opciones",
+                        "SELECCIONE UNA OPCION\n\n",
+                        "OPCIONES MENU PRINCIPAL",
                         JOptionPane.QUESTION_MESSAGE,
                         null,  // null para icono defecto
                         new Object[] { "VER MI PERFIL", "MIS COMPRAS", "FAVORITOS", "CARRITO", "VER UN PRODUCTO",
@@ -67,8 +72,8 @@ public final class Console {
 
                 chosenOption = (String) JOptionPane.showInputDialog(
                         null,
-                        "Seleccione opcion",
-                        "Selector de opciones",
+                        "SELECCIONE UNA OPCION\n\n",
+                        "OPCIONES MENU PRINCIPAL",
                         JOptionPane.QUESTION_MESSAGE,
                         null,  // null para icono defecto
                         new Object[] {"CREAR CUENTA", "INGRESAR", "VER UN PRODUCTO",

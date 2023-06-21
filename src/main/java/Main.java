@@ -1,10 +1,14 @@
 
+import Enums.TypeUser;
+import Models.Buyer;
 import Models.User;
 import ModelsManager.SalesSystem;
 import Tools.Console;
 import Tools.Validations;
 
 import ModelsManager.AdministratorManager;
+
+import static ModelsManager.SalesSystem.returnTypeUserByUsername;
 
 
 public class Main {
@@ -18,8 +22,10 @@ public class Main {
 
     public static void mainMenu() {
 
-        User user = null;
+        String username = "";
+        Buyer buyer = new Buyer();
         boolean userConected = false;
+        TypeUser typeUser = TypeUser.NONE;
 
         SalesSystem.getProductManager().showSaleProducts();
 
@@ -27,15 +33,15 @@ public class Main {
         String optionEntered;
 
         do {
-            //a este metodo le debere pasar el parametro  userConected
-            //y dentro del metodo agregar un if, que segun si esta conectado o no
-            //cambien las opciones disponibles
+            /*if(userConected && typeUser==TypeUser.BUYER){
+                buyer = (Buyer) user;
+            }*/
             optionEntered = Console.systemOptions(userConected);
 
             switch (optionEntered) {
                 case "VER MI PERFIL":
-                    System.out.println(user);
-                    //TODO: agregar opciones de modificacion de perfil
+                    System.out.println(buyer);
+                    //TODO: agregar metodo con switch y opciones de modificacion de perfil
                     break;
                 case "CREAR CUENTA":
                     SalesSystem.createAccount();
@@ -43,7 +49,23 @@ public class Main {
 
 //-----------------------------------------------------------------
                 case "INGRESAR":
-                    SalesSystem.logIn();
+                    userConected = SalesSystem.logIn(username);
+
+                    if(userConected){
+                        typeUser = SalesSystem.returnTypeUserByUsername(username);
+
+                        if(typeUser == TypeUser.BUYER)
+                            buyer = SalesSystem.getBuyerManager().returnBuyerByUsername(username);
+
+                        else if(typeUser == TypeUser.ADMINISTRATOR) {
+                            //TODO: metodo con switch para opciones del ADMINISTRATOR
+                            // dentro se instancia un ADMINISTRATOR a partir del username
+
+                        }else if(typeUser == TypeUser.ENTERPRISE) {
+                            //TODO: metodo con switch para ENTERPRISE
+                            // dentro se instancia un ENTERPRISE a partir del username
+                        }
+                    }
 
                     break;
 //-----------------------------------------------------------------
@@ -52,6 +74,7 @@ public class Main {
                     System.out.println("Ha seleccionado la opción " + optionEntered);
                     break;
                 case "FAVORITOS":
+                    //SalesSystem.
                     System.out.println("Ha seleccionado la opción " + optionEntered);
                     break;
                 case "CARRITO":
@@ -86,11 +109,11 @@ public class Main {
         /*EnterpriseManager enterpriseManager = new EnterpriseManager();
         enterpriseManager.totalModifyEnterprise();*/
 
-        AdministratorManager administratorManager = new AdministratorManager();
+        //AdministratorManager administratorManager = new AdministratorManager();
         //administratorManager.addAministrator();
         //administratorManager.deleteLogicallyAdminsitrator();
         //administratorManager.deleteAdministrator();
-        administratorManager.totalModifyAdministrator();
+        //administratorManager.totalModifyAdministrator();
 
     }
 

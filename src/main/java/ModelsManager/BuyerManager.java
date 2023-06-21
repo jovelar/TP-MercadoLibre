@@ -10,6 +10,7 @@ import ModelsRepo.AdministratorRepo;
 import ModelsRepo.BuyerRepo;
 import Tools.Console;
 import Tools.Menu;
+import Tools.Validations;
 
 import java.text.DateFormat;
 import java.time.chrono.ChronoLocalDateTime;
@@ -44,13 +45,13 @@ public final class BuyerManager {
 
             int idUser = Console.readInt("Ingrese el id del Nuevo usuario:"); //se supone que tiene q ser asignado automaticamente
             String userName = Console.readString("Ingrese el nombre de usuario: ");
-            String email = Console.readString("Ingrese la direccion de email : ");
+            String email = Validations.doUntilValidEmail(Console.readString("Ingrese la direccion de email : "));
             String password = Console.readString("Ingrese su contrasena:");
-            String firstName = Console.readString("Ingrese su nombre:");
-            String surname = Console.readString("Ingrese el apellido");
-            int dni = Console.readInt("Ingrese su dni");
-            String birthDate = Console.readString("Ingrese su fecha de nacimiento"); // REVISAR CON DATEBUILDER
-            int phoneNumber = Console.readInt("Ingrese su numero de telfono");
+            String firstName = Validations.doUntilValidName(Console.readString("Ingrese su nombre:"));
+            String surname =Validations.doUntilValidName(Console.readString("Ingrese el apellido"));
+            int dni = Validations.doUntilValidDNI(Console.readInt("Ingrese su dni"));
+            String birthDate =Validations.doUntilValidBirthDate(Console.readString("Ingrese su fecha de nacimiento"));
+            int phoneNumber = Integer.valueOf((int) Validations.doUntilValidPhoneNumber(Console.readInt("Ingrese su numero de telfono")));
             String city = Console.readString("ingrese su ciudad");
             //Enum province=Console.readString("Ingrese la provincia");
             String adress = Console.readString("ingrese su domicilio");

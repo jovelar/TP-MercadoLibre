@@ -50,7 +50,7 @@ public class Validations {
         do{
             valid=validateEmail(email);
             if(!valid){
-                System.out.println("Valor invalido!");
+                Console.showMessageError("Valor invalido!");
                 email=Console.readString("Ingrese la direccion de email");
             }
         }while(!valid);
@@ -68,13 +68,13 @@ public class Validations {
         try{
             dateToCheck = LocalDate.parse(birthDate, DateTimeFormatter.ofPattern("d/M/y"));
         }catch(DateTimeException e){
-            System.out.println("Formato invalido"+ e.getMessage());
+            Console.showMessageError("Formato invalido");
             isValid=false;
         }
         if(isValid){
             Period period=dateToCheck.until(actualDate);
             if(period.getYears()<13){
-                System.out.println("Debe ser mayor de 13 anos para poder registrarse");
+                Console.showMessageError("Debe ser mayor de 13 anos para poder registrarse");
                 isValid=false;
             }
         }
@@ -116,7 +116,7 @@ public class Validations {
         do{
             valid=validateDNI(dni);
             if(!valid){
-                System.out.println("Valor invalido");
+                Console.showMessageError("Dni invalido");
                 dni=Console.readInt("Ingrese su dni");
             }
         }while(!valid);
@@ -150,8 +150,7 @@ public class Validations {
         do{
             valid=validateName(name);
             if(!valid){
-                System.out.println("Nombre invalido");
-                name=Console.readString("Ingrese un indentificado valido");
+                name=Console.readString("Ingrese un nombre/apellido valido");
             }
 
         }while(!valid);
@@ -213,11 +212,31 @@ public class Validations {
         do{
             valid=validateInt(number);
             if(!valid){
-                System.out.println("Valor invalido");
+                Console.showMessageError("Valor invalido");
             }
         }while(!valid);
 
         return number;
+    }
+
+    public static boolean validatePostalCode(int postalCode){
+        boolean valid=false;
+        if(String.valueOf(postalCode).length()==4){
+            valid=true;
+        }
+        return valid;
+    }
+
+    public static int doUntilValidPostalCode(int postalCode){
+        boolean valid=false;
+        do{
+            valid=validatePostalCode(postalCode);
+            if(!valid){
+                Console.showMessageError("Codigo postal invalido!");
+                postalCode=Console.readInt("Ingrese los 4 digitos del codigo postal: ");
+            }
+        }while(!valid);
+        return postalCode;
     }
 
 }

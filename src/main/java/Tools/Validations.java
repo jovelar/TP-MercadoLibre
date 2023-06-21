@@ -1,6 +1,10 @@
 package Tools;
 
 
+import Exceptions.ExistingEmailException;
+import Exceptions.ExistingPersonException;
+import Exceptions.ExistingUsernameException;
+import ModelsManager.SalesSystem;
 import jakarta.mail.internet.AddressException;
 import jakarta.mail.internet.InternetAddress;
 import org.w3c.dom.Text;
@@ -50,8 +54,8 @@ public class Validations {
         do{
             valid=validateEmail(email);
             if(!valid){
-                Console.showMessageError("Valor invalido!");
-                email=Console.readString("Ingrese la direccion de email");
+                Console.showMessageError("Email invalido!");
+                email=Console.readString("Ingrese la direccion de email \n\nUsá el formato: nombre@ejemplo.com\n");
             }
         }while(!valid);
         return email;
@@ -74,7 +78,7 @@ public class Validations {
         if(isValid){
             Period period=dateToCheck.until(actualDate);
             if(period.getYears()<13){
-                Console.showMessageError("Debe ser mayor de 13 anos para poder registrarse");
+                Console.showMessageError("Debe ser mayor de 13 años para poder registrarse");
                 isValid=false;
             }
         }
@@ -106,7 +110,7 @@ public class Validations {
      */
     public static boolean validateDNI(int dni){
         boolean status=false;
-        if(dni>1000000 && dni>=100000000){
+        if((dni>1_000000 && dni<=100_000000) || (dni==0)){
             status=true;
         }
         return status;
@@ -165,7 +169,7 @@ public class Validations {
     public static boolean validatePhoneNumber(long phoneNumber){
         boolean valid=false;
         if(phoneNumber!=-1){
-            if(String.valueOf(phoneNumber).length()>6 && String.valueOf(phoneNumber).length()<15){
+            if((String.valueOf(phoneNumber).length()>6 && String.valueOf(phoneNumber).length()<15) || phoneNumber == 0){
                 valid=true;
             }
         }
@@ -213,6 +217,7 @@ public class Validations {
             valid=validateInt(number);
             if(!valid){
                 Console.showMessageError("Valor invalido");
+                number = Console.readInt("Ingrese un número valido: ");
             }
         }while(!valid);
 
@@ -226,7 +231,7 @@ public class Validations {
      */
     public static boolean validatePostalCode(int postalCode){
         boolean valid=false;
-        if(String.valueOf(postalCode).length()==4){
+        if(String.valueOf(postalCode).length()==4 || postalCode == 0){
             valid=true;
         }
         return valid;
@@ -247,6 +252,77 @@ public class Validations {
             }
         }while(!valid);
         return postalCode;
+    }
+
+    public static String doUntilUsernameIsNotInUse(String username) {
+        boolean resp = false;
+        do{
+            try{
+                resp = SalesSystem.searchUsername(username); //si se encontro al usuario, resp es true
+                if(resp) {
+                    throw new ExistingUsernameException("¡EL NOMBRE DE USUARIO YA SE ENCUENTRA REGISTRADO!");
+                }
+            }catch (ExistingUsernameException e){
+                Console.showMessageError(e.getMessage());
+                username = Console.readString("Ingresar nombre de usuario:");
+            }
+
+
+        }while(resp);
+
+        return username;
+    }
+
+    public static String doUntilEmailIsNotInUse(String email) {
+        boolean resp = false;
+        do{
+            try{
+                resp = SalesSystem.searchEmail(email); //si se encontro el email
+                if(resp) {
+                    throw new ExistingEmailException("¡EL EMAIL YA SE ENCUENTRA REGISTRADO!");
+                }
+            }catch (ExistingEmailException e){
+                Console.showMessageError(e.getMessage());
+                email = Console.readString("Ingresar email:");
+            }
+
+
+        }while(resp);
+
+        return email;
+    }
+
+    public static int doUntilPersonIsNotRegistred(int dni) {
+        boolean resp = false;
+        do{
+            try{
+                resp = SalesSystem.searchDni(dni); //si se encontro el dni
+                if(resp) {
+                    throw new ExistingPersonException("¡EL DNI INGRESADO YA SE ENCUENTRA REGISTRADO EN EL SISTEMA!");
+                }
+            }catch (ExistingPersonException e){
+                Console.showMessageError(e.getMessage());
+                dni = Console.readInt("Ingresar dni valido:");
+            }
+
+
+        }while(resp);
+
+        return dni;
+    }
+
+    public static String doUntilPasswordValid(String password){
+        while(password == null){
+            Console.showMessageError("Contraseña invalida!");
+            password = Console.enterPassword();
+        }
+        return password;
+    }
+
+    public static void ingresoSalir(String resp){
+        if(resp == "SALIR"){
+
+        }
     }
 
 }

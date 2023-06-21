@@ -214,4 +214,22 @@
   "availableMoney" : 0.0,
   "fantasyName" : "Shiny",
   "salesRevenue" : 0.0
+}, {
+  "idUser" : 13,
+  "username" : "flor",
+  "email" : "flordani98@gmail.com",
+  "password" : "12345",
+  "firstName" : "flor",
+  "surname" : "mamani",
+  "dni" : 41386329,
+  "birthDate" : "28/08/1998",
+  "phoneNumber" : 2254533702,
+  "active" : true,
+  "province" : "MENDOZA",
+  "city" : "junin",
+  "address" : "san martin 15",
+  "postalCode" : 5500,
+  "availableMoney" : 0.0,
+  "fantasyName" : "Shiny",
+  "salesRevenue" : 0.0
 } ]

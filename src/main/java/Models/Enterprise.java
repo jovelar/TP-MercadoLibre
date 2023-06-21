@@ -18,16 +18,7 @@ public final class Enterprise extends Client implements Serializable {
 
     }
 
-    public Enterprise(int idEnterprise, String username, String email, String password, String firstName, String surname,
-                      int dni, String birthDate, long phoneNumber, boolean active, Province province,
-                      String city, String address, int postalCode, String fantasyName, float salesRevenue) {
 
-        super(idEnterprise, username, email, password, firstName, surname, dni, birthDate, phoneNumber, active,
-                province, city, address, postalCode);
-
-        this.fantasyName = fantasyName;
-        this.salesRevenue = salesRevenue;
-    }
 
     //Creado para metodo addEnterprose() en clase EnterpriseManager
     public Enterprise(int idEnterprise, String username, String email, String password, String firstName, String surname, int dni,

@@ -1,21 +1,17 @@
 
 import Models.User;
-import ModelsManager.ProductManager;
+import ModelsManager.SalesSystem;
 import Tools.Console;
-import Tools.Menu;
 import Tools.Validations;
 
-import java.util.Scanner;
 import ModelsManager.AdministratorManager;
-import ModelsManager.EnterpriseManager;
-import Tools.Console;
 
 
 public class Main {
     public static void main(String[] args) {
 
-        //mainMenu();
-        mainEzequiel();
+        mainMenu();
+        //mainEzequiel();
         //mainJOvelar();
 
     }
@@ -28,15 +24,19 @@ public class Main {
         SalesSystem.getProductManager().showSaleProducts();
 
         //menu principal
-        String opcion;
+        String optionEntered;
 
         do {
             //a este metodo le debere pasar el parametro  userConected
             //y dentro del metodo agregar un if, que segun si esta conectado o no
             //cambien las opciones disponibles
-            opcion = Console.systemOptions();
+            optionEntered = Console.systemOptions(userConected);
 
-            switch (opcion) {
+            switch (optionEntered) {
+                case "VER MI PERFIL":
+                    System.out.println(user);
+                    //TODO: agregar opciones de modificacion de perfil
+                    break;
                 case "CREAR CUENTA":
                     SalesSystem.createAccount();
                     break;
@@ -49,34 +49,32 @@ public class Main {
 //-----------------------------------------------------------------
 
                 case "MIS COMPRAS":
-                    // Acciones para la opción 3
-                    System.out.println("Ha seleccionado la opción 3.");
+                    System.out.println("Ha seleccionado la opción " + optionEntered);
+                    break;
+                case "FAVORITOS":
+                    System.out.println("Ha seleccionado la opción " + optionEntered);
                     break;
                 case "CARRITO":
-                    // Acciones para la opción 3
-                    System.out.println("Ha seleccionado la opción 4.");
+                    System.out.println("Ha seleccionado la opción " + optionEntered);
                     break;
-                case "VER PRODUCTO":
-                    // Acciones para la opción 3
-                    System.out.println("Ha seleccionado la opción 5.");
+                case "VER UN PRODUCTO":
+                    System.out.println("Ha seleccionado la opción " + optionEntered);
                     break;
-                case "VER TODOS LOS PRODUCTOS":
-                    // Acciones para la opción 3
-                    System.out.println("Ha seleccionado la opción 6.");
+                case "VER MAS PRODUCTOS":
+                    System.out.println("Ha seleccionado la opción " + optionEntered);
                     break;
                 case "VER CATEGORIAS":
-                    // Acciones para la opción 3
-                    System.out.println("Ha seleccionado la opción 7.");
+                    System.out.println("Ha seleccionado la opción " + optionEntered);
                     break;
                 case "SALIR":
-                    System.out.println("Saliendo del programa...");
+                    Console.showMessage("Saliendo del programa...");
                     break;
                 default:
-                    System.out.println("Opción inválida. Por favor, ingrese una opción válida.");
+                    Console.showMessageError("OPCION INVALIDA! VUELVA A INTENTARLO!");
                     break;
             }
 
-        } while(!opcion.equals("SALIR"));
+        } while(!optionEntered.equals("SALIR"));
 
         //mainEzequiel();
 

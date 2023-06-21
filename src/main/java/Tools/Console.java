@@ -50,21 +50,34 @@ public final class Console {
 
         }
 
-        public static String systemOptions() {
+        public static String systemOptions(boolean userConected) {
             String chosenOption;
 
-            chosenOption = (String) JOptionPane.showInputDialog(
-                    null,
-                    "Seleccione opcion",
-                    "Selector de opciones",
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,  // null para icono defecto
-                    new Object[] { "CREAR CUENTA", "INGRESAR", "MIS COMPRAS", "CARRITO", "VER PRODUCTO",
-                            "VER TODOS LOS PRODUCTOS", "VER CATEGORIAS", "SALIR"},
-                    "CREAR CUENTA");
+            if(userConected){
+                chosenOption = (String) JOptionPane.showInputDialog(
+                        null,
+                        "Seleccione opcion",
+                        "Selector de opciones",
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,  // null para icono defecto
+                        new Object[] { "VER MI PERFIL", "MIS COMPRAS", "FAVORITOS", "CARRITO", "VER UN PRODUCTO",
+                                "VER MAS PRODUCTOS", "VER CATEGORIAS", "SALIR"},
+                        "VER MI PERFIL");
+            } else {
 
-                if(chosenOption == null)
-                    chosenOption = "SALIR";
+                chosenOption = (String) JOptionPane.showInputDialog(
+                        null,
+                        "Seleccione opcion",
+                        "Selector de opciones",
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,  // null para icono defecto
+                        new Object[] {"CREAR CUENTA", "INGRESAR", "VER UN PRODUCTO",
+                                "VER MAS PRODUCTOS", "VER CATEGORIAS", "SALIR"},
+                        "CREAR CUENTA");
+            }
+
+            if(chosenOption == null)
+                chosenOption = "SALIR";
 
             return chosenOption;
         }

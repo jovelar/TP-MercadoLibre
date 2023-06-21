@@ -100,6 +100,7 @@ public class Main {
       //System.out.println(validation.validateName(nombre2));
       //System.out.println(validation.validateName(nombre3));
         //String kopona=validation.doUntilValidName(Console.readString("Ingrese su nombre"));
-       long telefono=validation.doUntilValidPhoneNumber(Console.readLong("Ingrese su numero de telefono, sin espacios ni giones"));
+       //long telefono=validation.doUntilValidPhoneNumber(Console.readLong("Ingrese su numero de telefono, sin espacios ni giones"));
+       int numero=validation.doUntilValidNumber(Console.readInt("Ingrese un numero entero"));
    }
 }

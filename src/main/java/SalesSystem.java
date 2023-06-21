@@ -1,68 +1,47 @@
 import ModelsManager.*;
 import Tools.Console;
 
-public final class SalesSystem {
+public abstract class SalesSystem {
 
     //region ATTRIBUTES
-    private AdministratorManager administratorManager = new AdministratorManager();
-    private BuyerManager buyerManager = new BuyerManager();
-    private CardManager cardManager = new CardManager();
-    private EnterpriseManager enterpriseManager = new EnterpriseManager();
-    private OrderManager orderManager = new OrderManager();
-    private ProductManager productManager = new ProductManager();
+    private static final AdministratorManager administratorManager = new AdministratorManager();
+    private static final BuyerManager buyerManager = new BuyerManager();
+    private static final CardManager cardManager = new CardManager();
+    private static final EnterpriseManager enterpriseManager = new EnterpriseManager();
+    private static final OrderManager orderManager = new OrderManager();
+    private static final ProductManager productManager = new ProductManager();
+
+
+
     //endregion
 
     //region GETTERS AND SETTERS
-    public AdministratorManager getAdministratorManager() {
+    public static AdministratorManager getAdministratorManager() {
         return administratorManager;
     }
 
-    public void setAdministratorManager(AdministratorManager administratorManager) {
-        this.administratorManager = administratorManager;
-    }
-
-    public BuyerManager getBuyerManager() {
+    public static BuyerManager getBuyerManager() {
         return buyerManager;
     }
 
-    public void setBuyerManager(BuyerManager buyerManager) {
-        this.buyerManager = buyerManager;
-    }
-
-    public CardManager getCardManager() {
+    public static CardManager getCardManager() {
         return cardManager;
     }
 
-    public void setCardManager(CardManager cardManager) {
-        this.cardManager = cardManager;
-    }
-
-    public EnterpriseManager getEnterpriseManager() {
+    public static EnterpriseManager getEnterpriseManager() {
         return enterpriseManager;
     }
 
-    public void setEnterpriseManager(EnterpriseManager enterpriseManager) {
-        this.enterpriseManager = enterpriseManager;
-    }
-
-    public OrderManager getOrderManager() {
+    public static OrderManager getOrderManager() {
         return orderManager;
     }
 
-    public void setOrderManager(OrderManager orderManager) {
-        this.orderManager = orderManager;
-    }
-
-    public ProductManager getProductManager() {
+    public static ProductManager getProductManager() {
         return productManager;
-    }
-
-    public void setProductManager(ProductManager productManager) {
-        this.productManager = productManager;
     }
     //endregion
 
-    public void createAccount(){
+    public static void createAccount(){
         int resp = Console.systemOptionsCreateAccount()+1;
         if(resp == 1){
             //verificar si ya tiene cuenta
@@ -73,7 +52,7 @@ public final class SalesSystem {
         }
     }
 
-    public void logIn() {
+    public static boolean logIn() {
 
         boolean loginSuccessful = false;
 
@@ -82,9 +61,10 @@ public final class SalesSystem {
 
         //Tengo que buscar en todas las bases de datos que tipo de usuario es
 
+        return loginSuccessful;
     }
 
-   /* public boolean validateLogin(String username, String password) {
+    public static boolean validateLogin(String username, String password) {
 
         boolean loginSuccessful = false;
         boolean correctPassword = false;
@@ -95,50 +75,50 @@ public final class SalesSystem {
             correctPassword = validatePassword(username, password);
         }
 
-        return
-    }*/
-    public boolean searchUsername(String username) {
+        return loginSuccessful;
+    }
+    public static boolean searchUsername(String username) {
 
         boolean userFound = false;
 
-        userFound = this.administratorManager.searchAdministratorByUsername(username);
+        userFound = administratorManager.searchAdministratorByUsername(username);
 
         if(!userFound){
 
-            userFound = this.enterpriseManager.searchEnterpriseByUsername(username);
+            userFound = enterpriseManager.searchEnterpriseByUsername(username);
 
             if(!userFound) {
-                userFound = this.buyerManager.searchBuyerByUsername(username);
+                userFound = buyerManager.searchBuyerByUsername(username);
             }
         }
 
         return userFound;
     }
 
-    public boolean validatePassword(String username, String password) {
+    public static boolean validatePassword(String username, String password) {
 
         String passwordUserFound = "";
         boolean validKey = false;
 
-        boolean userFound = this.administratorManager.searchAdministratorByUsername(username);
+        boolean userFound = administratorManager.searchAdministratorByUsername(username);
 
         if(!userFound){
 
-            userFound = this.enterpriseManager.searchEnterpriseByUsername(username);
+            userFound = enterpriseManager.searchEnterpriseByUsername(username);
 
             if(!userFound) {
-                userFound = this.buyerManager.searchBuyerByUsername(username);
+                userFound = buyerManager.searchBuyerByUsername(username);
 
                 if(userFound) {
-                    passwordUserFound = this.buyerManager.returnBuyerByUsername(username).getPassword();
+                    passwordUserFound = buyerManager.returnBuyerByUsername(username).getPassword();
                 }
 
             } else {
-                 passwordUserFound = this.enterpriseManager.returnEnterpriseByUsername(username).getPassword();
+                 passwordUserFound = enterpriseManager.returnEnterpriseByUsername(username).getPassword();
             }
 
         } else {
-             passwordUserFound = this.administratorManager.returnAdministratorByUsername(username).getPassword();
+             passwordUserFound = administratorManager.returnAdministratorByUsername(username).getPassword();
         }
 
         if(userFound) {

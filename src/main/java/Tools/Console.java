@@ -22,7 +22,13 @@ public final class Console {
         }
 
         public static int readInt(String message) {
-            return Integer.parseInt(JOptionPane.showInputDialog(message));
+            int number = -1;
+            try {
+                number = Integer.parseInt(JOptionPane.showInputDialog(message));
+            } catch (NumberFormatException e) {
+                showMessage("Numero invalido");
+            }
+            return number;
         }
 
         public static float readFloat(String message) {

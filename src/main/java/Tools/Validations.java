@@ -25,7 +25,7 @@ public class Validations {
      * @param email String
      * @return True o False
      */
-    public boolean validateEmail(String email) {
+    public static boolean validateEmail(String email) {
         boolean isValid=true;
         if(!email.isBlank()){
             try {
@@ -45,7 +45,7 @@ public class Validations {
      * @param email String
      * @return String
      */
-    public String doUntilValidEmail(String email){
+    public static String doUntilValidEmail(String email){
         boolean valid=false;
         do{
             valid=validateEmail(email);
@@ -61,7 +61,7 @@ public class Validations {
      * @param birthDate String
      * @return true si es valida, false si no lo es
      */
-    public boolean validateBirthDate(String birthDate){
+    public static boolean validateBirthDate(String birthDate){
         boolean isValid=true;
         LocalDate dateToCheck=null;
         LocalDate actualDate=LocalDate.now();
@@ -81,7 +81,7 @@ public class Validations {
         return isValid;
     }
 
-    public String doUntilValidBirthDate(String birthDate){
+    public static String doUntilValidBirthDate(String birthDate){
         boolean valid=false;
         if(!birthDate.isBlank()){
             do{
@@ -104,14 +104,14 @@ public class Validations {
      * @param dni Integer
      * @return true si es valido, false si no lo es
      */
-    public boolean validateDNI(int dni){
+    public static boolean validateDNI(int dni){
         boolean status=false;
         if(dni>1000000 && dni>=100000000){
             status=true;
         }
         return status;
     }
-    public int doUntilValidDNI(int dni){
+    public static int doUntilValidDNI(int dni){
         boolean valid=false;
         do{
             valid=validateDNI(dni);
@@ -129,7 +129,7 @@ public class Validations {
      * @param name String
      * @return True o False
      */
-    public boolean validateName(String name){
+    public static boolean validateName(String name){
         boolean valid=false;
         if(!name.isBlank()){
             String regex="^[\\p{L} .'-]+$";
@@ -145,7 +145,7 @@ public class Validations {
      * @param name String
      * @return String
      */
-    public String doUntilValidName(String name){
+    public static String doUntilValidName(String name){
         boolean valid=false;
         do{
             valid=validateName(name);
@@ -163,7 +163,7 @@ public class Validations {
      * @param phoneNumber long
      * @return true o false
      */
-    public boolean validatePhoneNumber(long phoneNumber){
+    public static boolean validatePhoneNumber(long phoneNumber){
         boolean valid=false;
         if(phoneNumber!=-1){
             if(String.valueOf(phoneNumber).length()>6 && String.valueOf(phoneNumber).length()<15){
@@ -178,7 +178,7 @@ public class Validations {
      * @param phoneNumber long
      * @return long
      */
-    public long doUntilValidPhoneNumber(long phoneNumber){
+    public static long doUntilValidPhoneNumber(long phoneNumber){
         boolean valid=false;
         do{
         valid=validatePhoneNumber(phoneNumber);
@@ -187,6 +187,37 @@ public class Validations {
             }
         }while(!valid);
         return phoneNumber;
+    }
+
+    /**
+     * Valida si el numero ingresado es 0 o mayor.
+     * @param number
+     * @return boolean
+     */
+    public static boolean validateInt(int number){
+        boolean valid=false;
+            if(number>=0){
+                valid=true;
+            }
+
+        return valid;
+    }
+
+    /**
+     * Fuerza a que el usuario ingrese un numero valido.
+     * @param number Integer
+     * @return Integer
+     */
+    public static int doUntilValidNumber(int number){
+        boolean valid=false;
+        do{
+            valid=validateInt(number);
+            if(!valid){
+                System.out.println("Valor invalido");
+            }
+        }while(!valid);
+
+        return number;
     }
 
 }

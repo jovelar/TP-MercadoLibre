@@ -63,7 +63,7 @@ public final class Buyer extends Client {
     //endregion
 
     //region METHODS
-    public void pay(){
+    public void pay(float price){
 
     }
     public void cancelBuy(){
@@ -78,7 +78,8 @@ public final class Buyer extends Client {
 
         return newOrder;
     }
-    public void addFavorite(){
+    public void addFavorite(int idProduct){
+
 
     }
     public void showFavoriteList(List<Product> importedFavoriteList) {

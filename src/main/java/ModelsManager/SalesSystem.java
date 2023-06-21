@@ -1,6 +1,10 @@
 package ModelsManager;
 
+import Enums.TypeUser;
+import Models.User;
 import Tools.Console;
+
+import java.lang.reflect.Type;
 
 public class SalesSystem {
 
@@ -54,31 +58,69 @@ public class SalesSystem {
         }
     }
 
-    public static boolean logIn() {
+    //region LOGIN
+    public static boolean logIn(String username) {
 
+        String password = "";
         boolean loginSuccessful = false;
+        String optionEntered = "NO_SALIR";
+        int failedAttempts = 0;
 
-        String username = Console.readString("Ingrese su nombre de usuario");
-        String password = Console.readString("Ingrese su contraseña");
+        while(!loginSuccessful && failedAttempts<3 && !optionEntered.equals("SALIR")) {
 
-        //Tengo que buscar en todas las bases de datos que tipo de usuario es
+            //Se leen los datos username y password, se carga en el usuario vacio
+            //Detecta si se ingreso "SALIR" oprimiendo el boton "cancelar" o la "X"
+            optionEntered = readloginData(username, password);
+
+            if(!optionEntered.equals("SALIR")) {
+
+                //Tengo que buscar en los 3 archivos que tipo de usuario esta ingresando
+                loginSuccessful = validateLogin(username, password);
+
+                if(!loginSuccessful) {
+                    failedAttempts++;
+                    Console.showMessageError("¡ALGUNO DE LOS DATOS INGRESADOS ES INCORRECTO!" + failedAttempts);
+                }
+            }
+        }
 
         return loginSuccessful;
     }
 
-    public static boolean validateLogin(String username, String password) {
+    private static String readloginData(String username, String password) {
+
+        String optionOrDateEntered = Console.readString("Ingrese su nombre de usuario");
+
+        if(!optionOrDateEntered.equals("SALIR")) {
+            username = optionOrDateEntered;
+
+            optionOrDateEntered = Console.readString("Ingrese su contraseña");
+
+            if(!optionOrDateEntered.equals("SALIR")) {
+                password = optionOrDateEntered;
+                optionOrDateEntered = "NO_SALIR"; //Para no retornar la password
+            }
+        }
+
+        return optionOrDateEntered;
+    }
+
+    private static boolean validateLogin(String username, String password) {
 
         boolean loginSuccessful = false;
         boolean correctPassword = false;
 
         boolean userFound = searchUsername(username);
 
-        if(userFound) {
+        if(userFound)
             correctPassword = validatePassword(username, password);
-        }
+
+        if(userFound && correctPassword)
+            loginSuccessful = true;
 
         return loginSuccessful;
     }
+
     public static boolean searchUsername(String username) {
 
         boolean userFound = false;
@@ -97,7 +139,7 @@ public class SalesSystem {
         return userFound;
     }
 
-    public static boolean validatePassword(String username, String password) {
+    private static boolean validatePassword(String username, String password) {
 
         String passwordUserFound = "";
         boolean validKey = false;
@@ -128,6 +170,51 @@ public class SalesSystem {
         }
 
         return validKey;
+    }
+    //endregion
+
+    public static TypeUser userConnectProgram(User user) {
+
+        TypeUser typeUser = returnTypeUserByUsername(user.getUsername());
+
+        if(typeUser != TypeUser.NONE) {
+            if(typeUser == TypeUser.ADMINISTRATOR) {
+                user = administratorManager.returnAdministratorByUsername(user.getUsername());
+            } else if(typeUser == TypeUser.ENTERPRISE) {
+                user = enterpriseManager.returnEnterpriseByUsername(user.getUsername());
+            } else {
+                user = buyerManager.returnBuyerByUsername(user.getUsername());
+            }
+        }
+
+        return typeUser;
+    }
+
+    public static TypeUser returnTypeUserByUsername(String username) {
+
+        TypeUser typeUser = TypeUser.NONE;
+        boolean userFound = administratorManager.searchAdministratorByUsername(username);
+
+        if(!userFound){
+
+            userFound = enterpriseManager.searchEnterpriseByUsername(username);
+
+            if(!userFound) {
+                userFound = buyerManager.searchBuyerByUsername(username);
+
+                if(userFound) {
+                    typeUser = TypeUser.BUYER;
+                }
+
+            } else {
+                typeUser = TypeUser.ENTERPRISE;
+            }
+
+        } else {
+            typeUser = TypeUser.ADMINISTRATOR;
+        }
+
+        return typeUser;
     }
 
 }

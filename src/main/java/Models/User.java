@@ -23,22 +23,7 @@ public class User {
     //region CONSTRUCTORS
     public User(){}
 
-    public User(int idUser, String username, String email, String password, String firstName, String surname, int dni,
-                String birthDate, long phoneNumber, boolean active) {
 
-        this.idUser = idUser;
-
-        this.username = username;
-        this.email = email;
-        this.password = password;
-
-        this.firstName = firstName;
-        this.surname = surname;
-        this.dni = dni;
-        this.birthDate = birthDate;
-        this.phoneNumber = phoneNumber;
-        this.active = active;
-    }
 
     //Creado para metodo addEnterprise() en clase EnterpriseManager y addAdministrator en AdministratorManager
     public User(int idUser, String username, String email, String password, String firstName, String surname,

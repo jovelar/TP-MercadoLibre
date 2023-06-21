@@ -26,18 +26,22 @@ public final class EnterpriseManager {
 
         int idEnterprise = enterpriseRepo.toList().size() + 1;
 
-        String username = Console.readString("Ingresar nombre de usuario:");
-        //TODO verifico si el nombre de usuario ya existe en la base de datos(TODOS LOS USUARIOS)
-        //si existe, tiro una excepcion y creo un bucle para que ingrese un nombre de usuario correcto
-        //repetir con email y dni
-        String email = Validations.doUntilValidEmail(Console.readString("Ingresar correo electronico: "));
-        String password = Console.readString("Ingresar contraseña:");
-        String firstName = Validations.doUntilValidName(Console.readString("Ingresar nombre:"));
-        String surname = Validations.doUntilValidName(Console.readString("Ingresar apellido:"));
-        int dni = Validations.doUntilValidDNI(Console.readInt("Ingresar DNI:"));
+        String username = Validations.doUntilUsernameIsNotInUse(Console.readString("Ingresar nombre de usuario:"));
 
-        String birthDate = Validations.doUntilValidBirthDate(Console.readString("Ingrese su fecha de nacimiento:"));
+        String email = Validations.doUntilEmailIsNotInUse(Validations.doUntilValidEmail(Console.readString("Ingresar correo electronico: ")));
+
+        String password = Validations.doUntilPasswordValid(Console.enterPassword());
+
+        String firstName = Validations.doUntilValidName(Console.readString("Ingresar nombre:"));
+
+        String surname = Validations.doUntilValidName(Console.readString("Ingresar apellido:"));
+
+        int dni = Validations.doUntilPersonIsNotRegistred(Validations.doUntilValidDNI(Console.readInt("Ingresar DNI:")));
+
+        String birthDate = Validations.doUntilValidBirthDate(Console.readString("Ingrese su fecha de nacimiento:\n\nFormato: dd/MM/yyy\n"));
+
         long phoneNumber = Validations.doUntilValidPhoneNumber(Console.readLong("Ingresar numero de celular (sin espacios):"));
+
         String fantasyName = Console.readString("Ingresar el nombre de la empresa:");
 
         Enterprise enterprise = new Enterprise(idEnterprise, username, email, password, firstName, surname, dni, birthDate, phoneNumber, fantasyName);
@@ -117,6 +121,22 @@ public final class EnterpriseManager {
     public boolean searchEnterpriseByUsername(String username){
         for(Enterprise enterprise : this.enterpriseRepo.toList()){
             if(enterprise.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean searchEnterpriseByEmail(String email){
+        for(Enterprise enterprise : this.enterpriseRepo.toList()){
+            if(enterprise.getEmail().equals(email)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean searchEnterpriseByDni(int dni){
+        for(Enterprise enterprise : this.enterpriseRepo.toList()){
+            if(enterprise.getDni() == dni){
                 return true;
             }
         }

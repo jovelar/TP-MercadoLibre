@@ -23,16 +23,10 @@ public final class Buyer extends Client {
     //region CONTRUCTORS
     public Buyer(){}
 
-    public Buyer(int idUser, String username, String email, String password, String firstName, String surname, int dni, String birthDate, long phoneNumber, boolean active, Province province, String city, String address, int postalCode) {
-        super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber, active, province, city, address, postalCode);
+    public Buyer(int idUser, String username, String email, String password, String firstName, String surname, int dni, String birthDate, long phoneNumber) {
+        super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber);
     }
 
-    public Buyer(int idUser, String username, String email, String password, String firstName, String surname, int dni, String birthDate, long phoneNumber, boolean active, Province province, String city, String address, int postalCode, ArrayList<Integer> cart, List<Integer> favorites, List<PayMethod> payMethod) {
-        super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber, active, province, city, address, postalCode);
-        this.cart = cart;
-        this.favorites = favorites;
-        this.payMethod = payMethod;
-    }
     //endregion
 
     //region GETTERS AND SETTERS

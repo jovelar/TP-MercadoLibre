@@ -42,7 +42,6 @@ public final class EnterpriseRepo implements IRepository<Enterprise> {
     @Override
     public List<Enterprise> toList() {
         load();
-        System.out.println("hola");
         return this.enterprisesList;
     }
 

@@ -19,9 +19,9 @@ import java.util.List;
 
 public final class BuyerManager {
 
-    class Validation{
-        public boolean validateDate(String date){
-            boolean status=false;
+    class Validation {
+        public boolean validateDate(String date) {
+            boolean status = false;
 
             return status;
         }
@@ -29,59 +29,85 @@ public final class BuyerManager {
 
     BuyerRepo buyerRepo = new BuyerRepo();
 
-    public void showBuyersList(){
+    public void showBuyersList() {
         List<Buyer> buyersList = buyerRepo.toList();
 
-        for(int i = 0; i < buyersList.size(); i++){
-            System.out.println( "ID:" + buyersList.get(i).getIdUser() + ". " + buyersList.get(i));
+        for (int i = 0; i < buyersList.size(); i++) {
+            System.out.println("ID:" + buyersList.get(i).getIdUser() + ". " + buyersList.get(i));
             System.out.println("---------------------------------------------------------");
         }
     }
-    public void addBuyer(){
+
+    public boolean addBuyer() {
         Buyer newBuyer = null;
 
-        String resp = "si";
-        while(resp.equals("si")){
+        boolean answer = false;
+        int idUser = buyerRepo.toList().size() + 1;
 
-            int idUser = Validations.doUntilValidNumber(Console.readInt("Ingrese el id del Nuevo usuario:")); //se supone que tiene q ser asignado automaticamente
-            String userName = Console.readString("Ingrese el nombre de usuario: ");
-            String email = Validations.doUntilValidEmail(Console.readString("Ingrese la direccion de email : "));
-            String password = Console.readString("Ingrese su contrasena:");
-            String firstName = Validations.doUntilValidName(Console.readString("Ingrese su nombre:"));
-            String surname =Validations.doUntilValidName(Console.readString("Ingrese el apellido"));
-            int dni = Validations.doUntilValidDNI(Console.readInt("Ingrese su dni"));
-            String birthDate =Validations.doUntilValidBirthDate(Console.readString("Ingrese su fecha de nacimiento"));
-            int phoneNumber = Integer.valueOf((int) Validations.doUntilValidPhoneNumber(Console.readInt("Ingrese su numero de telfono")));
-            String city = Console.readString("ingrese su ciudad");
-            //Enum province=Console.readString("Ingrese la provincia");
-            String adress = Console.readString("ingrese su domicilio");
-            int postalCode=Validations.doUntilValidPostalCode(Console.readInt("ingrese su codigo postal"));
+        String userName = Validations.doUntilUsernameIsNotInUse(Console.readString("Ingrese el nombre de usuario: "));
 
-            newBuyer=new Buyer(idUser,
-                    userName,
-                    email,
-                    password,
-                    firstName,
-                    surname,
-                    dni,null,
-                    phoneNumber,
-                    true,
-                    Province.BSAS,
-                    city,
-                    adress,
-                    postalCode);
+        if (!userName.equals("SALIR")) {
+
+            String email = Validations.doUntilEmailIsNotInUse(Validations.doUntilValidEmail(Console.readString("Ingrese la direccion de email : ")));
+
+            if (!email.equals("SALIR")) {
+
+                String password = Validations.doUntilPasswordValid(Console.enterPassword());
+                if(password.equals("SALIR")){
+
+                    String firstName = Validations.doUntilValidName(Console.readString("Ingrese su nombre:"));
+                    if (!firstName.equals("SALIR")) {
+
+                        String surname = Validations.doUntilValidName(Console.readString("Ingrese el apellido"));
+
+                        if (!surname.equals("SALIR")) {
+
+                            int dni = Validations.doUntilPersonIsNotRegistred(Validations.doUntilValidDNI(Console.readInt("Ingrese su dni")));
+
+                            if(dni != 0){
+
+                                String birthDate = Validations.doUntilValidBirthDate(Console.readString("Ingrese su fecha de nacimiento \n\nFormato: dd/MM/yyy\n"));
+                                //TODO la fecha nunca puede ser "salir"
+                                long phoneNumber = Validations.doUntilValidPhoneNumber(Console.readLong("Ingresar numero de celular (sin espacios):"));
+
+                                if(phoneNumber != 0){
+                                    newBuyer = new Buyer(idUser, userName, email, password, firstName, surname, dni, birthDate, phoneNumber);
+
+                                    Menu.provinceMenu(newBuyer);
+
+                                    newBuyer.setCity(Console.readString("ingrese su ciudad"));
+                                    if(newBuyer.getCity().equals("SALIR")){
+
+                                        newBuyer.setAddress(Console.readString("ingrese su domicilio"));
+
+                                        if(newBuyer.getAddress().equals("SALIR")){
+                                            newBuyer.setPostalCode(Validations.doUntilValidPostalCode(Console.readInt("ingrese su codigo postal")));
+                                            if(newBuyer.getPostalCode() != 0){
+                                                buyerRepo.add(newBuyer);
+                                                answer = true;
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+
+                        }
+                    }
+                }
 
 
-
-            //Menu.categoriesMenu();
-
-            buyerRepo.add(newBuyer);
-            System.out.println("Usuario agregado exitosamente!");
-
-            resp = Console.readString("Desea seguir agregando usuarios? si/no");
+            }
 
         }
-    }
+
+
+            return answer;
+}
 
     public void removeBuyer(){
         int id = Console.readInt("Ingrese el id del compador a eliminar:");
@@ -118,6 +144,22 @@ public final class BuyerManager {
     public boolean searchBuyerByUsername(String username){
         for(Buyer buyer : this.buyerRepo.toList()){
             if(buyer.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean searchBuyerByEmail(String email){
+        for(Buyer buyer : this.buyerRepo.toList()){
+            if(buyer.getEmail().equals(email)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean searchBuyerByDni(int dni){
+        for(Buyer buyer : this.buyerRepo.toList()){
+            if(buyer.getDni() == dni){
                 return true;
             }
         }

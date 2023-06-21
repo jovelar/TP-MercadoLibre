@@ -6,6 +6,7 @@ import Tools.Console;
 
 import java.lang.reflect.Type;
 
+
 public class SalesSystem {
 
     //region ATTRIBUTES
@@ -48,14 +49,22 @@ public class SalesSystem {
 
     public static void createAccount(){
         int resp = Console.systemOptionsCreateAccount()+1;
-        if(resp == 1){ //elige cuenta personal
-            //verificar si ya tiene cuenta
-            //cuando agrega su mail
-            //
-        }else if(resp == 2){//elige cuenta empresa
-            //TODO validar que el correo no exista en la base de datos, ni el dni, ni el nombreusuario,ni el telefono
+        boolean answer = false;
+        if(resp == 1){
+            answer = buyerManager.addBuyer();
+
+        }else if(resp == 2){
+            enterpriseManager.addEnterprise();
 
         }
+
+        if(answer){
+            Console.showMessage("¡CUENTA CREADA EXITOSAMENTE!");
+        }else{
+            Console.showMessageError("ERROR AL CREAR CUENTA, INTENTE NUEVAMENTE");
+        }
+        //retorne si se creo la cuenta exitosamente
+
     }
 
     //region LOGIN
@@ -138,6 +147,42 @@ public class SalesSystem {
 
         return userFound;
     }
+    public static boolean searchEmail(String email) {
+
+        boolean emailFound = false;
+
+        emailFound = administratorManager.searchAdministratorByEmail(email);
+
+        if(!emailFound){
+
+            emailFound = enterpriseManager.searchEnterpriseByEmail(email);
+
+            if(!emailFound) {
+                emailFound = buyerManager.searchBuyerByEmail(email);
+            }
+        }
+
+        return emailFound;
+    }
+
+    public static boolean searchDni(int dni) {
+
+        boolean dniFound = false;
+
+        dniFound = administratorManager.searchAdministratorByDni(dni);
+
+        if(!dniFound){
+
+            dniFound = enterpriseManager.searchEnterpriseByDni(dni);
+
+            if(!dniFound) {
+                dniFound = buyerManager.searchBuyerByDni(dni);
+            }
+        }
+
+        return dniFound;
+    }
+
 
     private static boolean validatePassword(String username, String password) {
 

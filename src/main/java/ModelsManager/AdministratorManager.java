@@ -113,6 +113,24 @@ public final class AdministratorManager {
         return false;
     }
 
+    public boolean searchAdministratorByEmail(String email){
+        for(Administrator adm : this.administratorRepo.toList()){
+            if(adm.getEmail().equals(email)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean searchAdministratorByDni(int dni){
+        for(Administrator adm : this.administratorRepo.toList()){
+            if(adm.getDni() == dni){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Administrator returnAdministratorById(int id){
 
         Administrator admWanted = null;

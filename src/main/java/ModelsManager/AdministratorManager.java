@@ -5,6 +5,7 @@ import Models.Enterprise;
 import ModelsRepo.AdministratorRepo;
 import Tools.Console;
 import Tools.Menu;
+import Tools.Validations;
 
 import java.util.List;
 
@@ -26,14 +27,14 @@ public final class AdministratorManager {
         int idAdministrator = administratorRepo.toList().size() + 1;
 
         String username = Console.readString("Ingresar nombre de usuario:");
-        String email = Console.readString("Ingresar correo electronico: ");
+        String email = Validations.doUntilValidEmail(Console.readString("Ingresar correo electronico: "));
         String password = Console.readString("Ingresar contraseña:");
-        String firstName = Console.readString("Ingresar nombre:");
-        //String surname = Console.readString("Ingresar apellido:");
-        //int dni = Console.readInt("Ingresar DNI:");
+        String firstName = Validations.doUntilValidName(Console.readString("Ingresar nombre:"));
+        //String surname = Validations.doUntilValidName(Console.readString("Ingresar apellido:"));
+        //int dni = Validations.doUntilValidDNI(Console.readInt("Ingresar DNI:"));
 
-        //String birthDate = Console.readString("Ingrese su fecha de nacimiento:");
-        //long phoneNumber = Console.readLong("Ingresar numero de celular (sin espacios):");
+        //String birthDate = Validations.doUntilValidBirthDate(Console.readString("Ingrese su fecha de nacimiento:"));
+        //long phoneNumber = Validations.doUntilValidPhoneNumber(Console.readLong("Ingresar numero de celular (sin espacios):"));
 
         Administrator administrator = new Administrator(idAdministrator, username, email, password, firstName,
                                 "null", 0, "null", 0);
@@ -46,7 +47,7 @@ public final class AdministratorManager {
     public void deleteLogicallyAdminsitrator(){
 
         this.showAdministratorsList();
-        int id = Console.readInt("Ingrese el ID del ADMINSITRADOR a dar de baja:");
+        int id = Validations.doUntilValidNumber(Console.readInt("Ingrese el ID del ADMINSITRADOR a dar de baja:"));
 
         if(searchAdministratorById(id)){
 
@@ -71,7 +72,7 @@ public final class AdministratorManager {
     public void deleteAdministrator(){
 
         this.showAdministratorsList();
-        int id = Console.readInt("Ingrese el id del administrador a eliminar");
+        int id = Validations.doUntilValidNumber(Console.readInt("Ingrese el id del administrador a eliminar"));
 
         if(searchAdministratorById(id)){
 
@@ -143,7 +144,7 @@ public final class AdministratorManager {
         //TODO: crear metodos showList en general, segun lo que ese quiera mostrar
         // si mostrar los activos, los inactivos, etc, mostrar en formato reducido, osea, menos datos
         showAdministratorsList();
-        int idAdmSearched = Console.readInt("INGRESAR ID DEL ADMINISTRADOR A MODIFICAR:");
+        int idAdmSearched = Validations.doUntilValidNumber(Console.readInt("INGRESAR ID DEL ADMINISTRADOR A MODIFICAR:"));
 
         if(searchAdministratorById(idAdmSearched)) {
             //TODO: falta en esta parte, un metodo que le muestre TODOS los datos del usuario a modificar,
@@ -154,14 +155,14 @@ public final class AdministratorManager {
             if(resp.equalsIgnoreCase("SI")){
 
                 String username = Console.readString("Ingresar nuevo nombre de usuario: ");
-                String email = Console.readString("Ingresar nuevo email:");
+                String email = Validations.doUntilValidEmail(Console.readString("Ingresar nuevo email:"));
                 String password = Console.readString("Ingresar nueva contraseña:");
 
-                String firstName = Console.readString("Ingresar nuevo nombre:");
-                String surname = Console.readString("Ingresar nuevo apellido:");
-                int dni = Console.readInt("Ingresar nuevo DNI:");
-                String birthDate = Console.readString("Ingrese nueva fecha de nacimiento:");
-                long phoneNumber = Console.readLong("Ingresar nuevo numero de celular (sin espacios):");
+                String firstName = Validations.doUntilValidName(Console.readString("Ingresar nuevo nombre:"));
+                String surname = Validations.doUntilValidName(Console.readString("Ingresar nuevo apellido:"));
+                int dni = Validations.doUntilValidDNI(Console.readInt("Ingresar nuevo DNI:"));
+                String birthDate = Validations.doUntilValidBirthDate(Console.readString("Ingrese nueva fecha de nacimiento:"));
+                long phoneNumber = Validations.doUntilValidPhoneNumber(Console.readLong("Ingresar nuevo numero de celular (sin espacios):"));
 
                 Administrator adm = new Administrator(idAdmSearched, username, email, password, firstName, surname,
                         dni, birthDate, phoneNumber);

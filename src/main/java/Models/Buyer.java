@@ -10,6 +10,7 @@ import Models.SubModels.Order;
 import Enums.Province;
 import Models.SubModels.PayMethod;
 import Tools.Console;
+import Tools.Validations;
 
 public final class Buyer extends Client {
 
@@ -104,7 +105,7 @@ public final class Buyer extends Client {
 
     public void deleteFavorite(){
         if(!favorites.isEmpty()){
-            int id= Console.readInt("Ingrese el ID del producto a eliminar");
+            int id= Validations.doUntilValidNumber(Console.readInt("Ingrese el ID del producto a eliminar"));
             boolean found=false;
             int counter=0;
             while(counter<favorites.size() && found==false){

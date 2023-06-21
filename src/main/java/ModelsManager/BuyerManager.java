@@ -43,7 +43,7 @@ public final class BuyerManager {
         String resp = "si";
         while(resp.equals("si")){
 
-            int idUser = Console.readInt("Ingrese el id del Nuevo usuario:"); //se supone que tiene q ser asignado automaticamente
+            int idUser = Validations.doUntilValidNumber(Console.readInt("Ingrese el id del Nuevo usuario:")); //se supone que tiene q ser asignado automaticamente
             String userName = Console.readString("Ingrese el nombre de usuario: ");
             String email = Validations.doUntilValidEmail(Console.readString("Ingrese la direccion de email : "));
             String password = Console.readString("Ingrese su contrasena:");
@@ -55,7 +55,7 @@ public final class BuyerManager {
             String city = Console.readString("ingrese su ciudad");
             //Enum province=Console.readString("Ingrese la provincia");
             String adress = Console.readString("ingrese su domicilio");
-            int postalCode=Console.readInt("ingrese su codigo postal");
+            int postalCode=Validations.doUntilValidPostalCode(Console.readInt("ingrese su codigo postal"));
 
             newBuyer=new Buyer(idUser,
                     userName,

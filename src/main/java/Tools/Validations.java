@@ -219,6 +219,11 @@ public class Validations {
         return number;
     }
 
+    /**
+     * Valida si elnumero ingresado es un codigo postal (numero de 4 digitos)
+     * @param postalCode Integer
+     * @return True o False
+     */
     public static boolean validatePostalCode(int postalCode){
         boolean valid=false;
         if(String.valueOf(postalCode).length()==4){
@@ -227,6 +232,11 @@ public class Validations {
         return valid;
     }
 
+    /**
+     * Fuerza a ingresar un codigo postal valido, de 4 digitos
+     * @param postalCode Integer
+     * @return True o Flase
+     */
     public static int doUntilValidPostalCode(int postalCode){
         boolean valid=false;
         do{

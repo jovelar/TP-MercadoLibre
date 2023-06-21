@@ -8,7 +8,7 @@ import java.util.Scanner;
 public final class Console {
 
         private static Scanner scan = new Scanner(System.in);
-
+ 
         public static void showMessage(String message) {
             JOptionPane.showMessageDialog(null, message);
         }
@@ -30,10 +30,15 @@ public final class Console {
 
         }
 
-        public static long readLong(String message) {
-            return Long.parseLong(JOptionPane.showInputDialog(message));
-
+    public static long readLong(String message) {
+        long number = -1;
+        try {
+            number = Long.parseLong(JOptionPane.showInputDialog(message));
+        } catch (NumberFormatException e) {
+            showMessage("Numero invalido");
         }
+        return number;
+    }
         public static double readDouble(String message) {
             return Double.parseDouble(JOptionPane.showInputDialog(message));
 

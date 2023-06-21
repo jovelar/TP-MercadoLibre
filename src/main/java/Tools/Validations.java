@@ -106,7 +106,7 @@ public class Validations {
      */
     public boolean validateDNI(int dni){
         boolean status=false;
-        if(dni<1000000 && dni>=100000000){
+        if(dni>1000000 && dni>=100000000){
             status=true;
         }
         return status;
@@ -157,12 +157,36 @@ public class Validations {
         }while(!valid);
         return name;
     }
-    public boolean validatePhoneNumber(long phonNumber){
+
+    /**
+     * Valida numeros de telefonos, deben tener mas de 6 digitos y menos de 15
+     * @param phoneNumber long
+     * @return true o false
+     */
+    public boolean validatePhoneNumber(long phoneNumber){
         boolean valid=false;
-        if(!String.valueOf(phonNumber).isBlank()){
-            
+        if(phoneNumber!=-1){
+            if(String.valueOf(phoneNumber).length()>6 && String.valueOf(phoneNumber).length()<15){
+                valid=true;
+            }
         }
         return valid;
+    }
+
+    /**
+     * Fuerza a que se ingrese un telefono valido
+     * @param phoneNumber long
+     * @return long
+     */
+    public long doUntilValidPhoneNumber(long phoneNumber){
+        boolean valid=false;
+        do{
+        valid=validatePhoneNumber(phoneNumber);
+            if(!valid){
+                phoneNumber=Console.readLong("Ingrese un telefono válido");
+            }
+        }while(!valid);
+        return phoneNumber;
     }
 
 }

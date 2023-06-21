@@ -1,7 +1,8 @@
-import ModelsManager.*;
+package ModelsManager;
+
 import Tools.Console;
 
-public abstract class SalesSystem {
+public class SalesSystem {
 
     //region ATTRIBUTES
     private static final AdministratorManager administratorManager = new AdministratorManager();

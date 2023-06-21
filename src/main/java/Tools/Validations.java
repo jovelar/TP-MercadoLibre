@@ -213,6 +213,7 @@ public class Validations {
             valid=validateInt(number);
             if(!valid){
                 Console.showMessageError("Valor invalido");
+                number=Console.readInt("Ingrese un numero valido");
             }
         }while(!valid);
 

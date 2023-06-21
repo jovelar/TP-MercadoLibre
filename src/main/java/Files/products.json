@@ -1,5 +1,5 @@
 [ {
-  "idProduct" : 0,
+  "idProduct" : 1,
   "iDEnterprise" : 1,
   "brand" : "Motorola",
   "productName" : "Celular Moto G52",
@@ -9,7 +9,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Celular Moto G52, 6GB RAM, liberado, memoria interna de 128GB"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 2,
   "iDEnterprise" : 1,
   "brand" : "Motorola",
   "productName" : "Celular Motorola G32",
@@ -19,7 +19,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Celular Moto G32, 4GB RAM, liberado, memoria interna de 128GB"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 3,
   "iDEnterprise" : 2,
   "brand" : "Xiaomi",
   "productName" : "Celular Xiaomi Redmi Note 11",
@@ -29,7 +29,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Celular Xiaomi Redmi Note 11, Dual SIM, 128GB de memoria interna, 4GB RAM"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 4,
   "iDEnterprise" : 2,
   "brand" : "Samsung",
   "productName" : "Celular Galaxy Z Flip4 5G",
@@ -39,7 +39,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Celular Galaxy Z Flip4 , liberado, 128GB de memoria interna, 8GB RAM"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 5,
   "iDEnterprise" : 2,
   "brand" : "Samsung",
   "productName" : "Celular Galaxy A04",
@@ -49,7 +49,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Celular Samsung Galaxy A04, liberado, 128GB de memoria interna, 4GB RAM"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 6,
   "iDEnterprise" : 2,
   "brand" : "TCL",
   "productName" : "Celular TCL 408",
@@ -59,7 +59,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Celular Tcl 408, liberado, 64GB de memoria interna, 4GB RAM"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 7,
   "iDEnterprise" : 2,
   "brand" : "Quantum",
   "productName" : "Celular Quantum Q20",
@@ -69,7 +69,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Celular Quantum Q20 Dual SIM, 128GB interna, 4GB RAM"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 8,
   "iDEnterprise" : 2,
   "brand" : "Samsung",
   "productName" : "Tablet Galaxy Tab A7 lite",
@@ -79,7 +79,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Tablet Samsung Galaxy Tab A7 Lite SM-T220, 8,7 pulgadas, capacidad de 32GB, 3GB RAM"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 9,
   "iDEnterprise" : 2,
   "brand" : "Samsung",
   "productName" : "Tablet Samsung Galaxy Tab S S6 Lite",
@@ -89,7 +89,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Tablet Samsung Galaxy Tab S S6 Lite SM-P610, 10,4 pulgadas, capacidad de 64GB, 4GB RAM"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 10,
   "iDEnterprise" : 2,
   "brand" : "Redragon",
   "productName" : "Teclado gamer Redragon K552 QWERTY",
@@ -99,7 +99,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Teclado gamer Redragon Kumara K552 Outemu Red español latinoamérica color negro con luz RGB"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 11,
   "iDEnterprise" : 2,
   "brand" : "Satechi",
   "productName" : "Teclado bluetooth Satechi Slim X3",
@@ -109,7 +109,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Teclado bluetooth Satechi Slim X3 Bluetooth Backlit Keyboard QWERTY español España color space gray"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 12,
   "iDEnterprise" : 2,
   "brand" : "Aiwa",
   "productName" : "Teclado Gamer Mecanizado Constrictor",
@@ -119,7 +119,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Teclado Aiwa TEC-3001KG, gamer, tipo de switch Blue"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 13,
   "iDEnterprise" : 2,
   "brand" : "Redragon",
   "productName" : "Cámara web Redragon Fobos GW600",
@@ -129,7 +129,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Cámara web Redragon Fobos GW600 HD 30FPS color negro"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 14,
   "iDEnterprise" : 2,
   "brand" : "Gadnic",
   "productName" : "Cámara web Gadnic Full HD",
@@ -139,7 +139,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Cámara web Gadnic Camweb01 Full HD 30FPS color negro"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 15,
   "iDEnterprise" : 2,
   "brand" : "Logitech",
   "productName" : "Cámara web Logitech C505e",
@@ -149,7 +149,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Cámara web Logitech C505e HD 30FPS color negro"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 16,
   "iDEnterprise" : 2,
   "brand" : "Samsung",
   "productName" : "Auriculares Samsung 3.5mm Earphones in Ear",
@@ -159,7 +159,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Auriculares Samsung EO-IA500, In-ear, color negro"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 17,
   "iDEnterprise" : 2,
   "brand" : "Philco",
   "productName" : "Auriculares inalámbricos P1000nc",
@@ -169,7 +169,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Auriculares Inalámbricos Philco P1000nc Bluetooth Noise Cancelling"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 18,
   "iDEnterprise" : 3,
   "brand" : "Nikon",
   "productName" : "Cámara Nikon Kit D5600 18-55mm ",
@@ -179,7 +179,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Camara Nikon Kit D5600 18-55mm VR DSLR color negro"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 19,
   "iDEnterprise" : 3,
   "brand" : "Nikon",
   "productName" : "Cámara Nikon Kit D3500 + lente 18-55mm VR ",
@@ -189,7 +189,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Camara Nikon Kit D3500 + lente 18-55mm VR + lente 70-300mm + Mochila DSLR color negro"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 20,
   "iDEnterprise" : 3,
   "brand" : "Nikon",
   "productName" : "Kit Camara Nikon Z50 ",
@@ -199,7 +199,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Camara Nikon Z50 Mirrorless + Lente 16-50mm F/3.5-6.3 Vr"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 21,
   "iDEnterprise" : 4,
   "brand" : "Canon",
   "productName" : "Cámara Canon EOS Kit M50 Mark II + lente 15-45mm ",
@@ -209,7 +209,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Canon EOS Kit M50 Mark II + lente 15-45mm 3.5-6.3 IS STM + lente 55-200mm sin espejo color negro"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 22,
   "iDEnterprise" : 4,
   "brand" : "Canon",
   "productName" : "Cámara Canon EOS Rebel SL3",
@@ -219,7 +219,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Cámara Canon EOS Rebel SL3 DSLR color negro"
 }, {
-  "idProduct" : 0,
+  "idProduct" : 23,
   "iDEnterprise" : 5,
   "brand" : "Jaguar",
   "productName" : "Zapatillas Jaguar Trekking",
@@ -229,7 +229,7 @@
   "category" : "TECHNOLOGY",
   "description" : "Cámara Canon EOS Rebel SL3 DSLR color negro"
 }, {
-  "idProduct" : 1,
+  "idProduct" : 24,
   "iDEnterprise" : 10,
   "brand" : "Nueva marca",
   "productName" : "nuevo producto",
@@ -239,7 +239,7 @@
   "category" : "FASHION",
   "description" : "Probando agregar un producto al .json by flor"
 }, {
-  "idProduct" : 2,
+  "idProduct" : 25,
   "iDEnterprise" : 3,
   "brand" : "puma",
   "productName" : "zapatillas puma",
@@ -249,7 +249,7 @@
   "category" : "FASHION",
   "description" : "Zapatillas nike urbanas"
 }, {
-  "idProduct" : 7,
+  "idProduct" : 26,
   "iDEnterprise" : 4,
   "brand" : "nike",
   "productName" : "zapatillas",

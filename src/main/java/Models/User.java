@@ -1,6 +1,7 @@
 package Models;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public abstract class User {
 
@@ -135,6 +136,23 @@ public abstract class User {
     }
     public void removeMoney(){
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return dni == user.dni && Objects.equals(username, user.username) && Objects.equals(email, user.email);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + Integer.hashCode(dni);
+        return result;
     }
 
     @Override

@@ -64,11 +64,12 @@ public final class SalesSystem {
 
     public void createAccount(){
         int resp = Console.systemOptionsCreateAccount()+1;
-        if(resp == 1){
+        if(resp == 1){ //elige cuenta personal
             //verificar si ya tiene cuenta
             //cuando agrega su mail
             //
-        }else if(resp == 2){
+        }else if(resp == 2){//elige cuenta empresa
+            //TODO validar que el correo no exista en la base de datos, ni el dni, ni el nombreusuario,ni el telefono
 
         }
     }

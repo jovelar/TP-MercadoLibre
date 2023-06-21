@@ -26,6 +26,9 @@ public final class EnterpriseManager {
         int idEnterprise = enterpriseRepo.toList().size() + 1;
 
         String username = Console.readString("Ingresar nombre de usuario:");
+        //TODO verifico si el nombre de usuario ya existe en la base de datos(TODOS LOS USUARIOS)
+        //si existe, tiro una excepcion y creo un bucle para que ingrese un nombre de usuario correcto
+        //repetir con email y dni
         String email = Console.readString("Ingresar correo electronico: ");
         String password = Console.readString("Ingresar contraseña:");
         String firstName = Console.readString("Ingresar nombre:");

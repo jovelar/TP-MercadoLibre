@@ -2,6 +2,8 @@ package Models;
 
 import Enums.Category;
 
+import java.util.Objects;
+
 public final class Product {
 
     //region ATTRIBUTES
@@ -140,6 +142,21 @@ public final class Product {
     }
     //endregion
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return idProduct == product.idProduct;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + Integer.hashCode(idProduct);
+        return result;
+    }
 
     @Override
     public String toString() {

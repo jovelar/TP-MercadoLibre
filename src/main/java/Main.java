@@ -1,4 +1,5 @@
 
+import Models.User;
 import ModelsManager.ProductManager;
 import Tools.Console;
 import Tools.Menu;
@@ -12,24 +13,37 @@ import Tools.Console;
 
 public class Main {
     public static void main(String[] args) {
-/*
-        SalesSystem salesSystem = new SalesSystem();
-        salesSystem.getProductManager().showSaleProducts();
+
+        //mainMenu();
+        mainEzequiel();
+        //mainJOvelar();
+
+    }
+
+    public static void mainMenu() {
+
+        User user = null;
+        boolean userConected = false;
+
+        SalesSystem.getProductManager().showSaleProducts();
 
         //menu principal
         String opcion;
 
         do {
+            //a este metodo le debere pasar el parametro  userConected
+            //y dentro del metodo agregar un if, que segun si esta conectado o no
+            //cambien las opciones disponibles
             opcion = Console.systemOptions();
 
             switch (opcion) {
                 case "CREAR CUENTA":
-                    salesSystem.createAccount();
+                    SalesSystem.createAccount();
                     break;
 
 //-----------------------------------------------------------------
                 case "INGRESAR":
-                    salesSystem.logIn();
+                    SalesSystem.logIn();
 
                     break;
 //-----------------------------------------------------------------
@@ -58,22 +72,16 @@ public class Main {
                     System.out.println("Saliendo del programa...");
                     break;
                 default:
-                        System.out.println("Opción inválida. Por favor, ingrese una opción válida.");
+                    System.out.println("Opción inválida. Por favor, ingrese una opción válida.");
                     break;
             }
 
         } while(!opcion.equals("SALIR"));
 
         //mainEzequiel();
-        */
-        mainJOvelar();
+
+        //mainJOvelar();
     }
-
-//        productManager.listaProductosHardcodeado(); //cargue el archivo productos.json con los productos hardcodeados
-//        Menu.menuAdmProductos();
-
-//        mainEzequiel();
-
 
     public static void mainEzequiel() {
 
@@ -87,20 +95,20 @@ public class Main {
         administratorManager.totalModifyAdministrator();
 
     }
-   public static void mainJOvelar(){
-       Validations validation=new Validations();
-        /*String manzana="25/02/2014";
+
+    public static void mainJOvelar(){
+        Validations validation=new Validations();
+        String manzana="25/02/2014";
         System.out.println(validation.validateBirthDate(manzana));
-        */
-       String nombre1="jose maria listorti";
-       String nombre2="Abaco 123 ";
+
+        String nombre1="jose maria listorti";
+        String nombre2="Abaco 123 ";
         String nombre3=".*.------=";
 
         //System.out.println(validation.validateName(nombre1));
-      //System.out.println(validation.validateName(nombre2));
-      //System.out.println(validation.validateName(nombre3));
+        //System.out.println(validation.validateName(nombre2));
+        //System.out.println(validation.validateName(nombre3));
         //String kopona=validation.doUntilValidName(Console.readString("Ingrese su nombre"));
-       //long telefono=validation.doUntilValidPhoneNumber(Console.readLong("Ingrese su numero de telefono, sin espacios ni giones"));
-       int numero=validation.doUntilValidNumber(Console.readInt("Ingrese un numero entero"));
-   }
+        long telefono=Console.readLong("Ingrese su numero de telefono, sin espacios ni giones");
+    }
 }

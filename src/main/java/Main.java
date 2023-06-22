@@ -1,9 +1,17 @@
 import Enums.TypeUser;
 import Models.Buyer;
+import Models.Product;
+import Models.SubModels.Order;
+import ModelsManager.BuyerManager;
 import ModelsManager.SalesSystem;
 import Tools.Console;
 import Tools.Menu;
 import Tools.Validations;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -62,9 +70,54 @@ public class Main {
                     break;
                 case "FAVORITOS":
 
+                    List<Integer> favorites=buyer.getFavorites();
+                    if(favorites!=null && !favorites.isEmpty()){
+                        ArrayList<Product>favoriteProductlist=SalesSystem.getProductManager().returnListOfProductsByID(favorites);
+                        buyer.showFavoriteList(favoriteProductlist);
+                        int opc=Console.systemOptionsDeleteFavorites();
+                        if(opc==0){
+                            int idAeliminar=Validations.doUntilValidNumber(Console.readInt("Ingrese el ID del producto a eliminar"));
+                            if(idAeliminar!=0){
+                                if(buyer.validateValidFavorite(idAeliminar)){
+                                    buyer.deleteFavorite(idAeliminar);
+                                    SalesSystem.getBuyerManager().replaceBuyer(buyer);
+                                    Console.showMessage("Producto favorito eliminado");
+                               }
+                            }
+                        }
+                    }
+                    else{
+                        Console.showMessageError("La lista esta vacia!");
+                    }
+                    //AGREGAR ELIMINAR FAVORITOS Y VOLVER
+
+                    //SalesSystem.
+
                     System.out.println("Ha seleccionado la opción " + optionEntered);
                     break;
                 case "CARRITO":
+                    List<Integer>  cart=buyer.getCart();
+                    if(cart!=null && !cart.isEmpty()){
+                        ArrayList<Product>cartList=SalesSystem.getProductManager().returnListOfProductsByID(cart);
+                        buyer.showFavoriteList(cartList);
+                        int opc=Console.systemOptionsProductFromCart();
+                        if(opc==0){
+
+
+                        }
+                        if(opc==1){
+                            int idAeliminar=Validations.doUntilValidNumber(Console.readInt("Ingrese el ID del producto a eliminar"));
+                            if(idAeliminar!=0){
+                                if(buyer.validateValidFavorite(idAeliminar)){
+                                    buyer.deleteProductFromCart(idAeliminar);
+                                    SalesSystem.getBuyerManager().replaceBuyer(buyer);
+                                    Console.showMessage("Producto eliminado");
+                                }
+                            }
+                        }
+                    }else{
+                        Console.showMessageError("El carrito esta vacio!");
+                    }
                     System.out.println("Ha seleccionado la opción " + optionEntered);
                     break;
                 case "VER UN PRODUCTO":
@@ -72,6 +125,38 @@ public class Main {
                     break;
                 case "VER MAS PRODUCTOS":
                     System.out.println("Ha seleccionado la opción " + optionEntered);
+                    break;
+                case "BUSCAR":
+                    String productToSearch=Console.readString("Ingrese el nombre del producto a buscar: ");
+                    List<Product> searchResult=SalesSystem.getProductManager().searchProductList(productToSearch);
+                    if (searchResult != null && searchResult.size() != 0) {
+                        buyer.showFavoriteList((ArrayList<Product>) searchResult);
+                        int option=Console.systemOptionsbuyProduct();
+                        if(option==0){
+                            int opcMetododePago=Console.systemOptionsBuyPayMethod();
+                            if(opcMetododePago==0){ //PAGO CON DINERO
+
+                            }else if (opcMetododePago==1){ //PAGO CON TARJETA
+
+                            }
+
+                            int producToBuy=Console.readInt("Ingrese el ID del producto a comprar: ");
+                        }else if(option==1){
+                            int productToCart=Console.readInt("Ingrese el ID del producto a incorporar al carrito");
+                            if(Validations.validateProductFromList(productToCart,searchResult)){
+                                buyer.addToCart(productToCart);
+                                SalesSystem.getBuyerManager().replaceBuyer(buyer);
+                            }else{
+                                Console.showMessage("Error ID de producto invalido!");
+                            }
+
+                        }else if (option==2){
+                            int productToFavorites=Console.readInt("ingrese el ID del producto a incorporar a favoritos");
+                        }
+                    }else{
+                        Console.showMessage("No se encontraron productos con ese nombre");
+                    }
+                    System.out.println("Ha seleccionado la opcion "+ optionEntered);
                     break;
                 case "VER CATEGORIAS":
                     System.out.println("Ha seleccionado la opción " + optionEntered);

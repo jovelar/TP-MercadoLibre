@@ -21,7 +21,7 @@ public final class Console {
     public static String readString(String message) {
         String optionEntered = JOptionPane.showInputDialog(message);
 
-        if(optionEntered == null){
+        if (optionEntered == null) {
             optionEntered = "SALIR";
         }
 
@@ -32,9 +32,11 @@ public final class Console {
         int number = -1;
         try {
             String aux = JOptionPane.showInputDialog(message);
+
             if(aux != null){
                 number = Integer.parseInt(aux);
             }else{
+
                 number = 0; //cuando se oprime cancelar o la cruz(X), se retorna 0
             }
 
@@ -45,17 +47,19 @@ public final class Console {
     }
 
     public static float readFloat(String message) {
-            return Float.parseFloat(JOptionPane.showInputDialog(message));
 
-        }
+        return Float.parseFloat(JOptionPane.showInputDialog(message));
+
+    }
+
 
     public static long readLong(String message) {
         long number = -1;
         try {
             String aux = JOptionPane.showInputDialog(message);
-            if(aux != null){
+            if (aux != null) {
                 number = Long.parseLong(aux);
-            }else{
+            } else {
                 number = 0; //cuando se oprime cancelar o la cruz(X), se retorna 0
             }
 
@@ -66,14 +70,15 @@ public final class Console {
     }
 
     public static double readDouble(String message) {
-            return Double.parseDouble(JOptionPane.showInputDialog(message));
 
-        }
+        return Double.parseDouble(JOptionPane.showInputDialog(message));
+
+    }
 
 
     public static String systemOptions(boolean userConected) {
 
-            String chosenOption;
+        String chosenOption;
 
             if(userConected){
                 chosenOption = (String) JOptionPane.showInputDialog(
@@ -83,7 +88,7 @@ public final class Console {
                         JOptionPane.QUESTION_MESSAGE,
                         null,  // null para icono defecto
                         new Object[] { "VER MI PERFIL", "MIS COMPRAS", "FAVORITOS", "CARRITO", "VER UN PRODUCTO",
-                                "VER MAS PRODUCTOS", "VER CATEGORIAS", "SALIR"},
+                                "VER MAS PRODUCTOS", "BUSCAR","VER CATEGORIAS", "SALIR"},
                         "VER MI PERFIL");
             } else {
 
@@ -328,6 +333,59 @@ public final class Console {
             chosenOption = "SALIR";
 
         return chosenOption;
+
+    }
+
+
+    public static int systemOptionsDeleteFavorites() { //verificado
+        return JOptionPane.showOptionDialog(
+                null,
+                "Elija una opcion:",
+                "Favoritos",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,    // null para icono por defecto.
+                new Object[]{"ELIMINAR FAVORITOS", "VOLVER"},   // null para YES, NO y CANCEL
+                "null");
+
+    }
+
+    public static int systemOptionsProductFromCart() { //verificado
+        return JOptionPane.showOptionDialog(
+                null,
+                "Elija una opcion:",
+                "Carrito",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,    // null para icono por defecto.
+                new Object[]{"COMPRAR CARRITO","ELIMINAR PRODUCTO", "VOLVER"},   // null para YES, NO y CANCEL
+                "null");
+
+    }
+
+    public static int systemOptionsbuyProduct() { //verificado
+        return JOptionPane.showOptionDialog(
+                null,
+                "Elija una opcion:",
+                "Comprar",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,    // null para icono por defecto.
+                new Object[]{"COMPRAR","AGREGAR AL CARRITO","AGREGAR A FAVORITOS", "VOLVER"},   // null para YES, NO y CANCEL
+                "null");
+
+    }
+    public static int systemOptionsBuyPayMethod() { //verificado
+        return JOptionPane.showOptionDialog(
+                null,
+                "Elija una opcion:",
+                "Método de pago",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,    // null para icono por defecto.
+                new Object[]{"DINERO DISPONIBLE","TARJETA"},   // null para YES, NO y CANCEL
+                "null");
+
     }
 }
 

@@ -4,6 +4,7 @@ package Tools;
 import Exceptions.ExistingEmailException;
 import Exceptions.ExistingPersonException;
 import Exceptions.ExistingUsernameException;
+import Models.Product;
 import ModelsManager.SalesSystem;
 import jakarta.mail.internet.AddressException;
 import jakarta.mail.internet.InternetAddress;
@@ -13,6 +14,8 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -338,6 +341,17 @@ public class Validations {
             }
         }
         return password;
+    }
+
+
+    public static boolean validateProductFromList(int idToFind, List<Product> productList){
+        boolean valid=false;
+        for(int x=0;x<productList.size();x++){
+            if (productList.get(x).getIdProduct()==idToFind){
+                valid=true;
+            }
+        }
+        return valid;
     }
 
 

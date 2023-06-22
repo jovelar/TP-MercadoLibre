@@ -15,8 +15,8 @@ import Tools.Validations;
 public final class Buyer extends Client {
 
     //region ATTRIBUTES
-    private ArrayList<Integer>cart;
-    private List<Integer>favorites;
+    private ArrayList<Integer>cart=new ArrayList<>();
+    private List<Integer>favorites=new ArrayList<Integer>();
     private List<PayMethod> payMethod;
     //endregion
 
@@ -83,42 +83,25 @@ public final class Buyer extends Client {
 
 
     }
-    public void showFavoriteList(List<Product> importedFavoriteList) {
-        if(!favorites.isEmpty()){
-            int position = 0;
-            boolean found = false;
-            for (int x = 0; x < importedFavoriteList.size(); x++) {
-                while (found == false && position < importedFavoriteList.size()) {
-                    if (favorites.get(x)== importedFavoriteList.get(position).getIdProduct()) {
-                        System.out.println("ID: " + importedFavoriteList.get(x).getIdProduct() + ",MARCA: " + importedFavoriteList.get(x).getBrand() + ", PRODUCTO: " + importedFavoriteList.get(x).getProductName() + ", PRECIO: " + importedFavoriteList.get(x).getPrice() + ", DESCRIPCION: " + importedFavoriteList.get(x).getDescription());
-                        found=true;
-                    }
-                    position++;
-                }
-                found=false;
+    public void showFavoriteList(ArrayList<Product> importedFavoriteList) {
+        if(!importedFavoriteList.isEmpty()){
+            for(int x=0;x<importedFavoriteList.size();x++){
+            System.out.println("ID: "+importedFavoriteList.get(x).getIdProduct() +
+                               "PRODUCTO: "+importedFavoriteList.get(x).getProductName()+
+                                "MARCA: "+importedFavoriteList.get(x).getBrand()+
+                                "PRECIO: "+importedFavoriteList.get(x).getPrice());
             }
         }else{
-            System.out.println("La lista esta vacia");
+            Console.showMessageError("La lista esta vacia!");
         }
     }
 
 
-    public void deleteFavorite(){
-        if(!favorites.isEmpty()){
-            int id= Validations.doUntilValidNumber(Console.readInt("Ingrese el ID del producto a eliminar"));
-            boolean found=false;
-            int counter=0;
-            while(counter<favorites.size() && found==false){
-                if(favorites.get(counter)==id){
-                    found=true;
-                }
-                counter++;
-            }
-
-        }else{
-            System.out.println("La lista esta vacia");
-        }
-
+    public void deleteFavorite(int idToDelete){
+        favorites.remove(Integer.valueOf(idToDelete));
+    }
+    public void deleteProductFromCart(int idToDelete){
+        cart.remove((Integer)idToDelete);
     }
     public boolean validateAvailableProducts(){
         boolean state = true;
@@ -127,7 +110,41 @@ public final class Buyer extends Client {
 
         return state;
     }
+    public boolean validateValidFavorite(int iDToDelete){
+        boolean valid=false;
+        if(favorites==null){
+            valid=true;
+        }else{
+            for(int x=0;x<favorites.size();x++){
+                if(favorites.get(x)==iDToDelete){
+                    valid=true;
+                }
+            }
+        }
 
+        return valid;
+    }
+
+    public void addToCart(int idProduct){
+        if(cart==null){
+            cart=new ArrayList<Integer>();
+        }
+        if(cart.size()==1){
+            if(cart.get(0)!=idProduct){
+                cart.add(idProduct);
+            }
+        }else{
+            boolean exist=false;
+            for(int x=0;x<cart.size();x++){
+                if(cart.get(x)==idProduct){
+                    exist=true;
+                }
+            }
+            if(!exist){
+                cart.add(idProduct);
+            }
+        }
+    }
 
     //endregion
 }

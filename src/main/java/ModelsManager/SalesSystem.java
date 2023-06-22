@@ -108,7 +108,7 @@ public class SalesSystem {
             username.setLength(0);
             username.append(optionOrDateEntered);
 
-            optionOrDateEntered = Console.readString("Ingrese su contraseña");
+            optionOrDateEntered = Console.enterPassword();
 
             if (!optionOrDateEntered.equals("SALIR")) {
                 password.setLength(0);

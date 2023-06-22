@@ -38,6 +38,14 @@ public final class Buyer extends Client {
         super(idUser, username, email, password, firstName, surname, birthDate, phoneNumber);
     }
 
+    public Buyer(int idUser, String username, String email, String password, String firstName, String surname, String birthDate, long phoneNumber, Province province, String city, String address, int postalCode, float availableMoney, ArrayList<Integer> cart, List<Integer> favorites, List<Integer> cards, List<Integer> shoppingHistory) {
+        super(idUser, username, email, password, firstName, surname, birthDate, phoneNumber, province, city, address, postalCode, availableMoney);
+        this.cart = cart;
+        this.favorites = favorites;
+        this.cards = cards;
+        this.shoppingHistory = shoppingHistory;
+    }
+
     //endregion
 
     //region GETTERS AND SETTERS

@@ -518,5 +518,10 @@ public final class BuyerManager {
 
 
     }
+    public void changeSaldoBuyer(Buyer buyer) {
+            buyerRepo.modify(buyer);
+
+
+    }
 
 }

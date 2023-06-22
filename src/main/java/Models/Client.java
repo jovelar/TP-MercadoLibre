@@ -13,7 +13,7 @@ public abstract class Client extends User {
     protected String address;
     protected int postalCode;
 
-    protected double availableMoney; //nuevo, reemplazamos la clase Credit
+    protected float availableMoney; //nuevo, reemplazamos la clase Credit
     //endregion
 
     //region CONSTRUCTORS
@@ -34,7 +34,15 @@ public abstract class Client extends User {
         super(idUser, username, email, password, firstName, surname, birthDate, phoneNumber);
     }
 
-//endregion
+    public Client(int idUser, String username, String email, String password, String firstName, String surname, String birthDate, long phoneNumber, Province province, String city, String address, int postalCode, float availableMoney) {
+        super(idUser, username, email, password, firstName, surname, birthDate, phoneNumber);
+        this.province = province;
+        this.city = city;
+        this.address = address;
+        this.postalCode = postalCode;
+        this.availableMoney = availableMoney;
+    }
+    //endregion
 
     //region GETTERS AND SETTERS
     public Province getProvince() {
@@ -69,15 +77,15 @@ public abstract class Client extends User {
         this.postalCode = postalCode;
     }
 
-    public double getAvailableMoney() {
+    public float getAvailableMoney() {
         return availableMoney;
     }
 
-    public void setAvailableMoney(double availableMoney) {
+    public void setAvailableMoney(float availableMoney) {
         this.availableMoney = availableMoney;
     }
 
-    //endregion
+//endregion
 
     @Override
     public String toString() {

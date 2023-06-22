@@ -29,10 +29,10 @@ public class Main {
         TypeUser typeUser;
         String optionEntered;
 
-        SalesSystem.getProductManager().showSaleProducts();
 
         //menu principal
         do {
+            SalesSystem.getProductManager().showSaleProducts();
             optionEntered = Console.systemOptions(userConected);
 
             switch (optionEntered) {
@@ -81,8 +81,8 @@ public class Main {
                     break;//endregion
                 case "MIS COMPRAS":
                     System.out.println("Ha seleccionado la opción " + optionEntered);
-                    break;
-                case "FAVORITOS":
+                    break;//endregion
+                case "FAVORITOS"://region
 
                     List<Integer> favorites=buyer.getFavorites();
                     if(favorites!=null && !favorites.isEmpty()){
@@ -110,8 +110,8 @@ public class Main {
                     //SalesSystem.
 
                     System.out.println("Ha seleccionado la opción " + optionEntered);
-                    break;
-                case "CARRITO":
+                    break;//endregion
+                case "CARRITO"://region
                     List<Integer>  cart=buyer.getCart();
                     if(cart!=null && !cart.isEmpty()){
                         ArrayList<Product>cartList=SalesSystem.getProductManager().returnListOfProductsByID(cart);
@@ -134,16 +134,16 @@ public class Main {
                         Console.showMessageError("El carrito esta vacio!");
                     }
                     System.out.println("Ha seleccionado la opción " + optionEntered);
-                    break;
-                case "VER UN PRODUCTO":
+                    break;//endregion
+                case "VER UN PRODUCTO": //region
                     int idProduct = Validations.doUntilValidNumber(Console.readInt("Ingrese el id del producto"));
                     SalesSystem.getProductManager().showOneProductById(idProduct);
 
-                    break;
-                case "VER MAS PRODUCTOS":
+                    break;//endregion
+                case "VER MAS PRODUCTOS"://region
                     SalesSystem.getProductManager().showProductList();
-                    break;
-                case "BUSCAR":
+                    break;//endregion
+                case "BUSCAR"://region
                     String productToSearch=Console.readString("Ingrese el nombre del producto a buscar: ");
                     List<Product> searchResult=SalesSystem.getProductManager().searchProductList(productToSearch);
                     Console.cleanConsole();
@@ -152,30 +152,37 @@ public class Main {
                         System.out.println("\033[33m-------------------------------------------------------------------------");
                         System.out.println("                              PRODUCTOS ENCONTRADOS");
                         System.out.println("-------------------------------------------------------------------------\u001B[0m");
-                        buyer.showFavoriteList((ArrayList<Product>) searchResult);
+                        SalesSystem.getProductManager().showSearchProductList((ArrayList<Product>) searchResult);
                         Console.cleanConsole();
 
-                        int option=Console.systemOptionsbuyProduct();
-                        if(option==0){ //COMPRAR
-                            List<Product>cartLisToBuy=SalesSystem.getProductManager().returnListOfProductsByID(buyer.getCart());
-                            float cartPrice= buyer.cartValue(cartLisToBuy);
+                        int option = Console.systemOptionsbuyProduct();
+                        if (option == 0) { //COMPRAR
 
-                            int opcMetododePago=Console.systemOptionsBuyPayMethod();
-                            if(opcMetododePago==0){ //PAGO CON DINERO
-                                if(buyer.checkAvailableCredit(cartPrice)){
-                                    buyer.removeCredit(cartPrice);
-                                    int orderNumber=SalesSystem.getOrderManager().addOrderCredit(buyer,cartLisToBuy);
+//                            List<Product>cartLisToBuy=SalesSystem.getProductManager().returnListOfProductsByID(buyer.getCart());
+//                            float cartPrice= buyer.cartValue(cartLisToBuy);
+                            int idProductC = Validations.doUntilValidNumber(Console.readInt("Ingrese el ID del producto a comprar:"));
+                            Product compraProducto = SalesSystem.getProductManager().returnProductById(idProductC);
+
+                            int opcMetododePago = Console.systemOptionsBuyPayMethod();
+                            if (opcMetododePago == 0) { //PAGO CON DINERO
+                                if (buyer.checkAvailableCredit(compraProducto.getPrice())) {
+                                    buyer.removeCredit(compraProducto.getPrice());
+                                    Console.showMessage("COMPRA EXITOSA!");
+                                    SalesSystem.getBuyerManager().changeSaldoBuyer(buyer);
+                                    compraProducto.setQuantity(compraProducto.getQuantity()-1);
+                                    SalesSystem.getProductManager().descontarStock(compraProducto);
+/*                                    int orderNumber=SalesSystem.getOrderManager().addOrderCredit(buyer,cartLisToBuy);
                                     buyer.addToShoppingHistory(orderNumber);
                                     buyer.clearCart();
                                     SalesSystem.getBuyerManager().replaceBuyer(buyer);
-                                    Console.showMessage("Gracias por su compra");
-                                }else{
+                                    Console.showMessage("Gracias por su compra");*/
+                                } else {
                                     Console.showMessageError("Saldo insuficiente");
                                 }
 
 
-                            }else if (opcMetododePago==1){ //PAGO CON TARJETA
-                                List<Card>availableCards=SalesSystem.getCardManager().getCards(buyer.getCards());
+                            } else if (opcMetododePago == 1) { //PAGO CON TARJETA
+/*                                List<Card>availableCards=SalesSystem.getCardManager().getCards(buyer.getCards());
                                 int selectedCard=Console.readInt("Ingrese el ID de la tarjeta que desea usar");
 
                                 if(buyer.checkAvailableCredit(cartPrice)){
@@ -187,10 +194,10 @@ public class Main {
                                     Console.showMessage("Gracias por su compra");
                                 }else{
                                     Console.showMessageError("Saldo insuficiente");
-                                }
+                                }*/
                             }
 
-                            int producToBuy=Console.readInt("Ingrese el ID del producto a comprar: ");
+/*                            int producToBuy=Console.readInt("Ingrese el ID del producto a comprar: ");
                         }else if(option==1){
                             int productToCart=Console.readInt("Ingrese el ID del producto a incorporar al carrito");
                             if(Validations.validateProductFromList(productToCart,searchResult)){
@@ -203,18 +210,22 @@ public class Main {
                         }else if (option==2){
                             int productToFavorites=Console.readInt("ingrese el ID del producto a incorporar a favoritos");
                             buyer.addFavorite(productToFavorites);
+                        }*/
                         }
                     }else{
-                        Console.showMessage("No se encontraron productos con ese nombre");
+                        Console.showMessage("No se encontraron productos!");
                     }
-                    System.out.println("Ha seleccionado la opcion "+ optionEntered);
-                    break;
-                case "VER CATEGORIAS":
+                    break;//endregion
+                case "VER CATEGORIAS"://region
                     Menu.menuCategoriesMain();
-                    break;
-                case "SALIR":
+                    break;//endregion
+                case "VER MI SALDO"://region
+                    Console.showMessage("SALDO DISPONIBLE: $" +buyer.getAvailableMoney() );
+                    break;//endregion
+
+                case "SALIR"://region
                     Console.showMessage("Saliendo del programa...");
-                    break;
+                    break;//endregion
                 default:
                     Console.showMessageError("OPCION INVALIDA! VUELVA A INTENTARLO!");
                     break;

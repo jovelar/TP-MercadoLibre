@@ -2,6 +2,7 @@ package ModelsManager;
 
 import Enums.Category;
 import Models.Administrator;
+import Models.Buyer;
 import Models.Product;
 import ModelsRepo.ProductRepo;
 import Tools.Console;
@@ -14,6 +15,20 @@ import java.util.List;
 public class ProductManager {
 
     private ProductRepo productRepo = new ProductRepo();
+
+    public void showSearchProductList(ArrayList<Product> productsList) {
+
+        if(!productsList.isEmpty()){
+            for(int x=0;x<productsList.size();x++){
+                System.out.println("- ID: "+productsList.get(x).getIdProduct() +
+                        " - PRODUCTO: "+productsList.get(x).getProductName()+
+                        " - MARCA: "+productsList.get(x).getBrand()+
+                        " - PRECIO: "+productsList.get(x).getPrice());
+            }
+        } else {
+            Console.showMessageError("La lista esta vacia!");
+        }
+    }
 
     public void showSaleProducts(){
         List<Product> productList = productRepo.toList();
@@ -182,6 +197,11 @@ public class ProductManager {
         productRepo.modify(product);
 
         Console.showMessage("Producto modificado con exito!");
+
+    }
+    public void descontarStock(Product product) {
+        productRepo.modify(product);
+
 
     }
 

@@ -90,7 +90,7 @@ public class BuyerRepo implements IRepository<Buyer>{
                 buyer.setCart(nuevoObjeto.getCart());
                 //buyer.setPayMethod(nuevoObjeto.getPayMethod());
                 buyer.setShoppingHistory(nuevoObjeto.getShoppingHistory());
-                buyer.setAvailableMoney(buyer.getAvailableMoney());
+                buyer.setAvailableMoney(nuevoObjeto.getAvailableMoney());
                 break;
             }
         }

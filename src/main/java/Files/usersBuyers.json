@@ -14,10 +14,10 @@
   "address" : "victor hugo 1783",
   "postalCode" : 7167,
   "availableMoney" : 0.0,
-  "cart" : [],
-  "favorites" : [],
-  "cards" : [],
-  "shoppingHistory" : []
+  "cart" : [ ],
+  "favorites" : [ ],
+  "cards" : [ ],
+  "shoppingHistory" : [ ]
 }, {
   "idUser" : 2,
   "username" : "NuevoBuyer",
@@ -34,13 +34,13 @@
   "address" : "calle 123",
   "postalCode" : 7167,
   "availableMoney" : 0.0,
-  "cart" : [],
-  "favorites" : [],
-  "cards" : [],
-  "shoppingHistory" : []
+  "cart" : [ ],
+  "favorites" : [ ],
+  "cards" : [ ],
+  "shoppingHistory" : [ ]
 }, {
   "idUser" : 3,
-  "username" : "shiny",
+  "username" : "Flor1",
   "email" : "shiny@gmail.com",
   "password" : "12345678",
   "firstName" : "shinyy",
@@ -53,9 +53,9 @@
   "city" : "Rio",
   "address" : "catamarca 123",
   "postalCode" : 4112,
-  "availableMoney" : 0.0,
-  "cart" : [],
-  "favorites" : [],
-  "cards" : [],
-  "shoppingHistory" : []
+  "availableMoney" : 80002.0,
+  "cart" : [ ],
+  "favorites" : [ ],
+  "cards" : [ ],
+  "shoppingHistory" : [ ]
 } ]

@@ -88,7 +88,7 @@ public final class Console {
                         JOptionPane.QUESTION_MESSAGE,
                         null,  // null para icono defecto
                         new Object[] { "VER MI PERFIL", "MIS COMPRAS", "FAVORITOS", "CARRITO", "VER UN PRODUCTO",
-                                "VER MAS PRODUCTOS", "BUSCAR","VER CATEGORIAS", "SALIR"},
+                                "VER MAS PRODUCTOS", "BUSCAR","VER CATEGORIAS","VER MI SALDO", "SALIR"},
                         "VER MI PERFIL");
             } else {
 

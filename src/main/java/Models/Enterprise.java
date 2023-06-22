@@ -59,11 +59,11 @@ public final class Enterprise extends Client implements Serializable {
         this.salesRevenue = salesRevenue;
     }
 
-    public ArrayList<Integer> getMyProductsList() {
+    public ArrayList<Integer> getMyProducts() {
         return this.myProducts;
     }
 
-    public void getMyProductsList(ArrayList<Integer> myProducts) {
+    public void setMyProducts(ArrayList<Integer> myProducts) {
         this.myProducts = myProducts;
     }
 
@@ -83,7 +83,7 @@ public final class Enterprise extends Client implements Serializable {
     }
 
     public void showMyProducts(ArrayList<Product> myProductsList) {
-
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n");
         System.out.println("\033[34m-------------------------------------------------------------------------");
         System.out.println("                               MIS PRODUCTOS");
         System.out.println("-------------------------------------------------------------------------\u001B[0m");

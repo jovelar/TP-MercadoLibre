@@ -401,7 +401,7 @@ vendida (se tiene que actualizar el json en cada venta).
         do {
 
             //TODO: mostras productos del enterprise
-            myProductsList = SalesSystem.getProductManager().returnListOfProductsByID(enterprise.getMyProductsList());
+            myProductsList = SalesSystem.getProductManager().returnListOfProductsByID(enterprise.getMyProducts());
             enterprise.showMyProducts(myProductsList);
 
             optionEntered = Console.systemOptionsEnterprise();
@@ -431,12 +431,12 @@ vendida (se tiene que actualizar el json en cada venta).
                 case "MODIFICAR PRODUCTO"://region
                     enterprise.editProduct();
                     break;
-                case "DAR DE BAJA UN PRODUCTO"://region
+                /*case "DAR DE BAJA UN PRODUCTO"://region
                     enterprise.deleteProduct();
-                    break;
-                case "DAR DE BAJA MI CUENTA"://region
+                    break;*/
+                /*case "DAR DE BAJA MI CUENTA"://region
                     System.out.println("Ha seleccionado la opción " + optionEntered);
-                    break;
+                    break;*/
                 case "SALIR":
                     Console.showMessage("Saliendo del programa...");//region
                     break;

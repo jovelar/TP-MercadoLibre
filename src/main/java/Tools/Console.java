@@ -302,8 +302,9 @@ public final class Console {
             "OPCIONES MENU PRINCIPAL ADMINISTRATOR",
             JOptionPane.QUESTION_MESSAGE,
             null,  // null para icono defecto
-            new Object[] { "VER MI PERFIL","AGREGAR PRODUCTO", "MODIFICAR PRODUCTO", "DAR DE BAJA UN PRODUCTO",
-                    "DAR DE BAJA MI CUENTA", "SALIR"},
+            new Object[] { "VER MI PERFIL","AGREGAR PRODUCTO", "MODIFICAR PRODUCTO", "SALIR"},
+                    //"DAR DE BAJA UN PRODUCTO",
+                    //"DAR DE BAJA MI CUENTA", "SALIR"},
             "VER MI PERFIL");
 
         if(chosenOption == null)

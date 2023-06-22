@@ -11,6 +11,7 @@ import Models.Product;
 import ModelsManager.ProductManager;
 import ModelsManager.SalesSystem;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public final class Menu {
@@ -165,7 +166,7 @@ public final class Menu {
         switch (opcion) {
             case 1:
                 System.out.println("Agregar Productos");
-                productManager.addProduct();
+                //productManager.addProduct();
                 break;
             case 2:
                 System.out.println("Eliminar Productos");
@@ -394,12 +395,15 @@ vendida (se tiene que actualizar el json en cada venta).
         Enterprise enterprise = SalesSystem.getEnterpriseManager().returnEnterpriseByUsername(username);
         String optionEntered;
         String returnedOption;
-
-        //TODO: mostras productos del enterprise
-        SalesSystem.getProductManager().showSaleProducts();
+        ArrayList<Product> myProductsList;
 
         //menu principal
         do {
+
+            //TODO: mostras productos del enterprise
+            myProductsList = SalesSystem.getProductManager().returnListOfProductsByID(enterprise.getMyProductsList());
+            enterprise.showMyProducts(myProductsList);
+
             optionEntered = Console.systemOptionsEnterprise();
 
             switch (optionEntered) {
@@ -422,17 +426,13 @@ vendida (se tiene que actualizar el json en cada venta).
                     break;//endregion
 
                 case "AGREGAR PRODUCTO"://region
-
-                    SalesSystem.createAccount();
+                    enterprise.addProduct();
                     break;//endregion
-
                 case "MODIFICAR PRODUCTO"://region
-                    System.out.println("Ha seleccionado la opción " + optionEntered);
+                    enterprise.editProduct();
                     break;
-                    
                 case "DAR DE BAJA UN PRODUCTO"://region
-                    //SalesSystem.
-                    System.out.println("Ha seleccionado la opción " + optionEntered);
+                    enterprise.deleteProduct();
                     break;
                 case "DAR DE BAJA MI CUENTA"://region
                     System.out.println("Ha seleccionado la opción " + optionEntered);

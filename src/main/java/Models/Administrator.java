@@ -36,16 +36,13 @@ public final class Administrator extends User implements Serializable {
     public void viewProfile(){
         Console.cleanConsole();
 
-
         System.out.println("\033[33m-------------------------------------------------------------------------");
         System.out.println("                               MI PERFIL");
         System.out.println("-------------------------------------------------------------------------\u001B[0m");
 
         System.out.println(this);
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n");
-
     }
-
 
     @Override
     public String toString() {

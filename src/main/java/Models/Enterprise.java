@@ -1,6 +1,7 @@
 package Models;
 
 import Enums.Province;
+import ModelsManager.SalesSystem;
 import Tools.Console;
 
 import java.io.Serializable;
@@ -58,21 +59,21 @@ public final class Enterprise extends Client implements Serializable {
         this.salesRevenue = salesRevenue;
     }
 
-    public ArrayList<Integer> getMyProducts() {
-        return myProducts;
+    public ArrayList<Integer> getMyProductsList() {
+        return this.myProducts;
     }
 
-    public void setMyProducts(ArrayList<Integer> myProducts) {
+    public void getMyProductsList(ArrayList<Integer> myProducts) {
         this.myProducts = myProducts;
     }
 
     //endregion
 
     public void addProduct(){
-
+        SalesSystem.getProductManager().addProduct(this.idUser, this.fantasyName);
     }
     public void editProduct(){
-
+        SalesSystem.getProductManager().modifyProduct();
     }
     public void updateProduct(){
 
@@ -81,6 +82,24 @@ public final class Enterprise extends Client implements Serializable {
 
     }
 
+    public void showMyProducts(ArrayList<Product> myProductsList) {
+
+        System.out.println("\033[34m-------------------------------------------------------------------------");
+        System.out.println("                               MIS PRODUCTOS");
+        System.out.println("-------------------------------------------------------------------------\u001B[0m");
+
+        if(!this.myProducts.isEmpty()){
+            for(Product product : myProductsList){
+                System.out.println("ID: "+ product.getIdProduct() + "\n" +
+                                "PRODUCTO: "+product.getProductName()+
+                                ", MARCA: "+product.getBrand()+
+                                ", PRECIO: "+product.getPrice() + "\n");
+            }
+        }else{
+            System.out.println("\n\n\n\t\tLISTA DE PRODUCTOS VACIA...\n");
+            Console.showMessageError("AUN NO AGREGASTE NINGUN PRODUCTO");
+        }
+    }
 
 
     @Override

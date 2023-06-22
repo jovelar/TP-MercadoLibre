@@ -216,9 +216,9 @@ public final class Console {
                 null,  // null para icono defecto
                 new Object[] { "MODIFICAR NOMBRE DE USUARIO", "MODIFICAR EMAIL","MODIFICAR CONTRASEÑA",
                         "MODIFICAR APELLIDO", "MODIFICAR FECHA DE NACIMIENTO", "MODIFICAR NUMERO DE TELEFONO",
-                        "MODIFICAR TODO", "SALIR"},
+                        "MODIFICAR NOMBRE DE LA EMPRESA", "MODIFICAR PROVINCIA", "MODIFICAR CIUDAD",
+                        "MODIFICAR  DIRECCION", "MODIFICAR CODIGO POSTAL", "MODIFICAR TODO", "SALIR"},
                 "MODIFICAR NOMBRE DE USUARIO");
-
 
         if(chosenOption == null)
             chosenOption = "SALIR";

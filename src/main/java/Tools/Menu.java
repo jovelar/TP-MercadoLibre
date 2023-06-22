@@ -623,7 +623,7 @@ vendida (se tiene que actualizar el json en cada venta).
 
                 //region
                 case "MODIFICAR NOMBRE DE USUARIO":
-                     answer = SalesSystem.getAdministratorManager().changeAdminUsername(idEnterprise);
+                     answer = SalesSystem.getEnterpriseManager().changeEnterpriseUsername(idEnterprise);
                     if(answer){
                         Console.showMessage("¡NOMBRE DE USUARIO MODIFICADO CON EXITO!");
                         optionEntered = "MODIFICADO";
@@ -632,30 +632,123 @@ vendida (se tiene que actualizar el json en cada venta).
                     }
                     break;
                 case "MODIFICAR EMAIL":
-
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseEmail(idEnterprise);
+                    if(answer){
+                        Console.showMessage("¡EMAIL MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
                     break;
                 case "MODIFICAR CONTRASEÑA":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterprisePassword(idEnterprise);
+                    if(answer){
+                        Console.showMessage("¡CONTRASEÑA MODIFICADA CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
 
                     break;
 
                 case "MODIFICAR NOMBRE":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseFirstName(idEnterprise);
+                    if(answer){
+                        Console.showMessage("¡NOMBRE MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
                     break;
 
                 case "MODIFICAR APELLIDO":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseSurname(idEnterprise);
+                    if(answer){
+                        Console.showMessage("¡APELLIDO MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
                     break;
 
                 case "MODIFICAR FECHA DE NACIMIENTO":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseBirthDate(idEnterprise);
+                    if(answer){
+                        Console.showMessage("¡FECHA DE NACIMIENTO MODIFICADA CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
                     break;
 
                 case "MODIFICAR NUMERO DE TELEFONO":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterprisePhoneNumber(idEnterprise);
+                    if(answer){
+                        Console.showMessage("¡NUMERO DE TELEFONO MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+
+                case "MODIFICAR NOMBRE DE LA EMPRESA":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseNameEnterprise(idEnterprise);
+                    if(answer){
+                        Console.showMessage("¡NOMBRE DE LA EMPRESA MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+
+                case "MODIFICAR PROVINCIA":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseProvince(idEnterprise);
+                    if(answer){
+                        Console.showMessage("¡PROVINCIA MODIFICADA CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+
+                case "MODIFICAR CIUDAD":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseCity(idEnterprise);
+                    if(answer){
+                        Console.showMessage("¡CIUDAD MODIFICADA CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+
+                case "MODIFICAR DIRECCION":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseAddress(idEnterprise);
+                    if(answer){
+                        Console.showMessage("¡DIRECCION MODIFICADA CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+
+                case "MODIFICAR CODIGO POSTAL":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterprisePostalCode(idEnterprise);
+                    if(answer){
+                        Console.showMessage("¡CODIGO POSTAL MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
                     break;
 
                 case "MODIFICAR TODO":
-                    answer = SalesSystem.getAdministratorManager().totalModifyOneAdministrator(idEnterprise);
+                    answer = SalesSystem.getEnterpriseManager().totalModifyOneEnterprise(idEnterprise);
                     if(answer){
                         Console.showMessage("¡CUENTA ADMINISTRADOR MODIFICADA CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
                     }
-
                     break;
 
                 case "SALIR":

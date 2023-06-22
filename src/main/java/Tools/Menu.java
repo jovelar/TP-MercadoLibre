@@ -530,30 +530,74 @@ vendida (se tiene que actualizar el json en cada venta).
                     }
                     break;
                 case "MODIFICAR EMAIL":
+                    answer = SalesSystem.getAdministratorManager().changeAdminEmail(idAdministrator);
+                    if(answer){
+                        Console.showMessage("¡EMAIL MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
 
                     break;
                 case "MODIFICAR CONTRASEÑA":
+                    answer = SalesSystem.getAdministratorManager().changeAdminPassword(idAdministrator);
+                    if(answer){
+                        Console.showMessage("¡CONTRASEÑA MODIFICADA CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
 
                     break;
 
                 case "MODIFICAR NOMBRE":
+                    answer = SalesSystem.getAdministratorManager().changeAdminFirstName(idAdministrator);
+                    if(answer){
+                        Console.showMessage("¡NOMBRE MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
                     break;
 
                 case "MODIFICAR APELLIDO":
+                    answer = SalesSystem.getAdministratorManager().changeAdminSurname(idAdministrator);
+                    if(answer){
+                        Console.showMessage("¡APELLIDO MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
                     break;
 
                 case "MODIFICAR FECHA DE NACIMIENTO":
+                    answer = SalesSystem.getAdministratorManager().changeAdminBirthDate(idAdministrator);
+                    if(answer){
+                        Console.showMessage("¡FECHA DE NACIMIENTO MODIFICADA CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
                     break;
 
                 case "MODIFICAR NUMERO DE TELEFONO":
+                    answer = SalesSystem.getAdministratorManager().changeAdminPhoneNumber(idAdministrator);
+                    if(answer){
+                        Console.showMessage("¡NUMERO DE TELEFONO MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
                     break;
 
                 case "MODIFICAR TODO":
                     answer = SalesSystem.getAdministratorManager().totalModifyOneAdministrator(idAdministrator);
                     if(answer){
                         Console.showMessage("¡CUENTA ADMINISTRADOR MODIFICADA CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
                     }
-
                     break;
 
                 case "SALIR":

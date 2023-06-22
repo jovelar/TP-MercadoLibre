@@ -12,12 +12,12 @@
 }, {
   "idUser" : 100,
   "username" : "florM",
-  "email" : "nuevoadm@gmail.com",
-  "password" : "12345678",
+  "email" : "nuevoadmin@gmail.com",
+  "password" : "contraseña",
   "firstName" : "Florencia",
-  "surname" : "Mamani",
+  "surname" : "lovera",
   "dni" : 0,
-  "birthDate" : "27/08/2000",
-  "phoneNumber" : 2254533702,
+  "birthDate" : "22/05/1987",
+  "phoneNumber" : 2231232585,
   "active" : true
 } ]

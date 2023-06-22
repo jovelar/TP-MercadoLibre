@@ -29,8 +29,35 @@ public class ProductManager {
         }
     }
 
+    public void showProductByCategory(Category category){
+
+        List<Product> productList = productRepo.toList();
+        System.out.println("\033[33m-------------------------------------------------------------------------");
+        System.out.println("                               "+ category.getNombre());
+        System.out.println("-------------------------------------------------------------------------\u001B[0m");
+
+        for(Product product : productList){
+            if(product.getCategory() == category){
+                System.out.println("ID:" + product.getIdProduct() + " ." + product);
+                System.out.println("---------------------------------------------------------");
+
+            }
+        }
+
+    }
+    
+    public void showOneProductById(int idProduct){
+        Product product = returnProductById(idProduct);
+        product.viewProduct();
+        
+    }
+
     public void showProductList(){
         List<Product> productList = productRepo.toList();
+
+        System.out.println("\033[33m-------------------------------------------------------------------------");
+        System.out.println("                              TODOS LOS PRODUCTOS");
+        System.out.println("-------------------------------------------------------------------------\u001B[0m");
 
         for(int i = 0; i< productList.size(); i++){
             System.out.println( "ID:" + productList.get(i).getIdProduct() + " ." + productList.get(i));
@@ -128,6 +155,20 @@ public class ProductManager {
         productRepo.modify(product);
 
         Console.showMessage("Producto modificado con exito!");
+
+    }
+
+    public Product returnProductById(int id){
+        Product productFound = null;
+        List<Product> productList = productRepo.toList();
+
+        for(Product product : productList){
+            if(id == product.getIdProduct()){
+                productFound = product;
+                break;
+            }
+        }
+        return productFound;
 
     }
 

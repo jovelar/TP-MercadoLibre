@@ -1012,4 +1012,41 @@ vendida (se tiene que actualizar el json en cada venta).
         return optionEntered;
     }
 
+    public static void menuCategoriesMain () {
+        boolean answer;
+        String optionEntered;
+        do {
+            optionEntered = Console.systemOptionsCategories();
+
+            switch (optionEntered) {
+
+                //region
+                case "TECNOLOGIA":
+                    SalesSystem.getProductManager().showProductByCategory(Category.TECHNOLOGY);
+                    break;
+                case "MODA":
+                    SalesSystem.getProductManager().showProductByCategory(Category.FASHION);
+
+                    break;
+                case "VEHICULOS":
+                    SalesSystem.getProductManager().showProductByCategory(Category.VEHICLES);
+
+                    break;
+
+                case "SUPERMERCADO":
+                    SalesSystem.getProductManager().showProductByCategory(Category.SUPERMARKET);
+
+                    break;
+
+                case "VOLVER AL MENU PRINCIPAL":
+                    Console.showMessage("Volviendo al menu principal...");
+                    break;
+                default:
+                    Console.showMessageError("OPCION INVALIDA! VUELVA A INTENTARLO!");
+                    break;
+            }
+
+        } while (!optionEntered.equals("VOLVER AL MENU PRINCIPAL"));
+    }
+
 }

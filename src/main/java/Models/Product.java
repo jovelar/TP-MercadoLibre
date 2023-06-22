@@ -1,6 +1,7 @@
 package Models;
 
 import Enums.Category;
+import Tools.Console;
 
 import java.util.Objects;
 
@@ -157,11 +158,22 @@ public final class Product {
         result = 31 * result + Integer.hashCode(idProduct);
         return result;
     }
+    public void viewProduct(){
+        Console.cleanConsole();
+
+        System.out.println("\033[33m-------------------------------------------------------------------------");
+        System.out.println("                               PRODUCTO");
+        System.out.println("-------------------------------------------------------------------------\u001B[0m");
+
+        System.out.println(this);
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n");
+
+    }
 
     @Override
     public String toString() {
         return "\n ID del vendedor(empresa): " + iDEnterprise +
-                "\n Marca: " + brand +
+                "\n Marca:" + brand +
                 "\n Nombre del producto: " + productName +
                 "\n Nombre del vendedor:" + vendorName +
                 "\n Precio:" + price +

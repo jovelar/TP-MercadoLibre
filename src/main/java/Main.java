@@ -40,6 +40,22 @@ public class Main {
             switch (optionEntered) {
                 //region
                 case "VER MI PERFIL":
+
+                        buyer.viewProfile();
+
+                        int answer = Console.buttonsModifyAndReturn();
+
+                        if (answer == 0) {
+                            String returnedOption = Menu.menuModifyBuyer(buyer.getIdUser());
+                            if (returnedOption.equals("MODIFICADO")) {
+                                buyer = SalesSystem.getBuyerManager().returnBuyerById(buyer.getIdUser());
+                                buyer.viewProfile();
+                            }
+                        }
+
+                        Console.showMessage("Volviendo al menu principal...");
+
+
 //                    System.out.println(buyer);
                     //TODO: agregar metodo con switch y opciones de modificacion de perfil
                     break;//endregion
@@ -73,6 +89,8 @@ public class Main {
                     List<Integer> favorites=buyer.getFavorites();
                     if(favorites!=null && !favorites.isEmpty()){
                         ArrayList<Product>favoriteProductlist=SalesSystem.getProductManager().returnListOfProductsByID(favorites);
+
+
                         buyer.showFavoriteList(favoriteProductlist);
                         int opc=Console.systemOptionsDeleteFavorites();
                         if(opc==0){
@@ -121,16 +139,25 @@ public class Main {
                     System.out.println("Ha seleccionado la opción " + optionEntered);
                     break;
                 case "VER UN PRODUCTO":
-                    System.out.println("Ha seleccionado la opción " + optionEntered);
+                    int idProduct = Validations.doUntilValidNumber(Console.readInt("Ingrese el id del producto"));
+                    SalesSystem.getProductManager().showOneProductById(idProduct);
+
                     break;
                 case "VER MAS PRODUCTOS":
-                    System.out.println("Ha seleccionado la opción " + optionEntered);
+                    SalesSystem.getProductManager().showProductList();
                     break;
                 case "BUSCAR":
                     String productToSearch=Console.readString("Ingrese el nombre del producto a buscar: ");
                     List<Product> searchResult=SalesSystem.getProductManager().searchProductList(productToSearch);
+                    Console.cleanConsole();
+
                     if (searchResult != null && searchResult.size() != 0) {
+                        System.out.println("\033[33m-------------------------------------------------------------------------");
+                        System.out.println("                              PRODUCTOS ENCONTRADOS");
+                        System.out.println("-------------------------------------------------------------------------\u001B[0m");
                         buyer.showFavoriteList((ArrayList<Product>) searchResult);
+                        Console.cleanConsole();
+
                         int option=Console.systemOptionsbuyProduct();
                         if(option==0){
                             int opcMetododePago=Console.systemOptionsBuyPayMethod();
@@ -152,6 +179,7 @@ public class Main {
 
                         }else if (option==2){
                             int productToFavorites=Console.readInt("ingrese el ID del producto a incorporar a favoritos");
+                            buyer.addFavorite(productToFavorites);
                         }
                     }else{
                         Console.showMessage("No se encontraron productos con ese nombre");
@@ -159,7 +187,7 @@ public class Main {
                     System.out.println("Ha seleccionado la opcion "+ optionEntered);
                     break;
                 case "VER CATEGORIAS":
-                    System.out.println("Ha seleccionado la opción " + optionEntered);
+                    Menu.menuCategoriesMain();
                     break;
                 case "SALIR":
                     Console.showMessage("Saliendo del programa...");

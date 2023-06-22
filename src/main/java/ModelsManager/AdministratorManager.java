@@ -392,7 +392,6 @@ public final class AdministratorManager {
             answer = true;
         }
 
-
         return answer;
     }
 

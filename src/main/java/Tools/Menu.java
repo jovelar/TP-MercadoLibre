@@ -382,8 +382,8 @@ vendida (se tiene que actualizar el json en cada venta).
             case 22 -> cliente.setProvince(Province.SANTIAGODELESTERO);
             case 23 -> cliente.setProvince(Province.TIERRADELFUEGO);
             case 24 -> cliente.setProvince(Province.TUCUMAN);
-            case -1 -> System.out.println("");//cuando ingresa un valor no entero o una letra
-            case 0 -> System.out.println("");////cuando se oprime cancelar o la cruz(X), se retorno 0 en el metodo anterior
+            case -1 -> System.out.println(" ");//cuando ingresa un valor no entero o una letra
+            case 0 -> System.out.println(" ");////cuando se oprime cancelar o la cruz(X), se retorno 0 en el metodo anterior
             default->Console.showMessage("\t\t¡OPCION INVALIDA! \n\nPor favor, selecciona una opción disponible...\n");
         }
     }
@@ -392,63 +392,52 @@ vendida (se tiene que actualizar el json en cada venta).
     public static void enterpriseMainMenu(String username) {
 
         Enterprise enterprise = SalesSystem.getEnterpriseManager().returnEnterpriseByUsername(username);
+        boolean userConected = true;
+        TypeUser typeUser = TypeUser.ENTERPRISE;
 
-    }
-
-    public static String administratorMainMenu(String username) { //TODO falta probar este menu
-        Administrator administrator;
         String optionEntered;
-        boolean success;
+
+        SalesSystem.getProductManager().showSaleProducts();
+
+        //menu principal
         do {
-            optionEntered = Console.systemOptionsAdministrator();
+            optionEntered = Console.systemOptions(userConected);
 
-           administrator = SalesSystem.getAdministratorManager().returnAdministratorByUsername(username);
             switch (optionEntered) {
-
-                //region
-                case "VER MI PERFIL":
-                    administrator.viewProfile();
+                case "VER MI PERFIL"://region
+                    enterprise.viewProfile();
 
                     int answer = Console.buttonsModifyAndReturn();
 
                     if(answer == 0){
-                        optionEntered = Menu.menuModifyAdministrator(administrator.getIdUser());
+                        optionEntered = Menu.menuModifyEnterprise(enterprise.getIdUser());
                         if(optionEntered.equals("MODIFICADO")){
-                            administrator = SalesSystem.getAdministratorManager().returnAdministratorById(administrator.getIdUser());
-                            administrator.viewProfile();
-                            username = administrator.getUsername();
+                            enterprise = SalesSystem.getEnterpriseManager().returnEnterpriseById(enterprise.getIdUser());
+                            enterprise.viewProfile();
+                            username = enterprise.getUsername();
                         }
                     }
 
                     Console.showMessage("Volviendo al menu principal...");
-                    break;
-                case "ADMINISTRAR EMPRESAS":
-                    optionEntered = enterpriseABMLmenu(); //TODO probar
+                    break;//endregion
 
-                    break;
-                case "ADMINISTRAR CLIENTES":
-                    optionEntered = buyerABMLmenu(); //TODO probar
-                    break;
+                case "AGREGAR PRODUCTO"://region
+                    SalesSystem.createAccount();
+                    break;//endregion
 
-                case "AGREGAR ADMINISTRADORES":
-                    success = SalesSystem.getAdministratorManager().addAministrator();
-                    if(success){
-                        Console.showMessage("¡Cuenta ADMINISTRADOR creada con exito!");
-                    }
+                case "MODIFICAR PRODUCTO"://region
+                    System.out.println("Ha seleccionado la opción " + optionEntered);
                     break;
-
-                case "MOSTRAR ADMINISTRADORES":
-                    SalesSystem.getAdministratorManager().showAdministratorsList();
+                    
+                case "DAR DE BAJA UN PRODUCTO"://region
+                    //SalesSystem.
+                    System.out.println("Ha seleccionado la opción " + optionEntered);
                     break;
-                case "DAR DE BAJA MI CUENTA":
-                    success = SalesSystem.getAdministratorManager().cancelAnAccountAdm(administrator.getIdUser());
-                    if(success){
-                        Console.showMessage("¡Su cuenta ADMINISTRADOR se dio de baja exitosamente!");
-                    }
+                case "DAR DE BAJA MI CUENTA"://region
+                    System.out.println("Ha seleccionado la opción " + optionEntered);
                     break;
-
                 case "SALIR":
-                    Console.showMessage("GRACIAS POR UTILIZAR ESTE PROGRAMA!");
+                    Console.showMessage("Saliendo del programa...");//region
                     break;
                 default:
                     Console.showMessageError("OPCION INVALIDA! VUELVA A INTENTARLO!");
@@ -456,10 +445,75 @@ vendida (se tiene que actualizar el json en cada venta).
             }
 
         } while(!optionEntered.equals("SALIR"));
-        return optionEntered;
+
     }
 
-    public static String enterpriseABMLmenu(){
+    public static String administratorMainMenu(String username) { //TODO falta probar este menu
+
+            Administrator administrator;
+            String optionEntered;
+            boolean success;
+            do {
+                optionEntered = Console.systemOptionsAdministrator();
+
+                administrator = SalesSystem.getAdministratorManager().returnAdministratorByUsername(username);
+                switch (optionEntered) {
+
+                    //region
+                    case "VER MI PERFIL":
+                        administrator.viewProfile();
+
+                        int answer = Console.buttonsModifyAndReturn();
+
+                        if (answer == 0) {
+                            optionEntered = Menu.menuModifyAdministrator(administrator.getIdUser());
+                            if (optionEntered.equals("MODIFICADO")) {
+                                administrator = SalesSystem.getAdministratorManager().returnAdministratorById(administrator.getIdUser());
+                                administrator.viewProfile();
+                                username = administrator.getUsername();
+                            }
+                        }
+
+                        Console.showMessage("Volviendo al menu principal...");
+                        break;
+                    case "ADMINISTRAR EMPRESAS":
+                        optionEntered = enterpriseABMLmenu(); //TODO probar
+
+                        break;
+                    case "ADMINISTRAR CLIENTES":
+                        optionEntered = buyerABMLmenu(); //TODO probar
+                        break;
+
+                    case "AGREGAR ADMINISTRADORES":
+                        success = SalesSystem.getAdministratorManager().addAministrator();
+                        if (success) {
+                            Console.showMessage("¡Cuenta ADMINISTRADOR creada con exito!");
+                        }
+                        break;
+
+                    case "MOSTRAR ADMINISTRADORES":
+                        SalesSystem.getAdministratorManager().showAdministratorsList();
+                        break;
+                    case "DAR DE BAJA MI CUENTA":
+                        success = SalesSystem.getAdministratorManager().cancelAnAccountAdm(administrator.getIdUser());
+                        if (success) {
+                            Console.showMessage("¡Su cuenta ADMINISTRADOR se dio de baja exitosamente!");
+                        }
+                        break;
+
+                    case "SALIR":
+                        Console.showMessage("GRACIAS POR UTILIZAR ESTE PROGRAMA!");
+                        break;
+                    default:
+                        Console.showMessageError("OPCION INVALIDA! VUELVA A INTENTARLO!");
+                        break;
+                }
+
+            } while (!optionEntered.equals("SALIR"));
+            return optionEntered;
+        }
+
+    public static String enterpriseABMLmenu () {
         boolean answer;
         String optionEntered;
         do {
@@ -470,20 +524,20 @@ vendida (se tiene que actualizar el json en cada venta).
                 //region
                 case "AGREGAR NUEVA EMPRESA":
                     answer = SalesSystem.getEnterpriseManager().addEnterprise();
-                    if(answer){
+                    if (answer) {
                         Console.showMessage("SE AGREGO LA EMPRESA CON EXITO!");
                     }
                     break;
                 case "BAJA DE EMPRESA":
                     answer = SalesSystem.getEnterpriseManager().deleteLogicallyEnterprise();
-                    if(answer){
+                    if (answer) {
                         Console.showMessage("SE DIO DE BAJA LA EMPRESA CON EXITO!");
                     }
 
                     break;
                 case "MODIFICAR EMPRESA":
                     answer = SalesSystem.getEnterpriseManager().totalModifyEnterpriseForAdm(); //TODO falta modificarlo
-                    if(answer){
+                    if (answer) {
                         Console.showMessage("LA EMPRESA SE MODIFICO CON EXITO!");
                     }
 
@@ -503,11 +557,11 @@ vendida (se tiene que actualizar el json en cada venta).
                     break;
             }
 
-        } while(!optionEntered.equals("SALIR"));
+        } while (!optionEntered.equals("SALIR"));
         return optionEntered;
 
     }
-    public static String buyerABMLmenu(){
+    public static String buyerABMLmenu () {
         boolean answer;
         String optionEntered;
         do {
@@ -518,20 +572,20 @@ vendida (se tiene que actualizar el json en cada venta).
                 //region
                 case "AGREGAR NUEVA CUENTA PERSONAL":
                     answer = SalesSystem.getBuyerManager().addBuyer();
-                    if(answer){
+                    if (answer) {
                         Console.showMessage("SE AGREGO LA CUENTA PERSONAL CON EXITO!");
                     }
                     break;
                 case "BAJA DE CUENTA PERSONAL":
                     answer = SalesSystem.getBuyerManager().deleteLogicallyBuyer();
-                    if(answer){
+                    if (answer) {
                         Console.showMessage("¡LA CUENTA PERSONAL SE DIO DE BAJA EXITOSAMENTE!");
                     }
 
                     break;
                 case "MODIFICAR CUENTA PERSONAL":
                     answer = SalesSystem.getBuyerManager().totalModifyBuyerForAdm(); //TODO falta modificarlo
-                    if(answer){
+                    if (answer) {
                         Console.showMessage("LA CUENTA SE MODIFICO CON EXITO!");
                     }
 
@@ -550,114 +604,12 @@ vendida (se tiene que actualizar el json en cada venta).
                     break;
             }
 
-        } while(!optionEntered.equals("SALIR"));
+        } while (!optionEntered.equals("SALIR"));
         return optionEntered;
 
     }
 
-    public static String menuModifyAdministrator(int idAdministrator) {
-        boolean answer;
-        String optionEntered;
-
-        do {
-            optionEntered = Console.systemOptionsModifyAdministrator();
-
-            switch (optionEntered) {
-
-                //region
-                case "MODIFICAR NOMBRE DE USUARIO":
-                     answer = SalesSystem.getAdministratorManager().changeAdminUsername(idAdministrator);
-                    if(answer){
-                        Console.showMessage("¡NOMBRE DE USUARIO MODIFICADO CON EXITO!");
-                        optionEntered = "MODIFICADO";
-                    }else {
-                        optionEntered = "SALIR";
-                    }
-                    break;
-                case "MODIFICAR EMAIL":
-                    answer = SalesSystem.getAdministratorManager().changeAdminEmail(idAdministrator);
-                    if(answer){
-                        Console.showMessage("¡EMAIL MODIFICADO CON EXITO!");
-                        optionEntered = "MODIFICADO";
-                    }else {
-                        optionEntered = "SALIR";
-                    }
-
-                    break;
-                case "MODIFICAR CONTRASEÑA":
-                    answer = SalesSystem.getAdministratorManager().changeAdminPassword(idAdministrator);
-                    if(answer){
-                        Console.showMessage("¡CONTRASEÑA MODIFICADA CON EXITO!");
-                        optionEntered = "MODIFICADO";
-                    }else {
-                        optionEntered = "SALIR";
-                    }
-
-                    break;
-
-                case "MODIFICAR NOMBRE":
-                    answer = SalesSystem.getAdministratorManager().changeAdminFirstName(idAdministrator);
-                    if(answer){
-                        Console.showMessage("¡NOMBRE MODIFICADO CON EXITO!");
-                        optionEntered = "MODIFICADO";
-                    }else {
-                        optionEntered = "SALIR";
-                    }
-                    break;
-
-                case "MODIFICAR APELLIDO":
-                    answer = SalesSystem.getAdministratorManager().changeAdminSurname(idAdministrator);
-                    if(answer){
-                        Console.showMessage("¡APELLIDO MODIFICADO CON EXITO!");
-                        optionEntered = "MODIFICADO";
-                    }else {
-                        optionEntered = "SALIR";
-                    }
-                    break;
-
-                case "MODIFICAR FECHA DE NACIMIENTO":
-                    answer = SalesSystem.getAdministratorManager().changeAdminBirthDate(idAdministrator);
-                    if(answer){
-                        Console.showMessage("¡FECHA DE NACIMIENTO MODIFICADA CON EXITO!");
-                        optionEntered = "MODIFICADO";
-                    }else {
-                        optionEntered = "SALIR";
-                    }
-                    break;
-
-                case "MODIFICAR NUMERO DE TELEFONO":
-                    answer = SalesSystem.getAdministratorManager().changeAdminPhoneNumber(idAdministrator);
-                    if(answer){
-                        Console.showMessage("¡NUMERO DE TELEFONO MODIFICADO CON EXITO!");
-                        optionEntered = "MODIFICADO";
-                    }else {
-                        optionEntered = "SALIR";
-                    }
-                    break;
-
-                case "MODIFICAR TODO":
-                    answer = SalesSystem.getAdministratorManager().totalModifyOneAdministrator(idAdministrator);
-                    if(answer){
-                        Console.showMessage("¡CUENTA ADMINISTRADOR MODIFICADA CON EXITO!");
-                        optionEntered = "MODIFICADO";
-                    }else {
-                        optionEntered = "SALIR";
-                    }
-                    break;
-
-                case "SALIR":
-                    System.out.println(" ");
-                    break;
-                default:
-                    Console.showMessageError("OPCION INVALIDA! VUELVA A INTENTARLO!");
-                    break;
-            }
-
-        } while((!optionEntered.equals("SALIR")) && (!optionEntered.equals("MODIFICADO")));
-        return optionEntered;
-    }
-
-   /* public static String menuModifyBuyer(int idAdministrator) {
+    public static String menuModifyAdministrator ( int idAdministrator){
         boolean answer;
         String optionEntered;
 
@@ -669,29 +621,29 @@ vendida (se tiene que actualizar el json en cada venta).
                 //region
                 case "MODIFICAR NOMBRE DE USUARIO":
                     answer = SalesSystem.getAdministratorManager().changeAdminUsername(idAdministrator);
-                    if(answer){
+                    if (answer) {
                         Console.showMessage("¡NOMBRE DE USUARIO MODIFICADO CON EXITO!");
                         optionEntered = "MODIFICADO";
-                    }else {
+                    } else {
                         optionEntered = "SALIR";
                     }
                     break;
                 case "MODIFICAR EMAIL":
                     answer = SalesSystem.getAdministratorManager().changeAdminEmail(idAdministrator);
-                    if(answer){
+                    if (answer) {
                         Console.showMessage("¡EMAIL MODIFICADO CON EXITO!");
                         optionEntered = "MODIFICADO";
-                    }else {
+                    } else {
                         optionEntered = "SALIR";
                     }
 
                     break;
                 case "MODIFICAR CONTRASEÑA":
                     answer = SalesSystem.getAdministratorManager().changeAdminPassword(idAdministrator);
-                    if(answer){
+                    if (answer) {
                         Console.showMessage("¡CONTRASEÑA MODIFICADA CON EXITO!");
                         optionEntered = "MODIFICADO";
-                    }else {
+                    } else {
                         optionEntered = "SALIR";
                     }
 
@@ -699,50 +651,50 @@ vendida (se tiene que actualizar el json en cada venta).
 
                 case "MODIFICAR NOMBRE":
                     answer = SalesSystem.getAdministratorManager().changeAdminFirstName(idAdministrator);
-                    if(answer){
+                    if (answer) {
                         Console.showMessage("¡NOMBRE MODIFICADO CON EXITO!");
                         optionEntered = "MODIFICADO";
-                    }else {
+                    } else {
                         optionEntered = "SALIR";
                     }
                     break;
 
                 case "MODIFICAR APELLIDO":
                     answer = SalesSystem.getAdministratorManager().changeAdminSurname(idAdministrator);
-                    if(answer){
+                    if (answer) {
                         Console.showMessage("¡APELLIDO MODIFICADO CON EXITO!");
                         optionEntered = "MODIFICADO";
-                    }else {
+                    } else {
                         optionEntered = "SALIR";
                     }
                     break;
 
                 case "MODIFICAR FECHA DE NACIMIENTO":
                     answer = SalesSystem.getAdministratorManager().changeAdminBirthDate(idAdministrator);
-                    if(answer){
+                    if (answer) {
                         Console.showMessage("¡FECHA DE NACIMIENTO MODIFICADA CON EXITO!");
                         optionEntered = "MODIFICADO";
-                    }else {
+                    } else {
                         optionEntered = "SALIR";
                     }
                     break;
 
                 case "MODIFICAR NUMERO DE TELEFONO":
                     answer = SalesSystem.getAdministratorManager().changeAdminPhoneNumber(idAdministrator);
-                    if(answer){
+                    if (answer) {
                         Console.showMessage("¡NUMERO DE TELEFONO MODIFICADO CON EXITO!");
                         optionEntered = "MODIFICADO";
-                    }else {
+                    } else {
                         optionEntered = "SALIR";
                     }
                     break;
 
                 case "MODIFICAR TODO":
                     answer = SalesSystem.getAdministratorManager().totalModifyOneAdministrator(idAdministrator);
-                    if(answer){
+                    if (answer) {
                         Console.showMessage("¡CUENTA ADMINISTRADOR MODIFICADA CON EXITO!");
                         optionEntered = "MODIFICADO";
-                    }else {
+                    } else {
                         optionEntered = "SALIR";
                     }
                     break;
@@ -755,7 +707,261 @@ vendida (se tiene que actualizar el json en cada venta).
                     break;
             }
 
-        } while((!optionEntered.equals("SALIR")) && (!optionEntered.equals("MODIFICADO")));
+        } while ((!optionEntered.equals("SALIR")) && (!optionEntered.equals("MODIFICADO")));
         return optionEntered;
-    }*/
+    }
+
+    public static String menuModifyEnterprise ( int idEnterprise){
+        boolean answer;
+        String optionEntered;
+
+        do {
+            optionEntered = Console.systemOptionsModifyEnterprise();
+
+            switch (optionEntered) {
+
+                //region
+                case "MODIFICAR NOMBRE DE USUARIO":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseUsername(idEnterprise);
+                    if (answer) {
+                        Console.showMessage("¡NOMBRE DE USUARIO MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    } else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+                case "MODIFICAR EMAIL":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseEmail(idEnterprise);
+                    if (answer) {
+                        Console.showMessage("¡EMAIL MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    } else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+                case "MODIFICAR CONTRASEÑA":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterprisePassword(idEnterprise);
+                    if (answer) {
+                        Console.showMessage("¡CONTRASEÑA MODIFICADA CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    } else {
+                        optionEntered = "SALIR";
+                    }
+
+                    break;
+
+                case "MODIFICAR NOMBRE":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseFirstName(idEnterprise);
+                    if (answer) {
+                        Console.showMessage("¡NOMBRE MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    } else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+
+                case "MODIFICAR APELLIDO":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseSurname(idEnterprise);
+                    if (answer) {
+                        Console.showMessage("¡APELLIDO MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    } else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+
+                case "MODIFICAR FECHA DE NACIMIENTO":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseBirthDate(idEnterprise);
+                    if (answer) {
+                        Console.showMessage("¡FECHA DE NACIMIENTO MODIFICADA CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    } else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+
+                case "MODIFICAR NUMERO DE TELEFONO":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterprisePhoneNumber(idEnterprise);
+                    if (answer) {
+                        Console.showMessage("¡NUMERO DE TELEFONO MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    } else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+
+                case "MODIFICAR NOMBRE DE LA EMPRESA":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseNameEnterprise(idEnterprise);
+                    if (answer) {
+                        Console.showMessage("¡NOMBRE DE LA EMPRESA MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    } else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+
+                case "MODIFICAR PROVINCIA":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseProvince(idEnterprise);
+                    if (answer) {
+                        Console.showMessage("¡PROVINCIA MODIFICADA CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    } else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+
+                case "MODIFICAR CIUDAD":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseCity(idEnterprise);
+                    if (answer) {
+                        Console.showMessage("¡CIUDAD MODIFICADA CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    } else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+
+                case "MODIFICAR DIRECCION":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterpriseAddress(idEnterprise);
+                    if (answer) {
+                        Console.showMessage("¡DIRECCION MODIFICADA CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    } else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+
+                case "MODIFICAR CODIGO POSTAL":
+                    answer = SalesSystem.getEnterpriseManager().changeEnterprisePostalCode(idEnterprise);
+                    if (answer) {
+                        Console.showMessage("¡CODIGO POSTAL MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    } else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+
+                case "MODIFICAR TODO":
+                    answer = SalesSystem.getEnterpriseManager().totalModifyOneEnterprise(idEnterprise);
+                    if (answer) {
+                        Console.showMessage("¡CUENTA ADMINISTRADOR MODIFICADA CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    } else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+
+                case "SALIR":
+                    System.out.println(" ");
+                    break;
+                default:
+                    Console.showMessageError("OPCION INVALIDA! VUELVA A INTENTARLO!");
+                    break;
+            }
+
+        } while ((!optionEntered.equals("SALIR")) && (!optionEntered.equals("MODIFICADO")));
+        return optionEntered;
+    }
+
+     /* public static String menuModifyBuyer(int idAdministrator) {
+    boolean answer;
+    String optionEntered;
+
+    do {
+        optionEntered = Console.systemOptionsModifyAdministrator();
+
+        switch (optionEntered) {
+
+            //region
+            case "MODIFICAR NOMBRE DE USUARIO":
+                answer = SalesSystem.getAdministratorManager().changeAdminUsername(idAdministrator);
+                if(answer){
+                    Console.showMessage("¡NOMBRE DE USUARIO MODIFICADO CON EXITO!");
+                    optionEntered = "MODIFICADO";
+                }else {
+                    optionEntered = "SALIR";
+                }
+                break;
+            case "MODIFICAR EMAIL":
+                answer = SalesSystem.getAdministratorManager().changeAdminEmail(idAdministrator);
+                if(answer){
+                    Console.showMessage("¡EMAIL MODIFICADO CON EXITO!");
+                    optionEntered = "MODIFICADO";
+                }else {
+                    optionEntered = "SALIR";
+                }
+
+                break;
+            case "MODIFICAR CONTRASEÑA":
+                answer = SalesSystem.getAdministratorManager().changeAdminPassword(idAdministrator);
+                if(answer){
+                    Console.showMessage("¡CONTRASEÑA MODIFICADA CON EXITO!");
+                    optionEntered = "MODIFICADO";
+                }else {
+                    optionEntered = "SALIR";
+                }
+
+                break;
+
+            case "MODIFICAR NOMBRE":
+                answer = SalesSystem.getAdministratorManager().changeAdminFirstName(idAdministrator);
+                if(answer){
+                    Console.showMessage("¡NOMBRE MODIFICADO CON EXITO!");
+                    optionEntered = "MODIFICADO";
+                }else {
+                    optionEntered = "SALIR";
+                }
+                break;
+
+            case "MODIFICAR APELLIDO":
+                answer = SalesSystem.getAdministratorManager().changeAdminSurname(idAdministrator);
+                if(answer){
+                    Console.showMessage("¡APELLIDO MODIFICADO CON EXITO!");
+                    optionEntered = "MODIFICADO";
+                }else {
+                    optionEntered = "SALIR";
+                }
+                break;
+
+            case "MODIFICAR FECHA DE NACIMIENTO":
+                answer = SalesSystem.getAdministratorManager().changeAdminBirthDate(idAdministrator);
+                if(answer){
+                    Console.showMessage("¡FECHA DE NACIMIENTO MODIFICADA CON EXITO!");
+                    optionEntered = "MODIFICADO";
+                }else {
+                    optionEntered = "SALIR";
+                }
+                break;
+
+            case "MODIFICAR NUMERO DE TELEFONO":
+                answer = SalesSystem.getAdministratorManager().changeAdminPhoneNumber(idAdministrator);
+                if(answer){
+                    Console.showMessage("¡NUMERO DE TELEFONO MODIFICADO CON EXITO!");
+                    optionEntered = "MODIFICADO";
+                }else {
+                    optionEntered = "SALIR";
+                }
+                break;
+
+            case "MODIFICAR TODO":
+                answer = SalesSystem.getAdministratorManager().totalModifyOneAdministrator(idAdministrator);
+                if(answer){
+                    Console.showMessage("¡CUENTA ADMINISTRADOR MODIFICADA CON EXITO!");
+                    optionEntered = "MODIFICADO";
+                }else {
+                    optionEntered = "SALIR";
+                }
+                break;
+
+            case "SALIR":
+                System.out.println(" ");
+                break;
+            default:
+                Console.showMessageError("OPCION INVALIDA! VUELVA A INTENTARLO!");
+                break;
+        }
+
+    } while((!optionEntered.equals("SALIR")) && (!optionEntered.equals("MODIFICADO")));
+    return optionEntered;
+}*/
+
 }

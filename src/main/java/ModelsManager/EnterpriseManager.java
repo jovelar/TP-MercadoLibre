@@ -1,5 +1,6 @@
 package ModelsManager;
 
+import Models.Administrator;
 import Models.Buyer;
 import Models.Enterprise;
 import ModelsRepo.EnterpriseRepo;
@@ -257,5 +258,238 @@ public final class EnterpriseManager {
         return answer;
     }
 
+    public boolean totalModifyOneEnterprise(int idEnterprise) {
+        boolean answer = false;
 
+        String username = Validations.doUntilUsernameIsNotInUse(Console.readString("Ingresar nuevo nombre de usuario:"));
+        if (!username.equals("SALIR")) {
+
+            String email = Validations.doUntilEmailIsNotInUse(Validations.doUntilValidEmail(Console.readString("Ingresar nuevo correo electronico: ")));
+            if (!email.equals("SALIR")) {
+
+                String password = Validations.doUntilPasswordValid(Console.enterPassword());
+                if (!password.equals("SALIR")) {
+
+                    String firstName = Validations.doUntilValidName(Console.readString("Ingresar nuevo nombre:"));
+                    if (!firstName.equals("SALIR")) {
+
+                        String surname = Validations.doUntilValidName(Console.readString("Ingresar nuevo apellido:"));
+                        if (!surname.equals("SALIR")) {
+
+                            String birthDate = Validations.doUntilValidBirthDate(Console.readString("Ingrese nueva fecha de nacimiento \n\nFormato: dd/MM/yyy\n"));
+                            if (!birthDate.equals("SALIR")) {
+
+                                long phoneNumber = Validations.doUntilValidPhoneNumber(Console.readLong("Ingresar nuevo numero de celular (sin espacios):"));
+                                if (phoneNumber != 0) {
+
+                                    String fantasyName = Console.readString("Ingresar el nombre de la empresa:");
+                                    if (!fantasyName.equals("SALIR")) {
+                                        Enterprise enterprise = new Enterprise(idEnterprise, username, email, password,
+                                                firstName, surname, birthDate, phoneNumber, fantasyName);
+
+                                        int resp = Menu.provinceMenu(enterprise);
+                                        if (resp != 0) {
+                                            enterprise.setCity(Console.readString("Ingresar ciudad:"));
+
+                                            if (!enterprise.getCity().equals("SALIR")) {
+                                                enterprise.setAddress(Console.readString("Ingresar direccion:"));
+
+                                                if (!enterprise.getAddress().equals("SALIR")) {
+                                                    enterprise.setPostalCode(Validations.doUntilValidPostalCode(Console.readInt("Ingresar codigo postal:")));
+
+                                                    if (enterprise.getPostalCode() != 0) {
+                                                        enterpriseRepo.add(enterprise);
+                                                        answer = true;
+
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return answer;
+    }
+    public boolean changeEnterpriseUsername(int idEnterprise){
+        Enterprise enterprise = returnEnterpriseById(idEnterprise);
+        boolean answer = false;
+
+        String username = Validations.doUntilUsernameIsNotInUse(Console.readString("Ingresar nuevo nombre de usuario:"));
+        if (!username.equals("SALIR")){
+            enterprise.setUsername(username);
+            enterpriseRepo.modify(enterprise);
+            answer = true;
+        }
+
+        return answer;
+    }
+
+    public boolean changeEnterpriseEmail(int idEnterprise) {
+        Enterprise enterprise = returnEnterpriseById(idEnterprise);
+        boolean answer = false;
+
+        String email = Validations.doUntilEmailIsNotInUse(Validations.doUntilValidEmail(Console.readString("Ingresar nuevo correo electronico: ")));
+        if (!email.equals("SALIR")) {
+            enterprise.setEmail(email);
+            enterpriseRepo.modify(enterprise);
+            answer = true;
+        }
+
+        return answer;
+    }
+
+    public boolean changeEnterprisePassword(int idEnterprise) {
+        Enterprise enterprise = returnEnterpriseById(idEnterprise);
+        boolean answer = false;
+
+        String password = Validations.doUntilPasswordValid(Console.enterPassword());
+        if (!password.equals("SALIR")) {
+
+            enterprise.setPassword(password);
+            enterpriseRepo.modify(enterprise);
+            answer = true;
+        }
+
+
+        return answer;
+    }
+
+    public boolean changeEnterpriseFirstName(int idEnterprise) {
+        Enterprise enterprise = returnEnterpriseById(idEnterprise);
+        boolean answer = false;
+
+        String firstName = Validations.doUntilValidName(Console.readString("Ingresar nuevo nombre:"));
+        if (!firstName.equals("SALIR")) {
+
+            enterprise.setFirstName(firstName);
+            enterpriseRepo.modify(enterprise);
+            answer = true;
+        }
+
+
+        return answer;
+    }
+
+    public boolean changeEnterpriseSurname(int idEnterprise) {
+        Enterprise enterprise = returnEnterpriseById(idEnterprise);
+        boolean answer = false;
+
+        String surname = Validations.doUntilValidName(Console.readString("Ingresar nuevo apellido:"));
+        if (!surname.equals("SALIR")) {
+
+            enterprise.setSurname(surname);
+            enterpriseRepo.modify(enterprise);
+            answer = true;
+        }
+
+
+        return answer;
+    }
+
+    public boolean changeEnterpriseBirthDate(int idEnterprise) {
+        Enterprise enterprise = returnEnterpriseById(idEnterprise);
+        boolean answer = false;
+
+        String birthDate = Validations.doUntilValidBirthDate(Console.readString("Ingrese nueva fecha de nacimiento \n\nFormato: dd/MM/yyy\n"));
+        if (!birthDate.equals("SALIR")) {
+
+            enterprise.setBirthDate(birthDate);
+            enterpriseRepo.modify(enterprise);
+            answer = true;
+        }
+
+
+        return answer;
+    }
+
+    public boolean changeEnterprisePhoneNumber(int idEnterprise){
+        Enterprise enterprise = returnEnterpriseById(idEnterprise);
+        boolean answer = false;
+
+        long phoneNumber = Validations.doUntilValidPhoneNumber(Console.readLong("Ingresar nuevo numero de celular (sin espacios):"));
+        if (phoneNumber != 0) {
+            enterprise.setPhoneNumber(phoneNumber);
+            enterpriseRepo.modify(enterprise);
+            answer = true;
+        }
+
+        return answer;
+    }
+
+    public boolean changeEnterpriseNameEnterprise(int idEnterprise){
+        Enterprise enterprise = returnEnterpriseById(idEnterprise);
+        boolean answer = false;
+
+        String fantasyName = Console.readString("Ingresar el nuevo nombre de la empresa:");
+        if (!fantasyName.equals("SALIR")) {
+            enterprise.setFantasyName(fantasyName);
+            enterpriseRepo.modify(enterprise);
+            answer = true;
+        }
+
+        return answer;
+    }
+
+    public boolean changeEnterpriseProvince(int idEnterprise){
+        Enterprise enterprise = returnEnterpriseById(idEnterprise);
+        boolean answer = false;
+
+        int resp = Menu.provinceMenu(enterprise);
+        if (resp != 0) {
+            enterpriseRepo.modify(enterprise);
+            answer = true;
+        }
+
+        return answer;
+    }
+
+    public boolean changeEnterpriseCity(int idEnterprise){
+        Enterprise enterprise = returnEnterpriseById(idEnterprise);
+        boolean answer = false;
+
+        String city = Console.readString("Ingresar ciudad:");
+
+        if (!city.equals("SALIR")) {
+            enterprise.setCity(city);
+            enterpriseRepo.modify(enterprise);
+            answer = true;
+        }
+
+        return answer;
+    }
+
+    public boolean changeEnterpriseAddress(int idEnterprise){
+        Enterprise enterprise = returnEnterpriseById(idEnterprise);
+        boolean answer = false;
+
+        String newAddres = Console.readString("Ingresar nueva direccion:");
+        if (!newAddres.equals("SALIR")) {
+            enterprise.setAddress(newAddres);
+            enterpriseRepo.modify(enterprise);
+            answer = true;
+        }
+
+        return answer;
+    }
+
+    public boolean changeEnterprisePostalCode(int idEnterprise){
+        Enterprise enterprise = returnEnterpriseById(idEnterprise);
+        boolean answer = false;
+
+        int postalCode = Validations.doUntilValidPostalCode(Console.readInt("Ingresar nuevo codigo postal:"));
+
+        if (postalCode != 0) {
+            enterprise.setPostalCode(postalCode);
+            enterpriseRepo.modify(enterprise);
+            answer = true;
+        }
+
+        return answer;
+    }
 }

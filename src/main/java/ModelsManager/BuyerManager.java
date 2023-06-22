@@ -115,6 +115,33 @@ public final class BuyerManager {
             return answer;
 }
 
+    public boolean deleteLogicallyBuyer(){
+
+            boolean delete = false;
+
+            this.showBuyersList();
+            int id = Validations.doUntilValidNumber(Console.readInt("Ingrese el id de la cuenta personal a dar de baja:"));
+
+            if(searchUserById(id)){
+
+                Console.showMessage("Cuenta personal encontrada!");
+
+                int answer = Console.buttonsYesNo();
+
+                if(answer == 0){
+                    Buyer buyer = returnBuyerById(id);
+                    buyer.setActive(false);
+                    this.buyerRepo.modify(buyer);
+                    delete = true;
+                }
+
+            }else{
+                Console.showMessage("¡La cuenta personal no se encuentra registrada en el sistema!");
+            }
+            return delete;
+
+    }
+
     public void removeBuyer(){
         int id = Console.readInt("Ingrese el id del compador a eliminar:");
         if(searchUserById(id)){
@@ -130,6 +157,10 @@ public final class BuyerManager {
         }
 
 
+    }
+    public boolean totalModifyBuyerForAdm(){
+        boolean success = false;
+        return success;
     }
 
     public Boolean searchUserById(int id){

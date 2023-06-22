@@ -22,30 +22,74 @@ public final class AdministratorManager {
         }
     }
 
-    public void modifyAdministratorProfile() {
+    public boolean cancelAnAccountAdm(int idAdministrator){ //dar de baja una cuenta admin
+        boolean success = false;
 
+        String resp = Console.readString("¿Esta seguro de continuar? [si/no]");
+        int answer = Console.buttonsYesNo();
+
+        if(answer == 0){
+            Administrator adm = returnAdministratorById(idAdministrator);
+            adm.setActive(false);
+            this.administratorRepo.modify(adm);
+            success = true;
+            }
+
+        return success;
     }
 
-    public void addAministrator() {
+    public boolean addAministrator() {
 
+        boolean answer = false;
         int idAdministrator = administratorRepo.toList().size() + 1;
 
-        String username = Console.readString("Ingresar nombre de usuario:");
-        String email = Validations.doUntilValidEmail(Console.readString("Ingresar correo electronico: "));
-        String password = Console.readString("Ingresar contraseña:");
-        String firstName = Validations.doUntilValidName(Console.readString("Ingresar nombre:"));
-        //String surname = Validations.doUntilValidName(Console.readString("Ingresar apellido:"));
-        //int dni = Validations.doUntilValidDNI(Console.readInt("Ingresar DNI:"));
 
-        //String birthDate = Validations.doUntilValidBirthDate(Console.readString("Ingrese su fecha de nacimiento:"));
-        //long phoneNumber = Validations.doUntilValidPhoneNumber(Console.readLong("Ingresar numero de celular (sin espacios):"));
+        String username = Validations.doUntilUsernameIsNotInUse(Console.readString("Ingresar nombre de usuario:"));
+        if (!username.equals("SALIR")) {
 
-        Administrator administrator = new Administrator(idAdministrator, username, email, password, firstName,
-                "null", 0, "null", 0);
+            String email = Validations.doUntilEmailIsNotInUse(Validations.doUntilValidEmail(Console.readString("Ingresar correo electronico: ")));
+            if (!email.equals("SALIR")) {
 
-        administratorRepo.add(administrator);
-        Console.showMessage("¡Cuenta ADMINISTRADOR creada con exito!");
+                String password = Validations.doUntilPasswordValid(Console.enterPassword());
+                if (!password.equals("SALIR")) {
+
+                    String firstName = Validations.doUntilValidName(Console.readString("Ingresar nombre:"));
+                    if (!firstName.equals("SALIR")) {
+
+                        String surname = Validations.doUntilValidName(Console.readString("Ingresar apellido:"));
+                        if (!surname.equals("SALIR")) {
+
+                            int dni = Validations.doUntilPersonIsNotRegistred(Validations.doUntilValidDNI(Console.readInt("Ingresar DNI:")));
+
+                            if (dni != 0) {
+
+                                String birthDate = Validations.doUntilValidBirthDate(Console.readString("Ingrese fecha de nacimiento \n\nFormato: dd/MM/yyy\n"));
+                                if (!birthDate.equals("SALIR")) {
+
+                                    long phoneNumber = Validations.doUntilValidPhoneNumber(Console.readLong("Ingresar numero de celular (sin espacios):"));
+                                    if (phoneNumber != 0) {
+
+                                        Administrator administrator = new Administrator(idAdministrator, username, email, password, firstName,
+                                                surname, dni, birthDate, phoneNumber);
+
+                                        administratorRepo.add(administrator);
+                                        answer = true;
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+        return answer;
     }
+
+
 
     //baja logica a alguno de los administrator de la lista
     public void deleteLogicallyAdminsitrator() {

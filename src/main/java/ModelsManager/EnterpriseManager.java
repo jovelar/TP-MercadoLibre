@@ -97,29 +97,31 @@ public final class EnterpriseManager {
 
 
     //baja logica a alguno de los enterprise de la lista -> method for Administrator
-    public void deleteLogicallyEnterprise(){
+    public boolean deleteLogicallyEnterprise(){
+        boolean delete = false;
 
         this.showEnterprisesList();
-        int id = Console.readInt("Ingrese el id del usuario-empresa a dar de baja:");
+        int id = Validations.doUntilValidNumber(Console.readInt("Ingrese el id del usuario-empresa a dar de baja:"));
 
         if(searchEnterpriseById(id)){
 
             Console.showMessage("Usuario-empresa encontrado!");
 
             //TODO mejorar la sig linea por un JOptionPane que tenga los botones SI/NO
-            String resp = Console.readString("¿Esta seguro de continuar? [si/no]");
+            int answer = Console.buttonsYesNo();
 
-            if(resp.equalsIgnoreCase("si")){
-
+            if(answer == 0){
                 Enterprise enterprise = returnEnterpriseById(id);
                 enterprise.setActive(false);
                 this.enterpriseRepo.modify(enterprise);
                 Console.showMessage("¡El usuario-empresa se dio de baja exitosamente!");
+                delete = true;
             }
 
         }else{
             Console.showMessage("¡El usuario-empresa no se encuentra registrado en el sistema!");
         }
+        return delete;
     }
 
     //baja fisica, para ELIMINAR a alguno de los enterprise de la lista -> method for Administrator
@@ -207,7 +209,8 @@ public final class EnterpriseManager {
         return enterpriseWanted;
     }
 
-    public void totalModifyEnterprise(){
+    public boolean totalModifyEnterpriseForAdm(){ // TODO falta modificarlo
+        boolean answer = false;
 
         //TODO: crear metodos showList en general, segun lo que ese quiera mostrar
         // si mostrar los activos, los inactivos, etc, mostrar en formato reducido, osea, menos datos
@@ -245,12 +248,13 @@ public final class EnterpriseManager {
 
                 enterpriseRepo.modify(enterprise);
                 Console.showMessage("¡CUENTA USUARIO-EMPRESA MODIFICADA CON EXITO!");
-
+                answer = true;
             } else
                 Console.showMessage("¡MODIFICACION CANCELADA!");
         }else{
             Console.showMessage("¡NO EXISTE NINGUN USUARIO-EMPRESA CON ESE ID!");
         }
+        return answer;
     }
 
 

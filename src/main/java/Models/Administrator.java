@@ -13,6 +13,14 @@ public final class Administrator extends User implements Serializable {
 
         super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber);
     }
+
+    //Constructor para la modificacion total del administrador sin DNI
+
+    public Administrator(int idUser, String username, String email, String password, String firstName, String surname, String birthDate, long phoneNumber) {
+        super(idUser, username, email, password, firstName, surname, birthDate, phoneNumber);
+    }
+
+
     //endregion
 
     public void logicUserDelete(){
@@ -24,6 +32,7 @@ public final class Administrator extends User implements Serializable {
     public void userEdit(){
 
     }
+
 
     @Override
     public String toString() {

@@ -22,6 +22,10 @@ public final class AdministratorManager {
         }
     }
 
+    public void modifyAdministratorProfile(){
+
+    }
+
     public void addAministrator(){
 
         int idAdministrator = administratorRepo.toList().size() + 1;
@@ -157,7 +161,7 @@ public final class AdministratorManager {
         return admWanted;
     }
 
-    public void totalModifyAdministrator(){
+    public void totalModifyAdministrator(){ //modificar como administrador a todos los administradores?
 
         //TODO: crear metodos showList en general, segun lo que ese quiera mostrar
         // si mostrar los activos, los inactivos, etc, mostrar en formato reducido, osea, menos datos
@@ -194,6 +198,63 @@ public final class AdministratorManager {
         }else{
             Console.showMessage("¡NO EXISTE NINGUN ADMINISTRADOR CON ESE ID!");
         }
+    }
+
+    public boolean totalModifyOneAdministrator(int idAdministrator) {
+        boolean answer = false;
+
+
+        String username = Validations.doUntilUsernameIsNotInUse(Console.readString("Ingresar nuevo nombre de usuario:"));
+        if (!username.equals("SALIR")) {
+
+            String email = Validations.doUntilEmailIsNotInUse(Validations.doUntilValidEmail(Console.readString("Ingresar nuevo correo electronico: ")));
+            if (!email.equals("SALIR")) {
+
+                String password = Validations.doUntilPasswordValid(Console.enterPassword());
+                if (!password.equals("SALIR")) {
+
+                    String firstName = Validations.doUntilValidName(Console.readString("Ingresar nuevo nombre:"));
+                    if (!firstName.equals("SALIR")) {
+
+                        String surname = Validations.doUntilValidName(Console.readString("Ingresar nuevo apellido:"));
+                        if (!surname.equals("SALIR")) {
+
+                            String birthDate = Validations.doUntilValidBirthDate(Console.readString("Ingrese nueva fecha de nacimiento \n\nFormato: dd/MM/yyy\n"));
+                            if (!birthDate.equals("SALIR")) {
+
+                                long phoneNumber = Validations.doUntilValidPhoneNumber(Console.readLong("Ingresar nuevo numero de celular (sin espacios):"));
+                                if (phoneNumber != 0) {
+
+                                    Administrator adm = new Administrator(idAdministrator, username, email, password, firstName, surname,
+                                            birthDate, phoneNumber);
+
+                                    administratorRepo.modify(adm);
+                                    answer = true;
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return answer;
+    }
+
+    public boolean changeAdminUsername(int idAdministrator){
+        Administrator administrator = returnAdministratorById(idAdministrator);
+            boolean answer = false;
+
+            String username = Validations.doUntilUsernameIsNotInUse(Console.readString("Ingresar nuevo nombre de usuario:"));
+            if (!username.equals("SALIR")){
+
+                administratorRepo.modify(administrator);
+                answer = true;
+            }
+
+
+        return answer;
     }
 
 

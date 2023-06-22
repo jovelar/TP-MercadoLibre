@@ -105,6 +105,7 @@ public final class Console {
         }
 
         public static int systemOptionsCreateAccount(){ //verificado
+            //si se presiona la cruz(X) se retorna -1
             return JOptionPane.showOptionDialog(
                     null,
                     "Elija una opcion:",
@@ -117,6 +118,57 @@ public final class Console {
 
 
         }
+    public static String systemOptionsAdministrator() {
+
+        String chosenOption= (String) JOptionPane.showInputDialog(
+                    null,
+                    "SELECCIONE UNA OPCION\n\n",
+                    "OPCIONES MENU ADMINISTRATOR",
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,  // null para icono defecto
+                    new Object[] { "ADMINISTRAR EMPRESAS", "ADMINISTRAR CLIENTES", "AGREGAR ADMINISTRADORES", "MOSTRAR ADMINISTRADORES", "DAR DE BAJA MI CUENTA", "SALIR"},
+                    "ADMINISTRAR EMPRESAS");
+
+
+        if(chosenOption == null)
+            chosenOption = "SALIR";
+
+        return chosenOption;
+    }
+    public static String systemOptionsModifyAdministrator() {
+
+        String chosenOption= (String) JOptionPane.showInputDialog(
+                    null,
+                    "SELECCIONE UNA OPCION\n\n",
+                    "OPCIONES MODIFICAR ADMINISTRADOR",
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,  // null para icono defecto
+                    new Object[] { "MODIFICAR NOMBRE DE USUARIO", "MODIFICAR EMAIL","MODIFICAR CONTRASEÑA",
+                            "MODIFICAR APELLIDO", "MODIFICAR FECHA DE NACIMIENTO", "MODIFICAR NUMERO DE TELEFONO",
+                            "MOSTRAR TODO", "SALIR"},
+                    "MODIFICAR NOMBRE DE USUARIO");
+
+
+        if(chosenOption == null)
+            chosenOption = "SALIR";
+
+        return chosenOption;
+    }
+
+    public static int buttonsModifyAndReturn(){ //verificado
+        return JOptionPane.showOptionDialog(
+                null,
+                "Elija una opcion:",
+                "Opciones de mi cuenta",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,    // null para icono por defecto.
+                new Object[] { "MODIFICAR MI PERFIL", "VOLVER" },   // null para YES, NO y CANCEL
+                "null");
+
+
+    }
+
         public static String enterPassword(){
             String password;
             JPanel panel = new JPanel(new GridLayout(3,1));

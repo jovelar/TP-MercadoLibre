@@ -232,12 +232,11 @@ public final class BuyerManager {
 
             System.out.println("Usuario modificado con exito!");
 
-
-
-
-
         }
 
+    }
+    public void replaceBuyer(Buyer buyerToReplace){
+        buyerRepo.modify(buyerToReplace);
     }
 
 }

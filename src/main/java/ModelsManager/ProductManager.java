@@ -6,6 +6,7 @@ import ModelsRepo.ProductRepo;
 import Tools.Console;
 import Tools.Menu;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductManager {
@@ -92,9 +93,7 @@ public class ProductManager {
 
 
     }
-
-
-
+    
     public boolean searchProductById(int id){
         boolean resp = false;
         List<Product> productList = productRepo.toList();
@@ -174,10 +173,29 @@ public class ProductManager {
         productRepo.save();
 
     }
+    public ArrayList<Product> returnListOfProductsByID(List<Integer> productIdList){
 
+        ArrayList<Product> solicitedProducts = new ArrayList<Product>();
+        List<Product> productList=productRepo.toList();
 
-
-
-
-
+        for( Integer id : productIdList){
+            for(Product product : productList){
+                if(id == product.getIdProduct()){
+                    solicitedProducts.add(product);
+                    break;
+                }
+            }
+        }
+        return solicitedProducts;
+    }
+    public List<Product>searchProductList(String productName){
+        List<Product>searchResult=new ArrayList<Product>();
+        List<Product>productList=productRepo.toList();
+        for(int x=0;x<productList.size();x++){
+            if (productList.get(x).getProductName().contains(productName)) {
+                searchResult.add(productList.get(x));
+            }
+        }
+        return searchResult;
+    }
 }

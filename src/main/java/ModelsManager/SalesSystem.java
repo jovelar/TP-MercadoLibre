@@ -20,7 +20,6 @@ public class SalesSystem {
     private static final ProductManager productManager = new ProductManager();
 
 
-
     //endregion
 
     //region GETTERS AND SETTERS
@@ -49,20 +48,19 @@ public class SalesSystem {
     }
     //endregion
 
-    public static void createAccount(){
-        int resp = Console.systemOptionsCreateAccount()+1;
+    public static void createAccount() {
+        int resp = Console.systemOptionsCreateAccount() + 1;
         boolean answer = false;
-        if(resp == 1){
+        if (resp == 1) {
             answer = buyerManager.addBuyer();
 
-        }else if(resp == 2){
+        } else if (resp == 2) {
             answer = enterpriseManager.addEnterprise();
 
         }
-
-        if(answer){
+        if (answer) {
             Console.showMessage("¡CUENTA CREADA EXITOSAMENTE!");
-        }else{
+        } else {
             Console.showMessage("Volviendo al menu principal...");
         }
 
@@ -77,24 +75,24 @@ public class SalesSystem {
         String optionEntered = "NO_SALIR";
         int failedAttempts = 0;
 
-        while(!loginSuccessful && failedAttempts<3 && !optionEntered.equals("SALIR")) {
+        while (!loginSuccessful && failedAttempts < 3 && !optionEntered.equals("SALIR")) {
 
             optionEntered = readloginData(username, password);
-            if(!optionEntered.equals("SALIR")) {
+            if (!optionEntered.equals("SALIR")) {
 
                 //Tengo que buscar en los 3 archivos que tipo de usuario esta ingresando
                 loginSuccessful = validateLogin(username.toString(), password.toString());
 
-                if(!loginSuccessful) {
+                if (!loginSuccessful) {
                     failedAttempts++;
-                    Console.showMessageError("¡ALGUNO DE LOS DATOS INGRESADOS ES INCORRECTO! (" + failedAttempts+")");
+                    Console.showMessageError("¡ALGUNO DE LOS DATOS INGRESADOS ES INCORRECTO! (" + failedAttempts + ")");
                 }
             }
         }
 
-        if(optionEntered.equals("SALIR") || failedAttempts==3) {
+        if (optionEntered.equals("SALIR") || failedAttempts == 3) {
 
-            if(failedAttempts == 3)
+            if (failedAttempts == 3)
                 Console.showMessageError("Volviendo al menu principal...");
 
         }
@@ -106,13 +104,13 @@ public class SalesSystem {
 
         String optionOrDateEntered = Console.readString("Ingrese su nombre de usuario");
 
-        if(!optionOrDateEntered.equals("SALIR")) {
+        if (!optionOrDateEntered.equals("SALIR")) {
             username.setLength(0);
             username.append(optionOrDateEntered);
 
             optionOrDateEntered = Console.readString("Ingrese su contraseña");
 
-            if(!optionOrDateEntered.equals("SALIR")) {
+            if (!optionOrDateEntered.equals("SALIR")) {
                 password.setLength(0);
                 password.append(optionOrDateEntered);
 
@@ -130,10 +128,10 @@ public class SalesSystem {
 
         boolean userFound = searchUsername(username);
 
-        if(userFound)
+        if (userFound)
             correctPassword = validatePassword(username, password);
 
-        if(userFound && correctPassword)
+        if (userFound && correctPassword)
             loginSuccessful = true;
 
         return loginSuccessful;
@@ -145,11 +143,11 @@ public class SalesSystem {
 
         userFound = administratorManager.searchAdministratorByUsername(username);
 
-        if(!userFound){
+        if (!userFound) {
 
             userFound = enterpriseManager.searchEnterpriseByUsername(username);
 
-            if(!userFound) {
+            if (!userFound) {
                 userFound = buyerManager.searchBuyerByUsername(username);
             }
         }
@@ -164,26 +162,26 @@ public class SalesSystem {
 
         boolean userFound = administratorManager.searchAdministratorByUsername(username);
 
-        if(!userFound){
+        if (!userFound) {
 
             userFound = enterpriseManager.searchEnterpriseByUsername(username);
 
-            if(!userFound) {
+            if (!userFound) {
                 userFound = buyerManager.searchBuyerByUsername(username);
 
-                if(userFound) {
+                if (userFound) {
                     passwordUserFound = buyerManager.returnBuyerByUsername(username).getPassword();
                 }
 
             } else {
-                 passwordUserFound = enterpriseManager.returnEnterpriseByUsername(username).getPassword();
+                passwordUserFound = enterpriseManager.returnEnterpriseByUsername(username).getPassword();
             }
 
         } else {
-             passwordUserFound = administratorManager.returnAdministratorByUsername(username).getPassword();
+            passwordUserFound = administratorManager.returnAdministratorByUsername(username).getPassword();
         }
 
-        if(userFound) {
+        if (userFound) {
             validKey = passwordUserFound.equals(password);
         }
 
@@ -197,11 +195,11 @@ public class SalesSystem {
 
         emailFound = administratorManager.searchAdministratorByEmail(email);
 
-        if(!emailFound){
+        if (!emailFound) {
 
             emailFound = enterpriseManager.searchEnterpriseByEmail(email);
 
-            if(!emailFound) {
+            if (!emailFound) {
                 emailFound = buyerManager.searchBuyerByEmail(email);
             }
         }
@@ -215,11 +213,11 @@ public class SalesSystem {
 
         dniFound = administratorManager.searchAdministratorByDni(dni);
 
-        if(!dniFound){
+        if (!dniFound) {
 
             dniFound = enterpriseManager.searchEnterpriseByDni(dni);
 
-            if(!dniFound) {
+            if (!dniFound) {
                 dniFound = buyerManager.searchBuyerByDni(dni);
             }
         }
@@ -231,10 +229,10 @@ public class SalesSystem {
 
         TypeUser typeUser = returnTypeUserByUsername(user.getUsername());
 
-        if(typeUser != TypeUser.NONE) {
-            if(typeUser == TypeUser.ADMINISTRATOR) {
+        if (typeUser != TypeUser.NONE) {
+            if (typeUser == TypeUser.ADMINISTRATOR) {
                 user = administratorManager.returnAdministratorByUsername(user.getUsername());
-            } else if(typeUser == TypeUser.ENTERPRISE) {
+            } else if (typeUser == TypeUser.ENTERPRISE) {
                 user = enterpriseManager.returnEnterpriseByUsername(user.getUsername());
             } else {
                 user = buyerManager.returnBuyerByUsername(user.getUsername());
@@ -249,14 +247,14 @@ public class SalesSystem {
         TypeUser typeUser = TypeUser.NONE;
         boolean userFound = administratorManager.searchAdministratorByUsername(username);
 
-        if(!userFound){
+        if (!userFound) {
 
             userFound = enterpriseManager.searchEnterpriseByUsername(username);
 
-            if(!userFound) {
+            if (!userFound) {
                 userFound = buyerManager.searchBuyerByUsername(username);
 
-                if(userFound) {
+                if (userFound) {
                     typeUser = TypeUser.BUYER;
                 }
 
@@ -270,7 +268,6 @@ public class SalesSystem {
 
         return typeUser;
     }
-
 
 
 }

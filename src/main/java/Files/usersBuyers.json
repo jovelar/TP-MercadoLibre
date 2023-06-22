@@ -15,6 +15,25 @@
   "postalCode" : 7167,
   "availableMoney" : 0.0,
   "cart" : null,
+  "favorites" :[] ,
+  "payMethod" : null
+}, {
+  "idUser" : 2,
+  "username" : "isj",
+  "email" : "isj@isj.com",
+  "password" : "chainsaw",
+  "firstName" : "jjiioo",
+  "surname" : "ooollppp",
+  "dni" : 30304545,
+  "birthDate" : "20/02/1994",
+  "phoneNumber" : 225444556677,
+  "active" : true,
+  "province" : "BSAS",
+  "city" : "Pinamar",
+  "address" : "Centro 1800",
+  "postalCode" : 7167,
+  "availableMoney" : 0.0,
+  "cart" : null,
   "favorites" : null,
   "payMethod" : null
 } ]

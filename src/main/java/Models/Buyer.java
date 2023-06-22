@@ -27,6 +27,12 @@ public final class Buyer extends Client {
         super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber);
     }
 
+    //constructor para la modificacion de buyer sin DNI
+
+    public Buyer(int idUser, String username, String email, String password, String firstName, String surname, String birthDate, long phoneNumber) {
+        super(idUser, username, email, password, firstName, surname, birthDate, phoneNumber);
+    }
+
     //endregion
 
     //region GETTERS AND SETTERS

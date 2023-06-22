@@ -250,22 +250,4 @@
   "availableMoney" : 0.0,
   "fantasyName" : "Shiny",
   "salesRevenue" : 0.0
-}, {
-  "idUser" : 15,
-  "username" : "asdsad",
-  "email" : "asdasd@sads",
-  "password" : "sadasdsad",
-  "firstName" : "asdasda",
-  "surname" : "asdsa",
-  "dni" : 41526352,
-  "birthDate" : "22/12/2000",
-  "phoneNumber" : 2254533702,
-  "active" : true,
-  "province" : "CATAMARCA",
-  "city" : "isd",
-  "address" : "dfsdff",
-  "postalCode" : 4136,
-  "availableMoney" : 0.0,
-  "fantasyName" : "shiny",
-  "salesRevenue" : 0.0
 } ]

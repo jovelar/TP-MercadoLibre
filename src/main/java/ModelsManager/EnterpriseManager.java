@@ -15,6 +15,9 @@ public final class EnterpriseManager {
     EnterpriseRepo enterpriseRepo = new EnterpriseRepo();
 
     public void showEnterprisesList(){
+        System.out.println("\033[33m-------------------------------------------------------------------------");
+        System.out.println("                               LISTA DE EMPRESAS");
+        System.out.println("-------------------------------------------------------------------------\u001B[0m");
 
         List<Enterprise> enterprisesList = this.enterpriseRepo.toList();
 
@@ -108,14 +111,12 @@ public final class EnterpriseManager {
 
             Console.showMessage("Usuario-empresa encontrado!");
 
-            //TODO mejorar la sig linea por un JOptionPane que tenga los botones SI/NO
             int answer = Console.buttonsYesNo();
 
             if(answer == 0){
                 Enterprise enterprise = returnEnterpriseById(id);
                 enterprise.setActive(false);
                 this.enterpriseRepo.modify(enterprise);
-                Console.showMessage("¡El usuario-empresa se dio de baja exitosamente!");
                 delete = true;
             }
 
@@ -320,7 +321,7 @@ public final class EnterpriseManager {
                                                     enterprise.setPostalCode(Validations.doUntilValidPostalCode(Console.readInt("Ingresar codigo postal:")));
 
                                                     if (enterprise.getPostalCode() != 0) {
-                                                        enterpriseRepo.add(enterprise);
+                                                        enterpriseRepo.modify(enterprise);
                                                         answer = true;
 
                                                     }

@@ -3,6 +3,7 @@ package Tools;
 import javax.lang.model.util.ElementScanner6;
 import javax.swing.*;
 
+import java.awt.*;
 import java.util.Scanner;
 
 public final class Console {
@@ -38,7 +39,7 @@ public final class Console {
                 }
 
             } catch (NumberFormatException e) {
-                showMessage("Numero invalido");
+                showMessageError("¡EL VALOR INGRESADO DEBE SER UN NUMERO ENTERO!");
             }
             return number;
         }
@@ -118,13 +119,17 @@ public final class Console {
         }
         public static String enterPassword(){
             String password;
-            JPanel panel = new JPanel();
+            JPanel panel = new JPanel(new GridLayout(3,1));
             JLabel label = new JLabel("Contraseña:");
+            JLabel label1 = new JLabel("Mínimo 8 carácteres");
+
+
             // Definimos el largo de la casilla para la contraseña
             JPasswordField passwordField = new JPasswordField(15);
             // Agregamos los componentes al panel
             panel.add(label);
             panel.add(passwordField);
+            panel.add(label1);
 
             // Definimos el texto de las opciones para aceptar o cancelar
             String[] options = new String[]{"Aceptar", "Cancelar"};
@@ -136,9 +141,7 @@ public final class Console {
 
             if(option == 0){
                 password = new String(passwordField.getPassword());
-                if(password.equals("")){
-                    password = "SALIR";
-                }
+
             }else{
                 password = "SALIR";
             }

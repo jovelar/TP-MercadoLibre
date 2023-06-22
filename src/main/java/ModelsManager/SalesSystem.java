@@ -54,16 +54,16 @@ public class SalesSystem {
             answer = buyerManager.addBuyer();
 
         }else if(resp == 2){
-            enterpriseManager.addEnterprise();
+            answer = enterpriseManager.addEnterprise();
 
         }
 
         if(answer){
             Console.showMessage("¡CUENTA CREADA EXITOSAMENTE!");
         }else{
-            Console.showMessageError("ERROR AL CREAR CUENTA, INTENTE NUEVAMENTE");
+            Console.showMessage("Volviendo al menu principal...");
         }
-        //retorne si se creo la cuenta exitosamente
+
 
     }
 

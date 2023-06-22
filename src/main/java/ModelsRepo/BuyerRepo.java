@@ -13,7 +13,7 @@ import java.util.List;
 
 public class BuyerRepo implements IRepository<Buyer>{
 
-    private final File file = new File("src/main/java/org/example/Archivos/productos.json");
+    private final File file = new File("src/main/java/Files/usersBuyers.json");
     private ObjectMapper mapper = new ObjectMapper();
 
     private ArrayList<Buyer>buyerList;

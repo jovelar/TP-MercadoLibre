@@ -16,7 +16,17 @@ public final class Order {
     private String deliveryDate;
 
     public enum OrderStatus {
-        IN_PREPARATION, ON_THE_WAY, CANCELLED, DELIVERED
+        IN_PREPARATION("En preparación"), ON_THE_WAY("En camino"), CANCELLED("Cancelado"),
+        DELIVERED("Entregado"), REJECTED("Rechazado");
+        private final String nombre;
+
+        OrderStatus(String nombre){
+            this.nombre = nombre;
+        }
+
+        public String getNombre() {
+            return nombre;
+        }
 
     }
 

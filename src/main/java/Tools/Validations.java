@@ -50,14 +50,17 @@ public class Validations {
      * @return String
      */
     public static String doUntilValidEmail(String email){
-        boolean valid=false;
-        do{
-            valid=validateEmail(email);
-            if(!valid){
-                Console.showMessageError("Email invalido!");
-                email=Console.readString("Ingrese la direccion de email \n\nUsá el formato: nombre@ejemplo.com\n");
-            }
-        }while(!valid);
+        if(!email.equals("SALIR")){
+            boolean valid=false;
+            do{
+                valid=validateEmail(email);
+                if(!valid){
+                    Console.showMessageError("Email invalido!");
+                    email=Console.readString("Ingrese la direccion de email \n\nUsá el formato: nombre@ejemplo.com\n");
+                }
+            }while(!valid);
+
+        }
         return email;
     }
     /**
@@ -77,24 +80,28 @@ public class Validations {
         }
         if(isValid){
             Period period=dateToCheck.until(actualDate);
-            if(period.getYears()<13){
+            if(period.getYears()<13 ){
                 Console.showMessageError("Debe ser mayor de 13 años para poder registrarse");
                 isValid=false;
+            }else if(period.getYears()>118){
+                Console.showMessageError("¡INGRESE UN AÑO VALIDO!");
             }
         }
         return isValid;
     }
 
     public static String doUntilValidBirthDate(String birthDate){
-        boolean valid=false;
-        if(!birthDate.isBlank()){
-            do{
-                valid=validateBirthDate(birthDate);
-                if(!valid){
-                    System.out.println("Valor invalido!");
-                    birthDate=Console.readString("Ingrese una fecha con el formato dd/mm/aaaa");
-                }
-            }while(!valid);
+        if(!birthDate.equals("SALIR")){
+
+            boolean valid=false;
+            if(!birthDate.isBlank()){
+                do{
+                    valid=validateBirthDate(birthDate);
+                    if(!valid){
+                        birthDate=Console.readString("Ingrese una fecha con el formato dd/mm/aaaa");
+                    }
+                }while(!valid);
+            }
         }
         return birthDate;
     }
@@ -276,20 +283,23 @@ public class Validations {
     }
 
     public static String doUntilEmailIsNotInUse(String email) {
-        boolean resp = false;
-        do{
-            try{
-                resp = SalesSystem.searchEmail(email); //si se encontro el email
-                if(resp) {
-                    throw new ExistingEmailException("¡EL EMAIL YA SE ENCUENTRA REGISTRADO!");
+        if(!email.equals("SALIR")){
+
+            boolean resp = false;
+            do{
+                try{
+                    resp = SalesSystem.searchEmail(email); //si se encontro el email
+                    if(resp) {
+                        throw new ExistingEmailException("¡EL EMAIL YA SE ENCUENTRA REGISTRADO!");
+                    }
+                }catch (ExistingEmailException e){
+                    Console.showMessageError(e.getMessage());
+                    email = Console.readString("Ingresar email:");
                 }
-            }catch (ExistingEmailException e){
-                Console.showMessageError(e.getMessage());
-                email = Console.readString("Ingresar email:");
-            }
 
 
-        }while(resp);
+            }while(resp);
+        }
 
         return email;
     }
@@ -314,9 +324,18 @@ public class Validations {
     }
 
     public static String doUntilPasswordValid(String password){
-        while(password == null){
-            Console.showMessageError("Contraseña invalida!");
-            password = Console.enterPassword();
+        if(!password.equals("SALIR")){
+
+            while(password.length() <= 7){
+                if(password.equals("")){
+                    Console.showMessageError("¡CAMPO VACIO! INGRESE NUEVAMENTE");
+                }else{
+                    Console.showMessageError("CONTRASEÑA DEMASIADO CORTA\n" +
+                            "\n     MINIMO 8 CARACTERES");
+
+                }
+                password = Console.enterPassword();
+            }
         }
         return password;
     }

@@ -1,5 +1,6 @@
 package ModelsManager;
 
+import Models.Buyer;
 import Models.Enterprise;
 import ModelsRepo.EnterpriseRepo;
 import Tools.Console;
@@ -22,39 +23,78 @@ public final class EnterpriseManager {
         }
     }
 
-    public void addEnterprise(){
+    public boolean addEnterprise(){
 
+        boolean answer = false;
         int idEnterprise = enterpriseRepo.toList().size() + 1;
 
         String username = Validations.doUntilUsernameIsNotInUse(Console.readString("Ingresar nombre de usuario:"));
 
-        String email = Validations.doUntilEmailIsNotInUse(Validations.doUntilValidEmail(Console.readString("Ingresar correo electronico: ")));
+        if (!username.equals("SALIR")) {
 
-        String password = Validations.doUntilPasswordValid(Console.enterPassword());
+            String email = Validations.doUntilEmailIsNotInUse(Validations.doUntilValidEmail(Console.readString("Ingresar correo electronico: ")));
 
-        String firstName = Validations.doUntilValidName(Console.readString("Ingresar nombre:"));
+            if (!email.equals("SALIR")) {
 
-        String surname = Validations.doUntilValidName(Console.readString("Ingresar apellido:"));
+                String password = Validations.doUntilPasswordValid(Console.enterPassword());
 
-        int dni = Validations.doUntilPersonIsNotRegistred(Validations.doUntilValidDNI(Console.readInt("Ingresar DNI:")));
+                if (!password.equals("SALIR")) {
 
-        String birthDate = Validations.doUntilValidBirthDate(Console.readString("Ingrese su fecha de nacimiento:\n\nFormato: dd/MM/yyy\n"));
+                    String firstName = Validations.doUntilValidName(Console.readString("Ingresar nombre:"));
+                    if (!firstName.equals("SALIR")) {
 
-        long phoneNumber = Validations.doUntilValidPhoneNumber(Console.readLong("Ingresar numero de celular (sin espacios):"));
+                        String surname = Validations.doUntilValidName(Console.readString("Ingresar apellido:"));
 
-        String fantasyName = Console.readString("Ingresar el nombre de la empresa:");
+                        if (!surname.equals("SALIR")) {
 
-        Enterprise enterprise = new Enterprise(idEnterprise, username, email, password, firstName, surname, dni, birthDate, phoneNumber, fantasyName);
+                            int dni = Validations.doUntilPersonIsNotRegistred(Validations.doUntilValidDNI(Console.readInt("Ingresar DNI:")));
 
-        Menu.provinceMenu(enterprise);
+                            if (dni != 0) {
 
-        enterprise.setCity(Console.readString("Ingresar ciudad:"));
-        enterprise.setAddress(Console.readString("Ingresar direccion:"));
-        enterprise.setPostalCode(Validations.doUntilValidPostalCode(Console.readInt("Ingresar codigo postal:")));
+                                String birthDate = Validations.doUntilValidBirthDate(Console.readString("Ingrese su fecha de nacimiento \n\nFormato: dd/MM/yyy\n"));
+                                if (!birthDate.equals("SALIR")) {
 
-        enterpriseRepo.add(enterprise);
-        Console.showMessage("¡Cuenta usuario-empresa creada con exito!");
+                                    long phoneNumber = Validations.doUntilValidPhoneNumber(Console.readLong("Ingresar numero de celular (sin espacios):"));
+
+                                    if (phoneNumber != 0) {
+
+                                        String fantasyName = Console.readString("Ingresar el nombre de la empresa:");
+                                        if (!fantasyName.equals("SALIR")) {
+                                            Enterprise enterprise = new Enterprise(idEnterprise, username, email, password, firstName, surname, dni, birthDate, phoneNumber, fantasyName);
+
+                                            int resp = Menu.provinceMenu(enterprise);
+                                            if (resp != 0) {
+                                                enterprise.setCity(Console.readString("Ingresar ciudad:"));
+
+                                                if (!enterprise.getCity().equals("SALIR")) {
+                                                    enterprise.setAddress(Console.readString("Ingresar direccion:"));
+
+                                                    if (!enterprise.getAddress().equals("SALIR")) {
+                                                        enterprise.setPostalCode(Validations.doUntilValidPostalCode(Console.readInt("Ingresar codigo postal:")));
+
+                                                        if (enterprise.getPostalCode() != 0) {
+                                                            enterpriseRepo.add(enterprise);
+                                                            answer = true;
+
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        return answer;
     }
+
+
 
     //baja logica a alguno de los enterprise de la lista -> method for Administrator
     public void deleteLogicallyEnterprise(){

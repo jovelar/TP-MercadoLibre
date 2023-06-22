@@ -310,7 +310,7 @@ vendida (se tiene que actualizar el json en cada venta).
     //endregion
 
     //region PROVINCES MENU -> Aqui hay 2 metodos genericos, para las clases BUYER y ENTERPRISE
-    public static <T extends Client> void provinceMenu(T cliente){
+    public static <T extends Client> int provinceMenu(T cliente){
         int opcion = 0;
 
         do {
@@ -318,7 +318,8 @@ vendida (se tiene que actualizar el json en cada venta).
             opcion = Console.readInt("Seleccione una opción [1 - 24]");
             assignProvince(cliente, opcion);
 
-        }while(opcion < 1 || opcion > 24);
+        }while(opcion < 0 || opcion > 24);
+        return opcion;
     }
 
     public static void showProvinceOptionsMenu(){
@@ -377,7 +378,9 @@ vendida (se tiene que actualizar el json en cada venta).
             case 22 -> cliente.setProvince(Province.SANTIAGODELESTERO);
             case 23 -> cliente.setProvince(Province.TIERRADELFUEGO);
             case 24 -> cliente.setProvince(Province.TUCUMAN);
-            default->Console.showMessage("¡OPCION INVALIDA! Por favor, selecciona una opción disponible...");
+            case -1 -> System.out.println("");//cuando ingresa un valor no entero o una letra
+            case 0 -> System.out.println("");////cuando se oprime cancelar o la cruz(X), se retorno 0 en el metodo anterior
+            default->Console.showMessage("\t\t¡OPCION INVALIDA! \n\nPor favor, selecciona una opción disponible...\n");
         }
     }
     //endregion

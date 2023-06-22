@@ -53,7 +53,8 @@ public final class BuyerManager {
             if (!email.equals("SALIR")) {
 
                 String password = Validations.doUntilPasswordValid(Console.enterPassword());
-                if(password.equals("SALIR")){
+
+                if(!password.equals("SALIR")){
 
                     String firstName = Validations.doUntilValidName(Console.readString("Ingrese su nombre:"));
                     if (!firstName.equals("SALIR")) {
@@ -67,31 +68,36 @@ public final class BuyerManager {
                             if(dni != 0){
 
                                 String birthDate = Validations.doUntilValidBirthDate(Console.readString("Ingrese su fecha de nacimiento \n\nFormato: dd/MM/yyy\n"));
-                                //TODO la fecha nunca puede ser "salir"
-                                long phoneNumber = Validations.doUntilValidPhoneNumber(Console.readLong("Ingresar numero de celular (sin espacios):"));
+                                if(!birthDate.equals("SALIR")){
 
-                                if(phoneNumber != 0){
-                                    newBuyer = new Buyer(idUser, userName, email, password, firstName, surname, dni, birthDate, phoneNumber);
+                                    long phoneNumber = Validations.doUntilValidPhoneNumber(Console.readLong("Ingresar numero de celular (sin espacios):"));
 
-                                    Menu.provinceMenu(newBuyer);
+                                    if(phoneNumber != 0){
+                                        newBuyer = new Buyer(idUser, userName, email, password, firstName, surname, dni, birthDate, phoneNumber);
 
-                                    newBuyer.setCity(Console.readString("ingrese su ciudad"));
-                                    if(newBuyer.getCity().equals("SALIR")){
+                                        int resp = Menu.provinceMenu(newBuyer);
+                                        if(resp != 0){
 
-                                        newBuyer.setAddress(Console.readString("ingrese su domicilio"));
+                                            newBuyer.setCity(Console.readString("ingrese su ciudad"));
+                                            if(!newBuyer.getCity().equals("SALIR")){
 
-                                        if(newBuyer.getAddress().equals("SALIR")){
-                                            newBuyer.setPostalCode(Validations.doUntilValidPostalCode(Console.readInt("ingrese su codigo postal")));
-                                            if(newBuyer.getPostalCode() != 0){
-                                                buyerRepo.add(newBuyer);
-                                                answer = true;
+                                                newBuyer.setAddress(Console.readString("ingrese su domicilio"));
+
+                                                if(!newBuyer.getAddress().equals("SALIR")){
+                                                    newBuyer.setPostalCode(Validations.doUntilValidPostalCode(Console.readInt("ingrese su codigo postal")));
+                                                    if(newBuyer.getPostalCode() != 0){
+                                                        buyerRepo.add(newBuyer);
+                                                        answer = true;
+
+                                                    }
+
+                                                }
 
                                             }
-
                                         }
 
-                                    }
 
+                                    }
                                 }
 
                             }

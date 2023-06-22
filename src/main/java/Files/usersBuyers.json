@@ -1,0 +1,20 @@
+[ {
+  "idUser" : 1,
+  "username" : "compradoraFlor",
+  "email" : "flordani88@gmail.com",
+  "password" : "1234",
+  "firstName" : "Florencia",
+  "surname" : "Mamani",
+  "dni" : 33231234,
+  "birthDate" : "22/08/2000",
+  "phoneNumber" : 2254533702,
+  "active" : true,
+  "province" : "TUCUMAN",
+  "city" : "La plata",
+  "address" : "victor hugo 1783",
+  "postalCode" : 7167,
+  "availableMoney" : 0.0,
+  "cart" : null,
+  "favorites" : null,
+  "payMethod" : null
+} ]

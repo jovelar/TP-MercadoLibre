@@ -7,22 +7,19 @@ import Tools.Console;
 import Tools.Validations;
 
 import ModelsManager.AdministratorManager;
-<<<<<<< HEAD
+
+
 
 import static ModelsManager.SalesSystem.returnTypeUserByUsername;
-=======
->>>>>>> Florencia
+
 
 
 public class Main {
     public static void main(String[] args) {
 
         mainMenu();
-<<<<<<< HEAD
-        //mainEzequiel();
-=======
+
 //        mainEzequiel();
->>>>>>> Florencia
         //mainJOvelar();
 
     }

@@ -15,7 +15,7 @@ import Tools.Validations;
 public final class Buyer extends Client {
 
     //region ATTRIBUTES
-    private ArrayList<Integer>cart;
+    private ArrayList<Integer>cart=new ArrayList<>();
     private List<Integer>favorites=new ArrayList<Integer>();
     private List<PayMethod> payMethod;
     //endregion
@@ -92,7 +92,10 @@ public final class Buyer extends Client {
 
 
     public void deleteFavorite(int idToDelete){
-        favorites.remove(idToDelete);
+        favorites.remove(Integer.valueOf(idToDelete));
+    }
+    public void deleteProductFromCart(int idToDelete){
+        cart.remove((Integer)idToDelete);
     }
     public boolean validateAvailableProducts(){
         boolean state = true;
@@ -103,12 +106,38 @@ public final class Buyer extends Client {
     }
     public boolean validateValidFavorite(int iDToDelete){
         boolean valid=false;
-        for(int x=0;x<favorites.size();x++){
-            if(favorites.get(x)==iDToDelete){
-                valid=true;
+        if(favorites==null){
+            valid=true;
+        }else{
+            for(int x=0;x<favorites.size();x++){
+                if(favorites.get(x)==iDToDelete){
+                    valid=true;
+                }
             }
         }
+
         return valid;
+    }
+
+    public void addToCart(int idProduct){
+        if(cart==null){
+            cart=new ArrayList<Integer>();
+        }
+        if(cart.size()==1){
+            if(cart.get(0)!=idProduct){
+                cart.add(idProduct);
+            }
+        }else{
+            boolean exist=false;
+            for(int x=0;x<cart.size();x++){
+                if(cart.get(x)==idProduct){
+                    exist=true;
+                }
+            }
+            if(!exist){
+                cart.add(idProduct);
+            }
+        }
     }
 
     //endregion

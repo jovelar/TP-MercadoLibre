@@ -15,7 +15,7 @@
   "postalCode" : 7167,
   "availableMoney" : 0.0,
   "cart" : null,
-  "favorites" :[] ,
+  "favorites" : [ ],
   "payMethod" : null
 }, {
   "idUser" : 2,
@@ -33,7 +33,7 @@
   "address" : "Centro 1800",
   "postalCode" : 7167,
   "availableMoney" : 0.0,
-  "cart" : null,
+  "cart" : [ 12, 10 ],
   "favorites" : null,
   "payMethod" : null
 } ]

@@ -168,15 +168,15 @@ public final class Console {
 
     }
 
-    public static int systemOptionsDeleteProductFromCart() { //verificado
+    public static int systemOptionsProductFromCart() { //verificado
         return JOptionPane.showOptionDialog(
                 null,
                 "Elija una opcion:",
-                "Favoritos",
+                "Carrito",
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,    // null para icono por defecto.
-                new Object[]{"ELIMINAR PRODUCTO", "VOLVER"},   // null para YES, NO y CANCEL
+                new Object[]{"COMPRAR CARRITO","ELIMINAR PRODUCTO", "VOLVER"},   // null para YES, NO y CANCEL
                 "null");
 
     }
@@ -189,7 +189,19 @@ public final class Console {
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,    // null para icono por defecto.
-                new Object[]{"COMPRAR","AGREGAR A FAVORITOS", "VOLVER"},   // null para YES, NO y CANCEL
+                new Object[]{"COMPRAR","AGREGAR AL CARRITO","AGREGAR A FAVORITOS", "VOLVER"},   // null para YES, NO y CANCEL
+                "null");
+
+    }
+    public static int systemOptionsBuyPayMethod() { //verificado
+        return JOptionPane.showOptionDialog(
+                null,
+                "Elija una opcion:",
+                "Método de pago",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,    // null para icono por defecto.
+                new Object[]{"DINERO DISPONIBLE","TARJETA"},   // null para YES, NO y CANCEL
                 "null");
 
     }

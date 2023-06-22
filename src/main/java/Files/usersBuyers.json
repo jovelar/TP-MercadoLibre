@@ -17,4 +17,23 @@
   "cart" : null,
   "favorites" : null,
   "payMethod" : null
+}, {
+  "idUser" : 2,
+  "username" : "shiny",
+  "email" : "shiny@gmail.com",
+  "password" : "12345678",
+  "firstName" : "shinyy",
+  "surname" : "ropa",
+  "dni" : 0,
+  "birthDate" : "10/01/2000",
+  "phoneNumber" : 2211223322,
+  "active" : true,
+  "province" : "RIONEGRO",
+  "city" : "Rio",
+  "address" : "catamarca 123",
+  "postalCode" : 4112,
+  "availableMoney" : 0.0,
+  "cart" : null,
+  "favorites" : null,
+  "payMethod" : null
 } ]

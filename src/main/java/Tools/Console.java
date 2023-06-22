@@ -153,6 +153,24 @@ public final class Console {
 
         return chosenOption;
     }
+    public static String systemOptionsABMLbuyer() {
+
+        String chosenOption= (String) JOptionPane.showInputDialog(
+                null,
+                "SELECCIONE UNA OPCION\n\n",
+                "ADMINISTRAR CUENTAS PERSONALES",
+                JOptionPane.QUESTION_MESSAGE,
+                null,  // null para icono defecto
+                new Object[] { "AGREGAR NUEVA CUENTA PERSONAL","BAJA DE CUENTA PERSONAL", "MODIFICAR CUENTA PERSONAL",
+                        "VER CUENTAS PERSONALES","SALIR"},
+                "AGREGAR NUEVA CUENTA PERSONAL");
+
+
+        if(chosenOption == null)
+            chosenOption = "SALIR";
+
+        return chosenOption;
+    }
     public static String systemOptionsModifyAdministrator() {
 
         String chosenOption= (String) JOptionPane.showInputDialog(
@@ -205,16 +223,17 @@ public final class Console {
     public static int buttonsYesNo(){ //verificado
         return JOptionPane.showOptionDialog(
                 null,
-                "Elija una opcion:",
                 "¿Está seguro de continuar?",
+                "Elija una opcion:",
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,    // null para icono por defecto.
-                new Object[] { "MODIFICAR MI PERFIL", "VOLVER" },   // null para YES, NO y CANCEL
+                new Object[] { "SI", "NO" },   // null para YES, NO y CANCEL
                 "null");
 
 
     }
+
 
     public static String enterPassword(){
         String password;
@@ -284,6 +303,25 @@ public final class Console {
                         "MODIFICAR NUMERO DE TELEFONO", "MODIFICAR NOMBRE DE LA EMPRESA",
                         "MODIFICAR PROVINCIA", "MODIFICAR CIUDAD", "MODIFICAR  DIRECCION",
                         "MODIFICAR CODIGO POSTAL", "MODIFICAR TODO", "SALIR"},
+                "MODIFICAR NOMBRE DE USUARIO");
+
+        if(chosenOption == null)
+            chosenOption = "SALIR";
+
+        return chosenOption;
+    }
+    public static String systemOptionsModifyBuyer() {
+
+        String chosenOption= (String) JOptionPane.showInputDialog(
+                null,
+                "SELECCIONE UNA OPCION\n\n",
+                "OPCIONES MODIFICAR CUENTA PERSONAL",
+                JOptionPane.QUESTION_MESSAGE,
+                null,  // null para icono defecto
+                new Object[] { "MODIFICAR NOMBRE DE USUARIO", "MODIFICAR EMAIL","MODIFICAR CONTRASEÑA",
+                        "MODIFICAR APELLIDO", "MODIFICAR FECHA DE NACIMIENTO", "MODIFICAR NUMERO DE TELEFONO",
+                         "MODIFICAR PROVINCIA", "MODIFICAR CIUDAD",
+                        "MODIFICAR  DIRECCION", "MODIFICAR CODIGO POSTAL", "MODIFICAR TODO", "SALIR"},
                 "MODIFICAR NOMBRE DE USUARIO");
 
         if(chosenOption == null)

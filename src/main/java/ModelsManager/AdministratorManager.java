@@ -25,7 +25,7 @@ public final class AdministratorManager {
     public boolean cancelAnAccountAdm(int idAdministrator){ //dar de baja una cuenta admin
         boolean success = false;
 
-        String resp = Console.readString("¿Esta seguro de continuar? [si/no]");
+
         int answer = Console.buttonsYesNo();
 
         if(answer == 0){

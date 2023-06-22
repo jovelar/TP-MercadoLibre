@@ -140,6 +140,23 @@ public final class Console {
 
         return chosenOption;
     }
+
+    public static String systemOptionsCategories() {
+
+        String chosenOption= (String) JOptionPane.showInputDialog(
+                null,
+                "SELECCIONE UNA CATEGORIA\n\n",
+                "OPCIONES MENU CATEGORIAS",
+                JOptionPane.QUESTION_MESSAGE,
+                null,  // null para icono defecto
+                new Object[] { "TECNOLOGIA","MODA", "VEHICULOS", "SUPERMECADO","VOLVER AL MENU PRINCIPAL"},
+                "TECNOLOGIA");
+
+        if(chosenOption == null)
+            chosenOption = "VOLVER AL MENU PRINCIPAL";
+
+        return chosenOption;
+    }
     public static String systemOptionsABMLenterprise() {
 
         String chosenOption= (String) JOptionPane.showInputDialog(
@@ -154,7 +171,7 @@ public final class Console {
 
 
         if(chosenOption == null)
-            chosenOption = "SALIR";
+            chosenOption = "VOLVER AL MENU PRINCIPAL";
 
         return chosenOption;
     }
@@ -172,7 +189,7 @@ public final class Console {
 
 
         if(chosenOption == null)
-            chosenOption = "SALIR";
+            chosenOption = "VOLVER AL MENU PRINCIPAL";
 
         return chosenOption;
     }

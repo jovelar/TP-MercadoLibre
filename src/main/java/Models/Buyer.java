@@ -88,18 +88,29 @@ public final class Buyer extends Client {
         return newOrder;
     }
 
-    public void addFavorite(int idProduct) {
+    public void addFavorite(int idProduct){
+        if(this.favorites == null){
+            favorites = new ArrayList<>();
+            favorites.add(idProduct);
+            Console.showMessage("PRODUCTO AGREGADO A FAVORITOS!");
 
+        }else {
+            this.favorites.add(idProduct);
+            Console.showMessage("PRODUCTO AGREGADO A FAVORITOS!");
 
+        }
     }
 
     public void showFavoriteList(ArrayList<Product> importedFavoriteList) {
-        if (!importedFavoriteList.isEmpty()) {
-            for (int x = 0; x < importedFavoriteList.size(); x++) {
-                System.out.println("ID: " + importedFavoriteList.get(x).getIdProduct() +
-                        "PRODUCTO: " + importedFavoriteList.get(x).getProductName() +
-                        "MARCA: " + importedFavoriteList.get(x).getBrand() +
-                        "PRECIO: " + importedFavoriteList.get(x).getPrice());
+        System.out.println("\033[33m-------------------------------------------------------------------------");
+        System.out.println("                               LISTA FAVORITOS");
+        System.out.println("-------------------------------------------------------------------------\u001B[0m");
+        if(!importedFavoriteList.isEmpty()){
+            for(int x=0;x<importedFavoriteList.size();x++){
+            System.out.println("- ID: "+importedFavoriteList.get(x).getIdProduct() +
+                               " - PRODUCTO: "+importedFavoriteList.get(x).getProductName()+
+                                " - MARCA: "+importedFavoriteList.get(x).getBrand()+
+                                " - PRECIO: "+importedFavoriteList.get(x).getPrice());
             }
         } else {
             Console.showMessageError("La lista esta vacia!");
@@ -156,6 +167,15 @@ public final class Buyer extends Client {
                 cart.add(idProduct);
             }
         }
+    }
+    @Override
+    public void viewProfile() {
+        super.viewProfile();
+    }
+    @Override
+    public String toString() {
+        return  super.toString();
+
     }
 
     public float cartValue(List<Product>list){

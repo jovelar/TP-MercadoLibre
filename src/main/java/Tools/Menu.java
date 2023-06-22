@@ -3,10 +3,8 @@ package Tools;
 import Enums.Category;
 import Enums.Province;
 
-import Models.Administrator;
-import Models.Client;
-import Models.Enterprise;
-import Models.Product;
+import Enums.TypeUser;
+import Models.*;
 import ModelsManager.ProductManager;
 import ModelsManager.SalesSystem;
 
@@ -381,8 +379,8 @@ vendida (se tiene que actualizar el json en cada venta).
             case 22 -> cliente.setProvince(Province.SANTIAGODELESTERO);
             case 23 -> cliente.setProvince(Province.TIERRADELFUEGO);
             case 24 -> cliente.setProvince(Province.TUCUMAN);
-            case -1 -> System.out.println("");//cuando ingresa un valor no entero o una letra
-            case 0 -> System.out.println("");////cuando se oprime cancelar o la cruz(X), se retorno 0 en el metodo anterior
+            case -1 -> System.out.println(" ");//cuando ingresa un valor no entero o una letra
+            case 0 -> System.out.println(" ");////cuando se oprime cancelar o la cruz(X), se retorno 0 en el metodo anterior
             default->Console.showMessage("\t\t¡OPCION INVALIDA! \n\nPor favor, selecciona una opción disponible...\n");
         }
     }
@@ -391,7 +389,52 @@ vendida (se tiene que actualizar el json en cada venta).
     public static void enterpriseMainMenu(String username) {
 
         Enterprise enterprise = SalesSystem.getEnterpriseManager().returnEnterpriseByUsername(username);
+        boolean userConected = true;
+        TypeUser typeUser = TypeUser.ENTERPRISE;
+
+        String optionEntered;
+
+        SalesSystem.getProductManager().showSaleProducts();
+
+        //menu principal
+        do {
+            optionEntered = Console.systemOptions(userConected);
+
+            switch (optionEntered) {
+                case "VER MI PERFIL"://region
+                    System.out.println(enterprise);
+
+                    //TODO: agregar metodo con switch y opciones de modificacion de perfil
+                    break;//endregion
+
+                case "AGREGAR PRODUCTO"://region
+                    SalesSystem.createAccount();
+                    break;//endregion
+
+                case "MODIFICAR PRODUCTO"://region
+                    System.out.println("Ha seleccionado la opción " + optionEntered);
+                    break;
+                    
+                case "DAR DE BAJA UN PRODUCTO"://region
+                    //SalesSystem.
+                    System.out.println("Ha seleccionado la opción " + optionEntered);
+                    break;
+                case "DAR DE BAJA MI CUENTA"://region
+                    System.out.println("Ha seleccionado la opción " + optionEntered);
+                    break;
+                case "SALIR":
+                    Console.showMessage("Saliendo del programa...");//region
+                    break;
+                default:
+                    Console.showMessageError("OPCION INVALIDA! VUELVA A INTENTARLO!");
+                    break;
+            }
+
+        } while(!optionEntered.equals("SALIR"));
+
     }
+
+
 
     public static void administratorMainMenu(String username) {
         Administrator administrator = SalesSystem.getAdministratorManager().returnAdministratorByUsername(username);

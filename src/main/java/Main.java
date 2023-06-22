@@ -31,18 +31,16 @@ public class Main {
             optionEntered = Console.systemOptions(userConected);
 
             switch (optionEntered) {
-                //region
-                case "VER MI PERFIL":
+                case "VER MI PERFIL"://region
+
                     System.out.println(buyer);
                     //TODO: agregar metodo con switch y opciones de modificacion de perfil
-                    break;
-                case "CREAR CUENTA":
+                    break;//endregion
+                case "CREAR CUENTA"://region
                     SalesSystem.createAccount();
-                    break;
+                    break;//endregion
 
-                //endregion
-//-----------------------------------------------------------------
-                case "INGRESAR":
+                case "INGRESAR"://region
                     userConected = SalesSystem.logIn(username);
 
                     if(userConected){
@@ -59,14 +57,12 @@ public class Main {
                         }
                     }
 
-                    break;
-//-----------------------------------------------------------------
-
+                    break;//endregion
                 case "MIS COMPRAS":
                     System.out.println("Ha seleccionado la opción " + optionEntered);
                     break;
                 case "FAVORITOS":
-                    //SalesSystem.
+
                     System.out.println("Ha seleccionado la opción " + optionEntered);
                     break;
                 case "CARRITO":

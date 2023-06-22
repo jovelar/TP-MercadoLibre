@@ -8,6 +8,7 @@ import ModelsRepo.SubModelsRepo.CardRepo;
 import Tools.Console;
 import Tools.Menu;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public final class CardManager {
@@ -62,8 +63,6 @@ public final class CardManager {
 
     }
 
-
-
     public boolean searchCardById(int id){
         boolean resp = false;
         List<Card> cardList = cardRepo.toList();
@@ -75,7 +74,29 @@ public final class CardManager {
             }
         }
         return resp;
-
     }
+    public List<Card>getCards(List<Integer>idCards){
+        List<Card>userCards=new ArrayList<Card>(); //lista de salida
+        List<Card>allCards=cardRepo.toList();
+        for(int x=0;x<idCards.size();x++){
+            for(int z=0;z<allCards.size();z++){
+                if(idCards.get(x)==allCards.get(z).getIdPayMethod()){
+                    userCards.add(allCards.get(z));
+                }
 
+            }
+        }
+        return userCards;
+    }
+    /*
+    public boolean isValidCard(int idCard){
+        boolean valid=false;
+        List<Card>allcards=cardRepo.toList();
+        for(int x=0;x<allcards.size();x++){
+            if(allcards.get(x).getIdPayMethod()==idCard){
+                valid=true;
+            }
+        }
+        return valid;
+    }*/
 }

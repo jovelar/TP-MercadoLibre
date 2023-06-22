@@ -2,6 +2,7 @@ package ModelsManager;
 
 import Models.Buyer;
 import Models.Product;
+import Models.SubModels.Card;
 import Models.SubModels.Order;
 import Models.SubModels.PayMethod;
 import ModelsRepo.SubModelsRepo.OrderRepo;
@@ -35,7 +36,13 @@ public final class OrderManager {
         System.out.print(" de " + deliveryDateLocalDate.getMonth().getDisplayName(TextStyle.FULL, new Locale("es", "ES")));
     }
 
-    public void addOrder(Buyer buyer, List<Product> productList){
+    /**
+     * pago con tarjeta de credito/debito
+     * @param buyer
+     * @param productList
+     * @return
+     */
+    public int addOrder(Buyer buyer, List<Product> productList,int pickedCard){
         Order order = null;
 
         int idOrder = orderRepo.toList().size()+1;
@@ -43,8 +50,11 @@ public final class OrderManager {
 
         ArrayList<Product> solicitedProducts = returnListOfProductsByID(buyer.getCart(), productList); //Pasalos los productos del carrito al pedido
 
-        List<PayMethod> payMethods = buyer.getPayMethod(); //TODO el comprador deberia elegir el metodo de pago
-        PayMethod chosenPaymentMethod = payMethods.get(2);//el metodo de pago de elegido se guarda en esta variable
+        //<PayMethod> payMethods = buyer.getPayMethod(); //TODO el comprador deberia elegir el metodo de pago
+        //PayMethod chosenPaymentMethod = payMethods.get(2);//el metodo de pago de elegido se guarda en esta variable
+        Card usedCard=new Card();
+        usedCard.setIdPayMethod(pickedCard);
+        PayMethod chosenPaymentMethod=new Card();
         String deliveryAddress = buyer.getAddress();
 
 
@@ -56,6 +66,37 @@ public final class OrderManager {
         orderRepo.add(order);
         System.out.println("Pedido agregado exitosamente!");
 
+        return order.getIdOrder();
+    }
+
+    /**
+     * Pago con saldo cuenta propia.
+     * @param buyer
+     * @param productList
+     * @return
+     */
+    public int addOrderCredit(Buyer buyer, List<Product> productList){
+        Order order = null;
+
+        int idOrder = orderRepo.toList().size()+1;
+        int idBuyer = buyer.getIdUser();
+
+        ArrayList<Product> solicitedProducts = returnListOfProductsByID(buyer.getCart(), productList); //Pasalos los productos del carrito al pedido
+
+        //List<PayMethod> payMethods = buyer.getPayMethod(); //TODO el comprador deberia elegir el metodo de pago
+        //PayMethod chosenPaymentMethod = payMethods.get(2);//el metodo de pago de elegido se guarda en esta variable
+        String deliveryAddress = buyer.getAddress();
+
+
+        LocalDate deliveryDateLocalDate = dateHandling.calculateDeliveryDate();
+        String deliveryDate = dateHandling.convertLocalDateToString(deliveryDateLocalDate);
+
+        order = new Order(idOrder, idBuyer, solicitedProducts, deliveryAddress, deliveryDate);
+
+        orderRepo.add(order);
+        System.out.println("Pedido agregado exitosamente!");
+
+        return order.getIdOrder();
     }
 
     public ArrayList<Product> returnListOfProductsByID(ArrayList<Integer> productIdList, List<Product> productList){

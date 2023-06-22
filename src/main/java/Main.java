@@ -1,6 +1,7 @@
 import Enums.TypeUser;
 import Models.Buyer;
 import Models.Product;
+import Models.SubModels.Card;
 import Models.SubModels.Order;
 import ModelsManager.BuyerManager;
 import ModelsManager.SalesSystem;
@@ -103,7 +104,6 @@ public class Main {
                         int opc=Console.systemOptionsProductFromCart();
                         if(opc==0){
 
-
                         }
                         if(opc==1){
                             int idAeliminar=Validations.doUntilValidNumber(Console.readInt("Ingrese el ID del producto a eliminar"));
@@ -132,12 +132,38 @@ public class Main {
                     if (searchResult != null && searchResult.size() != 0) {
                         buyer.showFavoriteList((ArrayList<Product>) searchResult);
                         int option=Console.systemOptionsbuyProduct();
-                        if(option==0){
+                        if(option==0){ //COMPRAR
+                            List<Product>cartLisToBuy=SalesSystem.getProductManager().returnListOfProductsByID(buyer.getCart());
+                            float cartPrice= buyer.cartValue(cartLisToBuy);
+
                             int opcMetododePago=Console.systemOptionsBuyPayMethod();
                             if(opcMetododePago==0){ //PAGO CON DINERO
+                                if(buyer.checkAvailableCredit(cartPrice)){
+                                    buyer.removeCredit(cartPrice);
+                                    int orderNumber=SalesSystem.getOrderManager().addOrderCredit(buyer,cartLisToBuy);
+                                    buyer.addToShoppingHistory(orderNumber);
+                                    buyer.clearCart();
+                                    SalesSystem.getBuyerManager().replaceBuyer(buyer);
+                                    Console.showMessage("Gracias por su compra");
+                                }else{
+                                    Console.showMessageError("Saldo insuficiente");
+                                }
+
 
                             }else if (opcMetododePago==1){ //PAGO CON TARJETA
+                                List<Card>availableCards=SalesSystem.getCardManager().getCards(buyer.getCards());
+                                int selectedCard=Console.readInt("Ingrese el ID de la tarjeta que desea usar");
 
+                                if(buyer.checkAvailableCredit(cartPrice)){
+                                    buyer.removeCredit(cartPrice);
+                                   // int orderNumber=SalesSystem.getOrderManager().addOrder(buyer,cartLisToBuy,pickedCard;);
+                                   // buyer.addToShoppingHistory(orderNumber);
+                                    buyer.clearCart();
+                                    SalesSystem.getBuyerManager().replaceBuyer(buyer);
+                                    Console.showMessage("Gracias por su compra");
+                                }else{
+                                    Console.showMessageError("Saldo insuficiente");
+                                }
                             }
 
                             int producToBuy=Console.readInt("Ingrese el ID del producto a comprar: ");

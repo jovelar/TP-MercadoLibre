@@ -36,6 +36,14 @@ public final class Order {
     public Order(){}
 
 
+    public Order(int idOrder, int idBuyer, ArrayList<Product> solicitedProducts, String deliveryAddress, String deliveryDate) {
+        this.idOrder = idOrder;
+        this.idBuyer = idBuyer;
+        this.solicitedProducts = solicitedProducts;
+        this.deliveryAddress = deliveryAddress;
+        this.state = OrderStatus.IN_PREPARATION;
+        this.deliveryDate = deliveryDate;
+    }
     public Order(int idOrder, int idBuyer, ArrayList<Product> solicitedProducts, PayMethod payMethod, String deliveryAddress, String deliveryDate) {
         this.idOrder = idOrder;
         this.idBuyer = idBuyer;

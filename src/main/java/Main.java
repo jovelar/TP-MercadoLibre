@@ -1,17 +1,9 @@
-
 import Enums.TypeUser;
 import Models.Buyer;
-import Models.User;
 import ModelsManager.SalesSystem;
 import Tools.Console;
+import Tools.Menu;
 import Tools.Validations;
-
-import ModelsManager.AdministratorManager;
-
-
-
-import static ModelsManager.SalesSystem.returnTypeUserByUsername;
-
 
 
 public class Main {
@@ -19,30 +11,27 @@ public class Main {
 
         mainMenu();
 
-//        mainEzequiel();
+        //mainEzequiel();
         //mainJOvelar();
 
     }
 
     public static void mainMenu() {
 
-        String username = "";
+        StringBuilder username = new StringBuilder();
         Buyer buyer = new Buyer();
         boolean userConected = false;
-        TypeUser typeUser = TypeUser.NONE;
+        TypeUser typeUser;
+        String optionEntered;
 
         SalesSystem.getProductManager().showSaleProducts();
 
         //menu principal
-        String optionEntered;
-
         do {
-            /*if(userConected && typeUser==TypeUser.BUYER){
-                buyer = (Buyer) user;
-            }*/
             optionEntered = Console.systemOptions(userConected);
 
             switch (optionEntered) {
+                //region
                 case "VER MI PERFIL":
                     System.out.println(buyer);
                     //TODO: agregar metodo con switch y opciones de modificacion de perfil
@@ -51,23 +40,22 @@ public class Main {
                     SalesSystem.createAccount();
                     break;
 
+                //endregion
 //-----------------------------------------------------------------
                 case "INGRESAR":
                     userConected = SalesSystem.logIn(username);
 
                     if(userConected){
-                        typeUser = SalesSystem.returnTypeUserByUsername(username);
+                        typeUser = SalesSystem.returnTypeUserByUsername(username.toString());
 
-                        if(typeUser == TypeUser.BUYER)
-                            buyer = SalesSystem.getBuyerManager().returnBuyerByUsername(username);
+                        if(typeUser == TypeUser.BUYER) {
+                            buyer = SalesSystem.getBuyerManager().returnBuyerByUsername(username.toString());
 
-                        else if(typeUser == TypeUser.ADMINISTRATOR) {
-                            //TODO: metodo con switch para opciones del ADMINISTRATOR
-                            // dentro se instancia un ADMINISTRATOR a partir del username
+                        }else if(typeUser == TypeUser.ADMINISTRATOR) {
+                            Menu.administratorMainMenu(username.toString());
 
                         }else if(typeUser == TypeUser.ENTERPRISE) {
-                            //TODO: metodo con switch para ENTERPRISE
-                            // dentro se instancia un ENTERPRISE a partir del username
+                            Menu.enterpriseMainMenu(username.toString());
                         }
                     }
 
@@ -108,7 +96,11 @@ public class Main {
         //mainJOvelar();
     }
 
-    public static void mainEzequiel() {
+    public static void mainEzequiel(StringBuilder hola) {
+
+        hola.setLength(0);
+        hola.append("hola mundo!");
+        System.out.println("DENTRO DE LA FUNCION ->" + hola);
 
         /*EnterpriseManager enterpriseManager = new EnterpriseManager();
         enterpriseManager.totalModifyEnterprise();*/

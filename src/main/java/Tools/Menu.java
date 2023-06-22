@@ -3,9 +3,12 @@ package Tools;
 import Enums.Category;
 import Enums.Province;
 
+import Models.Administrator;
 import Models.Client;
+import Models.Enterprise;
 import Models.Product;
 import ModelsManager.ProductManager;
+import ModelsManager.SalesSystem;
 
 import java.util.Scanner;
 
@@ -385,5 +388,13 @@ vendida (se tiene que actualizar el json en cada venta).
     }
     //endregion
 
+    public static void enterpriseMainMenu(String username) {
 
+        Enterprise enterprise = SalesSystem.getEnterpriseManager().returnEnterpriseByUsername(username);
+    }
+
+    public static void administratorMainMenu(String username) {
+        Administrator administrator = SalesSystem.getAdministratorManager().returnAdministratorByUsername(username);
+
+    }
 }

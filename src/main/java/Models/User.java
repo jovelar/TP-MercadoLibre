@@ -3,7 +3,7 @@ package Models;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class User {
+public abstract class User {
 
     //region ATTRIBUTES
     protected int idUser;

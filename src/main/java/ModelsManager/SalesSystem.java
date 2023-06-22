@@ -1,6 +1,8 @@
 package ModelsManager;
 
 import Enums.TypeUser;
+import Models.Administrator;
+import Models.Enterprise;
 import Models.User;
 import Tools.Console;
 
@@ -68,45 +70,52 @@ public class SalesSystem {
     }
 
     //region LOGIN
-    public static boolean logIn(String username) {
+    public static boolean logIn(StringBuilder username) {
 
-        String password = "";
+        StringBuilder password = new StringBuilder();
         boolean loginSuccessful = false;
         String optionEntered = "NO_SALIR";
         int failedAttempts = 0;
 
         while(!loginSuccessful && failedAttempts<3 && !optionEntered.equals("SALIR")) {
 
-            //Se leen los datos username y password, se carga en el usuario vacio
-            //Detecta si se ingreso "SALIR" oprimiendo el boton "cancelar" o la "X"
             optionEntered = readloginData(username, password);
-
             if(!optionEntered.equals("SALIR")) {
 
                 //Tengo que buscar en los 3 archivos que tipo de usuario esta ingresando
-                loginSuccessful = validateLogin(username, password);
+                loginSuccessful = validateLogin(username.toString(), password.toString());
 
                 if(!loginSuccessful) {
                     failedAttempts++;
-                    Console.showMessageError("¡ALGUNO DE LOS DATOS INGRESADOS ES INCORRECTO!" + failedAttempts);
+                    Console.showMessageError("¡ALGUNO DE LOS DATOS INGRESADOS ES INCORRECTO! (" + failedAttempts+")");
                 }
             }
+        }
+
+        if(optionEntered.equals("SALIR") || failedAttempts==3) {
+
+            if(failedAttempts == 3)
+                Console.showMessageError("Volviendo al menu principal...");
+
         }
 
         return loginSuccessful;
     }
 
-    private static String readloginData(String username, String password) {
+    private static String readloginData(StringBuilder username, StringBuilder password) {
 
         String optionOrDateEntered = Console.readString("Ingrese su nombre de usuario");
 
         if(!optionOrDateEntered.equals("SALIR")) {
-            username = optionOrDateEntered;
+            username.setLength(0);
+            username.append(optionOrDateEntered);
 
             optionOrDateEntered = Console.readString("Ingrese su contraseña");
 
             if(!optionOrDateEntered.equals("SALIR")) {
-                password = optionOrDateEntered;
+                password.setLength(0);
+                password.append(optionOrDateEntered);
+
                 optionOrDateEntered = "NO_SALIR"; //Para no retornar la password
             }
         }
@@ -147,6 +156,41 @@ public class SalesSystem {
 
         return userFound;
     }
+
+    private static boolean validatePassword(String username, String password) {
+
+        String passwordUserFound = "";
+        boolean validKey = false;
+
+        boolean userFound = administratorManager.searchAdministratorByUsername(username);
+
+        if(!userFound){
+
+            userFound = enterpriseManager.searchEnterpriseByUsername(username);
+
+            if(!userFound) {
+                userFound = buyerManager.searchBuyerByUsername(username);
+
+                if(userFound) {
+                    passwordUserFound = buyerManager.returnBuyerByUsername(username).getPassword();
+                }
+
+            } else {
+                 passwordUserFound = enterpriseManager.returnEnterpriseByUsername(username).getPassword();
+            }
+
+        } else {
+             passwordUserFound = administratorManager.returnAdministratorByUsername(username).getPassword();
+        }
+
+        if(userFound) {
+            validKey = passwordUserFound.equals(password);
+        }
+
+        return validKey;
+    }
+    //endregion
+
     public static boolean searchEmail(String email) {
 
         boolean emailFound = false;
@@ -182,41 +226,6 @@ public class SalesSystem {
 
         return dniFound;
     }
-
-
-    private static boolean validatePassword(String username, String password) {
-
-        String passwordUserFound = "";
-        boolean validKey = false;
-
-        boolean userFound = administratorManager.searchAdministratorByUsername(username);
-
-        if(!userFound){
-
-            userFound = enterpriseManager.searchEnterpriseByUsername(username);
-
-            if(!userFound) {
-                userFound = buyerManager.searchBuyerByUsername(username);
-
-                if(userFound) {
-                    passwordUserFound = buyerManager.returnBuyerByUsername(username).getPassword();
-                }
-
-            } else {
-                 passwordUserFound = enterpriseManager.returnEnterpriseByUsername(username).getPassword();
-            }
-
-        } else {
-             passwordUserFound = administratorManager.returnAdministratorByUsername(username).getPassword();
-        }
-
-        if(userFound) {
-            validKey = passwordUserFound.equals(password);
-        }
-
-        return validKey;
-    }
-    //endregion
 
     public static TypeUser userConnectProgram(User user) {
 
@@ -261,5 +270,7 @@ public class SalesSystem {
 
         return typeUser;
     }
+
+
 
 }

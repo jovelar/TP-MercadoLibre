@@ -1,6 +1,7 @@
 package Models;
 
 import Enums.Province;
+import Tools.Console;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -19,7 +20,6 @@ public final class Enterprise extends Client implements Serializable {
     }
 
 
-
     //Creado para metodo addEnterprose() en clase EnterpriseManager
     public Enterprise(int idEnterprise, String username, String email, String password, String firstName, String surname, int dni,
                       String birthDate, long phoneNumber, String fantasyName) {
@@ -28,6 +28,16 @@ public final class Enterprise extends Client implements Serializable {
 
         this.fantasyName = fantasyName;
     }
+
+    public Enterprise(int idEnterprise, String username, String email, String password, String firstName, String surname,
+                      String birthDate, long phoneNumber, String fantasyName) {
+
+        super(idEnterprise, username, email, password, firstName, surname, birthDate, phoneNumber);
+
+        this.fantasyName = fantasyName;
+    }
+
+
     //endregion
 
     //region GETTERS AND SETTERS
@@ -58,6 +68,8 @@ public final class Enterprise extends Client implements Serializable {
     public void deleteProduct(){
 
     }
+
+
 
     @Override
     public String toString() {

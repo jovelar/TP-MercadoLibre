@@ -405,9 +405,20 @@ vendida (se tiene que actualizar el json en cada venta).
 
             switch (optionEntered) {
                 case "VER MI PERFIL"://region
-                    System.out.println(enterprise);
+                    enterprise.viewProfile();
 
-                    //TODO: agregar metodo con switch y opciones de modificacion de perfil
+                    int answer = Console.buttonsModifyAndReturn();
+
+                    if(answer == 0){
+                        optionEntered = Menu.menuModifyEnterprise(enterprise.getIdUser());
+                        if(optionEntered.equals("MODIFICADO")){
+                            enterprise = SalesSystem.getEnterpriseManager().returnEnterpriseById(enterprise.getIdUser());
+                            enterprise.viewProfile();
+                            username = enterprise.getUsername();
+                        }
+                    }
+
+                    Console.showMessage("Volviendo al menu principal...");
                     break;//endregion
 
                 case "AGREGAR PRODUCTO"://region
@@ -539,6 +550,64 @@ vendida (se tiene que actualizar el json en cada venta).
 
                 case "MODIFICAR TODO":
                     answer = SalesSystem.getAdministratorManager().totalModifyOneAdministrator(idAdministrator);
+                    if(answer){
+                        Console.showMessage("¡CUENTA ADMINISTRADOR MODIFICADA CON EXITO!");
+                    }
+
+                    break;
+
+                case "SALIR":
+                    System.out.println(" ");
+                    break;
+                default:
+                    Console.showMessageError("OPCION INVALIDA! VUELVA A INTENTARLO!");
+                    break;
+            }
+
+        } while((!optionEntered.equals("SALIR")) && (!optionEntered.equals("MODIFICADO")));
+        return optionEntered;
+    }
+
+    public static String menuModifyEnterprise(int idEnterprise) {
+        boolean answer;
+        String optionEntered;
+
+        do {
+            optionEntered = Console.systemOptionsModifyEnterprise();
+
+            switch (optionEntered) {
+
+                //region
+                case "MODIFICAR NOMBRE DE USUARIO":
+                     answer = SalesSystem.getAdministratorManager().changeAdminUsername(idEnterprise);
+                    if(answer){
+                        Console.showMessage("¡NOMBRE DE USUARIO MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+                case "MODIFICAR EMAIL":
+
+                    break;
+                case "MODIFICAR CONTRASEÑA":
+
+                    break;
+
+                case "MODIFICAR NOMBRE":
+                    break;
+
+                case "MODIFICAR APELLIDO":
+                    break;
+
+                case "MODIFICAR FECHA DE NACIMIENTO":
+                    break;
+
+                case "MODIFICAR NUMERO DE TELEFONO":
+                    break;
+
+                case "MODIFICAR TODO":
+                    answer = SalesSystem.getAdministratorManager().totalModifyOneAdministrator(idEnterprise);
                     if(answer){
                         Console.showMessage("¡CUENTA ADMINISTRADOR MODIFICADA CON EXITO!");
                     }

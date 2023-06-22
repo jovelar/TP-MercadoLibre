@@ -21,8 +21,6 @@ public abstract class Client extends User {
 
     }
 
-
-
     //Creado para metodo addEnterprose() en clase EnterpriseManager
     public Client(int idUser, String username, String email, String password, String firstName, String surname,
                   int dni, String birthDate, long phoneNumber) {
@@ -30,8 +28,13 @@ public abstract class Client extends User {
         super(idUser, username, email, password, firstName, surname, dni, birthDate, phoneNumber);
     }
 
+    public Client(int idUser, String username, String email, String password, String firstName, String surname,
+                   String birthDate, long phoneNumber) {
 
-    //endregion
+        super(idUser, username, email, password, firstName, surname, birthDate, phoneNumber);
+    }
+
+//endregion
 
     //region GETTERS AND SETTERS
     public Province getProvince() {

@@ -1,5 +1,7 @@
 package Models;
 
+import Tools.Console;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -43,7 +45,8 @@ public abstract class User {
     }
 
     //constructor para la modificacion total SIN DNI
-    public User(int idUser, String username, String email, String password, String firstName, String surname, String birthDate, long phoneNumber) {
+    public User(int idUser, String username, String email, String password, String firstName, String surname,
+                String birthDate, long phoneNumber) {
         this.idUser = idUser;
         this.username = username;
         this.email = email;
@@ -138,6 +141,17 @@ public abstract class User {
 
     }
 
+    public void viewProfile(){
+        Console.cleanConsole();
+
+        System.out.println("\033[33m-------------------------------------------------------------------------");
+        System.out.println("                               MI PERFIL");
+        System.out.println("-------------------------------------------------------------------------\u001B[0m");
+
+        System.out.println(this);
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n");
+
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -396,20 +396,29 @@ vendida (se tiene que actualizar el json en cada venta).
     }
 
     public static String administratorMainMenu(String username) {
-        Administrator administrator = SalesSystem.getAdministratorManager().returnAdministratorByUsername(username);
+        Administrator administrator;
         String optionEntered;
         do {
             optionEntered = Console.systemOptionsAdministrator();
 
+           administrator = SalesSystem.getAdministratorManager().returnAdministratorByUsername(username);
             switch (optionEntered) {
 
                 //region
                 case "VER MI PERFIL":
-                    System.out.println(administrator);
+                    administrator.viewProfile();
+
                     int answer = Console.buttonsModifyAndReturn();
+
                     if(answer == 0){
-                        Menu.menuModifyAdministrator(administrator.getIdUser());
+                        optionEntered = Menu.menuModifyAdministrator(administrator.getIdUser());
+                        if(optionEntered.equals("MODIFICADO")){
+                            administrator = SalesSystem.getAdministratorManager().returnAdministratorById(administrator.getIdUser());
+                            administrator.viewProfile();
+                            username = administrator.getUsername();
+                        }
                     }
+
                     Console.showMessage("Volviendo al menu principal...");
                     break;
                 case "ADMINISTRAR EMPRESAS":
@@ -450,6 +459,7 @@ vendida (se tiene que actualizar el json en cada venta).
     public static String menuModifyAdministrator(int idAdministrator) {
         boolean answer;
         String optionEntered;
+
         do {
             optionEntered = Console.systemOptionsModifyAdministrator();
 
@@ -460,6 +470,9 @@ vendida (se tiene que actualizar el json en cada venta).
                      answer = SalesSystem.getAdministratorManager().changeAdminUsername(idAdministrator);
                     if(answer){
                         Console.showMessage("¡NOMBRE DE USUARIO MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
                     }
                     break;
                 case "MODIFICAR EMAIL":
@@ -490,14 +503,14 @@ vendida (se tiene que actualizar el json en cada venta).
                     break;
 
                 case "SALIR":
-                    Console.showMessage("GRACIAS POR UTILIZAR ESTE PROGRAMA!");
+                    System.out.println(" ");
                     break;
                 default:
                     Console.showMessageError("OPCION INVALIDA! VUELVA A INTENTARLO!");
                     break;
             }
 
-        } while(!optionEntered.equals("SALIR"));
+        } while((!optionEntered.equals("SALIR")) && (!optionEntered.equals("MODIFICADO")));
         return optionEntered;
     }
 

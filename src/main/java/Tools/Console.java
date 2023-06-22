@@ -126,8 +126,8 @@ public final class Console {
                     "OPCIONES MENU ADMINISTRATOR",
                     JOptionPane.QUESTION_MESSAGE,
                     null,  // null para icono defecto
-                    new Object[] { "ADMINISTRAR EMPRESAS", "ADMINISTRAR CLIENTES", "AGREGAR ADMINISTRADORES", "MOSTRAR ADMINISTRADORES", "DAR DE BAJA MI CUENTA", "SALIR"},
-                    "ADMINISTRAR EMPRESAS");
+                    new Object[] { "VER MI PERFIL","ADMINISTRAR EMPRESAS", "ADMINISTRAR CLIENTES", "AGREGAR ADMINISTRADORES", "MOSTRAR ADMINISTRADORES", "DAR DE BAJA MI CUENTA", "SALIR"},
+                    "VER MI PERFIL");
 
 
         if(chosenOption == null)
@@ -145,7 +145,7 @@ public final class Console {
                     null,  // null para icono defecto
                     new Object[] { "MODIFICAR NOMBRE DE USUARIO", "MODIFICAR EMAIL","MODIFICAR CONTRASEÑA",
                             "MODIFICAR APELLIDO", "MODIFICAR FECHA DE NACIMIENTO", "MODIFICAR NUMERO DE TELEFONO",
-                            "MOSTRAR TODO", "SALIR"},
+                            "MODIFICAR TODO", "SALIR"},
                     "MODIFICAR NOMBRE DE USUARIO");
 
 

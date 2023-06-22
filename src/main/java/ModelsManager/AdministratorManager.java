@@ -151,8 +151,9 @@ public final class AdministratorManager {
 
     public Administrator returnAdministratorByUsername(String username){
         Administrator admWanted = null;
+        List<Administrator> administratorList = administratorRepo.toList();
 
-        for(Administrator adm : this.administratorRepo.toList()){
+        for(Administrator adm : administratorList){
             if(adm.getUsername().equals(username)){
                 admWanted = adm;
                 break;
@@ -248,7 +249,7 @@ public final class AdministratorManager {
 
             String username = Validations.doUntilUsernameIsNotInUse(Console.readString("Ingresar nuevo nombre de usuario:"));
             if (!username.equals("SALIR")){
-
+                administrator.setUsername(username);
                 administratorRepo.modify(administrator);
                 answer = true;
             }

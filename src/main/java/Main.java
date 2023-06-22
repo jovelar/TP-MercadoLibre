@@ -19,9 +19,6 @@ public class Main {
 
         mainMenu();
 
-        //mainEzequiel();
-        //mainJOvelar();
-
     }
 
     public static void mainMenu() {
@@ -226,36 +223,4 @@ public class Main {
         } while(!optionEntered.equals("SALIR"));
     }
 
-    public static void mainEzequiel(StringBuilder hola) {
-
-        hola.setLength(0);
-        hola.append("hola mundo!");
-        System.out.println("DENTRO DE LA FUNCION ->" + hola);
-
-        /*EnterpriseManager enterpriseManager = new EnterpriseManager();
-        enterpriseManager.totalModifyEnterprise();*/
-
-        //AdministratorManager administratorManager = new AdministratorManager();
-        //administratorManager.addAministrator();
-        //administratorManager.deleteLogicallyAdminsitrator();
-        //administratorManager.deleteAdministrator();
-        //administratorManager.totalModifyAdministrator();
-
-    }
-
-    public static void mainJOvelar(){
-        Validations validation=new Validations();
-        String manzana="25/02/2014";
-        System.out.println(validation.validateBirthDate(manzana));
-
-        String nombre1="jose maria listorti";
-        String nombre2="Abaco 123 ";
-        String nombre3=".*.------=";
-
-        //System.out.println(validation.validateName(nombre1));
-        //System.out.println(validation.validateName(nombre2));
-        //System.out.println(validation.validateName(nombre3));
-        //String kopona=validation.doUntilValidName(Console.readString("Ingrese su nombre"));
-        long telefono=Console.readLong("Ingrese su numero de telefono, sin espacios ni giones");
-    }
 }

@@ -1,10 +1,12 @@
 package ModelsManager;
 
 import Enums.Category;
+import Models.Administrator;
 import Models.Product;
 import ModelsRepo.ProductRepo;
 import Tools.Console;
 import Tools.Menu;
+import Tools.Validations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,6 @@ public class ProductManager {
 
     private ProductRepo productRepo = new ProductRepo();
 
-    //TODO: crear un showProducts simplificado, con menos datos, 3-4 atributos
     public void showSaleProducts(){
         List<Product> productList = productRepo.toList();
         System.out.println("\033[33m-------------------------------------------------------------------------");
@@ -64,7 +65,6 @@ public class ProductManager {
             System.out.println("---------------------------------------------------------");
         }
     }
-    //TODO: faltaria crear el metodo showProductList() pero segun el ID de la empresa
 
     public void showProductListbyIDEnterprise(int idEnterprise){
         List<Product> productList = productRepo.toList();
@@ -78,32 +78,29 @@ public class ProductManager {
     }
 
 
-    public void addProduct(){
+    public void addProduct(int idEnterprise, String nameFantasyEnterprise){
         Product product = null;
 
         String resp = "si";
         while(resp.equals("si")){
 
             int idProduct = productRepo.toList().size()+1;
-            int idEnterprise = Console.readInt("Ingrese el id de la empresa");
             String brand = Console.readString("Ingrese la marca del producto: ");
             String productName = Console.readString("Ingrese el nombre del producto:");
-            String vendorName = Console.readString("Ingrese el nombre del vendedor:");
             float price = Console.readFloat("Ingrese el precio del producto:");
             int quantity = Console.readInt("Ingrese el numero de stock:");
             String description = Console.readString("Ingrese una descripción:");
 
 
-            product = new Product(idProduct, idEnterprise, brand, productName, vendorName, price,
+            product = new Product(idProduct, idEnterprise, brand, productName, nameFantasyEnterprise, price,
                     quantity, null, description);
 
-             Menu.categoriesMenu(product);
+            Menu.categoriesMenu(product);
 
             productRepo.add(product);
-            System.out.println("Producto agregado exitosamente!");
+            Console.showMessage("Producto agregado exitosamente!");
 
             resp = Console.readString("Desea seguir agregando productos? si/no");
-
         }
     }
 
@@ -120,10 +117,27 @@ public class ProductManager {
         }else{
             Console.showMessage("El producto no se encuentra registrado en el sistema!");
         }
-
-
     }
-    
+
+    public void deleteLogicallyproduct() {
+        int idProduct = Validations.doUntilValidNumber(Console.readInt("Ingrese el ID del PRODUCTO:"));
+        if (searchProductById(idProduct)) {
+
+            Console.showMessage("PRODUCTO ENCONTRADO!");
+
+            int resp = Console.buttonsYesNo();
+
+            if (resp == 0) {//YES
+                Product prod = returnProductById(idProduct);
+                prod.setActive(false);
+                this.productRepo.modify(prod);
+                Console.showMessage("¡El PRODUCTO SE DIO DE BAJA EXITOSAMENTE!");
+            }
+        } else {
+            Console.showMessage("¡NO EXISTE NINGUN ADMINISTRADOR CON ESE ID!");
+        }
+    }
+
     public boolean searchProductById(int id){
         boolean resp = false;
         List<Product> productList = productRepo.toList();
@@ -136,6 +150,19 @@ public class ProductManager {
         }
         return resp;
 
+    }
+    public Product returnProductById(int id) {
+
+        Product productWanted = null;
+
+        for (Product prod : productRepo.toList()) {
+            if (id == prod.getIdProduct()) {
+                productWanted = prod;
+                break;
+            }
+        }
+
+        return productWanted;
     }
 
     public void modifyProduct(){
@@ -158,19 +185,7 @@ public class ProductManager {
 
     }
 
-    public Product returnProductById(int id){
-        Product productFound = null;
-        List<Product> productList = productRepo.toList();
 
-        for(Product product : productList){
-            if(id == product.getIdProduct()){
-                productFound = product;
-                break;
-            }
-        }
-        return productFound;
-
-    }
 
 
     public void listaProductosHardcodeado(){
@@ -232,6 +247,7 @@ public class ProductManager {
         }
         return solicitedProducts;
     }
+    
     public List<Product>searchProductList(String productName){
         List<Product>searchResult=new ArrayList<Product>();
         List<Product>productList=productRepo.toList();

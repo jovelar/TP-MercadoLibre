@@ -7,7 +7,8 @@
   "price" : 134000.0,
   "quantity" : 110,
   "category" : "TECHNOLOGY",
-  "description" : "Celular Moto G52, 6GB RAM, liberado, memoria interna de 128GB"
+  "description" : "Celular Moto G52, 6GB RAM, liberado, memoria interna de 128GB",
+  "active" : true
 }, {
   "idProduct" : 2,
   "iDEnterprise" : 1,
@@ -17,7 +18,8 @@
   "price" : 77999.0,
   "quantity" : 50,
   "category" : "TECHNOLOGY",
-  "description" : "Celular Moto G32, 4GB RAM, liberado, memoria interna de 128GB"
+  "description" : "Celular Moto G32, 4GB RAM, liberado, memoria interna de 128GB",
+  "active" : true
 }, {
   "idProduct" : 3,
   "iDEnterprise" : 2,
@@ -27,7 +29,8 @@
   "price" : 108999.0,
   "quantity" : 50,
   "category" : "TECHNOLOGY",
-  "description" : "Celular Xiaomi Redmi Note 11, Dual SIM, 128GB de memoria interna, 4GB RAM"
+  "description" : "Celular Xiaomi Redmi Note 11, Dual SIM, 128GB de memoria interna, 4GB RAM",
+  "active" : true
 }, {
   "idProduct" : 4,
   "iDEnterprise" : 2,
@@ -37,7 +40,8 @@
   "price" : 379999.0,
   "quantity" : 25,
   "category" : "TECHNOLOGY",
-  "description" : "Celular Galaxy Z Flip4 , liberado, 128GB de memoria interna, 8GB RAM"
+  "description" : "Celular Galaxy Z Flip4 , liberado, 128GB de memoria interna, 8GB RAM",
+  "active" : true
 }, {
   "idProduct" : 5,
   "iDEnterprise" : 2,
@@ -47,7 +51,8 @@
   "price" : 69999.0,
   "quantity" : 200,
   "category" : "TECHNOLOGY",
-  "description" : "Celular Samsung Galaxy A04, liberado, 128GB de memoria interna, 4GB RAM"
+  "description" : "Celular Samsung Galaxy A04, liberado, 128GB de memoria interna, 4GB RAM",
+  "active" : true
 }, {
   "idProduct" : 6,
   "iDEnterprise" : 2,
@@ -57,7 +62,8 @@
   "price" : 52999.0,
   "quantity" : 50,
   "category" : "TECHNOLOGY",
-  "description" : "Celular Tcl 408, liberado, 64GB de memoria interna, 4GB RAM"
+  "description" : "Celular Tcl 408, liberado, 64GB de memoria interna, 4GB RAM",
+  "active" : true
 }, {
   "idProduct" : 7,
   "iDEnterprise" : 2,
@@ -67,7 +73,8 @@
   "price" : 47999.0,
   "quantity" : 150,
   "category" : "TECHNOLOGY",
-  "description" : "Celular Quantum Q20 Dual SIM, 128GB interna, 4GB RAM"
+  "description" : "Celular Quantum Q20 Dual SIM, 128GB interna, 4GB RAM",
+  "active" : true
 }, {
   "idProduct" : 8,
   "iDEnterprise" : 2,
@@ -77,7 +84,8 @@
   "price" : 79999.0,
   "quantity" : 90,
   "category" : "TECHNOLOGY",
-  "description" : "Tablet Samsung Galaxy Tab A7 Lite SM-T220, 8,7 pulgadas, capacidad de 32GB, 3GB RAM"
+  "description" : "Tablet Samsung Galaxy Tab A7 Lite SM-T220, 8,7 pulgadas, capacidad de 32GB, 3GB RAM",
+  "active" : true
 }, {
   "idProduct" : 9,
   "iDEnterprise" : 2,
@@ -87,7 +95,8 @@
   "price" : 193999.0,
   "quantity" : 50,
   "category" : "TECHNOLOGY",
-  "description" : "Tablet Samsung Galaxy Tab S S6 Lite SM-P610, 10,4 pulgadas, capacidad de 64GB, 4GB RAM"
+  "description" : "Tablet Samsung Galaxy Tab S S6 Lite SM-P610, 10,4 pulgadas, capacidad de 64GB, 4GB RAM",
+  "active" : true
 }, {
   "idProduct" : 10,
   "iDEnterprise" : 2,
@@ -97,7 +106,8 @@
   "price" : 24916.0,
   "quantity" : 100,
   "category" : "TECHNOLOGY",
-  "description" : "Teclado gamer Redragon Kumara K552 Outemu Red español latinoamérica color negro con luz RGB"
+  "description" : "Teclado gamer Redragon Kumara K552 Outemu Red español latinoamérica color negro con luz RGB",
+  "active" : true
 }, {
   "idProduct" : 11,
   "iDEnterprise" : 2,
@@ -107,7 +117,8 @@
   "price" : 34189.0,
   "quantity" : 100,
   "category" : "TECHNOLOGY",
-  "description" : "Teclado bluetooth Satechi Slim X3 Bluetooth Backlit Keyboard QWERTY español España color space gray"
+  "description" : "Teclado bluetooth Satechi Slim X3 Bluetooth Backlit Keyboard QWERTY español España color space gray",
+  "active" : true
 }, {
   "idProduct" : 12,
   "iDEnterprise" : 2,
@@ -117,7 +128,8 @@
   "price" : 10124.0,
   "quantity" : 100,
   "category" : "TECHNOLOGY",
-  "description" : "Teclado Aiwa TEC-3001KG, gamer, tipo de switch Blue"
+  "description" : "Teclado Aiwa TEC-3001KG, gamer, tipo de switch Blue",
+  "active" : true
 }, {
   "idProduct" : 13,
   "iDEnterprise" : 2,
@@ -127,7 +139,8 @@
   "price" : 14999.0,
   "quantity" : 80,
   "category" : "TECHNOLOGY",
-  "description" : "Cámara web Redragon Fobos GW600 HD 30FPS color negro"
+  "description" : "Cámara web Redragon Fobos GW600 HD 30FPS color negro",
+  "active" : true
 }, {
   "idProduct" : 14,
   "iDEnterprise" : 2,
@@ -137,7 +150,8 @@
   "price" : 15699.0,
   "quantity" : 80,
   "category" : "TECHNOLOGY",
-  "description" : "Cámara web Gadnic Camweb01 Full HD 30FPS color negro"
+  "description" : "Cámara web Gadnic Camweb01 Full HD 30FPS color negro",
+  "active" : true
 }, {
   "idProduct" : 15,
   "iDEnterprise" : 2,
@@ -147,7 +161,8 @@
   "price" : 14200.0,
   "quantity" : 80,
   "category" : "TECHNOLOGY",
-  "description" : "Cámara web Logitech C505e HD 30FPS color negro"
+  "description" : "Cámara web Logitech C505e HD 30FPS color negro",
+  "active" : true
 }, {
   "idProduct" : 16,
   "iDEnterprise" : 2,
@@ -157,7 +172,8 @@
   "price" : 9999.0,
   "quantity" : 20,
   "category" : "TECHNOLOGY",
-  "description" : "Auriculares Samsung EO-IA500, In-ear, color negro"
+  "description" : "Auriculares Samsung EO-IA500, In-ear, color negro",
+  "active" : true
 }, {
   "idProduct" : 17,
   "iDEnterprise" : 2,
@@ -167,7 +183,8 @@
   "price" : 22079.0,
   "quantity" : 30,
   "category" : "TECHNOLOGY",
-  "description" : "Auriculares Inalámbricos Philco P1000nc Bluetooth Noise Cancelling"
+  "description" : "Auriculares Inalámbricos Philco P1000nc Bluetooth Noise Cancelling",
+  "active" : true
 }, {
   "idProduct" : 18,
   "iDEnterprise" : 3,
@@ -177,7 +194,8 @@
   "price" : 639502.0,
   "quantity" : 45,
   "category" : "TECHNOLOGY",
-  "description" : "Camara Nikon Kit D5600 18-55mm VR DSLR color negro"
+  "description" : "Camara Nikon Kit D5600 18-55mm VR DSLR color negro",
+  "active" : true
 }, {
   "idProduct" : 19,
   "iDEnterprise" : 3,
@@ -187,7 +205,8 @@
   "price" : 609304.0,
   "quantity" : 45,
   "category" : "TECHNOLOGY",
-  "description" : "Camara Nikon Kit D3500 + lente 18-55mm VR + lente 70-300mm + Mochila DSLR color negro"
+  "description" : "Camara Nikon Kit D3500 + lente 18-55mm VR + lente 70-300mm + Mochila DSLR color negro",
+  "active" : true
 }, {
   "idProduct" : 20,
   "iDEnterprise" : 3,
@@ -197,7 +216,8 @@
   "price" : 998161.0,
   "quantity" : 45,
   "category" : "TECHNOLOGY",
-  "description" : "Camara Nikon Z50 Mirrorless + Lente 16-50mm F/3.5-6.3 Vr"
+  "description" : "Camara Nikon Z50 Mirrorless + Lente 16-50mm F/3.5-6.3 Vr",
+  "active" : true
 }, {
   "idProduct" : 21,
   "iDEnterprise" : 4,
@@ -207,7 +227,8 @@
   "price" : 548900.0,
   "quantity" : 45,
   "category" : "TECHNOLOGY",
-  "description" : "Canon EOS Kit M50 Mark II + lente 15-45mm 3.5-6.3 IS STM + lente 55-200mm sin espejo color negro"
+  "description" : "Canon EOS Kit M50 Mark II + lente 15-45mm 3.5-6.3 IS STM + lente 55-200mm sin espejo color negro",
+  "active" : true
 }, {
   "idProduct" : 22,
   "iDEnterprise" : 4,
@@ -217,7 +238,8 @@
   "price" : 369999.0,
   "quantity" : 45,
   "category" : "TECHNOLOGY",
-  "description" : "Cámara Canon EOS Rebel SL3 DSLR color negro"
+  "description" : "Cámara Canon EOS Rebel SL3 DSLR color negro",
+  "active" : true
 }, {
   "idProduct" : 23,
   "iDEnterprise" : 5,
@@ -227,7 +249,8 @@
   "price" : 369999.0,
   "quantity" : 45,
   "category" : "TECHNOLOGY",
-  "description" : "Cámara Canon EOS Rebel SL3 DSLR color negro"
+  "description" : "Cámara Canon EOS Rebel SL3 DSLR color negro",
+  "active" : true
 }, {
   "idProduct" : 24,
   "iDEnterprise" : 10,
@@ -237,7 +260,8 @@
   "price" : 120000.0,
   "quantity" : 100,
   "category" : "FASHION",
-  "description" : "Probando agregar un producto al .json by flor"
+  "description" : "Probando agregar un producto al .json by flor",
+  "active" : true
 }, {
   "idProduct" : 25,
   "iDEnterprise" : 3,
@@ -247,7 +271,8 @@
   "price" : 10000.0,
   "quantity" : 100,
   "category" : "FASHION",
-  "description" : "Zapatillas nike urbanas"
+  "description" : "Zapatillas nike urbanas",
+  "active" : true
 }, {
   "idProduct" : 26,
   "iDEnterprise" : 4,
@@ -257,7 +282,8 @@
   "price" : 123000.0,
   "quantity" : 100,
   "category" : "FASHION",
-  "description" : "zapatillas nike"
+  "description" : "zapatillas nike",
+  "active" : true
 }, {
   "idProduct" : 27,
   "iDEnterprise" : 10,
@@ -267,7 +293,8 @@
   "price" : 5.0E8,
   "quantity" : 5,
   "category" : "VEHICLES",
-  "description" : "toyota hiluxx"
+  "description" : "toyota hiluxx",
+  "active" : true
 }, {
   "idProduct" : 28,
   "iDEnterprise" : 5,
@@ -277,5 +304,6 @@
   "price" : 5000000.0,
   "quantity" : 120,
   "category" : "FASHION",
-  "description" : "zapas"
+  "description" : "zapas",
+  "active" : true
 } ]

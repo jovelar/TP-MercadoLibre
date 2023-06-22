@@ -16,9 +16,9 @@ public final class Product {
     private float price;
     private int quantity;
 
-
     private Category category;
     private String description;
+    private boolean active;
     //TODO: falta agregar un atributo que indique el estado del
     //endregion
 
@@ -28,8 +28,8 @@ public final class Product {
     //este constructor lo utilizo para hardcodear los productos, sin colocar
     //un id del producto, porque el id deber ser autoincremental y asignado
     //automaticamente
-
-    public Product(int iDEnterprise, String brand, String productName, String vendorName, float price, int quantity, Category category, String description) {
+    public Product(int iDEnterprise, String brand, String productName, String vendorName, float price, int quantity,
+                   Category category, String description) {
         this.iDEnterprise = iDEnterprise;
         this.brand = brand;
         this.productName = productName;
@@ -38,12 +38,11 @@ public final class Product {
         this.quantity = quantity;
         this.category = category;
         this.description = description;
+        this.active = true;
     }
 
     ///el constructor siguiente lo utilizo para crear un producto sin asignar los valores que no voy a modificar en el
     //metodo modifyProduct de productManager
-
-
     public Product(int idProduct, String brand, String productName, float price, int quantity, String description) {
         this.idProduct = idProduct;
         this.brand = brand;
@@ -51,6 +50,8 @@ public final class Product {
         this.price = price;
         this.quantity = quantity;
         this.description = description;
+        this.active = true;
+
     }
 
     public Product(int idProduct, int iDEnterprise, String brand, String productName, String vendorName,
@@ -64,9 +65,9 @@ public final class Product {
         this.quantity = quantity;
         this.category = category;
         this.description = description;
+        this.active = true;
+
     }
-
-
     //endregion
 
     //region GETTERS AND SETTERS
@@ -141,6 +142,15 @@ public final class Product {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public boolean getActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     //endregion
 
 

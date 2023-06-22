@@ -389,31 +389,29 @@ vendida (se tiene que actualizar el json en cada venta).
     }
     //endregion
 
-    public static void enterpriseMainMenu(String username) {
+    public static String enterpriseMainMenu(String username) {
 
         Enterprise enterprise = SalesSystem.getEnterpriseManager().returnEnterpriseByUsername(username);
-        boolean userConected = true;
-        TypeUser typeUser = TypeUser.ENTERPRISE;
-
         String optionEntered;
+        String returnedOption;
 
+        //TODO: mostras productos del enterprise
         SalesSystem.getProductManager().showSaleProducts();
 
         //menu principal
         do {
-            optionEntered = Console.systemOptions(userConected);
+            optionEntered = Console.systemOptionsEnterprise();
 
             switch (optionEntered) {
 
                 case "VER MI PERFIL"://region
                     enterprise.viewProfile();
 
-
                     int answer = Console.buttonsModifyAndReturn();
 
                     if(answer == 0){
-                        optionEntered = Menu.menuModifyEnterprise(enterprise.getIdUser());
-                        if(optionEntered.equals("MODIFICADO")){
+                        returnedOption = Menu.menuModifyEnterprise(enterprise.getIdUser());
+                        if(returnedOption.equals("MODIFICADO")){
                             enterprise = SalesSystem.getEnterpriseManager().returnEnterpriseById(enterprise.getIdUser());
                             enterprise.viewProfile();
                             username = enterprise.getUsername();
@@ -424,6 +422,7 @@ vendida (se tiene que actualizar el json en cada venta).
                     break;//endregion
 
                 case "AGREGAR PRODUCTO"://region
+
                     SalesSystem.createAccount();
                     break;//endregion
 
@@ -448,12 +447,14 @@ vendida (se tiene que actualizar el json en cada venta).
 
         } while(!optionEntered.equals("SALIR"));
 
+        return optionEntered;
     }
 
     public static String administratorMainMenu(String username) { //TODO falta probar este menu
 
             Administrator administrator;
             String optionEntered;
+            String returnedOption;
             boolean success;
             do {
                 optionEntered = Console.systemOptionsAdministrator();
@@ -468,8 +469,8 @@ vendida (se tiene que actualizar el json en cada venta).
                         int answer = Console.buttonsModifyAndReturn();
 
                         if (answer == 0) {
-                            optionEntered = Menu.menuModifyAdministrator(administrator.getIdUser());
-                            if (optionEntered.equals("MODIFICADO")) {
+                            returnedOption = Menu.menuModifyAdministrator(administrator.getIdUser());
+                            if (returnedOption.equals("MODIFICADO")) {
                                 administrator = SalesSystem.getAdministratorManager().returnAdministratorById(administrator.getIdUser());
                                 administrator.viewProfile();
                                 username = administrator.getUsername();
@@ -479,11 +480,11 @@ vendida (se tiene que actualizar el json en cada venta).
                         Console.showMessage("Volviendo al menu principal...");
                         break;
                     case "ADMINISTRAR EMPRESAS":
-                        optionEntered = enterpriseABMLmenu(); //TODO probar
+                        enterpriseABMLmenu(); //TODO probar
 
                         break;
                     case "ADMINISTRAR CLIENTES":
-                        optionEntered = buyerABMLmenu(); //TODO probar
+                        buyerABMLmenu(); //TODO probar
                         break;
 
                     case "AGREGAR ADMINISTRADORES":
@@ -515,7 +516,7 @@ vendida (se tiene que actualizar el json en cada venta).
             return optionEntered;
         }
 
-    public static String enterpriseABMLmenu () {
+    public static void enterpriseABMLmenu () {
         boolean answer;
         String optionEntered;
         do {
@@ -555,7 +556,7 @@ vendida (se tiene que actualizar el json en cada venta).
                     break;
 
 
-                case "SALIR":
+                case "VOLVER AL MENU PRINCIPAL":
                     Console.showMessage("Volviendo al menu principal...");
                     break;
                 default:
@@ -564,10 +565,9 @@ vendida (se tiene que actualizar el json en cada venta).
             }
 
         } while (!optionEntered.equals("SALIR"));
-        return optionEntered;
 
     }
-    public static String buyerABMLmenu () {
+    public static void buyerABMLmenu () {
         boolean answer;
         String optionEntered;
         do {
@@ -602,7 +602,7 @@ vendida (se tiene que actualizar el json en cada venta).
 
                     break;
 
-                case "SALIR":
+                case "VOLVER AL MENU PRINCIPAL":
                     Console.showMessage("Volviendo al menu principal...");
                     break;
                 default:
@@ -611,8 +611,6 @@ vendida (se tiene que actualizar el json en cada venta).
             }
 
         } while (!optionEntered.equals("SALIR"));
-        return optionEntered;
-
     }
 
     public static String menuModifyAdministrator ( int idAdministrator){

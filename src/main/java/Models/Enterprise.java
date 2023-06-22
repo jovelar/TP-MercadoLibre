@@ -6,12 +6,15 @@ import Tools.Console;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public final class Enterprise extends Client implements Serializable {
 
     //region ATTRIBUTES
     private String fantasyName;
     private float salesRevenue;
+
+    private ArrayList<Integer> myProducts = new ArrayList<>();
     //endregion
 
     //region CONSTRUCTORS
@@ -54,6 +57,15 @@ public final class Enterprise extends Client implements Serializable {
     public void setSalesRevenue(float salesRevenue) {
         this.salesRevenue = salesRevenue;
     }
+
+    public ArrayList<Integer> getMyProducts() {
+        return myProducts;
+    }
+
+    public void setMyProducts(ArrayList<Integer> myProducts) {
+        this.myProducts = myProducts;
+    }
+
     //endregion
 
     public void addProduct(){
@@ -76,5 +88,10 @@ public final class Enterprise extends Client implements Serializable {
         return  super.toString() +
                 "\n NOMBRE FANTASIA.....:   " + this.fantasyName +
                 "\n INGRESOS POR VTAS...:   " + this.salesRevenue;
+    }
+
+    @Override
+    public void viewProfile() {
+        super.viewProfile();
     }
 }

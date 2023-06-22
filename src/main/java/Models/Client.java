@@ -89,5 +89,8 @@ public abstract class Client extends User {
                 "\n DINERO DISPONIBLE...:   " + this.availableMoney;
     }
 
-
+    @Override
+    public void viewProfile() {
+        super.viewProfile();
+    }
 }

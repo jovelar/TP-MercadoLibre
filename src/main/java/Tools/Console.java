@@ -143,7 +143,8 @@ public final class Console {
                 "ADMINISTRAR EMPRESAS",
                 JOptionPane.QUESTION_MESSAGE,
                 null,  // null para icono defecto
-                new Object[] { "AGREGAR NUEVA EMPRESA","BAJA DE EMPRESA", "MODIFICAR EMPRESA", "VER EMPRESAS","SALIR"},
+                new Object[] { "AGREGAR NUEVA EMPRESA","BAJA DE EMPRESA", "MODIFICAR EMPRESA", "VER EMPRESAS",
+                        "VOLVER AL MENU PRINCIPAL"},
                 "AGREGAR NUEVA EMPRESA");
 
 
@@ -161,7 +162,7 @@ public final class Console {
                     JOptionPane.QUESTION_MESSAGE,
                     null,  // null para icono defecto
                     new Object[] { "MODIFICAR NOMBRE DE USUARIO", "MODIFICAR EMAIL","MODIFICAR CONTRASEÑA",
-                            "MODIFICAR APELLIDO", "MODIFICAR FECHA DE NACIMIENTO", "MODIFICAR NUMERO DE TELEFONO",
+                            "MODIFICAR APELLIDO", "MODIFICAR APELLIDO", "MODIFICAR FECHA DE NACIMIENTO", "MODIFICAR NUMERO DE TELEFONO",
                             "MODIFICAR TODO", "SALIR"},
                     "MODIFICAR NOMBRE DE USUARIO");
 
@@ -247,10 +248,28 @@ public final class Console {
     }
 
     public static void cleanConsole() {
-            for(int i=0; i<20; i++) {
-                System.out.println("\n");
-            }
+        for(int i=0; i<20; i++) {
+            System.out.print("\n");
         }
+    }
+
+    public static String systemOptionsEnterprise() {
+
+        String chosenOption= (String) JOptionPane.showInputDialog(
+            null,
+            "SELECCIONE UNA OPCION\n\n",
+            "OPCIONES MENU PRINCIPAL ADMINISTRATOR",
+            JOptionPane.QUESTION_MESSAGE,
+            null,  // null para icono defecto
+            new Object[] { "VER MI PERFIL","AGREGAR PRODUCTO", "MODIFICAR PRODUCTO", "DAR DE BAJA UN PRODUCTO",
+                    "DAR DE BAJA MI CUENTA", "SALIR"},
+            "VER MI PERFIL");
+
+        if(chosenOption == null)
+            chosenOption = "SALIR";
+
+        return chosenOption;
+    }
 
     public static String systemOptionsModifyEnterprise() {
 
@@ -261,9 +280,10 @@ public final class Console {
                 JOptionPane.QUESTION_MESSAGE,
                 null,  // null para icono defecto
                 new Object[] { "MODIFICAR NOMBRE DE USUARIO", "MODIFICAR EMAIL","MODIFICAR CONTRASEÑA",
-                        "MODIFICAR APELLIDO", "MODIFICAR FECHA DE NACIMIENTO", "MODIFICAR NUMERO DE TELEFONO",
-                        "MODIFICAR NOMBRE DE LA EMPRESA", "MODIFICAR PROVINCIA", "MODIFICAR CIUDAD",
-                        "MODIFICAR  DIRECCION", "MODIFICAR CODIGO POSTAL", "MODIFICAR TODO", "SALIR"},
+                        "MODIFICAR NOMBRE", "MODIFICAR APELLIDO", "MODIFICAR FECHA DE NACIMIENTO",
+                        "MODIFICAR NUMERO DE TELEFONO", "MODIFICAR NOMBRE DE LA EMPRESA",
+                        "MODIFICAR PROVINCIA", "MODIFICAR CIUDAD", "MODIFICAR  DIRECCION",
+                        "MODIFICAR CODIGO POSTAL", "MODIFICAR TODO", "SALIR"},
                 "MODIFICAR NOMBRE DE USUARIO");
 
         if(chosenOption == null)

@@ -5,7 +5,6 @@ import Tools.Console;
 import Tools.Menu;
 import Tools.Validations;
 
-
 public class Main {
     public static void main(String[] args) {
 
@@ -53,7 +52,7 @@ public class Main {
                             optionEntered = Menu.administratorMainMenu(username.toString());// TODO retorna
 
                         }else if(typeUser == TypeUser.ENTERPRISE) {
-                            Menu.enterpriseMainMenu(username.toString());
+                            optionEntered = Menu.enterpriseMainMenu(username.toString());
                         }
                     }
 
@@ -86,10 +85,6 @@ public class Main {
             }
 
         } while(!optionEntered.equals("SALIR"));
-
-        //mainEzequiel();
-
-        //mainJOvelar();
     }
 
     public static void mainEzequiel(StringBuilder hola) {

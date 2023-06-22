@@ -14,9 +14,10 @@
   "address" : "victor hugo 1783",
   "postalCode" : 7167,
   "availableMoney" : 0.0,
-  "cart" : null,
-  "favorites" : [ ],
-  "payMethod" : null
+  "cart" : [],
+  "favorites" : [],
+  "cards" : [],
+  "shoppingHistory" : []
 }, {
   "idUser" : 2,
   "username" : "NuevoBuyer",
@@ -33,9 +34,10 @@
   "address" : "calle 123",
   "postalCode" : 7167,
   "availableMoney" : 0.0,
-  "cart" : [ ],
-  "favorites" : [ ],
-  "payMethod" : null
+  "cart" : [],
+  "favorites" : [],
+  "cards" : [],
+  "shoppingHistory" : []
 }, {
   "idUser" : 3,
   "username" : "shiny",
@@ -52,7 +54,8 @@
   "address" : "catamarca 123",
   "postalCode" : 4112,
   "availableMoney" : 0.0,
-  "cart" : null,
-  "favorites" : null,
-  "payMethod" : null
+  "cart" : [],
+  "favorites" : [],
+  "cards" : [],
+  "shoppingHistory" : []
 } ]

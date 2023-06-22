@@ -10,14 +10,14 @@
   "phoneNumber" : 2254411162,
   "active" : true
 }, {
-  "idUser" : 3,
-  "username" : "adm3",
-  "email" : "adm3@gmail.com",
-  "password" : "123",
-  "firstName" : "Ezequiel",
-  "surname" : "null",
-  "dni" : 45386329,
-  "birthDate" : "null",
-  "phoneNumber" : 0,
-  "active" : false
+  "idUser" : 100,
+  "username" : "florM",
+  "email" : "nuevoadm@gmail.com",
+  "password" : "12345678",
+  "firstName" : "Florencia",
+  "surname" : "Mamani",
+  "dni" : 0,
+  "birthDate" : "27/08/2000",
+  "phoneNumber" : 2254533702,
+  "active" : true
 } ]

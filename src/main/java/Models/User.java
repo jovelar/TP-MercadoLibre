@@ -41,6 +41,21 @@ public abstract class User {
 
         this.active = true;
     }
+
+    //constructor para la modificacion total SIN DNI
+    public User(int idUser, String username, String email, String password, String firstName, String surname, String birthDate, long phoneNumber) {
+        this.idUser = idUser;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.phoneNumber = phoneNumber;
+        this.active = true;
+    }
+
+
     //endregion
 
     //region GETTERS AND SETTERS

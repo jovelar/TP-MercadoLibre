@@ -4,7 +4,10 @@ import Enums.Category;
 import Enums.Province;
 
 import Enums.TypeUser;
-import Models.*;
+import Models.Administrator;
+import Models.Client;
+import Models.Enterprise;
+import Models.Product;
 import ModelsManager.ProductManager;
 import ModelsManager.SalesSystem;
 
@@ -435,9 +438,123 @@ vendida (se tiene que actualizar el json en cada venta).
     }
 
 
+    public static String administratorMainMenu(String username) {
+        Administrator administrator;
+        String optionEntered;
+        do {
+            optionEntered = Console.systemOptionsAdministrator();
 
-    public static void administratorMainMenu(String username) {
-        Administrator administrator = SalesSystem.getAdministratorManager().returnAdministratorByUsername(username);
+           administrator = SalesSystem.getAdministratorManager().returnAdministratorByUsername(username);
+            switch (optionEntered) {
+
+                //region
+                case "VER MI PERFIL":
+                    administrator.viewProfile();
+
+                    int answer = Console.buttonsModifyAndReturn();
+
+                    if(answer == 0){
+                        optionEntered = Menu.menuModifyAdministrator(administrator.getIdUser());
+                        if(optionEntered.equals("MODIFICADO")){
+                            administrator = SalesSystem.getAdministratorManager().returnAdministratorById(administrator.getIdUser());
+                            administrator.viewProfile();
+                            username = administrator.getUsername();
+                        }
+                    }
+
+                    Console.showMessage("Volviendo al menu principal...");
+                    break;
+                case "ADMINISTRAR EMPRESAS":
+                    enterpriseABMLmenu();
+
+                    break;
+                case "ADMINISTRAR CLIENTES":
+                    buyerABMLmenu();
+                    break;
+
+                case "AGREGAR ADMINISTRADORES":
+                    break;
+
+                case "MOSTRAR ADMINISTRADORES":
+                    break;
+                case "DAR DE BAJA MI CUENTA":
+                    break;
+
+                case "SALIR":
+                    Console.showMessage("GRACIAS POR UTILIZAR ESTE PROGRAMA!");
+                    break;
+                default:
+                    Console.showMessageError("OPCION INVALIDA! VUELVA A INTENTARLO!");
+                    break;
+            }
+
+        } while(!optionEntered.equals("SALIR"));
+        return optionEntered;
+    }
+
+    public static void enterpriseABMLmenu(){
 
     }
+    public static void buyerABMLmenu(){
+
+    }
+
+    public static String menuModifyAdministrator(int idAdministrator) {
+        boolean answer;
+        String optionEntered;
+
+        do {
+            optionEntered = Console.systemOptionsModifyAdministrator();
+
+            switch (optionEntered) {
+
+                //region
+                case "MODIFICAR NOMBRE DE USUARIO":
+                     answer = SalesSystem.getAdministratorManager().changeAdminUsername(idAdministrator);
+                    if(answer){
+                        Console.showMessage("¡NOMBRE DE USUARIO MODIFICADO CON EXITO!");
+                        optionEntered = "MODIFICADO";
+                    }else {
+                        optionEntered = "SALIR";
+                    }
+                    break;
+                case "MODIFICAR EMAIL":
+
+                    break;
+                case "MODIFICAR CONTRASEÑA":
+
+                    break;
+
+                case "MODIFICAR NOMBRE":
+                    break;
+
+                case "MODIFICAR APELLIDO":
+                    break;
+
+                case "MODIFICAR FECHA DE NACIMIENTO":
+                    break;
+
+                case "MODIFICAR NUMERO DE TELEFONO":
+                    break;
+
+                case "MODIFICAR TODO":
+                    answer = SalesSystem.getAdministratorManager().totalModifyOneAdministrator(idAdministrator);
+                    if(answer){
+                        Console.showMessage("¡CUENTA ADMINISTRADOR MODIFICADA CON EXITO!");
+                    }
+
+                    break;
+
+                case "SALIR":
+                    System.out.println(" ");
+                    break;
+                default:
+                    Console.showMessageError("OPCION INVALIDA! VUELVA A INTENTARLO!");
+                    break;
+            }
+
+        } while((!optionEntered.equals("SALIR")) && (!optionEntered.equals("MODIFICADO")));
+        return optionEntered;
+    }
+
 }

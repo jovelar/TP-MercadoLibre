@@ -31,9 +31,9 @@ public class Main {
             optionEntered = Console.systemOptions(userConected);
 
             switch (optionEntered) {
-                case "VER MI PERFIL"://region
-
-                    System.out.println(buyer);
+                //region
+                case "VER MI PERFIL":
+//                    System.out.println(buyer);
                     //TODO: agregar metodo con switch y opciones de modificacion de perfil
                     break;//endregion
                 case "CREAR CUENTA"://region
@@ -50,7 +50,7 @@ public class Main {
                             buyer = SalesSystem.getBuyerManager().returnBuyerByUsername(username.toString());
 
                         }else if(typeUser == TypeUser.ADMINISTRATOR) {
-                            Menu.administratorMainMenu(username.toString());
+                            optionEntered = Menu.administratorMainMenu(username.toString());
 
                         }else if(typeUser == TypeUser.ENTERPRISE) {
                             Menu.enterpriseMainMenu(username.toString());

@@ -340,10 +340,5 @@ public class Validations {
         return password;
     }
 
-    public static void ingresoSalir(String resp){
-        if(resp == "SALIR"){
-
-        }
-    }
 
 }

@@ -15,9 +15,12 @@ public class ProductManager {
     //TODO: crear un showProducts simplificado, con menos datos, 3-4 atributos
     public void showSaleProducts(){
         List<Product> productList = productRepo.toList();
+        System.out.println("\033[33m-------------------------------------------------------------------------");
+        System.out.println("                               OFERTAS");
+        System.out.println("-------------------------------------------------------------------------\u001B[0m");
 
         for(Product product : productList){
-            if(product.getPrice() < 30_000){
+            if(product.getPrice() < 13_000){
                 System.out.println("ID:" + product.getIdProduct() + " ." + product);
                 System.out.println("---------------------------------------------------------");
 

@@ -29,6 +29,7 @@ public final class BuyerManager {
 
     BuyerRepo buyerRepo = new BuyerRepo();
 
+
     public void showBuyersList() {
         List<Buyer> buyersList = buyerRepo.toList();
 

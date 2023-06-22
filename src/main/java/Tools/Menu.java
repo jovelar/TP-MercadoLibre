@@ -404,8 +404,10 @@ vendida (se tiene que actualizar el json en cada venta).
             optionEntered = Console.systemOptions(userConected);
 
             switch (optionEntered) {
+
                 case "VER MI PERFIL"://region
                     enterprise.viewProfile();
+
 
                     int answer = Console.buttonsModifyAndReturn();
 
@@ -529,15 +531,19 @@ vendida (se tiene que actualizar el json en cada venta).
                     }
                     break;
                 case "BAJA DE EMPRESA":
-                    answer = SalesSystem.getEnterpriseManager().deleteLogicallyEnterprise();
-                    if (answer) {
+
+                    answer = SalesSystem.getEnterpriseManager().deleteLogicallyEnterprisForAdm();
+                    if(answer){
+
                         Console.showMessage("SE DIO DE BAJA LA EMPRESA CON EXITO!");
                     }
 
                     break;
                 case "MODIFICAR EMPRESA":
-                    answer = SalesSystem.getEnterpriseManager().totalModifyEnterpriseForAdm(); //TODO falta modificarlo
-                    if (answer) {
+
+                    optionEntered = SalesSystem.getEnterpriseManager().modifyEnterpriseForAdm(); //TODO falta modificarlo
+                    if(optionEntered.equals("MODIFICADO")){
+
                         Console.showMessage("LA EMPRESA SE MODIFICO CON EXITO!");
                     }
 

@@ -50,7 +50,7 @@ public class Main {
                             buyer = SalesSystem.getBuyerManager().returnBuyerByUsername(username.toString());
 
                         }else if(typeUser == TypeUser.ADMINISTRATOR) {
-                            optionEntered = Menu.administratorMainMenu(username.toString());
+                            optionEntered = Menu.administratorMainMenu(username.toString());// TODO retorna
 
                         }else if(typeUser == TypeUser.ENTERPRISE) {
                             Menu.enterpriseMainMenu(username.toString());

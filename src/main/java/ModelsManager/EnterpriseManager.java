@@ -98,7 +98,7 @@ public final class EnterpriseManager {
 
 
     //baja logica a alguno de los enterprise de la lista -> method for Administrator
-    public boolean deleteLogicallyEnterprise(){
+    public boolean deleteLogicallyEnterprisForAdm(){
         boolean delete = false;
 
         this.showEnterprisesList();
@@ -123,6 +123,28 @@ public final class EnterpriseManager {
             Console.showMessage("¡El usuario-empresa no se encuentra registrado en el sistema!");
         }
         return delete;
+    }
+    public String modifyEnterpriseForAdm(){
+        String optionEntered = "SALIR";
+
+        this.showEnterprisesList();
+        int id = Validations.doUntilValidNumber(Console.readInt("Ingrese el id del usuario-empresa a modificar:"));
+        Enterprise enterprise = returnEnterpriseById(id);
+
+        if(enterprise != null){
+
+            Console.showMessage("Usuario-empresa encontrado!");
+            int answer = Console.buttonsModifyGeneralAndReturn();
+
+            if(answer == 0) {
+                optionEntered = Menu.menuModifyEnterprise(enterprise.getIdUser());  //se le asigna modificado si se modifico o salir
+            }
+
+        }else{
+            Console.showMessage("¡El usuario-empresa no se encuentra registrado en el sistema!");
+            }
+
+        return optionEntered;
     }
 
     //baja fisica, para ELIMINAR a alguno de los enterprise de la lista -> method for Administrator

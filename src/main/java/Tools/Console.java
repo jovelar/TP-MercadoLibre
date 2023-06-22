@@ -185,6 +185,22 @@ public final class Console {
 
 
     }
+
+    public static int buttonsModifyGeneralAndReturn(){ //verificado
+        return JOptionPane.showOptionDialog(
+                null,
+                "Elija una opcion:",
+                "Opciones de mi cuenta",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,    // null para icono por defecto.
+                new Object[] { "MODIFICAR PERFIL", "VOLVER" },   // null para YES, NO y CANCEL
+                "null");
+
+
+    }
+
+
     public static int buttonsYesNo(){ //verificado
         return JOptionPane.showOptionDialog(
                 null,

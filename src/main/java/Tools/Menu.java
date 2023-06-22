@@ -480,11 +480,13 @@ vendida (se tiene que actualizar el json en cada venta).
                         Console.showMessage("Volviendo al menu principal...");
                         break;
                     case "ADMINISTRAR EMPRESAS":
+
                         enterpriseABMLmenu(); //TODO probar
 
                         break;
                     case "ADMINISTRAR CLIENTES":
                         buyerABMLmenu(); //TODO probar
+
                         break;
 
                     case "AGREGAR ADMINISTRADORES":
@@ -570,7 +572,7 @@ vendida (se tiene que actualizar el json en cada venta).
                     break;
             }
 
-        } while (!optionEntered.equals("SALIR"));
+        } while (!optionEntered.equals("VOLVER AL MENU PRINCIPAL"));
 
     }
     public static void buyerABMLmenu () {
@@ -583,13 +585,13 @@ vendida (se tiene que actualizar el json en cada venta).
 
                 //region
                 case "AGREGAR NUEVA CUENTA PERSONAL":
-                    answer = SalesSystem.getBuyerManager().addBuyer();//TODO probado
+                    answer = SalesSystem.getBuyerManager().addBuyer();
                     if (answer) {
                         Console.showMessage("SE AGREGO LA CUENTA PERSONAL CON EXITO!");
                     }
                     break;
                 case "BAJA DE CUENTA PERSONAL":
-                    answer = SalesSystem.getBuyerManager().deleteLogicallyBuyer();//TODO probado
+                    answer = SalesSystem.getBuyerManager().deleteLogicallyBuyer();
                     if (answer) {
                         Console.showMessage("¡LA CUENTA PERSONAL SE DIO DE BAJA EXITOSAMENTE!");
                     }
@@ -600,7 +602,7 @@ vendida (se tiene que actualizar el json en cada venta).
 
                     break;
 
-                case "VER CUENTAS PERSONALES"://TODO probado
+                case "VER CUENTAS PERSONALES":
                     SalesSystem.getBuyerManager().showBuyersList();
 
                     break;
@@ -613,7 +615,7 @@ vendida (se tiene que actualizar el json en cada venta).
                     break;
             }
 
-        } while (!optionEntered.equals("SALIR"));
+        } while (!optionEntered.equals("VOLVER AL MENU PRINCIPAL"));
     }
 
     public static String menuModifyAdministrator ( int idAdministrator){

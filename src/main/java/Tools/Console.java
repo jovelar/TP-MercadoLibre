@@ -167,7 +167,7 @@ public final class Console {
                 JOptionPane.QUESTION_MESSAGE,
                 null,  // null para icono defecto
                 new Object[] { "AGREGAR NUEVA CUENTA PERSONAL","BAJA DE CUENTA PERSONAL", "MODIFICAR CUENTA PERSONAL",
-                        "VER CUENTAS PERSONALES","SALIR"},
+                        "VER CUENTAS PERSONALES","VOLVER AL MENU PRINCIPAL"},
                 "AGREGAR NUEVA CUENTA PERSONAL");
 
 
